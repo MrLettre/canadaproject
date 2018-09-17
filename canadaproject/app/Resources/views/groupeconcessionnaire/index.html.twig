@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Groupeconcessionnaires list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Codepostal</th>
+                <th>Ville</th>
+                <th>Tel</th>
+                <th>Mail</th>
+                <th>Nomducontact</th>
+                <th>Actif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupeConcessionnaire in groupeConcessionnaires %}
+            <tr>
+                <td><a href="{{ path('groupeconcessionnaire_show', { 'id': groupeConcessionnaire.id }) }}">{{ groupeConcessionnaire.id }}</a></td>
+                <td>{{ groupeConcessionnaire.nom }}</td>
+                <td>{{ groupeConcessionnaire.adresse }}</td>
+                <td>{{ groupeConcessionnaire.codePostal }}</td>
+                <td>{{ groupeConcessionnaire.ville }}</td>
+                <td>{{ groupeConcessionnaire.tel }}</td>
+                <td>{{ groupeConcessionnaire.mail }}</td>
+                <td>{{ groupeConcessionnaire.nomDuContact }}</td>
+                <td>{{ groupeConcessionnaire.actif }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('groupeconcessionnaire_show', { 'id': groupeConcessionnaire.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('groupeconcessionnaire_edit', { 'id': groupeConcessionnaire.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('groupeconcessionnaire_new') }}">Create a new groupeConcessionnaire</a>
+        </li>
+    </ul>
+{% endblock %}

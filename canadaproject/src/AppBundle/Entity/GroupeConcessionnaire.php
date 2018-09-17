@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class GroupeConcessionnaire
 {
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Concession", mappedBy="groupeConcessionnaire")
+     */
+    private $concessions;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -278,5 +283,46 @@ class GroupeConcessionnaire
     public function getActif()
     {
         return $this->actif;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->concessions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add concession
+     *
+     * @param \AppBundle\Entity\Concession $concession
+     *
+     * @return GroupeConcessionnaire
+     */
+    public function addConcession(\AppBundle\Entity\Concession $concession)
+    {
+        $this->concessions[] = $concession;
+
+        return $this;
+    }
+
+    /**
+     * Remove concession
+     *
+     * @param \AppBundle\Entity\Concession $concession
+     */
+    public function removeConcession(\AppBundle\Entity\Concession $concession)
+    {
+        $this->concessions->removeElement($concession);
+    }
+
+    /**
+     * Get concessions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConcessions()
+    {
+        return $this->concessions;
     }
 }

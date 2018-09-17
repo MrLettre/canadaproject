@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehiculephysique</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vehiculePhysique.id }}</td>
+            </tr>
+            <tr>
+                <th>Datemiseenligne</th>
+                <td>{% if vehiculePhysique.dateMiseEnLigne %}{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datedevente</th>
+                <td>{% if vehiculePhysique.dateDeVente %}{{ vehiculePhysique.dateDeVente|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Kilometrage</th>
+                <td>{{ vehiculePhysique.kilometrage }}</td>
+            </tr>
+            <tr>
+                <th>Datedemiseencirculation</th>
+                <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prixht</th>
+                <td>{{ vehiculePhysique.prixHT }}</td>
+            </tr>
+            <tr>
+                <th>Prixttc</th>
+                <td>{{ vehiculePhysique.prixTTC }}</td>
+            </tr>
+            <tr>
+                <th>Prixha</th>
+                <td>{{ vehiculePhysique.prixHA }}</td>
+            </tr>
+            <tr>
+                <th>Descriptif</th>
+                <td>{{ vehiculePhysique.descriptif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vehiculephysique_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

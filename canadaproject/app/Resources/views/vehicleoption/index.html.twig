@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehicleoptions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehicleOption in vehicleOptions %}
+            <tr>
+                <td><a href="{{ path('vehicleoption_show', { 'id': vehicleOption.id }) }}">{{ vehicleOption.id }}</a></td>
+                <td>{{ vehicleOption.nom }}</td>
+                <td>{{ vehicleOption.actif }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vehicleoption_show', { 'id': vehicleOption.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vehicleoption_edit', { 'id': vehicleOption.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vehicleoption_new') }}">Create a new vehicleOption</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Version</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ version.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ version.nom }}</td>
+            </tr>
+            <tr>
+                <th>Actif</th>
+                <td>{{ version.actif }}</td>
+            </tr>
+            <tr>
+                <th>Puissanceth</th>
+                <td>{{ version.puissanceTh }}</td>
+            </tr>
+            <tr>
+                <th>Puissancehy</th>
+                <td>{{ version.puissanceHy }}</td>
+            </tr>
+            <tr>
+                <th>Puissanceel</th>
+                <td>{{ version.puissanceEl }}</td>
+            </tr>
+            <tr>
+                <th>Autonimieth</th>
+                <td>{{ version.autonimieTh }}</td>
+            </tr>
+            <tr>
+                <th>Autonomiehy</th>
+                <td>{{ version.autonomieHy }}</td>
+            </tr>
+            <tr>
+                <th>Autonomieel</th>
+                <td>{{ version.autonomieEl }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('version_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('version_edit', { 'id': version.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

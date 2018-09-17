@@ -12,7 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Concession
 {
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehiculePhysique", mappedBy="concession")
+     */
+    private $vehiculePhysique;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GroupeConcessionnaire", inversedBy="concessions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $groupeConcessionnaire;
 
     /**
      * @var int
@@ -280,5 +289,70 @@ class Concession
     public function getNomDuContact()
     {
         return $this->nomDuContact;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->vehiculePhysique = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add vehiculePhysique
+     *
+     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     *
+     * @return Concession
+     */
+    public function addVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    {
+        $this->vehiculePhysique[] = $vehiculePhysique;
+
+        return $this;
+    }
+
+    /**
+     * Remove vehiculePhysique
+     *
+     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     */
+    public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    {
+        $this->vehiculePhysique->removeElement($vehiculePhysique);
+    }
+
+    /**
+     * Get vehiculePhysique
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVehiculePhysique()
+    {
+        return $this->vehiculePhysique;
+    }
+
+    /**
+     * Set groupeConcessionnaire
+     *
+     * @param \AppBundle\Entity\GroupeConcessionnaire $groupeConcessionnaire
+     *
+     * @return Concession
+     */
+    public function setGroupeConcessionnaire(\AppBundle\Entity\GroupeConcessionnaire $groupeConcessionnaire)
+    {
+        $this->groupeConcessionnaire = $groupeConcessionnaire;
+
+        return $this;
+    }
+
+    /**
+     * Get groupeConcessionnaire
+     *
+     * @return \AppBundle\Entity\GroupeConcessionnaire
+     */
+    public function getGroupeConcessionnaire()
+    {
+        return $this->groupeConcessionnaire;
     }
 }

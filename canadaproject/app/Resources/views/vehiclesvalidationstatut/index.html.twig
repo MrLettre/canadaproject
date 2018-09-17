@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehiclesvalidationstatuts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Brouillon</th>
+                <th>Enattentedevalidation</th>
+                <th>Enligne</th>
+                <th>Refuse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehiclesValidationStatut in vehiclesValidationStatuts %}
+            <tr>
+                <td><a href="{{ path('vehiclesvalidationstatut_show', { 'id': vehiclesValidationStatut.id }) }}">{{ vehiclesValidationStatut.id }}</a></td>
+                <td>{{ vehiclesValidationStatut.brouillon }}</td>
+                <td>{{ vehiclesValidationStatut.enAttenteDeValidation }}</td>
+                <td>{{ vehiclesValidationStatut.enLigne }}</td>
+                <td>{{ vehiclesValidationStatut.refuse }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vehiclesvalidationstatut_show', { 'id': vehiclesValidationStatut.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vehiclesvalidationstatut_edit', { 'id': vehiclesValidationStatut.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vehiclesvalidationstatut_new') }}">Create a new vehiclesValidationStatut</a>
+        </li>
+    </ul>
+{% endblock %}
