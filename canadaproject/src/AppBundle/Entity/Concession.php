@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Concession
  *
  * @ORM\Table(name="concession")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ConcessionRepository")
+ * @Vich\Uploadable
  */
 class Concession
 {
@@ -88,6 +92,26 @@ class Concession
      */
     private $actif;
 
+    /**
+     * @Vich\UploadableField(mapping="logoConcessions_images", fileNameProperty="imageName")
+     *
+     * @var File
+     * @Assert\File(
+     *     maxSize = "5M",
+     *     maxSizeMessage="Votre fichier est trop volumineux, veuillez choisir un fichier plus petit",
+     *     mimeTypes={"imageName/jpg", "imageName/jpeg", "imageName/png"},
+     *     mimeTypesMessage = "Veuillez télécharger un fichier au format .jpg ou .png"
+     * )
+     *
+     */
+    protected $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
 
     /**
      * Get id
@@ -354,5 +378,25 @@ class Concession
     public function getGroupeConcessionnaire()
     {
         return $this->groupeConcessionnaire;
+    }
+
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 }

@@ -52,7 +52,7 @@ class PaysController extends Controller
         }
 
         return $this->render('pays/new.html.twig', array(
-            'pay' => $pays,
+            'pays' => $pays,
             'form' => $form->createView(),
         ));
     }
