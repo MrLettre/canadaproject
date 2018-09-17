@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Couleurdisponibles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for couleurDisponible in couleurDisponibles %}
+            <tr>
+                <td><a href="{{ path('couleurdisponible_show', { 'id': couleurDisponible.id }) }}">{{ couleurDisponible.id }}</a></td>
+                <td>{{ couleurDisponible.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('couleurdisponible_show', { 'id': couleurDisponible.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('couleurdisponible_edit', { 'id': couleurDisponible.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('couleurdisponible_new') }}">Create a new couleurDisponible</a>
+        </li>
+    </ul>
+{% endblock %}
