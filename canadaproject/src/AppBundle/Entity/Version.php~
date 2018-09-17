@@ -43,6 +43,11 @@ class Version
     private $vehiculeDef;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CouleurDisponible", mappedBy="version")
+     */
+    private $couleurs;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
