@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehiculephysiques list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datemiseenligne</th>
+                <th>Datedevente</th>
+                <th>Kilometrage</th>
+                <th>Datedemiseencirculation</th>
+                <th>Prixht</th>
+                <th>Prixttc</th>
+                <th>Prixha</th>
+                <th>Descriptif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehiculePhysique in vehiculePhysiques %}
+            <tr>
+                <td><a href="{{ path('vehiculephysique_show', { 'id': vehiculePhysique.id }) }}">{{ vehiculePhysique.id }}</a></td>
+                <td>{% if vehiculePhysique.dateMiseEnLigne %}{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if vehiculePhysique.dateDeVente %}{{ vehiculePhysique.dateDeVente|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ vehiculePhysique.kilometrage }}</td>
+                <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ vehiculePhysique.prixHT }}</td>
+                <td>{{ vehiculePhysique.prixTTC }}</td>
+                <td>{{ vehiculePhysique.prixHA }}</td>
+                <td>{{ vehiculePhysique.descriptif }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vehiculephysique_show', { 'id': vehiculePhysique.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vehiculephysique_new') }}">Create a new vehiculePhysique</a>
+        </li>
+    </ul>
+{% endblock %}

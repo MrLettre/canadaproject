@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehiclephystatuts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Disponible</th>
+                <th>Vendu</th>
+                <th>Enessai</th>
+                <th>Retireparlevendeur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehiclePhyStatut in vehiclePhyStatuts %}
+            <tr>
+                <td><a href="{{ path('vehiclephystatut_show', { 'id': vehiclePhyStatut.id }) }}">{{ vehiclePhyStatut.id }}</a></td>
+                <td>{{ vehiclePhyStatut.disponible }}</td>
+                <td>{{ vehiclePhyStatut.vendu }}</td>
+                <td>{{ vehiclePhyStatut.enEssai }}</td>
+                <td>{{ vehiclePhyStatut.retireParLeVendeur }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vehiclephystatut_show', { 'id': vehiclePhyStatut.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vehiclephystatut_edit', { 'id': vehiclePhyStatut.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vehiclephystatut_new') }}">Create a new vehiclePhyStatut</a>
+        </li>
+    </ul>
+{% endblock %}

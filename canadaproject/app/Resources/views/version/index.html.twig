@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Versions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actif</th>
+                <th>Puissanceth</th>
+                <th>Puissancehy</th>
+                <th>Puissanceel</th>
+                <th>Autonimieth</th>
+                <th>Autonomiehy</th>
+                <th>Autonomieel</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for version in versions %}
+            <tr>
+                <td><a href="{{ path('version_show', { 'id': version.id }) }}">{{ version.id }}</a></td>
+                <td>{{ version.nom }}</td>
+                <td>{{ version.actif }}</td>
+                <td>{{ version.puissanceTh }}</td>
+                <td>{{ version.puissanceHy }}</td>
+                <td>{{ version.puissanceEl }}</td>
+                <td>{{ version.autonimieTh }}</td>
+                <td>{{ version.autonomieHy }}</td>
+                <td>{{ version.autonomieEl }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('version_show', { 'id': version.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('version_edit', { 'id': version.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('version_new') }}">Create a new version</a>
+        </li>
+    </ul>
+{% endblock %}

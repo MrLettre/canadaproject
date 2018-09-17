@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Concessions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Codepostal</th>
+                <th>Ville</th>
+                <th>Tel</th>
+                <th>Mail</th>
+                <th>Nomducontact</th>
+                <th>Actif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for concession in concessions %}
+            <tr>
+                <td><a href="{{ path('concession_show', { 'id': concession.id }) }}">{{ concession.id }}</a></td>
+                <td>{{ concession.nom }}</td>
+                <td>{{ concession.adresse }}</td>
+                <td>{{ concession.codePostal }}</td>
+                <td>{{ concession.ville }}</td>
+                <td>{{ concession.tel }}</td>
+                <td>{{ concession.mail }}</td>
+                <td>{{ concession.nomDuContact }}</td>
+                <td>{{ concession.actif }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('concession_show', { 'id': concession.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('concession_edit', { 'id': concession.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('concession_new') }}">Create a new concession</a>
+        </li>
+    </ul>
+{% endblock %}

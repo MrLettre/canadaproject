@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bdvs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bdV in bdVs %}
+            <tr>
+                <td><a href="{{ path('bdv_show', { 'id': bdV.id }) }}">{{ bdV.id }}</a></td>
+                <td>{{ bdV.nom }}</td>
+                <td>{{ bdV.actif }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('bdv_show', { 'id': bdV.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('bdv_edit', { 'id': bdV.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('bdv_new') }}">Create a new bdV</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Groupeconcessionnaire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ groupeConcessionnaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ groupeConcessionnaire.nom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ groupeConcessionnaire.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Codepostal</th>
+                <td>{{ groupeConcessionnaire.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ groupeConcessionnaire.ville }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ groupeConcessionnaire.tel }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ groupeConcessionnaire.mail }}</td>
+            </tr>
+            <tr>
+                <th>Nomducontact</th>
+                <td>{{ groupeConcessionnaire.nomDuContact }}</td>
+            </tr>
+            <tr>
+                <th>Actif</th>
+                <td>{{ groupeConcessionnaire.actif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('groupeconcessionnaire_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('groupeconcessionnaire_edit', { 'id': groupeConcessionnaire.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
