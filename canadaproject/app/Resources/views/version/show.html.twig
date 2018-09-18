@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Actif</th>
-                <td>{{ version.actif }}</td>
+                <td>{% if version.actif %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Puissanceth</th>

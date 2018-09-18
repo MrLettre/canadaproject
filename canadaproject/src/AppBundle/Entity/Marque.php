@@ -45,21 +45,19 @@ class Marque
     /**
      * @var int
      *
-     * @ORM\Column(name="actif", type="integer")
+     * @ORM\Column(name="actif", type="boolean", options={"default":false})
      */
     private $actif;
 
     /**
      * @Vich\UploadableField(mapping="logoMarques_images", fileNameProperty="imageName")
      *
-     * @var File
+     *
      * @Assert\File(
      *     maxSize = "5M",
-     *     maxSizeMessage="Votre fichier est trop volumineux, veuillez choisir un fichier plus petit",
-     *     mimeTypes={"imageName/jpg", "imageName/jpeg", "imageName/png"},
-     *     mimeTypesMessage = "Veuillez télécharger un fichier au format .jpg ou .png"
+     *     maxSizeMessage = "Votre fichier est trop volumineux, veuillez choisir un fichier plus petit",
      * )
-     *
+     * @var File
      */
     protected $imageFile;
 

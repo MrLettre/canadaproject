@@ -9,6 +9,7 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Actif</th>
+                <th>Imagename</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,7 +18,8 @@
             <tr>
                 <td><a href="{{ path('marque_show', { 'id': marque.id }) }}">{{ marque.id }}</a></td>
                 <td>{{ marque.nom }}</td>
-                <td>{{ marque.actif }}</td>
+                <td>{% if marque.actif %}Yes{% else %}No{% endif %}</td>
+                <td>{{ marque.imageName }}</td>
                 <td>
                     <ul>
                         <li>

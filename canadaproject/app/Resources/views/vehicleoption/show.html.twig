@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Actif</th>
-                <td>{{ vehicleOption.actif }}</td>
+                <td>{% if vehicleOption.actif %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>

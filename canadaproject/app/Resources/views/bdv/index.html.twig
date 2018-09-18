@@ -13,18 +13,18 @@
             </tr>
         </thead>
         <tbody>
-        {% for bdV in bdVs %}
+        {% for bdv in bdvs %}
             <tr>
-                <td><a href="{{ path('bdv_show', { 'id': bdV.id }) }}">{{ bdV.id }}</a></td>
-                <td>{{ bdV.nom }}</td>
-                <td>{{ bdV.actif }}</td>
+                <td><a href="{{ path('bdv_show', { 'id': bdv.id }) }}">{{ bdv.id }}</a></td>
+                <td>{{ bdv.nom }}</td>
+                <td>{% if bdv.actif %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('bdv_show', { 'id': bdV.id }) }}">show</a>
+                            <a href="{{ path('bdv_show', { 'id': bdv.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('bdv_edit', { 'id': bdV.id }) }}">edit</a>
+                            <a href="{{ path('bdv_edit', { 'id': bdv.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('bdv_new') }}">Create a new bdV</a>
+            <a href="{{ path('bdv_new') }}">Create a new bdv</a>
         </li>
     </ul>
 {% endblock %}

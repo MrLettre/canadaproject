@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Actif</th>
-                <td>{{ typeVehicule.actif }}</td>
+                <td>{% if typeVehicule.actif %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>

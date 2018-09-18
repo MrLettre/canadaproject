@@ -15,7 +15,11 @@
             </tr>
             <tr>
                 <th>Actif</th>
-                <td>{{ marque.actif }}</td>
+                <td>{% if marque.actif %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ marque.imageName }}</td>
             </tr>
         </tbody>
     </table>

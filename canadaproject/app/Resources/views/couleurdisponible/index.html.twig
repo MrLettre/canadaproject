@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
+                <th>Imagename</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('couleurdisponible_show', { 'id': couleurDisponible.id }) }}">{{ couleurDisponible.id }}</a></td>
                 <td>{{ couleurDisponible.nom }}</td>
+                <td>{{ couleurDisponible.imageName }}</td>
                 <td>
                     <ul>
                         <li>

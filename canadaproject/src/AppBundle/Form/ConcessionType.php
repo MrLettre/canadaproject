@@ -2,10 +2,8 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Concession;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,9 +22,7 @@ class ConcessionType extends AbstractType
             ->add('mail')
             ->add('nomDuContact')
             ->add('actif')
-            ->add('groupeConcessionnaire')
             ->add('imageFile', FileType::class);
-        ;
     }/**
      * {@inheritdoc}
      */

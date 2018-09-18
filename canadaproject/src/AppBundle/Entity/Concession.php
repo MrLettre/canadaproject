@@ -23,7 +23,7 @@ class Concession
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GroupeConcessionnaire", inversedBy="concessions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $groupeConcessionnaire;
 
@@ -88,7 +88,7 @@ class Concession
     /**
      * @var int
      *
-     * @ORM\Column(name="actif", type="integer")
+     * @ORM\Column(name="actif", type="boolean", options={"default":false})
      */
     private $actif;
 
@@ -99,8 +99,6 @@ class Concession
      * @Assert\File(
      *     maxSize = "5M",
      *     maxSizeMessage="Votre fichier est trop volumineux, veuillez choisir un fichier plus petit",
-     *     mimeTypes={"imageName/jpg", "imageName/jpeg", "imageName/png"},
-     *     mimeTypesMessage = "Veuillez télécharger un fichier au format .jpg ou .png"
      * )
      *
      */

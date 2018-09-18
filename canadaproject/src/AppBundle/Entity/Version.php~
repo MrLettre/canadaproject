@@ -66,7 +66,7 @@ class Version
     /**
      * @var int
      *
-     * @ORM\Column(name="actif", type="integer")
+     * @ORM\Column(name="actif", type="boolean", options={"default":false})
      */
     private $actif;
 
@@ -433,5 +433,48 @@ class Version
     public function getVehiculeDef()
     {
         return $this->vehiculeDef;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->couleurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add couleur.
+     *
+     * @param \AppBundle\Entity\CouleurDisponible $couleur
+     *
+     * @return Version
+     */
+    public function addCouleur(\AppBundle\Entity\CouleurDisponible $couleur)
+    {
+        $this->couleurs[] = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * Remove couleur.
+     *
+     * @param \AppBundle\Entity\CouleurDisponible $couleur
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCouleur(\AppBundle\Entity\CouleurDisponible $couleur)
+    {
+        return $this->couleurs->removeElement($couleur);
+    }
+
+    /**
+     * Get couleurs.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCouleurs()
+    {
+        return $this->couleurs;
     }
 }
