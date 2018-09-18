@@ -15,6 +15,7 @@
                 <th>Mail</th>
                 <th>Nomducontact</th>
                 <th>Actif</th>
+                <th>Imagename</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,7 +30,8 @@
                 <td>{{ concession.tel }}</td>
                 <td>{{ concession.mail }}</td>
                 <td>{{ concession.nomDuContact }}</td>
-                <td>{{ concession.actif }}</td>
+                <td>{% if concession.actif %}Yes{% else %}No{% endif %}</td>
+                <td>{{ concession.imageName }}</td>
                 <td>
                     <ul>
                         <li>

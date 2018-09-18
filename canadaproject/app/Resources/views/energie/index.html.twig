@@ -17,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('energie_show', { 'id': energie.id }) }}">{{ energie.id }}</a></td>
                 <td>{{ energie.nom }}</td>
-                <td>{{ energie.actif }}</td>
+                <td>{% if energie.actif %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>

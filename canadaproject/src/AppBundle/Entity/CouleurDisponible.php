@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CouleurDisponible
  *
  * @ORM\Table(name="couleur_disponible")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CouleurDisponibleRepository")
+ * @Vich\Uploadable
  */
 class CouleurDisponible
 {
@@ -33,6 +37,27 @@ class CouleurDisponible
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
+
+    /**
+     * @Vich\UploadableField(mapping="photosVehiculeCouleursDispo_images", fileNameProperty="imageName")
+     *
+     * @var File
+     * @Assert\File(
+     *     maxSize = "5M",
+     *     maxSizeMessage="Votre fichier est trop volumineux, veuillez choisir un fichier plus petit"
+     * )
+     *
+     */
+    protected $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
+
+
 
 
     /**
@@ -91,5 +116,25 @@ class CouleurDisponible
     public function getVersion()
     {
         return $this->version;
+    }
+
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 }

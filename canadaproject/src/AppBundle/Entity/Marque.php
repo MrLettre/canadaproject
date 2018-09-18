@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Marque
  *
  * @ORM\Table(name="marque")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MarqueRepository")
+ * @Vich\Uploadable
  */
 class Marque
 {
@@ -41,9 +45,30 @@ class Marque
     /**
      * @var int
      *
-     * @ORM\Column(name="actif", type="integer")
+     * @ORM\Column(name="actif", type="boolean", options={"default":false})
      */
     private $actif;
+
+    /**
+     * @Vich\UploadableField(mapping="logoMarques_images", fileNameProperty="imageName")
+     *
+     *
+     * @Assert\File(
+     *     maxSize = "5M",
+     *     maxSizeMessage = "Votre fichier est trop volumineux, veuillez choisir un fichier plus petit",
+     * )
+     * @var File
+     */
+    protected $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
+
+
 
 
     /**
@@ -178,5 +203,25 @@ class Marque
     public function getVehiculeDefinitions()
     {
         return $this->vehiculeDefinitions;
+    }
+
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 }

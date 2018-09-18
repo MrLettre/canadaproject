@@ -17,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('model_show', { 'id': model.id }) }}">{{ model.id }}</a></td>
                 <td>{{ model.nom }}</td>
-                <td>{{ model.actif }}</td>
+                <td>{% if model.actif %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>

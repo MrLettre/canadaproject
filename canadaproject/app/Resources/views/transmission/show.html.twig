@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Actif</th>
-                <td>{{ transmission.actif }}</td>
+                <td>{% if transmission.actif %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>

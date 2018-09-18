@@ -4,6 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -11,6 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="vehicule_physique")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\VehiculePhysiqueRepository")
+ * @Vich\Uploadable
  */
 class VehiculePhysique
 {
@@ -119,6 +123,26 @@ class VehiculePhysique
      * @ORM\Column(name="descriptif", type="text")
      */
     private $descriptif;
+
+    /**
+     * @Vich\UploadableField(mapping="photosVehiculePhysique_images", fileNameProperty="imageName")
+     *
+     * @var File
+     * @Assert\File(
+     *     maxSize = "5M",
+     *     maxSizeMessage="Votre fichier est trop volumineux, veuillez choisir un fichier plus petit"
+     * )
+     *
+     */
+    protected $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
+
 
     public function __construct()
     {
@@ -508,5 +532,25 @@ class VehiculePhysique
     public function getVehiclePhyStatut()
     {
         return $this->vehiclePhyStatut;
+    }
+
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 }

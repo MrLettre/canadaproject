@@ -8,14 +8,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Bdv controller.
+ * BdV controller.
  *
  * @Route("bdv")
  */
 class BdVController extends Controller
 {
     /**
-     * Lists all bdV entities.
+     * Lists all bdv entities.
      *
      * @Route("/", name="bdv_index")
      * @Method("GET")
@@ -24,94 +24,94 @@ class BdVController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $bdVs = $em->getRepository('AppBundle:BdV')->findAll();
+        $bdvs = $em->getRepository('AppBundle:BdV')->findAll();
 
         return $this->render('bdv/index.html.twig', array(
-            'bdVs' => $bdVs,
+            'bdvs' => $bdvs,
         ));
     }
 
     /**
-     * Creates a new bdV entity.
+     * Creates a new bdv entity.
      *
      * @Route("/new", name="bdv_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $bdV = new Bdv();
-        $form = $this->createForm('AppBundle\Form\BdVType', $bdV);
+        $bdv = new BdV();
+        $form = $this->createForm('AppBundle\Form\BdVType', $bdv);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($bdV);
+            $em->persist($bdv);
             $em->flush();
 
-            return $this->redirectToRoute('bdv_show', array('id' => $bdV->getId()));
+            return $this->redirectToRoute('bdv_show', array('id' => $bdv->getId()));
         }
 
         return $this->render('bdv/new.html.twig', array(
-            'bdV' => $bdV,
+            'bdv' => $bdv,
             'form' => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a bdV entity.
+     * Finds and displays a bdv entity.
      *
      * @Route("/{id}", name="bdv_show")
      * @Method("GET")
      */
-    public function showAction(BdV $bdV)
+    public function showAction(BdV $bdv)
     {
-        $deleteForm = $this->createDeleteForm($bdV);
+        $deleteForm = $this->createDeleteForm($bdv);
 
         return $this->render('bdv/show.html.twig', array(
-            'bdV' => $bdV,
+            'bdv' => $bdv,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing bdV entity.
+     * Displays a form to edit an existing bdv entity.
      *
      * @Route("/{id}/edit", name="bdv_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, BdV $bdV)
+    public function editAction(Request $request, BdV $bdv)
     {
-        $deleteForm = $this->createDeleteForm($bdV);
-        $editForm = $this->createForm('AppBundle\Form\BdVType', $bdV);
+        $deleteForm = $this->createDeleteForm($bdv);
+        $editForm = $this->createForm('AppBundle\Form\BdVType', $bdv);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('bdv_edit', array('id' => $bdV->getId()));
+            return $this->redirectToRoute('bdv_edit', array('id' => $bdv->getId()));
         }
 
         return $this->render('bdv/edit.html.twig', array(
-            'bdV' => $bdV,
+            'bdv' => $bdv,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Deletes a bdV entity.
+     * Deletes a bdv entity.
      *
      * @Route("/{id}", name="bdv_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, BdV $bdV)
+    public function deleteAction(Request $request, BdV $bdv)
     {
-        $form = $this->createDeleteForm($bdV);
+        $form = $this->createDeleteForm($bdv);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($bdV);
+            $em->remove($bdv);
             $em->flush();
         }
 
@@ -119,16 +119,16 @@ class BdVController extends Controller
     }
 
     /**
-     * Creates a form to delete a bdV entity.
+     * Creates a form to delete a bdv entity.
      *
-     * @param BdV $bdV The bdV entity
+     * @param BdV $bdv The bdv entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(BdV $bdV)
+    private function createDeleteForm(BdV $bdv)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('bdv_delete', array('id' => $bdV->getId())))
+            ->setAction($this->generateUrl('bdv_delete', array('id' => $bdv->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

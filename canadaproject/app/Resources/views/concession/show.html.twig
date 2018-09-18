@@ -39,7 +39,11 @@
             </tr>
             <tr>
                 <th>Actif</th>
-                <td>{{ concession.actif }}</td>
+                <td>{% if concession.actif %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ concession.imageName }}</td>
             </tr>
         </tbody>
     </table>

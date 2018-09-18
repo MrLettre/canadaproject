@@ -17,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('transmission_show', { 'id': transmission.id }) }}">{{ transmission.id }}</a></td>
                 <td>{{ transmission.nom }}</td>
-                <td>{{ transmission.actif }}</td>
+                <td>{% if transmission.actif %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>

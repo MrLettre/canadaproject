@@ -7,15 +7,15 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ bdV.id }}</td>
+                <td>{{ bdv.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
-                <td>{{ bdV.nom }}</td>
+                <td>{{ bdv.nom }}</td>
             </tr>
             <tr>
                 <th>Actif</th>
-                <td>{{ bdV.actif }}</td>
+                <td>{% if bdv.actif %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>
@@ -25,7 +25,7 @@
             <a href="{{ path('bdv_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('bdv_edit', { 'id': bdV.id }) }}">Edit</a>
+            <a href="{{ path('bdv_edit', { 'id': bdv.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Actif</th>
-                <td>{{ energie.actif }}</td>
+                <td>{% if energie.actif %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>

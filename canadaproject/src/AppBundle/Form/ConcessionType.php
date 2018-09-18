@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,15 @@ class ConcessionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('adresse')->add('codePostal')->add('ville')->add('tel')->add('mail')->add('nomDuContact')->add('actif')->add('groupeConcessionnaire');
+        $builder->add('nom')
+            ->add('adresse')
+            ->add('codePostal')
+            ->add('ville')
+            ->add('tel')
+            ->add('mail')
+            ->add('nomDuContact')
+            ->add('actif')
+            ->add('imageFile', FileType::class);
     }/**
      * {@inheritdoc}
      */

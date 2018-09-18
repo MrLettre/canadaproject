@@ -36,7 +36,7 @@ class Transmission
     /**
      * @var int
      *
-     * @ORM\Column(name="actif", type="integer")
+     * @ORM\Column(name="actif", type="boolean", options={"default":false})
      */
     private $actif;
 

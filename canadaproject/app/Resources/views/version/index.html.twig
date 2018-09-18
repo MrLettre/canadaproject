@@ -23,7 +23,7 @@
             <tr>
                 <td><a href="{{ path('version_show', { 'id': version.id }) }}">{{ version.id }}</a></td>
                 <td>{{ version.nom }}</td>
-                <td>{{ version.actif }}</td>
+                <td>{% if version.actif %}Yes{% else %}No{% endif %}</td>
                 <td>{{ version.puissanceTh }}</td>
                 <td>{{ version.puissanceHy }}</td>
                 <td>{{ version.puissanceEl }}</td>
