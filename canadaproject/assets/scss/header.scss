@@ -12,23 +12,23 @@
 
 }
 .nav-item.active{
-  color:#006633;
+  color:#5E7AE5;
   font-size: 21px;
   font-weight:700;
 }
 .navbar.navbar-dark .breadcrumb .nav-item.active > .nav-link, .navbar.navbar-dark .navbar-nav .nav-item.active > .nav-link {
   background-color: transparent;
-  border: 2px solid #006633;
+  border: 2px solid #5E7AE5;
   padding-left: 15px;
   padding-right: 15px;
 }
 .color-primary{
-  color: #93c01f !important;
+  color: #5E7AE5 !important;
 }
 .navbar.navbar-dark form .md-form input {
-  border-bottom: 1px solid #93c01f;
+  border-bottom: 1px solid #5E7AE5;
 }
 .form-control.form-control-sm.mr-sm-2.mb-0.green-text::placeholder {
-  color: #93c01f;
+  color: #5E7AE5;
 }
 
