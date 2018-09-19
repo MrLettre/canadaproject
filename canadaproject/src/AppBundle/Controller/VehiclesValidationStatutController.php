@@ -26,7 +26,7 @@ class VehiclesValidationStatutController extends Controller
 
         $vehiclesValidationStatuts = $em->getRepository('AppBundle:VehiclesValidationStatut')->findAll();
 
-        return $this->render('vehiclesvalidationstatut/index.html.twig', array(
+        return $this->render('Form/vehiclesvalidationstatut/index.html.twig', array(
             'vehiclesValidationStatuts' => $vehiclesValidationStatuts,
         ));
     }
@@ -51,7 +51,7 @@ class VehiclesValidationStatutController extends Controller
             return $this->redirectToRoute('vehiclesvalidationstatut_show', array('id' => $vehiclesValidationStatut->getId()));
         }
 
-        return $this->render('vehiclesvalidationstatut/new.html.twig', array(
+        return $this->render('Form/vehiclesvalidationstatut/new.html.twig', array(
             'vehiclesValidationStatut' => $vehiclesValidationStatut,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class VehiclesValidationStatutController extends Controller
     {
         $deleteForm = $this->createDeleteForm($vehiclesValidationStatut);
 
-        return $this->render('vehiclesvalidationstatut/show.html.twig', array(
+        return $this->render('Form/vehiclesvalidationstatut/show.html.twig', array(
             'vehiclesValidationStatut' => $vehiclesValidationStatut,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class VehiclesValidationStatutController extends Controller
             return $this->redirectToRoute('vehiclesvalidationstatut_edit', array('id' => $vehiclesValidationStatut->getId()));
         }
 
-        return $this->render('vehiclesvalidationstatut/edit.html.twig', array(
+        return $this->render('Form/vehiclesvalidationstatut/edit.html.twig', array(
             'vehiclesValidationStatut' => $vehiclesValidationStatut,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

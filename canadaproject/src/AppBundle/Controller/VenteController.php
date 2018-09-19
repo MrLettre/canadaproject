@@ -26,7 +26,7 @@ class VenteController extends Controller
 
         $ventes = $em->getRepository('AppBundle:Vente')->findAll();
 
-        return $this->render('vente/index.html.twig', array(
+        return $this->render('Form/vente/index.html.twig', array(
             'ventes' => $ventes,
         ));
     }
@@ -51,7 +51,7 @@ class VenteController extends Controller
             return $this->redirectToRoute('vente_show', array('id' => $vente->getId()));
         }
 
-        return $this->render('vente/new.html.twig', array(
+        return $this->render('Form/vente/new.html.twig', array(
             'vente' => $vente,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class VenteController extends Controller
     {
         $deleteForm = $this->createDeleteForm($vente);
 
-        return $this->render('vente/show.html.twig', array(
+        return $this->render('Form/vente/show.html.twig', array(
             'vente' => $vente,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class VenteController extends Controller
             return $this->redirectToRoute('vente_edit', array('id' => $vente->getId()));
         }
 
-        return $this->render('vente/edit.html.twig', array(
+        return $this->render('Form/vente/edit.html.twig', array(
             'vente' => $vente,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

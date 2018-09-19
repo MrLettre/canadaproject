@@ -26,7 +26,7 @@ class BdVController extends Controller
 
         $bdvs = $em->getRepository('AppBundle:BdV')->findAll();
 
-        return $this->render('bdv/index.html.twig', array(
+        return $this->render('Form/bdv/index.html.twig', array(
             'bdvs' => $bdvs,
         ));
     }
@@ -51,7 +51,7 @@ class BdVController extends Controller
             return $this->redirectToRoute('bdv_show', array('id' => $bdv->getId()));
         }
 
-        return $this->render('bdv/new.html.twig', array(
+        return $this->render('Form/bdv/new.html.twig', array(
             'bdv' => $bdv,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class BdVController extends Controller
     {
         $deleteForm = $this->createDeleteForm($bdv);
 
-        return $this->render('bdv/show.html.twig', array(
+        return $this->render('Form/bdv/show.html.twig', array(
             'bdv' => $bdv,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class BdVController extends Controller
             return $this->redirectToRoute('bdv_edit', array('id' => $bdv->getId()));
         }
 
-        return $this->render('bdv/edit.html.twig', array(
+        return $this->render('Form/bdv/edit.html.twig', array(
             'bdv' => $bdv,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

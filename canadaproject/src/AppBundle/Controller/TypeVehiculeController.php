@@ -26,7 +26,7 @@ class TypeVehiculeController extends Controller
 
         $typeVehicules = $em->getRepository('AppBundle:TypeVehicule')->findAll();
 
-        return $this->render('typevehicule/index.html.twig', array(
+        return $this->render('Form/typevehicule/index.html.twig', array(
             'typeVehicules' => $typeVehicules,
         ));
     }
@@ -51,7 +51,7 @@ class TypeVehiculeController extends Controller
             return $this->redirectToRoute('typevehicule_show', array('id' => $typeVehicule->getId()));
         }
 
-        return $this->render('typevehicule/new.html.twig', array(
+        return $this->render('Form/typevehicule/new.html.twig', array(
             'typeVehicule' => $typeVehicule,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class TypeVehiculeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($typeVehicule);
 
-        return $this->render('typevehicule/show.html.twig', array(
+        return $this->render('Form/typevehicule/show.html.twig', array(
             'typeVehicule' => $typeVehicule,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class TypeVehiculeController extends Controller
             return $this->redirectToRoute('typevehicule_edit', array('id' => $typeVehicule->getId()));
         }
 
-        return $this->render('typevehicule/edit.html.twig', array(
+        return $this->render('Form/typevehicule/edit.html.twig', array(
             'typeVehicule' => $typeVehicule,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

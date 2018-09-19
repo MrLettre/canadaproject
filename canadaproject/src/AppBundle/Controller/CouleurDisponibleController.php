@@ -26,7 +26,7 @@ class CouleurDisponibleController extends Controller
 
         $couleurDisponibles = $em->getRepository('AppBundle:CouleurDisponible')->findAll();
 
-        return $this->render('couleurdisponible/index.html.twig', array(
+        return $this->render('Form/couleurdisponible/index.html.twig', array(
             'couleurDisponibles' => $couleurDisponibles,
         ));
     }
@@ -51,7 +51,7 @@ class CouleurDisponibleController extends Controller
             return $this->redirectToRoute('couleurdisponible_show', array('id' => $couleurDisponible->getId()));
         }
 
-        return $this->render('couleurdisponible/new.html.twig', array(
+        return $this->render('Form/couleurdisponible/new.html.twig', array(
             'couleurDisponible' => $couleurDisponible,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class CouleurDisponibleController extends Controller
     {
         $deleteForm = $this->createDeleteForm($couleurDisponible);
 
-        return $this->render('couleurdisponible/show.html.twig', array(
+        return $this->render('Form/couleurdisponible/show.html.twig', array(
             'couleurDisponible' => $couleurDisponible,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class CouleurDisponibleController extends Controller
             return $this->redirectToRoute('couleurdisponible_edit', array('id' => $couleurDisponible->getId()));
         }
 
-        return $this->render('couleurdisponible/edit.html.twig', array(
+        return $this->render('Form/couleurdisponible/edit.html.twig', array(
             'couleurDisponible' => $couleurDisponible,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

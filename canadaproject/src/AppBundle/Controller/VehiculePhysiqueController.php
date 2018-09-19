@@ -26,7 +26,7 @@ class VehiculePhysiqueController extends Controller
 
         $vehiculePhysiques = $em->getRepository('AppBundle:VehiculePhysique')->findAll();
 
-        return $this->render('vehiculephysique/index.html.twig', array(
+        return $this->render('Form/vehiculephysique/index.html.twig', array(
             'vehiculePhysiques' => $vehiculePhysiques,
         ));
     }
@@ -51,7 +51,7 @@ class VehiculePhysiqueController extends Controller
             return $this->redirectToRoute('vehiculephysique_show', array('id' => $vehiculePhysique->getId()));
         }
 
-        return $this->render('vehiculephysique/new.html.twig', array(
+        return $this->render('Form/vehiculephysique/new.html.twig', array(
             'vehiculePhysique' => $vehiculePhysique,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class VehiculePhysiqueController extends Controller
     {
         $deleteForm = $this->createDeleteForm($vehiculePhysique);
 
-        return $this->render('vehiculephysique/show.html.twig', array(
+        return $this->render('Form/vehiculephysique/show.html.twig', array(
             'vehiculePhysique' => $vehiculePhysique,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class VehiculePhysiqueController extends Controller
             return $this->redirectToRoute('vehiculephysique_edit', array('id' => $vehiculePhysique->getId()));
         }
 
-        return $this->render('vehiculephysique/edit.html.twig', array(
+        return $this->render('Form/vehiculephysique/edit.html.twig', array(
             'vehiculePhysique' => $vehiculePhysique,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

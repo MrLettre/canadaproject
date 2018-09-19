@@ -25,35 +25,35 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=32)
+     * @ORM\Column(name="nom", type="string", length=32, nullable=true)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=32)
+     * @ORM\Column(name="prenom", type="string", length=32, nullable=true)
      */
     private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numeroTelephone", type="string", length=32)
+     * @ORM\Column(name="numeroTelephone", type="string", length=32, nullable=true)
      */
     private $numeroTelephone;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateNaissance", type="date")
+     * @ORM\Column(name="dateNaissance", type="date", nullable=true)
      */
     private $dateNaissance;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreationProfil", type="datetime")
+     * @ORM\Column(name="dateCreationProfil", type="datetime", nullable=true)
      */
     private $dateCreationProfil;
 

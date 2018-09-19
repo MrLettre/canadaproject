@@ -26,7 +26,7 @@ class TransmissionController extends Controller
 
         $transmissions = $em->getRepository('AppBundle:Transmission')->findAll();
 
-        return $this->render('transmission/index.html.twig', array(
+        return $this->render('Form/transmission/index.html.twig', array(
             'transmissions' => $transmissions,
         ));
     }
@@ -51,7 +51,7 @@ class TransmissionController extends Controller
             return $this->redirectToRoute('transmission_show', array('id' => $transmission->getId()));
         }
 
-        return $this->render('transmission/new.html.twig', array(
+        return $this->render('Form/transmission/new.html.twig', array(
             'transmission' => $transmission,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class TransmissionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($transmission);
 
-        return $this->render('transmission/show.html.twig', array(
+        return $this->render('Form/transmission/show.html.twig', array(
             'transmission' => $transmission,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class TransmissionController extends Controller
             return $this->redirectToRoute('transmission_edit', array('id' => $transmission->getId()));
         }
 
-        return $this->render('transmission/edit.html.twig', array(
+        return $this->render('Form/transmission/edit.html.twig', array(
             'transmission' => $transmission,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -26,7 +26,7 @@ class ConcessionController extends Controller
 
         $concessions = $em->getRepository('AppBundle:Concession')->findAll();
 
-        return $this->render('concession/index.html.twig', array(
+        return $this->render('Form/concession/index.html.twig', array(
             'concessions' => $concessions,
         ));
     }
@@ -51,7 +51,7 @@ class ConcessionController extends Controller
             return $this->redirectToRoute('concession_show', array('id' => $concession->getId()));
         }
 
-        return $this->render('concession/new.html.twig', array(
+        return $this->render('Form/concession/new.html.twig', array(
             'concession' => $concession,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class ConcessionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($concession);
 
-        return $this->render('concession/show.html.twig', array(
+        return $this->render('Form/concession/show.html.twig', array(
             'concession' => $concession,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class ConcessionController extends Controller
             return $this->redirectToRoute('concession_edit', array('id' => $concession->getId()));
         }
 
-        return $this->render('concession/edit.html.twig', array(
+        return $this->render('Form/concession/edit.html.twig', array(
             'concession' => $concession,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
