@@ -1,5 +1,7 @@
 {
   "web/app.js": "/web/app.js",
   "web/style.js": "/web/style.js",
-  "web/style.css": "/web/style.css"
+  "web/style.css": "/web/style.css",
+  "web/header.js": "/web/header.js",
+  "web/header.css": "/web/header.css"
 }

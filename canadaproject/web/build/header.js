@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "/web/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/js/app.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/scss/header.scss");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/js/app.js":
-/*!**************************!*\
-  !*** ./assets/js/app.js ***!
-  \**************************/
+/***/ "./assets/scss/header.scss":
+/*!*********************************!*\
+  !*** ./assets/scss/header.scss ***!
+  \*********************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports) {
 
-console.log('Wesh Morray');
+// removed by extract-text-webpack-plugin
 
 /***/ })
 
