@@ -11,11 +11,9 @@ class AdminController extends Controller
     /**
      * @Route("/admin", name="adminHomepage")
      */
-    public function admin(Request $request)
+    public function adminPageAction()
     {
         // replace this example code with whatever you need
-        return $this->render('admin/admin.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        return $this->render('admin/admin/index.html.twig');
     }
 }
