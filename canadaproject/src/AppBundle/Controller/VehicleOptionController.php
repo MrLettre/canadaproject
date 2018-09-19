@@ -26,7 +26,7 @@ class VehicleOptionController extends Controller
 
         $vehicleOptions = $em->getRepository('AppBundle:VehicleOption')->findAll();
 
-        return $this->render('vehicleoption/index.html.twig', array(
+        return $this->render('Form/vehicleoption/index.html.twig', array(
             'vehicleOptions' => $vehicleOptions,
         ));
     }
@@ -51,7 +51,7 @@ class VehicleOptionController extends Controller
             return $this->redirectToRoute('vehicleoption_show', array('id' => $vehicleOption->getId()));
         }
 
-        return $this->render('vehicleoption/new.html.twig', array(
+        return $this->render('Form/vehicleoption/new.html.twig', array(
             'vehicleOption' => $vehicleOption,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class VehicleOptionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($vehicleOption);
 
-        return $this->render('vehicleoption/show.html.twig', array(
+        return $this->render('Form/vehicleoption/show.html.twig', array(
             'vehicleOption' => $vehicleOption,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class VehicleOptionController extends Controller
             return $this->redirectToRoute('vehicleoption_edit', array('id' => $vehicleOption->getId()));
         }
 
-        return $this->render('vehicleoption/edit.html.twig', array(
+        return $this->render('Form/vehicleoption/edit.html.twig', array(
             'vehicleOption' => $vehicleOption,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -26,7 +26,7 @@ class VehiclePhyStatutController extends Controller
 
         $vehiclePhyStatuts = $em->getRepository('AppBundle:VehiclePhyStatut')->findAll();
 
-        return $this->render('vehiclephystatut/index.html.twig', array(
+        return $this->render('Form/vehiclephystatut/index.html.twig', array(
             'vehiclePhyStatuts' => $vehiclePhyStatuts,
         ));
     }
@@ -51,7 +51,7 @@ class VehiclePhyStatutController extends Controller
             return $this->redirectToRoute('vehiclephystatut_show', array('id' => $vehiclePhyStatut->getId()));
         }
 
-        return $this->render('vehiclephystatut/new.html.twig', array(
+        return $this->render('Form/vehiclephystatut/new.html.twig', array(
             'vehiclePhyStatut' => $vehiclePhyStatut,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class VehiclePhyStatutController extends Controller
     {
         $deleteForm = $this->createDeleteForm($vehiclePhyStatut);
 
-        return $this->render('vehiclephystatut/show.html.twig', array(
+        return $this->render('Form/vehiclephystatut/show.html.twig', array(
             'vehiclePhyStatut' => $vehiclePhyStatut,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class VehiclePhyStatutController extends Controller
             return $this->redirectToRoute('vehiclephystatut_edit', array('id' => $vehiclePhyStatut->getId()));
         }
 
-        return $this->render('vehiclephystatut/edit.html.twig', array(
+        return $this->render('Form/vehiclephystatut/edit.html.twig', array(
             'vehiclePhyStatut' => $vehiclePhyStatut,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

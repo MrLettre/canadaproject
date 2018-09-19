@@ -26,7 +26,7 @@ class VersionController extends Controller
 
         $versions = $em->getRepository('AppBundle:Version')->findAll();
 
-        return $this->render('version/index.html.twig', array(
+        return $this->render('Form/version/index.html.twig', array(
             'versions' => $versions,
         ));
     }
@@ -51,7 +51,7 @@ class VersionController extends Controller
             return $this->redirectToRoute('version_show', array('id' => $version->getId()));
         }
 
-        return $this->render('version/new.html.twig', array(
+        return $this->render('Form/version/new.html.twig', array(
             'version' => $version,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class VersionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($version);
 
-        return $this->render('version/show.html.twig', array(
+        return $this->render('Form/version/show.html.twig', array(
             'version' => $version,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class VersionController extends Controller
             return $this->redirectToRoute('version_edit', array('id' => $version->getId()));
         }
 
-        return $this->render('version/edit.html.twig', array(
+        return $this->render('Form/version/edit.html.twig', array(
             'version' => $version,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

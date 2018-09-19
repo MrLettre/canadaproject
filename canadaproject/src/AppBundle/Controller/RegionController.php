@@ -26,7 +26,7 @@ class RegionController extends Controller
 
         $regions = $em->getRepository('AppBundle:Region')->findAll();
 
-        return $this->render('region/index.html.twig', array(
+        return $this->render('Form/region/index.html.twig', array(
             'regions' => $regions,
         ));
     }
@@ -51,7 +51,7 @@ class RegionController extends Controller
             return $this->redirectToRoute('region_show', array('id' => $region->getId()));
         }
 
-        return $this->render('region/new.html.twig', array(
+        return $this->render('Form/region/new.html.twig', array(
             'region' => $region,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class RegionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($region);
 
-        return $this->render('region/show.html.twig', array(
+        return $this->render('Form/region/show.html.twig', array(
             'region' => $region,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class RegionController extends Controller
             return $this->redirectToRoute('region_edit', array('id' => $region->getId()));
         }
 
-        return $this->render('region/edit.html.twig', array(
+        return $this->render('Form/region/edit.html.twig', array(
             'region' => $region,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

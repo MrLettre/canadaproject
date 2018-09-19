@@ -51,7 +51,7 @@ class ModelController extends Controller
             return $this->redirectToRoute('model_show', array('id' => $model->getId()));
         }
 
-        return $this->render('model/new.html.twig', array(
+        return $this->render('Form/model/new.html.twig', array(
             'model' => $model,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class ModelController extends Controller
     {
         $deleteForm = $this->createDeleteForm($model);
 
-        return $this->render('model/show.html.twig', array(
+        return $this->render('Form/model/show.html.twig', array(
             'model' => $model,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class ModelController extends Controller
             return $this->redirectToRoute('model_edit', array('id' => $model->getId()));
         }
 
-        return $this->render('model/edit.html.twig', array(
+        return $this->render('Form/model/edit.html.twig', array(
             'model' => $model,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

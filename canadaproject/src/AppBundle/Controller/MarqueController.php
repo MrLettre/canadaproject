@@ -26,7 +26,7 @@ class MarqueController extends Controller
 
         $marques = $em->getRepository('AppBundle:Marque')->findAll();
 
-        return $this->render('marque/index.html.twig', array(
+        return $this->render('Form/marque/index.html.twig', array(
             'marques' => $marques,
         ));
     }
@@ -51,7 +51,7 @@ class MarqueController extends Controller
             return $this->redirectToRoute('marque_show', array('id' => $marque->getId()));
         }
 
-        return $this->render('marque/new.html.twig', array(
+        return $this->render('Form/marque/new.html.twig', array(
             'marque' => $marque,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class MarqueController extends Controller
     {
         $deleteForm = $this->createDeleteForm($marque);
 
-        return $this->render('marque/show.html.twig', array(
+        return $this->render('Form/marque/show.html.twig', array(
             'marque' => $marque,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class MarqueController extends Controller
             return $this->redirectToRoute('marque_edit', array('id' => $marque->getId()));
         }
 
-        return $this->render('marque/edit.html.twig', array(
+        return $this->render('Form/marque/edit.html.twig', array(
             'marque' => $marque,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -26,7 +26,7 @@ class PaysController extends Controller
 
         $pays = $em->getRepository('AppBundle:Pays')->findAll();
 
-        return $this->render('pays/index.html.twig', array(
+        return $this->render('Form/pays/index.html.twig', array(
             'pays' => $pays,
         ));
     }
@@ -51,7 +51,7 @@ class PaysController extends Controller
             return $this->redirectToRoute('pays_show', array('id' => $pay->getId()));
         }
 
-        return $this->render('pays/new.html.twig', array(
+        return $this->render('Form/pays/new.html.twig', array(
             'pay' => $pay,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class PaysController extends Controller
     {
         $deleteForm = $this->createDeleteForm($pay);
 
-        return $this->render('pays/show.html.twig', array(
+        return $this->render('Form/pays/show.html.twig', array(
             'pay' => $pay,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class PaysController extends Controller
             return $this->redirectToRoute('pays_edit', array('id' => $pay->getId()));
         }
 
-        return $this->render('pays/edit.html.twig', array(
+        return $this->render('Form/pays/edit.html.twig', array(
             'pay' => $pay,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

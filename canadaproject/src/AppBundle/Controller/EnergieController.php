@@ -26,7 +26,7 @@ class EnergieController extends Controller
 
         $energies = $em->getRepository('AppBundle:Energie')->findAll();
 
-        return $this->render('energie/index.html.twig', array(
+        return $this->render('Form/energie/index.html.twig', array(
             'energies' => $energies,
         ));
     }
@@ -51,7 +51,7 @@ class EnergieController extends Controller
             return $this->redirectToRoute('energie_show', array('id' => $energie->getId()));
         }
 
-        return $this->render('energie/new.html.twig', array(
+        return $this->render('Form/energie/new.html.twig', array(
             'energie' => $energie,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class EnergieController extends Controller
     {
         $deleteForm = $this->createDeleteForm($energie);
 
-        return $this->render('energie/show.html.twig', array(
+        return $this->render('Form/energie/show.html.twig', array(
             'energie' => $energie,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class EnergieController extends Controller
             return $this->redirectToRoute('energie_edit', array('id' => $energie->getId()));
         }
 
-        return $this->render('energie/edit.html.twig', array(
+        return $this->render('Form/energie/edit.html.twig', array(
             'energie' => $energie,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

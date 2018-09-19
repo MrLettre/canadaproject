@@ -26,7 +26,7 @@ class GroupeConcessionnaireController extends Controller
 
         $groupeConcessionnaires = $em->getRepository('AppBundle:GroupeConcessionnaire')->findAll();
 
-        return $this->render('groupeconcessionnaire/index.html.twig', array(
+        return $this->render('Form/groupeconcessionnaire/index.html.twig', array(
             'groupeConcessionnaires' => $groupeConcessionnaires,
         ));
     }
@@ -51,7 +51,7 @@ class GroupeConcessionnaireController extends Controller
             return $this->redirectToRoute('groupeconcessionnaire_show', array('id' => $groupeConcessionnaire->getId()));
         }
 
-        return $this->render('groupeconcessionnaire/new.html.twig', array(
+        return $this->render('Form/groupeconcessionnaire/new.html.twig', array(
             'groupeConcessionnaire' => $groupeConcessionnaire,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class GroupeConcessionnaireController extends Controller
     {
         $deleteForm = $this->createDeleteForm($groupeConcessionnaire);
 
-        return $this->render('groupeconcessionnaire/show.html.twig', array(
+        return $this->render('Form/groupeconcessionnaire/show.html.twig', array(
             'groupeConcessionnaire' => $groupeConcessionnaire,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class GroupeConcessionnaireController extends Controller
             return $this->redirectToRoute('groupeconcessionnaire_edit', array('id' => $groupeConcessionnaire->getId()));
         }
 
-        return $this->render('groupeconcessionnaire/edit.html.twig', array(
+        return $this->render('Form/groupeconcessionnaire/edit.html.twig', array(
             'groupeConcessionnaire' => $groupeConcessionnaire,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
