@@ -1,0 +1,52 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark ">
+    <a class="navbar-brand" href="/">
+        <img src="/images/logo.png" height="50" alt="">
+    </a>
+
+
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="nav navbar-nav nav-flex-icons ml-auto">
+            <li class="nav-item {#{% if activeAccueil is defined %} active {% endif %}#}">
+                <a class="nav-link"  href="/">Accueil</a>
+            </li>
+            <li class="nav-item {#{% if activeEntreprise is defined %} active {% endif %}#}">
+                <a class="nav-link"  href="/entreprise">Entreprise</a>
+            </li>
+            <li class="nav-item {#{% if activeVousEtes is defined %} active {% endif %}#}">
+                <a class="nav-link"  href="/vousetes">Vous-êtes ?</a>
+            </li>
+            <li class="nav-item {#{% if activeContact is defined %} active {% endif %}#}">
+                <a class="nav-link"  href="/contact">Contact</a>
+            </li>
+
+
+
+
+        </ul>
+        <!-- Links -->
+
+
+        {#{% if app.request.cookies.has('REMEMBERME') %}
+            <a href="/profile_user"><button class="btn btn-outline-green btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
+        {% else %}
+            <a href="/login"><button class="btn btn-outline-green btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
+        {% endif %}#}
+
+    </div>
+
+    <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+

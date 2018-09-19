@@ -5,6 +5,7 @@ Encore
     .setPublicPath('/web')
     .addEntry('app', './assets/js/app.js')
     .addEntry('style', './assets/scss/main.scss')
+    .addEntry('header', './assets/scss/header.scss')
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader();
