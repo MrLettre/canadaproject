@@ -29,7 +29,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     
-        {% block content %}
+        {% block header %}
         
         <body>
              <!-- Side Navbar -->
@@ -68,7 +68,7 @@
           <h5 class="sidenav-heading">Second menu</h5>
           <ul id="side-admin-menu" class="side-menu list-unstyled"> 
             <li> <a href="#"> <i class="icon-screen"> </i>Bim</a></li>
-            <li> <a href="#"> <i class="icon-flask"> </i>Bam
+            <li> <a href="#"> <i class="icon-flask"> </i><Bam></Bam>
                 <div class="badge badge-info">Special</div></a></li>
             <li> <a href=""> <i class="icon-flask"> </i>Boom</a></li>
             <li> <a href=""> <i class="icon-picture"> </i>Plouf</a></li>
@@ -79,7 +79,6 @@
     <div class="page">
       <!-- navbar-->
 
-        {% block header %}
 
       <header class="header">
         <nav class="navbar">
@@ -91,22 +90,22 @@
                 <!-- Notifications dropdown-->
                 <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
                           <div class="notification-time"><small>4 minutes ago</small></div>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
                           <div class="notification-time"><small>10 minutes ago</small></div>
@@ -117,17 +116,17 @@
                 <!-- Messages dropdown-->
                 <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                         </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                         <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="msg-body">
                           <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
@@ -143,7 +142,7 @@
                   </ul>
                 </li>
                 <!-- Log out-->
-                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="{{ path('fos_user_security_logout') }}" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
@@ -151,8 +150,11 @@
       </header>
 
       {% endblock header %}
-      <!-- Counts Section -->
 
+        {% block body %}{% endblock %}
+
+        <!-- Counts Section -->
+        {% block footer %}
       <footer class="main-footer">
         <div class="container-fluid">
           <div class="row">
@@ -169,8 +171,9 @@
     </div>
         
         {% endblock %}
-        
-    <script src="vendor/jquery/jquery.min.js"></script>
+
+
+             <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper.js/umd/popper.min.js"> </script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
@@ -186,7 +189,5 @@
         {% block javascripts %}
         
         {% endblock %}
-<p>testcommit</p>
-  
     </body>
 </html>
