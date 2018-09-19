@@ -6,6 +6,8 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('style', './assets/scss/main.scss')
     .addEntry('header', './assets/scss/header.scss')
+    .addEntry('adminPanel', './assets/scss/adminPanel.scss')
+    .addEntry('adminPanelTwo', './assets/scss/adminPanelTwo.scss')
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader();
