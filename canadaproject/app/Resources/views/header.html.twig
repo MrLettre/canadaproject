@@ -1,7 +1,7 @@
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark ">
     <a class="navbar-brand" href="/">
-        <img src="/images/logo.png" height="50" alt="">
+        <img src="/images/header/Carify_LogoAccueil.png" height="70" alt="">
     </a>
 
 
@@ -17,22 +17,24 @@
 
         <!-- Links -->
         <ul class="nav navbar-nav nav-flex-icons ml-auto">
-            <li class="nav-item {#{% if activeAccueil is defined %} active {% endif %}#}">
+            <li class="nav-item {% if activeAccueil is defined %} active {% endif %}">
                 <a class="nav-link"  href="/">Accueil</a>
             </li>
-            <li class="nav-item {#{% if activeEntreprise is defined %} active {% endif %}#}">
+            <li class="nav-item {% if activeEntreprise is defined %} active {% endif %}">
                 <a class="nav-link"  href="/entreprise">Entreprise</a>
             </li>
-            <li class="nav-item {#{% if activeVousEtes is defined %} active {% endif %}#}">
+            <li class="nav-item {% if activeVousEtes is defined %} active {% endif %}">
                 <a class="nav-link"  href="/vousetes">Vous-êtes ?</a>
             </li>
-            <li class="nav-item {#{% if activeContact is defined %} active {% endif %}#}">
+            <li class="nav-item {% if activeContact is defined %} active {% endif %}">
                 <a class="nav-link"  href="/contact">Contact</a>
             </li>
-
-
-
-
+            <li class="nav-item {% if activeContact is defined %} active {% endif %}">
+                <a class="nav-link"  href="{{ path('fos_user_security_login') }}">Se Connecter</a>
+            </li>
+            <li class="nav-item {% if activeContact is defined %} active {% endif %}">
+                <a class="nav-link"  href="{{ path('fos_user_security_login') }}"><img src="/images/header/shopping-cart.png" height="30" alt=""></a>
+            </li>
         </ul>
         <!-- Links -->
 
