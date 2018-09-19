@@ -20,30 +20,27 @@
             <li class="nav-item {% if activeAccueil is defined %} active {% endif %}">
                 <a class="nav-link"  href="/">Accueil</a>
             </li>
-            <li class="nav-item {% if activeEntreprise is defined %} active {% endif %}">
-                <a class="nav-link"  href="/entreprise">Entreprise</a>
+            <li class="nav-item {% if activeComparateur is defined %} active {% endif %}">
+                <a class="nav-link"  href="/comparateur">Comparateur</a>
             </li>
-            <li class="nav-item {% if activeVousEtes is defined %} active {% endif %}">
-                <a class="nav-link"  href="/vousetes">Vous-êtes ?</a>
+            <li class="nav-item {% if activeRecherche is defined %} active {% endif %}">
+                <a class="nav-link"  href="/recherche">Recherche</a>
             </li>
-            <li class="nav-item {% if activeContact is defined %} active {% endif %}">
-                <a class="nav-link"  href="/contact">Contact</a>
+            <li class="nav-item {% if activeDossier is defined %} active {% endif %}">
+                <a class="nav-link"  href="/dossier">Dossiers&Articles</a>
             </li>
-            <li class="nav-item {% if activeContact is defined %} active {% endif %}">
-                <a class="nav-link"  href="{{ path('fos_user_security_login') }}">Se Connecter</a>
-            </li>
-            <li class="nav-item {% if activeContact is defined %} active {% endif %}">
-                <a class="nav-link"  href="{{ path('fos_user_security_login') }}"><img src="/images/header/shopping-cart.png" height="30" alt=""></a>
+            <li class="nav-item {% if activeCart is defined %} active {% endif %}">
+                <a class="nav-link"  href="{#{{ path('cart_user_show') }}#}"><img src="/images/header/shopping-cart.png" height="30" alt=""></a>
             </li>
         </ul>
         <!-- Links -->
 
 
-        {#{% if app.request.cookies.has('REMEMBERME') %}
-            <a href="/profile_user"><button class="btn btn-outline-green btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
+        {% if app.request.cookies.has('REMEMBERME') %}
+            <a href={{ path('fos_user_security_logout') }}><button class="btn btn-outline-blue btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
         {% else %}
-            <a href="/login"><button class="btn btn-outline-green btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
-        {% endif %}#}
+            <a href="{{ path('fos_user_security_login') }}"><button class="btn btn-outline-blue btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
+        {% endif %}
 
     </div>
 

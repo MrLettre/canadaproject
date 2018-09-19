@@ -3,9 +3,5 @@
   "web/style.js": "/web/style.js",
   "web/style.css": "/web/style.css",
   "web/header.js": "/web/header.js",
-  "web/header.css": "/web/header.css",
-  "web/adminPanelTwo.js": "/web/adminPanelTwo.js",
-  "web/adminPanelTwo.css": "/web/adminPanelTwo.css",
-  "web/adminPanel.js": "/web/adminPanel.js",
-  "web/adminPanel.css": "/web/adminPanel.css"
+  "web/header.css": "/web/header.css"
 }
