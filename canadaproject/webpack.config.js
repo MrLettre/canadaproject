@@ -8,6 +8,8 @@ Encore
     .addEntry('header', './assets/scss/header.scss')
     .addEntry('adminPanel', './assets/scss/adminPanel.scss')
     .addEntry('adminPanelTwo', './assets/scss/adminPanelTwo.scss')
+    .addEntry('adminPanelSeller', './assets/scss/adminPanelSeller.scss')
+    .addEntry('adminPanelSellerTwo', './assets/scss/adminPanelSellerTwo.scss')
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader();
