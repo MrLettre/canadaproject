@@ -44,9 +44,7 @@ class CouleurDisponible
      * @var File
      * @Assert\File(
      *     maxSize = "5M",
-     *     maxSizeMessage="Votre fichier est trop volumineux, veuillez choisir un fichier plus petit",
-     *     mimeTypes={"imageName/jpg", "imageName/jpeg", "imageName/png"},
-     *     mimeTypesMessage = "Veuillez télécharger un fichier au format .jpg ou .png"
+     *     maxSizeMessage="Votre fichier est trop volumineux, veuillez choisir un fichier plus petit"
      * )
      *
      */
