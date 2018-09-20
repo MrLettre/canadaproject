@@ -37,7 +37,7 @@
 
 
         {% if app.request.cookies.has('REMEMBERME') %}
-            <a href="{{ path('fos_user_security_logout') }}"><button class="btn btn-outline-blue btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
+            <a href="/profile_user"><button class="btn btn-outline-blue btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
         {% else %}
             <a href="{{ path('fos_user_security_login') }}"><button class="btn btn-outline-blue btn-md my-2 my-sm-0 ml-3 "  type="submit"><i class="fa fa-user " aria-hidden="true"></i></button></a>
         {% endif %}

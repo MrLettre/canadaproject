@@ -39,6 +39,27 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codePostal", type="string", length=32, nullable=true)
+     */
+    private $codePostal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=50, nullable=true)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="numeroTelephone", type="string", length=32, nullable=true)
      */
     private $numeroTelephone;
@@ -190,5 +211,77 @@ class User extends BaseUser
     public function getDateCreationProfil()
     {
         return $this->dateCreationProfil;
+    }
+
+    /**
+     * Set adresse.
+     *
+     * @param string|null $adresse
+     *
+     * @return User
+     */
+    public function setAdresse($adresse = null)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse.
+     *
+     * @return string|null
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set codePostal.
+     *
+     * @param string|null $codePostal
+     *
+     * @return User
+     */
+    public function setCodePostal($codePostal = null)
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    /**
+     * Get codePostal.
+     *
+     * @return string|null
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
+
+    /**
+     * Set ville.
+     *
+     * @param string|null $ville
+     *
+     * @return User
+     */
+    public function setVille($ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville.
+     *
+     * @return string|null
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }
