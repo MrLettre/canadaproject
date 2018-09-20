@@ -1,0 +1,28 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div id="changeMdp" class="col-md-6 offset-md-3">
+    <div class="card mx-xl-5">
+        <!-- Material form login -->
+        {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'form-control' } }) }}
+
+        <p class="h4 text-center mb-4 blue-text">Changer votre mot de passe</p>
+        <!-- Material input email -->
+        <div class="md-form">
+            <i class="fa fa-lock prefix blue-text"></i>
+            {{ form_widget(form.plainPassword.first,{ 'attr': {'class': 'form-control'} }) }}
+            <label for="materialFormLoginEmailEx">Nouveau Mot de passe</label>
+        </div>
+
+        <!-- Material input password -->
+        <div class="md-form">
+            <i class="fa fa-exclamation-triangle prefix blue-text"></i>
+            {{ form_widget(form.plainPassword.second,{ 'attr': {'class': 'form-control'} }) }}
+            <label for="materialFormLoginPasswordEx">Confirmer le nouveau mot de passe</label>
+        </div>
+
+        <div class="text-center mt-4">
+            <input type="submit" class="btn btn-outline-blue" value="{{ 'resetting.reset.submit'|trans }}" />
+        </div>
+        {{ form_end(form) }}
+        <!-- Material form login -->
+    </div>
+</div>

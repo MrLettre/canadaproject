@@ -2,6 +2,8 @@
   "web/app.js": "/web/app.js",
   "web/style.js": "/web/style.js",
   "web/style.css": "/web/style.css",
+  "web/login.js": "/web/login.js",
+  "web/login.css": "/web/login.css",
   "web/header.js": "/web/header.js",
   "web/header.css": "/web/header.css",
   "web/adminPanelTwo.js": "/web/adminPanelTwo.js",
