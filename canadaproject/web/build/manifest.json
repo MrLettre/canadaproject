@@ -6,6 +6,10 @@
   "web/header.css": "/web/header.css",
   "web/adminPanelTwo.js": "/web/adminPanelTwo.js",
   "web/adminPanelTwo.css": "/web/adminPanelTwo.css",
+  "web/adminPanelSellerTwo.js": "/web/adminPanelSellerTwo.js",
+  "web/adminPanelSellerTwo.css": "/web/adminPanelSellerTwo.css",
+  "web/adminPanelSeller.js": "/web/adminPanelSeller.js",
+  "web/adminPanelSeller.css": "/web/adminPanelSeller.css",
   "web/adminPanel.js": "/web/adminPanel.js",
   "web/adminPanel.css": "/web/adminPanel.css"
 }

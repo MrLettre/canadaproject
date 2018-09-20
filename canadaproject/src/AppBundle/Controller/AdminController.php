@@ -16,4 +16,13 @@ class AdminController extends Controller
         // replace this example code with whatever you need
         return $this->render('admin/admin/index.html.twig');
     }
+
+    /**
+     * @Route("/adminSeller", name="adminHomepageSeller")
+     */
+    public function adminSellerPageAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('admin/admin/indexSeller.html.twig');
+    }
 }
