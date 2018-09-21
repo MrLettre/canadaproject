@@ -1,0 +1,96 @@
+{% extends "@FOSUser/layout.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/register1.css') }}">
+
+{% endblock %}
+{% block fos_user_content %}
+
+    <section class="section">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                    <div class="login-brand">
+                        Formulaire d'Inscription
+                    </div>
+                    <div class="card card-primary ">
+                        {{ form_errors(form) }}
+                        <div class="card-body register">
+                            <form method="POST">
+                                <div>
+                                    {#-----------------------STATUT/ROLES---------------------#}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                    <div class="row">
+                                        <label for="syndic">Statut</label>
+                                        <div class="row" style="display: flex;">
+                                            <div style="margin: 2vw;" >
+                                               {{ form_errors(form.roles) }}
+
+                                                {#-----------------------ADMIN---------------------#}
+                                                    <div class="admin">
+                                                        {{  form_widget(form.roles.0) }}
+                                                    </div>
+                                                    <div class="vendeur">
+                                                        {{  form_widget(form.roles.1) }}
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    {#-----------------------------------------GLOBAL-----------------------------------------#}
+
+                                    <div>
+                                        <label for="nom">Nom</label>
+                                        {{ form_widget(form.nom) }}
+                                        {{ form_errors(form.nom) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="prenom">Prénom</label>
+                                        {{ form_widget(form.prenom) }}
+                                        {{ form_errors(form.prenom) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="username">Nom d'utilisateur</label>
+                                        {{ form_widget(form.username) }}
+                                        {{ form_errors(form.username) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="email">Email</label>
+                                        {{ form_widget(form.email) }}
+                                        {{ form_errors(form.email) }}
+                                    </div>
+
+                                    <div >
+                                        <label for="plainPassword.first">Mot de passe</label>
+                                        {{  form_widget(form.plainPassword.first) }}
+                                        {{ form_errors(form.plainPassword.first) }}
+                                    </div>
+                                    <div>
+                                        <label for="plainPassword.second">Confirmer le mot de passe</label>
+                                        {{  form_widget(form.plainPassword.second) }}
+                                        {{ form_errors(form.plainPassword.second) }}
+                                    </div>
+
+                                    {{ form_widget(form._token) }}
+                                    <div class="form-group col-12">
+                                        <button type="submit" value="enregistrer" class="btn btn-primary btn-block" style="margin-top: 2vh">Enregistrer</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock fos_user_content %}
+
+{% block javascript %}
+    <script src="{{ asset('build/register.js')}}"></script>
+{% endblock %}

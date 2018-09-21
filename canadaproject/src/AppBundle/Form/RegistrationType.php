@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 class RegistrationType extends AbstractType
@@ -14,7 +15,16 @@ class RegistrationType extends AbstractType
             ->add('prenom')
             ->add('numeroTelephone')
             ->add('dateNaissance')
-            ->add('dateCreationProfil');
+            ->add('dateCreationProfil')
+            ->add('roles', ChoiceType::class, [
+                'multiple' => true,
+                'expanded' => true, // render check-boxes
+                'choices' => [
+                    'Administrateur' => 'ROLE_ADMIN',
+                    'Vendeur' => 'ROLE_VENDEUR',
+                    'Client' => 'ROLE_USER',
+                ],
+            ]);;
 
     }/**
  * {@inheritdoc}
