@@ -57,22 +57,22 @@ class AdminController extends Controller
         return $this->render('admin/admin/adminStats.html.twig');
     }
 
-    /**
+     /**
+     * @Route("/adminAutoPark", name="adminAutoPark")
+     */
+    public function adminAutoPark()
+    {
+        // replace this example code with whatever you need
+        return $this->render('admin/admin/adminAutoPark.html.twig');
+    }
+
+     /**
      * @Route("/adminAfterSale", name="adminAfterSale")
      */
     public function adminAfterSale()
     {
         // replace this example code with whatever you need
         return $this->render('admin/admin/adminAfterSale.html.twig');
-    }
-
-     /**
-     * @Route("/adminAutoPark", name="adminAutoParc")
-     */
-    public function adminAutoParc()
-    {
-        // replace this example code with whatever you need
-        return $this->render('admin/admin/adminAutoPark.html.twig');
     }
 
 }
