@@ -46,7 +46,7 @@ class ConnexionController extends Controller{
     public function determineUser()
     {
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            return $this->render('admin/admin/index.html.twig', array(
+            return $this->render('admin/admin/adminProfile.html.twig', array(
                 'user'=>$this->getUser(),
             ));      }
 
