@@ -23,11 +23,11 @@ class AdminController extends Controller
     public function adminSellerPageAction()
     {
         // replace this example code with whatever you need
-        return $this->render('admin/admin/indexSeller.html.twig');
+        return $this->render('admin/vendeur/index.html.twig');
     }
 
 
-    //Route pour les actions de la page Admin du site 
+    //Routes pour les actions de la page Admin du site 
 
 
     /**
@@ -73,6 +73,64 @@ class AdminController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render('admin/admin/adminAfterSale.html.twig');
+    }
+
+
+    // Routes pour les actions de la page Admin Vendeur du site  
+
+
+    /**
+     * @Route("/adminSellerCatalogue", name="adminSellerCatalogue")
+     */
+    public function adminSellerCatalogue()
+    {
+        // replace this example code with whatever you need
+        return $this->render('admin/vendeur/catalogue.html.twig');
+    }
+
+    /**
+     * @Route("/adminSellerSales", name="adminSellerSales")
+     */
+    public function adminSellerSales()
+    {
+        // replace this example code with whatever you need
+        return $this->render('admin/vendeur/ventes.html.twig');
+    }
+
+    /**
+     * @Route("/adminSellerClients", name="adminSellerClients")
+     */
+    public function adminSellerClients()
+    {
+        // replace this example code with whatever you need
+        return $this->render('admin/vendeur/clients.html.twig');
+    }
+
+     /**
+     * @Route("/adminSellerContact", name="adminSellerContact")
+     */
+    public function adminSellerContact()
+    {
+        // replace this example code with whatever you need
+        return $this->render('admin/vendeur/contact.html.twig');
+    }
+
+     /**
+     * @Route("/adminSellerStats", name="adminSellerStats")
+     */
+    public function adminSellerStats()
+    {
+        // replace this example code with whatever you need
+        return $this->render('admin/vendeur/statistiques.html.twig');
+    }
+
+     /**
+     * @Route("/adminSellerAfterSale", name="adminSellerAfterSale")
+     */
+    public function adminSellerAfterSale()
+    {
+        // replace this example code with whatever you need
+        return $this->render('admin/vendeur/sav.html.twig');
     }
 
 }
