@@ -51,12 +51,12 @@ class ConnexionController extends Controller{
             ));      }
 
         if ($this->get('security.authorization_checker')->isGranted('ROLE_VENDEUR')) {
-            return $this->render('admin/vendeur/index.html.twig', array(
+            return $this->render('admin/vendeur/vendeurProfile.html.twig', array(
                 'user'=>$this->getUser(),
             ));        }
 
         if ($this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
-            return $this->render('admin/user/infoProfile.html.twig', array(
+            return $this->render('admin/user/userProfile.html.twig', array(
                 'user'=>$this->getUser(),
             ));
         }
