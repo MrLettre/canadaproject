@@ -22,7 +22,7 @@
                     <li><span>Email:</span> {{ app.user.email }}</li>
                     <li><span>Prénom :</span> {{ app.user.prenom }}</li>
                     <li><span>Nom :</span> {{ app.user.nom }}</li>
-                    <li><span>Date de naissance:</span> {{ app.user.dateNaissance }}</li>
+                    <li><span>Date de naissance:</span> {{ app.user.dateNaissance|date('Y-m-d') }}</li>
                     <li><span>Adresse :</span> {{ app.user.adresse }} {{ app.user.codePostal }} {{ app.user.ville }}</li>
                     <li><span>Téléphone :</span> {{ app.user.numeroTelephone }}</li>
 

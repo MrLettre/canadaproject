@@ -50,6 +50,11 @@ class UserType extends AbstractType
     /**
      * {@inheritdoc}
      */
+    public function getParent()
+    {
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
+    }
+
     public function getBlockPrefix()
     {
         return 'appbundle_user';
