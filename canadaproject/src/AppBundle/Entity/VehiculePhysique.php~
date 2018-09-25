@@ -26,9 +26,15 @@ class VehiculePhysique
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="vehiculePhysiques")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank()
      */
     private $vehiculeDef;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="vehiculePhysiques")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
+     */
+    private $version;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiclesValidationStatut", inversedBy="vehiculePhysiques")

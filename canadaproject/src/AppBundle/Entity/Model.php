@@ -58,8 +58,22 @@ class Model
     private $actif;
 
 
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nom;
+    }
     /**
-     * Get id
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->versions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->vehiculeDefinitions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id.
      *
      * @return int
      */
@@ -69,7 +83,7 @@ class Model
     }
 
     /**
-     * Set nom
+     * Set nom.
      *
      * @param string $nom
      *
@@ -83,7 +97,7 @@ class Model
     }
 
     /**
-     * Get nom
+     * Get nom.
      *
      * @return string
      */
@@ -93,9 +107,9 @@ class Model
     }
 
     /**
-     * Set actif
+     * Set actif.
      *
-     * @param integer $actif
+     * @param bool $actif
      *
      * @return Model
      */
@@ -107,25 +121,17 @@ class Model
     }
 
     /**
-     * Get actif
+     * Get actif.
      *
-     * @return int
+     * @return bool
      */
     public function getActif()
     {
         return $this->actif;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->versions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->vehiculeDefinitions = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Set marque
+     * Set marque.
      *
      * @param \AppBundle\Entity\Marque $marque
      *
@@ -139,7 +145,7 @@ class Model
     }
 
     /**
-     * Get marque
+     * Get marque.
      *
      * @return \AppBundle\Entity\Marque
      */
@@ -149,7 +155,7 @@ class Model
     }
 
     /**
-     * Add version
+     * Add version.
      *
      * @param \AppBundle\Entity\Version $version
      *
@@ -163,17 +169,19 @@ class Model
     }
 
     /**
-     * Remove version
+     * Remove version.
      *
      * @param \AppBundle\Entity\Version $version
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removeVersion(\AppBundle\Entity\Version $version)
     {
-        $this->versions->removeElement($version);
+        return $this->versions->removeElement($version);
     }
 
     /**
-     * Get versions
+     * Get versions.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -183,7 +191,7 @@ class Model
     }
 
     /**
-     * Set typeVehicule
+     * Set typeVehicule.
      *
      * @param \AppBundle\Entity\TypeVehicule $typeVehicule
      *
@@ -197,7 +205,7 @@ class Model
     }
 
     /**
-     * Get typeVehicule
+     * Get typeVehicule.
      *
      * @return \AppBundle\Entity\TypeVehicule
      */
@@ -207,7 +215,7 @@ class Model
     }
 
     /**
-     * Add vehiculeDefinition
+     * Add vehiculeDefinition.
      *
      * @param \AppBundle\Entity\VehicleDefinition $vehiculeDefinition
      *
@@ -221,28 +229,24 @@ class Model
     }
 
     /**
-     * Remove vehiculeDefinition
+     * Remove vehiculeDefinition.
      *
      * @param \AppBundle\Entity\VehicleDefinition $vehiculeDefinition
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removeVehiculeDefinition(\AppBundle\Entity\VehicleDefinition $vehiculeDefinition)
     {
-        $this->vehiculeDefinitions->removeElement($vehiculeDefinition);
+        return $this->vehiculeDefinitions->removeElement($vehiculeDefinition);
     }
 
     /**
-     * Get vehiculeDefinitions
+     * Get vehiculeDefinitions.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getVehiculeDefinitions()
     {
         return $this->vehiculeDefinitions;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->nom;
     }
 }

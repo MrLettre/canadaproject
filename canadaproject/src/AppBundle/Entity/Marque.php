@@ -68,11 +68,22 @@ class Marque
      */
     private $imageName;
 
-
-
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nom;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->models = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->vehiculeDefinitions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -82,7 +93,7 @@ class Marque
     }
 
     /**
-     * Set nom
+     * Set nom.
      *
      * @param string $nom
      *
@@ -96,7 +107,7 @@ class Marque
     }
 
     /**
-     * Get nom
+     * Get nom.
      *
      * @return string
      */
@@ -106,9 +117,9 @@ class Marque
     }
 
     /**
-     * Set actif
+     * Set actif.
      *
-     * @param integer $actif
+     * @param bool $actif
      *
      * @return Marque
      */
@@ -120,25 +131,41 @@ class Marque
     }
 
     /**
-     * Get actif
+     * Get actif.
      *
-     * @return int
+     * @return bool
      */
     public function getActif()
     {
         return $this->actif;
     }
+
     /**
-     * Constructor
+     * Set imageName.
+     *
+     * @param string $imageName
+     *
+     * @return Marque
      */
-    public function __construct()
+    public function setImageName($imageName)
     {
-        $this->models = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->vehiculeDefinitions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->imageName = $imageName;
+
+        return $this;
     }
 
     /**
-     * Add model
+     * Get imageName.
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Add model.
      *
      * @param \AppBundle\Entity\Model $model
      *
@@ -152,17 +179,19 @@ class Marque
     }
 
     /**
-     * Remove model
+     * Remove model.
      *
      * @param \AppBundle\Entity\Model $model
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removeModel(\AppBundle\Entity\Model $model)
     {
-        $this->models->removeElement($model);
+        return $this->models->removeElement($model);
     }
 
     /**
-     * Get models
+     * Get models.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -172,7 +201,7 @@ class Marque
     }
 
     /**
-     * Add vehiculeDefinition
+     * Add vehiculeDefinition.
      *
      * @param \AppBundle\Entity\VehicleDefinition $vehiculeDefinition
      *
@@ -186,48 +215,24 @@ class Marque
     }
 
     /**
-     * Remove vehiculeDefinition
+     * Remove vehiculeDefinition.
      *
      * @param \AppBundle\Entity\VehicleDefinition $vehiculeDefinition
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removeVehiculeDefinition(\AppBundle\Entity\VehicleDefinition $vehiculeDefinition)
     {
-        $this->vehiculeDefinitions->removeElement($vehiculeDefinition);
+        return $this->vehiculeDefinitions->removeElement($vehiculeDefinition);
     }
 
     /**
-     * Get vehiculeDefinitions
+     * Get vehiculeDefinitions.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getVehiculeDefinitions()
     {
         return $this->vehiculeDefinitions;
-    }
-
-    public function setImageFile($imageFile)
-    {
-        $this->imageFile = $imageFile;
-    }
-
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-    }
-
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->nom;
     }
 }

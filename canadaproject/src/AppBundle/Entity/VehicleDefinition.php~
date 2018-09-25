@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class VehicleDefinition
 {
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Version", mappedBy="vehDef")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Version", mappedBy="vehicleDefinition")
      */
     protected $version;
 
@@ -62,197 +62,28 @@ class VehicleDefinition
     private $nom;
 
 
+   public function __toString()
+   {
+       // TODO: Implement __toString() method.
+        return $this->nom;
+   }
     /**
-     * Get id
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->options = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->vehiculePhysiques = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id.
      *
      * @return int
      */
     public function getId()
     {
         return $this->id;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->versions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->options = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->vehiculePhysiques = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add version
-     *
-     * @param \AppBundle\Entity\Version $version
-     *
-     * @return VehicleDefinition
-     */
-    public function addVersion(\AppBundle\Entity\Version $version)
-    {
-        $this->versions[] = $version;
-
-        return $this;
-    }
-
-    /**
-     * Remove version
-     *
-     * @param \AppBundle\Entity\Version $version
-     */
-    public function removeVersion(\AppBundle\Entity\Version $version)
-    {
-        $this->versions->removeElement($version);
-    }
-
-    /**
-     * Get versions
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getVersions()
-    {
-        return $this->versions;
-    }
-
-    /**
-     * Add option
-     *
-     * @param \AppBundle\Entity\VehicleOption $option
-     *
-     * @return VehicleDefinition
-     */
-    public function addOption(\AppBundle\Entity\VehicleOption $option)
-    {
-        $this->options[] = $option;
-
-        return $this;
-    }
-
-    /**
-     * Remove option
-     *
-     * @param \AppBundle\Entity\VehicleOption $option
-     */
-    public function removeOption(\AppBundle\Entity\VehicleOption $option)
-    {
-        $this->options->removeElement($option);
-    }
-
-    /**
-     * Get options
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getOptions()
-    {
-        return $this->options;
-    }
-
-    /**
-     * Add vehiculePhysique
-     *
-     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
-     *
-     * @return VehicleDefinition
-     */
-    public function addVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
-    {
-        $this->vehiculePhysiques[] = $vehiculePhysique;
-
-        return $this;
-    }
-
-    /**
-     * Remove vehiculePhysique
-     *
-     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
-     */
-    public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
-    {
-        $this->vehiculePhysiques->removeElement($vehiculePhysique);
-    }
-
-    /**
-     * Get vehiculePhysiques
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getVehiculePhysiques()
-    {
-        return $this->vehiculePhysiques;
-    }
-
-    /**
-     * Set marque
-     *
-     * @param \AppBundle\Entity\Marque $marque
-     *
-     * @return VehicleDefinition
-     */
-    public function setMarque(\AppBundle\Entity\Marque $marque)
-    {
-        $this->marque = $marque;
-
-        return $this;
-    }
-
-    /**
-     * Get marque
-     *
-     * @return \AppBundle\Entity\Marque
-     */
-    public function getMarque()
-    {
-        return $this->marque;
-    }
-
-    /**
-     * Set model
-     *
-     * @param \AppBundle\Entity\Model $model
-     *
-     * @return VehicleDefinition
-     */
-    public function setModel(\AppBundle\Entity\Model $model)
-    {
-        $this->model = $model;
-
-        return $this;
-    }
-
-    /**
-     * Get model
-     *
-     * @return \AppBundle\Entity\Model
-     */
-    public function getModel()
-    {
-        return $this->model;
-    }
-
-    /**
-     * Set typeVehicule
-     *
-     * @param \AppBundle\Entity\TypeVehicule $typeVehicule
-     *
-     * @return VehicleDefinition
-     */
-    public function setTypeVehicule(\AppBundle\Entity\TypeVehicule $typeVehicule)
-    {
-        $this->typeVehicule = $typeVehicule;
-
-        return $this;
-    }
-
-    /**
-     * Get typeVehicule
-     *
-     * @return \AppBundle\Entity\TypeVehicule
-     */
-    public function getTypeVehicule()
-    {
-        return $this->typeVehicule;
     }
 
     /**
@@ -301,5 +132,149 @@ class VehicleDefinition
     public function getVersion()
     {
         return $this->version;
+    }
+
+    /**
+     * Add option.
+     *
+     * @param \AppBundle\Entity\VehicleOption $option
+     *
+     * @return VehicleDefinition
+     */
+    public function addOption(\AppBundle\Entity\VehicleOption $option)
+    {
+        $this->options[] = $option;
+
+        return $this;
+    }
+
+    /**
+     * Remove option.
+     *
+     * @param \AppBundle\Entity\VehicleOption $option
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeOption(\AppBundle\Entity\VehicleOption $option)
+    {
+        return $this->options->removeElement($option);
+    }
+
+    /**
+     * Get options.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Add vehiculePhysique.
+     *
+     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     *
+     * @return VehicleDefinition
+     */
+    public function addVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    {
+        $this->vehiculePhysiques[] = $vehiculePhysique;
+
+        return $this;
+    }
+
+    /**
+     * Remove vehiculePhysique.
+     *
+     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    {
+        return $this->vehiculePhysiques->removeElement($vehiculePhysique);
+    }
+
+    /**
+     * Get vehiculePhysiques.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVehiculePhysiques()
+    {
+        return $this->vehiculePhysiques;
+    }
+
+    /**
+     * Set marque.
+     *
+     * @param \AppBundle\Entity\Marque|null $marque
+     *
+     * @return VehicleDefinition
+     */
+    public function setMarque(\AppBundle\Entity\Marque $marque = null)
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+
+    /**
+     * Get marque.
+     *
+     * @return \AppBundle\Entity\Marque|null
+     */
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    /**
+     * Set model.
+     *
+     * @param \AppBundle\Entity\Model|null $model
+     *
+     * @return VehicleDefinition
+     */
+    public function setModel(\AppBundle\Entity\Model $model = null)
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    /**
+     * Get model.
+     *
+     * @return \AppBundle\Entity\Model|null
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Set typeVehicule.
+     *
+     * @param \AppBundle\Entity\TypeVehicule|null $typeVehicule
+     *
+     * @return VehicleDefinition
+     */
+    public function setTypeVehicule(\AppBundle\Entity\TypeVehicule $typeVehicule = null)
+    {
+        $this->typeVehicule = $typeVehicule;
+
+        return $this;
+    }
+
+    /**
+     * Get typeVehicule.
+     *
+     * @return \AppBundle\Entity\TypeVehicule|null
+     */
+    public function getTypeVehicule()
+    {
+        return $this->typeVehicule;
     }
 }

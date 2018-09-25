@@ -26,9 +26,15 @@ class VehiculePhysique
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="vehiculePhysiques")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank()
      */
     private $vehiculeDef;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="vehiculePhysiques")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
+     */
+    private $version;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiclesValidationStatut", inversedBy="vehiculePhysiques")
@@ -553,5 +559,29 @@ class VehiculePhysique
     public function getImageName()
     {
         return $this->imageName;
+    }
+
+    /**
+     * Set version.
+     *
+     * @param \AppBundle\Entity\Version $version
+     *
+     * @return VehiculePhysique
+     */
+    public function setVersion(\AppBundle\Entity\Version $version)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version.
+     *
+     * @return \AppBundle\Entity\Version
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 }
