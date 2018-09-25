@@ -11,6 +11,8 @@ Encore
     .addEntry('adminPanelTwo', './assets/scss/adminPanelTwo.scss')
     .addEntry('adminPanelSeller', './assets/scss/adminPanelSeller.scss')
     .addEntry('adminPanelSellerTwo', './assets/scss/adminPanelSellerTwo.scss')
+    .addEntry('user', './assets/scss/user.scss')
+    .addEntry('rechercheVehicule', './assets/js/rechercheVehiculeVendeur.js')
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader();

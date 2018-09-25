@@ -37,15 +37,16 @@ class Version
     private $energie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="versions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\VehicleDefinition", cascade={"persist", "remove"}, inversedBy="version")
      */
-    private $vehiculeDef;
+    protected $vehDef;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CouleurDisponible", mappedBy="version")
+     * Many Versions have Many Colors.
+     * @ORM\ManyToMany(targetEntity="CouleurDisponible", inversedBy="versions")
+     * @ORM\JoinTable(name="Couleurs_Version")
      */
-    private $couleurs;
+    private $couleursDisponibles;
 
     /**
      * @var int
@@ -73,42 +74,42 @@ class Version
     /**
      * @var string
      *
-     * @ORM\Column(name="puissanceTh", type="text")
+     * @ORM\Column(name="puissanceTh", type="text", nullable=true)
      */
     private $puissanceTh;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="puissanceHy", type="text")
+     * @ORM\Column(name="puissanceHy", type="text", nullable=true)
      */
     private $puissanceHy;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="puissanceEl", type="text")
+     * @ORM\Column(name="puissanceEl", type="text", nullable=true)
      */
     private $puissanceEl;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="autonimieTh", type="text")
+     * @ORM\Column(name="autonimieTh", type="text", nullable=true)
      */
     private $autonimieTh;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="autonomieHy", type="text")
+     * @ORM\Column(name="autonomieHy", type="text", nullable=true)
      */
     private $autonomieHy;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="autonomieEl", type="text")
+     * @ORM\Column(name="autonomieEl", type="text", nullable=true)
      */
     private $autonomieEl;
 
@@ -476,5 +477,71 @@ class Version
     public function getCouleurs()
     {
         return $this->couleurs;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nom;
+    }
+
+    /**
+     * Add couleursDisponible.
+     *
+     * @param \AppBundle\Entity\CouleurDisponible $couleursDisponible
+     *
+     * @return Version
+     */
+    public function addCouleursDisponible(\AppBundle\Entity\CouleurDisponible $couleursDisponible)
+    {
+        $this->couleursDisponibles[] = $couleursDisponible;
+
+        return $this;
+    }
+
+    /**
+     * Remove couleursDisponible.
+     *
+     * @param \AppBundle\Entity\CouleurDisponible $couleursDisponible
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCouleursDisponible(\AppBundle\Entity\CouleurDisponible $couleursDisponible)
+    {
+        return $this->couleursDisponibles->removeElement($couleursDisponible);
+    }
+
+    /**
+     * Get couleursDisponibles.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCouleursDisponibles()
+    {
+        return $this->couleursDisponibles;
+    }
+
+    /**
+     * Set vehDef.
+     *
+     * @param \AppBundle\Entity\VehicleDefinition|null $vehDef
+     *
+     * @return Version
+     */
+    public function setVehDef(\AppBundle\Entity\VehicleDefinition $vehDef = null)
+    {
+        $this->vehDef = $vehDef;
+
+        return $this;
+    }
+
+    /**
+     * Get vehDef.
+     *
+     * @return \AppBundle\Entity\VehicleDefinition|null
+     */
+    public function getVehDef()
+    {
+        return $this->vehDef;
     }
 }

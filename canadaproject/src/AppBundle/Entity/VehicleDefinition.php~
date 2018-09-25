@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class VehicleDefinition
 {
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Version", mappedBy="vehiculeDef")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Version", mappedBy="vehDef")
      */
-    private $versions;
+    protected $version;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehicleOption", mappedBy="vehiculeDef")
@@ -29,19 +29,19 @@ class VehicleDefinition
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Marque", inversedBy="vehiculeDefinitions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $marque;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Model", inversedBy="vehiculeDefinitions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $model;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeVehicule", inversedBy="vehiculeDefinitions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $typeVehicule;
 
@@ -53,6 +53,13 @@ class VehicleDefinition
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     */
+    private $nom;
 
 
     /**
@@ -246,5 +253,53 @@ class VehicleDefinition
     public function getTypeVehicule()
     {
         return $this->typeVehicule;
+    }
+
+    /**
+     * Set nom.
+     *
+     * @param string $nom
+     *
+     * @return VehicleDefinition
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom.
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set version.
+     *
+     * @param \AppBundle\Entity\Version|null $version
+     *
+     * @return VehicleDefinition
+     */
+    public function setVersion(\AppBundle\Entity\Version $version = null)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version.
+     *
+     * @return \AppBundle\Entity\Version|null
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 }

@@ -212,4 +212,76 @@ class User extends BaseUser
     {
         return $this->dateCreationProfil;
     }
+
+    /**
+     * Set adresse.
+     *
+     * @param string|null $adresse
+     *
+     * @return User
+     */
+    public function setAdresse($adresse = null)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse.
+     *
+     * @return string|null
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set codePostal.
+     *
+     * @param string|null $codePostal
+     *
+     * @return User
+     */
+    public function setCodePostal($codePostal = null)
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    /**
+     * Get codePostal.
+     *
+     * @return string|null
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
+
+    /**
+     * Set ville.
+     *
+     * @param string|null $ville
+     *
+     * @return User
+     */
+    public function setVille($ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville.
+     *
+     * @return string|null
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
 }
