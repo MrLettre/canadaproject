@@ -17,10 +17,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class CouleurDisponible
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="couleurs")
-     * @ORM\JoinColumn(nullable=false)
+     * Many CouleursDisponibles have Many Versions.
+     * @ORM\ManyToMany(targetEntity="Version", mappedBy="couleursDisponibles")
      */
-    private $version;
+    protected $versions;
 
     /**
      * @var int
@@ -136,5 +136,48 @@ class CouleurDisponible
     public function getImageName()
     {
         return $this->imageName;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->versions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add version.
+     *
+     * @param \AppBundle\Entity\Version $version
+     *
+     * @return CouleurDisponible
+     */
+    public function addVersion(\AppBundle\Entity\Version $version)
+    {
+        $this->versions[] = $version;
+
+        return $this;
+    }
+
+    /**
+     * Remove version.
+     *
+     * @param \AppBundle\Entity\Version $version
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeVersion(\AppBundle\Entity\Version $version)
+    {
+        return $this->versions->removeElement($version);
+    }
+
+    /**
+     * Get versions.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVersions()
+    {
+        return $this->versions;
     }
 }

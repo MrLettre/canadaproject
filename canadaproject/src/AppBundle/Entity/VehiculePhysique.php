@@ -26,6 +26,7 @@ class VehiculePhysique
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="vehiculePhysiques")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $vehiculeDef;
 
@@ -49,7 +50,7 @@ class VehiculePhysique
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Concession", inversedBy="vehiculePhysiques")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $concession;
 

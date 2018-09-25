@@ -1,0 +1,98 @@
+$color-foncer: #006633;
+$color-claire: rgba(159, 202, 27, 0.6);
+
+.container>h1{
+  text-align: center;
+}
+h3,p{
+  text-align: center;
+}
+
+button>a{
+  color: white;
+  font-weight: bolder;
+}
+
+button>a:focus,
+button>a:focus:active,
+button>a:active,
+button>a:hover {
+  color: white;
+}
+.card{
+  width: 100%;
+  border: 2px solid #93c01f;
+}
+
+.card-header{
+  margin-bottom: 2vh;
+  border-bottom: 2px solid #93c01f;
+}
+
+.gestion{
+  margin-left: 2vw;
+}
+
+.connect{
+  text-align: right;
+}
+
+button{
+  background-color: #93c01f;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 10px 23px;
+  letter-spacing: .4px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  width:100%;
+
+}
+
+button:focus,
+button:focus:active,
+button:active,
+button:hover {
+  background-color: #93c01f;
+  border: 1px solid transparent;
+}
+
+span{
+  font-weight: bold;
+}
+
+li {
+  list-style-type: none;
+}
+
+.selectLot{
+  display: block;
+}
+.modal-dialog {
+
+  margin: 0 !important;
+  display: contents;
+  width: 100%;
+  height: 100%;
+}
+.modal-content {
+  background: transparent;
+}
+
+
+.new{
+
+  font-size: 1em;
+  border: none;
+  outline: none;
+  background-color: $color-claire !important;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+
+}
+.new:hover {
+  background-color: $color-foncer !important;
+}

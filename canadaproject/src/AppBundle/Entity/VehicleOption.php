@@ -14,13 +14,13 @@ class VehicleOption
 {
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="options")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $vehiculeDef;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiculePhysique", inversedBy="options")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $vehiculePhysique;
 
@@ -152,5 +152,11 @@ class VehicleOption
     public function getVehiculePhysique()
     {
         return $this->vehiculePhysique;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nom;
     }
 }

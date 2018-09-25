@@ -19,7 +19,7 @@ class Concession
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehiculePhysique", mappedBy="concession")
      */
-    private $vehiculePhysique;
+    private $vehiculePhysiques;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GroupeConcessionnaire", inversedBy="concessions")
@@ -396,5 +396,21 @@ class Concession
     public function getImageName()
     {
         return $this->imageName;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nom;
+    }
+
+    /**
+     * Get vehiculePhysiques.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVehiculePhysiques()
+    {
+        return $this->vehiculePhysiques;
     }
 }
