@@ -39,7 +39,17 @@ class Version
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\VehicleDefinition", cascade={"persist", "remove"}, inversedBy="version")
      */
-    protected $vehDef;
+    protected $vehicleDefinition;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehiculePhysique", mappedBy="version")
+     */
+    private $vehiculePhysiques;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehicleOption", mappedBy="version")
+     */
+    private $options;
 
     /**
      * Many Versions have Many Colors.
@@ -114,8 +124,22 @@ class Version
     private $autonomieEl;
 
 
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->nom;
+    }
     /**
-     * Get id
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->couleursDisponibles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id.
      *
      * @return int
      */
@@ -125,7 +149,7 @@ class Version
     }
 
     /**
-     * Set nom
+     * Set nom.
      *
      * @param string $nom
      *
@@ -139,7 +163,7 @@ class Version
     }
 
     /**
-     * Get nom
+     * Get nom.
      *
      * @return string
      */
@@ -149,9 +173,9 @@ class Version
     }
 
     /**
-     * Set actif
+     * Set actif.
      *
-     * @param integer $actif
+     * @param bool $actif
      *
      * @return Version
      */
@@ -163,9 +187,9 @@ class Version
     }
 
     /**
-     * Get actif
+     * Get actif.
      *
-     * @return int
+     * @return bool
      */
     public function getActif()
     {
@@ -173,13 +197,13 @@ class Version
     }
 
     /**
-     * Set puissanceTh
+     * Set puissanceTh.
      *
-     * @param string $puissanceTh
+     * @param string|null $puissanceTh
      *
      * @return Version
      */
-    public function setPuissanceTh($puissanceTh)
+    public function setPuissanceTh($puissanceTh = null)
     {
         $this->puissanceTh = $puissanceTh;
 
@@ -187,9 +211,9 @@ class Version
     }
 
     /**
-     * Get puissanceTh
+     * Get puissanceTh.
      *
-     * @return string
+     * @return string|null
      */
     public function getPuissanceTh()
     {
@@ -197,13 +221,13 @@ class Version
     }
 
     /**
-     * Set puissanceHy
+     * Set puissanceHy.
      *
-     * @param string $puissanceHy
+     * @param string|null $puissanceHy
      *
      * @return Version
      */
-    public function setPuissanceHy($puissanceHy)
+    public function setPuissanceHy($puissanceHy = null)
     {
         $this->puissanceHy = $puissanceHy;
 
@@ -211,9 +235,9 @@ class Version
     }
 
     /**
-     * Get puissanceHy
+     * Get puissanceHy.
      *
-     * @return string
+     * @return string|null
      */
     public function getPuissanceHy()
     {
@@ -221,13 +245,13 @@ class Version
     }
 
     /**
-     * Set puissanceEl
+     * Set puissanceEl.
      *
-     * @param string $puissanceEl
+     * @param string|null $puissanceEl
      *
      * @return Version
      */
-    public function setPuissanceEl($puissanceEl)
+    public function setPuissanceEl($puissanceEl = null)
     {
         $this->puissanceEl = $puissanceEl;
 
@@ -235,9 +259,9 @@ class Version
     }
 
     /**
-     * Get puissanceEl
+     * Get puissanceEl.
      *
-     * @return string
+     * @return string|null
      */
     public function getPuissanceEl()
     {
@@ -245,13 +269,13 @@ class Version
     }
 
     /**
-     * Set autonimieTh
+     * Set autonimieTh.
      *
-     * @param string $autonimieTh
+     * @param string|null $autonimieTh
      *
      * @return Version
      */
-    public function setAutonimieTh($autonimieTh)
+    public function setAutonimieTh($autonimieTh = null)
     {
         $this->autonimieTh = $autonimieTh;
 
@@ -259,9 +283,9 @@ class Version
     }
 
     /**
-     * Get autonimieTh
+     * Get autonimieTh.
      *
-     * @return string
+     * @return string|null
      */
     public function getAutonimieTh()
     {
@@ -269,13 +293,13 @@ class Version
     }
 
     /**
-     * Set autonomieHy
+     * Set autonomieHy.
      *
-     * @param string $autonomieHy
+     * @param string|null $autonomieHy
      *
      * @return Version
      */
-    public function setAutonomieHy($autonomieHy)
+    public function setAutonomieHy($autonomieHy = null)
     {
         $this->autonomieHy = $autonomieHy;
 
@@ -283,9 +307,9 @@ class Version
     }
 
     /**
-     * Get autonomieHy
+     * Get autonomieHy.
      *
-     * @return string
+     * @return string|null
      */
     public function getAutonomieHy()
     {
@@ -293,13 +317,13 @@ class Version
     }
 
     /**
-     * Set autonomieEl
+     * Set autonomieEl.
      *
-     * @param string $autonomieEl
+     * @param string|null $autonomieEl
      *
      * @return Version
      */
-    public function setAutonomieEl($autonomieEl)
+    public function setAutonomieEl($autonomieEl = null)
     {
         $this->autonomieEl = $autonomieEl;
 
@@ -307,9 +331,9 @@ class Version
     }
 
     /**
-     * Get autonomieEl
+     * Get autonomieEl.
      *
-     * @return string
+     * @return string|null
      */
     public function getAutonomieEl()
     {
@@ -317,7 +341,7 @@ class Version
     }
 
     /**
-     * Set model
+     * Set model.
      *
      * @param \AppBundle\Entity\Model $model
      *
@@ -331,7 +355,7 @@ class Version
     }
 
     /**
-     * Get model
+     * Get model.
      *
      * @return \AppBundle\Entity\Model
      */
@@ -341,7 +365,7 @@ class Version
     }
 
     /**
-     * Set bdv
+     * Set bdv.
      *
      * @param \AppBundle\Entity\BdV $bdv
      *
@@ -355,7 +379,7 @@ class Version
     }
 
     /**
-     * Get bdv
+     * Get bdv.
      *
      * @return \AppBundle\Entity\BdV
      */
@@ -365,7 +389,7 @@ class Version
     }
 
     /**
-     * Set transmission
+     * Set transmission.
      *
      * @param \AppBundle\Entity\Transmission $transmission
      *
@@ -379,7 +403,7 @@ class Version
     }
 
     /**
-     * Get transmission
+     * Get transmission.
      *
      * @return \AppBundle\Entity\Transmission
      */
@@ -389,7 +413,7 @@ class Version
     }
 
     /**
-     * Set energie
+     * Set energie.
      *
      * @param \AppBundle\Entity\Energie $energie
      *
@@ -403,86 +427,13 @@ class Version
     }
 
     /**
-     * Get energie
+     * Get energie.
      *
      * @return \AppBundle\Entity\Energie
      */
     public function getEnergie()
     {
         return $this->energie;
-    }
-
-    /**
-     * Set vehiculeDef
-     *
-     * @param \AppBundle\Entity\VehicleDefinition $vehiculeDef
-     *
-     * @return Version
-     */
-    public function setVehiculeDef(\AppBundle\Entity\VehicleDefinition $vehiculeDef)
-    {
-        $this->vehiculeDef = $vehiculeDef;
-
-        return $this;
-    }
-
-    /**
-     * Get vehiculeDef
-     *
-     * @return \AppBundle\Entity\VehicleDefinition
-     */
-    public function getVehiculeDef()
-    {
-        return $this->vehiculeDef;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->couleurs = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add couleur.
-     *
-     * @param \AppBundle\Entity\CouleurDisponible $couleur
-     *
-     * @return Version
-     */
-    public function addCouleur(\AppBundle\Entity\CouleurDisponible $couleur)
-    {
-        $this->couleurs[] = $couleur;
-
-        return $this;
-    }
-
-    /**
-     * Remove couleur.
-     *
-     * @param \AppBundle\Entity\CouleurDisponible $couleur
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeCouleur(\AppBundle\Entity\CouleurDisponible $couleur)
-    {
-        return $this->couleurs->removeElement($couleur);
-    }
-
-    /**
-     * Get couleurs.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCouleurs()
-    {
-        return $this->couleurs;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->nom;
     }
 
     /**
@@ -522,26 +473,26 @@ class Version
     }
 
     /**
-     * Set vehDef.
+     * Set vehicleDefinition.
      *
-     * @param \AppBundle\Entity\VehicleDefinition|null $vehDef
+     * @param \AppBundle\Entity\VehicleDefinition|null $vehicleDefinition
      *
      * @return Version
      */
-    public function setVehDef(\AppBundle\Entity\VehicleDefinition $vehDef = null)
+    public function setVehicleDefinition(\AppBundle\Entity\VehicleDefinition $vehicleDefinition = null)
     {
-        $this->vehDef = $vehDef;
+        $this->vehicleDefinition = $vehicleDefinition;
 
         return $this;
     }
 
     /**
-     * Get vehDef.
+     * Get vehicleDefinition.
      *
      * @return \AppBundle\Entity\VehicleDefinition|null
      */
-    public function getVehDef()
+    public function getVehicleDefinition()
     {
-        return $this->vehDef;
+        return $this->vehicleDefinition;
     }
 }

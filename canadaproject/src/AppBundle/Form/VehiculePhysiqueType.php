@@ -74,65 +74,17 @@ class VehiculePhysiqueType extends AbstractType
      * Rajoute un champs version au formulaire
      * @param FormInterface $form
      * @param Model $model
-     */
+    */
 
     private function addVersionField(FormInterface $form, Model $model){
 
-        $builder = $form->getConfig()->getFormFactory()->createNamedBuilder(
-            'Version',
-            EntityType::class,
-            null,
+       $form->add('Version', EntityType::class,
             [
                 'class'         => 'AppBundle\Entity\Version',
                 'placeholder'   => 'Choisissez la version',
-                'mapped'        => false,
-                'required'      => false,
-                'auto_initialize' =>false,
                 'choices'       => $model->getVersions()
             ]);
-        $builder->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function (FormEvent $event) {
-
-                dump($event->getForm());
-                /*
-                $form = $event->getForm();
-                $this->addVehicleDefinitionField($form->getParent(), $form->getData());*/
-            }
-        );
-        $form->add($builder->getForm());
     }
-
-    /**
-     * Rajoute un champs version au formulaire
-     * @param FormInterface $form
-     * @param Version $version
-
-
-    private function addVehicleDefinitionField(FormInterface $form, Version $version){
-
-        $builder = $form->getConfig()->getFormFactory()->createNamedBuilder(
-            'vehicule technique',
-            EntityType::class,
-            null,
-            [
-                'class'         => 'AppBundle\Entity\VehicleDefinition',
-                'placeholder'   => 'Choisissez le véhicule technique',
-                'mapped'        => false,
-                'required'      => false,
-                'auto_initialize' =>false,
-                'choices'       => $version->getVehiculeDef()
-            ]);
-        $builder->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function (FormEvent $event) {
-
-                dump($event->getForm());
-
-            }
-        );
-        $form->add($builder->getForm());
-    }*/
 
     /**
      * {@inheritdoc}

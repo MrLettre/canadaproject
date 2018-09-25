@@ -13,16 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class VehicleOption
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="options")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $vehiculeDef;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiculePhysique", inversedBy="options")
      * @ORM\JoinColumn(nullable=true)
      */
     private $vehiculePhysique;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="options")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $version;
 
     /**
      * @var int
@@ -158,5 +158,29 @@ class VehicleOption
     {
         // TODO: Implement __toString() method.
         return $this->nom;
+    }
+
+    /**
+     * Set version.
+     *
+     * @param \AppBundle\Entity\Version|null $version
+     *
+     * @return VehicleOption
+     */
+    public function setVersion(\AppBundle\Entity\Version $version = null)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version.
+     *
+     * @return \AppBundle\Entity\Version|null
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 }
