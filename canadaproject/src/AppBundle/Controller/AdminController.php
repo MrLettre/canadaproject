@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use AppBundle\Entity\Marque;
 
 class AdminController extends Controller
 {
@@ -74,6 +75,33 @@ class AdminController extends Controller
         // replace this example code with whatever you need
         return $this->render('admin/admin/adminAfterSale.html.twig');
     }
+
+         /**
+     * @Route("/adminAddCar", name="adminAddCar")
+     */
+    public function adminAddCar(Request $request)
+    {
+        // replace this example code with whatever you need
+
+        $marque = new Marque();
+        $form = $this->createForm('AppBundle\Form\AjoutVehDef', $marque);
+        $form->handleRequest($request);
+
+       if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($marque);
+            $em->flush();
+
+            return $this->redirectToRoute('adminAddCar');
+       }
+
+
+        return $this->render('admin/admin/adminAddCar.html.twig', array(
+            'marque' => $marque,
+            'form' => $form->createView(),
+        ));
+    
+}
 
 
     // Routes pour les actions de la page Admin Vendeur du site  

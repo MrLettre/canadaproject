@@ -140,6 +140,30 @@ class Marque
         return $this->actif;
     }
 
+        /**
+     * Set imageFile.
+     *
+     * @param string $imageFile
+     *
+     * @return Marque
+     */
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+
+        return $this;
+    }
+
+    /**
+     * Get imageFile.
+     *
+     * @return string
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
     /**
      * Set imageName.
      *
@@ -188,6 +212,20 @@ class Marque
     public function removeModel(\AppBundle\Entity\Model $model)
     {
         return $this->models->removeElement($model);
+    }
+
+        /**
+     * Set model.
+     *
+     * @param string $model
+     *
+     * @return Marque
+     */
+    public function setModel($models)
+    {
+        $this->models = $models;
+
+        return $this;
     }
 
     /**
