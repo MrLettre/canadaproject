@@ -79,27 +79,29 @@ class AdminController extends Controller
          /**
      * @Route("/adminAddCar", name="adminAddCar")
      */
-    public function adminAddCar()
+    public function adminAddCar(Request $request)
     {
         // replace this example code with whatever you need
 
         $marque = new Marque();
-        $form = $this->createForm('AppBundle\Form\MarqueType', $marque);
+        $form = $this->createForm('AppBundle\Form\AjoutVehDef', $marque);
         $form->handleRequest($request);
 
-       /* if ($form->isSubmitted() && $form->isValid()) {
+       if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($marque);
             $em->flush();
 
-            return $this->redirectToRoute('marque_show', array('id' => $marque->getId()));*/
+            return $this->redirectToRoute('adminAddCar');
+       }
 
 
         return $this->render('admin/admin/adminAddCar.html.twig', array(
             'marque' => $marque,
             'form' => $form->createView(),
         ));
-    }
+    
+}
 
 
     // Routes pour les actions de la page Admin Vendeur du site  
