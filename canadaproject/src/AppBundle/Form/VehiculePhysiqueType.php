@@ -24,6 +24,14 @@ class VehiculePhysiqueType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('concession')
+            ->add('kilometrage')
+            ->add('dateDeMiseEnCirculation')
+            ->add('prixht')
+            ->add('prixha')
+            ->add('prixttc')
+            ->add('descriptif')
+            ->add('imagename')
             ->add('marque', EntityType::class, [
                 'class'         => 'AppBundle\Entity\Marque',
                 'placeholder'   => 'Choisissez la Marque',
@@ -38,6 +46,26 @@ class VehiculePhysiqueType extends AbstractType
               $this->addModelField($form->getParent(), $form->getData());
             }
         );
+        $builder->addEventListener(
+            FormEvents::POST_SET_DATA,
+            function (FormEvent $event) {
+                $data = $event->getData();
+                /* @var $version Version */
+                $version = $data->getVersion();
+                if ($version){
+                    $model = $version->getModel();
+                    $marque = $model->getMarque();
+                    $this->addModelField($event->getForm(), $marque);
+                    $this->addVersionField($event->getForm(), $model);
+                    $event->getForm()->get('marque')->setData($marque);
+                    $event->getForm()->get('model')->setData($model);
+                }else{
+                    $this->addModelField($event->getForm(), null);
+                    $this->addVersionField($event->getForm(), null);
+
+                }
+            }
+        );
     }
 
     /**
@@ -46,19 +74,19 @@ class VehiculePhysiqueType extends AbstractType
      * @param Marque $marque
      */
 
-    private function addModelField(FormInterface $form, Marque $marque){
+    private function addModelField(FormInterface $form, ?Marque $marque){
 
         $builder = $form->getConfig()->getFormFactory()->createNamedBuilder(
-            'Model',
+            'model',
             EntityType::class,
             null,
             [
                 'class'         => 'AppBundle\Entity\Model',
-                'placeholder'   => 'Choisissez la catégorie',
+                'placeholder'   => $marque ? 'Choisissez la catégorie' : 'Sélectionnez votre Marque',
                 'mapped'        => false,
                 'required'      => false,
                 'auto_initialize' =>false,
-                'choices'       => $marque->getModels()
+                'choices'       => $marque ? $marque->getModels() : []
             ]);
         $builder->addEventListener(
             FormEvents::POST_SUBMIT,
@@ -76,13 +104,13 @@ class VehiculePhysiqueType extends AbstractType
      * @param Model $model
     */
 
-    private function addVersionField(FormInterface $form, Model $model){
+    private function addVersionField(FormInterface $form, ?Model $model){
 
-       $form->add('Version', EntityType::class,
+       $form->add('version', EntityType::class,
             [
                 'class'         => 'AppBundle\Entity\Version',
-                'placeholder'   => 'Choisissez la version',
-                'choices'       => $model->getVersions()
+                'placeholder'   => $model ? 'Choisissez la version' : 'Sélectionnez un modèle',
+                'choices'       => $model ? $model->getVersions() : []
             ]);
     }
 

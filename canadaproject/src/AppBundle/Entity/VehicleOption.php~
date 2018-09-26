@@ -159,4 +159,28 @@ class VehicleOption
         // TODO: Implement __toString() method.
         return $this->nom;
     }
+
+    /**
+     * Set version.
+     *
+     * @param \AppBundle\Entity\Version|null $version
+     *
+     * @return VehicleOption
+     */
+    public function setVersion(\AppBundle\Entity\Version $version = null)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version.
+     *
+     * @return \AppBundle\Entity\Version|null
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
 }

@@ -23,11 +23,6 @@ class VehicleDefinition
     private $options;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehiculePhysique", mappedBy="vehiculeDef")
-     */
-    private $vehiculePhysiques;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Marque", inversedBy="vehiculeDefinitions")
      * @ORM\JoinColumn(nullable=true)
      */
