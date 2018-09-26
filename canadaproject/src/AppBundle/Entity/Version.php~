@@ -495,4 +495,76 @@ class Version
     {
         return $this->vehicleDefinition;
     }
+
+    /**
+     * Add vehiculePhysique.
+     *
+     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     *
+     * @return Version
+     */
+    public function addVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    {
+        $this->vehiculePhysiques[] = $vehiculePhysique;
+
+        return $this;
+    }
+
+    /**
+     * Remove vehiculePhysique.
+     *
+     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    {
+        return $this->vehiculePhysiques->removeElement($vehiculePhysique);
+    }
+
+    /**
+     * Get vehiculePhysiques.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVehiculePhysiques()
+    {
+        return $this->vehiculePhysiques;
+    }
+
+    /**
+     * Add option.
+     *
+     * @param \AppBundle\Entity\VehicleOption $option
+     *
+     * @return Version
+     */
+    public function addOption(\AppBundle\Entity\VehicleOption $option)
+    {
+        $this->options[] = $option;
+
+        return $this;
+    }
+
+    /**
+     * Remove option.
+     *
+     * @param \AppBundle\Entity\VehicleOption $option
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeOption(\AppBundle\Entity\VehicleOption $option)
+    {
+        return $this->options->removeElement($option);
+    }
+
+    /**
+     * Get options.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
 }
