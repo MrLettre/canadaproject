@@ -233,7 +233,7 @@ class Marque
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getModel()
+    public function getModels()
     {
         return $this->models;
     }

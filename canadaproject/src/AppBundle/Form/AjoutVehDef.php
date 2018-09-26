@@ -10,6 +10,7 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class AjoutVehDef extends AbstractType
 {
@@ -21,11 +22,9 @@ class AjoutVehDef extends AbstractType
         $builder->add('nom')
         ->add('actif')
         ->add('imageFile', VichFileType::class)
-        ->add('model', CollectionType::class, [
-            'action' => 'AppBundle\Entity\Model', 
-            'mapped' => true,
-            'action'  => TextType::class
-            ])
+        ->add('models', textType::class, array(
+            'required' => false, 'empty_data' => '0',
+        ))   
         ->add('save', SubmitType::class);
     }/**
      * {@inheritdoc}
