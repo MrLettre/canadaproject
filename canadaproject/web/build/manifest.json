@@ -1,5 +1,7 @@
 {
   "web/app.js": "/web/app.js",
+  "web/user.js": "/web/user.js",
+  "web/user.css": "/web/user.css",
   "web/style.js": "/web/style.js",
   "web/style.css": "/web/style.css",
   "web/login.js": "/web/login.js",
@@ -13,5 +15,6 @@
   "web/adminPanelSeller.js": "/web/adminPanelSeller.js",
   "web/adminPanelSeller.css": "/web/adminPanelSeller.css",
   "web/adminPanel.js": "/web/adminPanel.js",
-  "web/adminPanel.css": "/web/adminPanel.css"
+  "web/adminPanel.css": "/web/adminPanel.css",
+  "web/rechercheVehicule.js": "/web/rechercheVehicule.js"
 }
