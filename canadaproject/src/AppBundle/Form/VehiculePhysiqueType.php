@@ -9,12 +9,15 @@ use AppBundle\Entity\Version;
 use Doctrine\DBAL\Types\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class VehiculePhysiqueType extends AbstractType
 {
@@ -31,7 +34,15 @@ class VehiculePhysiqueType extends AbstractType
             ->add('prixha')
             ->add('prixttc')
             ->add('descriptif')
-            ->add('imagename')
+            ->add('imageFile', VichFileType::class)
+            ->add('options', EntityType::class, array(
+                'class' => 'AppBundle:VehicleOption',
+                'choice_label'=> 'nom',
+                'multiple' => true,
+                'expanded' => true,
+                'required' => false,
+
+            ))
             ->add('marque', EntityType::class, [
                 'class'         => 'AppBundle\Entity\Marque',
                 'placeholder'   => 'Choisissez la Marque',

@@ -19,9 +19,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class VehiculePhysique
 {
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehicleOption", mappedBy="vehiculePhysique")
+     * Many VehiculePhysiques have Many Options.
+     * @ORM\ManyToMany(targetEntity="VehicleOption", mappedBy="vehiculePhysiques")
      */
-    private $options;
+    protected $options;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="vehiculePhysiques")
@@ -32,7 +33,7 @@ class VehiculePhysique
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiclesValidationStatut", inversedBy="vehiculePhysiques")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $validationStatut;
 

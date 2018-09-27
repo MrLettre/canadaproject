@@ -13,10 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
 class VehicleOption
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiculePhysique", inversedBy="options")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="options")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $vehiculePhysique;
+    private $vehiculeDef;
+
+    /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="VehiculePhysique", inversedBy="options")
+     * @ORM\JoinTable(name="VehPhy_Options")
+     */
+    private $vehiculePhysiques;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="options")
@@ -182,5 +189,48 @@ class VehicleOption
     public function getVersion()
     {
         return $this->version;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->vehiculePhysiques = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add vehiculePhysique.
+     *
+     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     *
+     * @return VehicleOption
+     */
+    public function addVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    {
+        $this->vehiculePhysiques[] = $vehiculePhysique;
+
+        return $this;
+    }
+
+    /**
+     * Remove vehiculePhysique.
+     *
+     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    {
+        return $this->vehiculePhysiques->removeElement($vehiculePhysique);
+    }
+
+    /**
+     * Get vehiculePhysiques.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVehiculePhysiques()
+    {
+        return $this->vehiculePhysiques;
     }
 }
