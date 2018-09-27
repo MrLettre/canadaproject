@@ -1,16 +1,91 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/vendeurBase.html.twig' %}
 
 {% block body %}
-    <h1>Vehiculephysique creation</h1>
+    <div class="container">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <h1>Création d'un véhicule</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('vehiculephysique_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.concession, 'Point de vente') }}
+                {{ form_widget(form.concession, {'attr':{class:'form-control'}}) }}
+                {{ form_errors(form.concession) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.marque, 'Marque') }}
+                {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
+                {{ form_errors(form.marque) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.model, 'Modèle') }}
+                {{ form_widget(form.model, {'attr':{class:'form-control'}}) }}
+                {{ form_errors(form.model) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.version, 'Version') }}
+                {{ form_widget(form.version, {'attr':{class:'form-control'}}) }}
+                {{ form_errors(form.version) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.dateDeMiseEnCirculation, 'Date de mise en circulation') }}
+                {{ form_widget(form.dateDeMiseEnCirculation) }}
+                {{ form_errors(form.dateDeMiseEnCirculation) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.kilometrage, 'Kilométrage réel') }}
+                {{ form_widget(form.kilometrage) }}
+                {{ form_errors(form.kilometrage) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.options, 'Choisissez les options du véhicule') }}
+                {{ form_widget(form.options) }}
+                {{ form_errors(form.options) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.descriptif, 'Descriptif du véhicule') }}
+                {{ form_widget(form.descriptif, {'attr':{class:'form-control'}}) }}
+                {{ form_errors(form.descriptif) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.prixha, 'Prix d\'achat') }}
+                {{ form_widget(form.prixha, {'attr':{class:'form-control'}}) }}
+                {{ form_errors(form.prixha) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.prixht, 'Prix HT') }}
+                {{ form_widget(form.prixht, {'attr':{class:'form-control'}}) }}
+                {{ form_errors(form.prixht) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.prixttc, 'Prix TTC') }}
+                {{ form_widget(form.prixttc, {'attr':{class:'form-control'}}) }}
+                {{ form_errors(form.prixttc) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.imageFile, 'Photos du véhicule') }}
+                {{ form_widget(form.imageFile) }}
+                {{ form_errors(form.imageFile) }}
+            </div>
+        <p>
+            <input class="btn btn-primary" type="submit" value="Créer" />
+        </p>
+        {{ form_end(form) }}
+
+       <p>
+            <a class="btn btn-primary" href="{{ path('vehiculephysique_index') }}">Back to the list</a>
+       </p>
+
+    </div>
 {% endblock %}

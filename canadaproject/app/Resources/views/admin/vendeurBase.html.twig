@@ -167,18 +167,28 @@
         {% endblock %}
 
 
-             <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
-    <script src="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/charts-home.js"></script>
+
     <!-- Main File-->
-    <script src="js/front.js"></script>
-     <script src="{{ asset('build/rechercheVehiculeVendeur.js') }}"></script>
+             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+             <script src="js/front.js"></script>
+             <script src="{{ asset('build/rechercheVehiculeVendeur.js') }}"></script>
+             <script>$(document).on('change', '#appbundle_vehiculephysique_marque, #appbundle_vehiculephysique_model', function () {
+                     let $field = $(this)
+                     let $marqueField = $('#appbundle_vehiculephysique_marque')
+                     let $form = $field.closest('form')
+                     let target = '#' + $field.attr('id').replace('model', 'version').replace('marque', 'model')
+                     // Les données à envoyer en Ajax
+                     let data = {}
+                     data[$marqueField.attr('name')] = $marqueField.val()
+                     data[$field.attr('name')] = $field.val()
+                     // On soumet les données
+                     $.post($form.attr('action'), data).then(function (data) {
+                         // On récupère le nouveau <select>
+                         let $input = $(data).find(target)
+                         // On remplace notre <select> actuel
+                         $(target).replaceWith($input)
+                     })
+                 })</script>
 
 
 
