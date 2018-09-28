@@ -35,7 +35,9 @@
 
             <div class="mb-3">
               <a href="">
-                <span class="badge purple mr-1">Category 2</span>
+               {% for voiturephy in voiturephy %}
+                <span class="badge grey mr-1">{{voiturephy.kilometrage}} KM</span>
+                {% endfor %}
               </a>
               <a href="">
                 <span class="badge blue mr-1">New</span>
@@ -50,7 +52,9 @@
               <h1>{{voituredef.nom}}</h1>
               {% endfor %}
               {% for voiturephy in voiturephy %}
-              <h6>{{voiturephy.prixTTC}}$</h6>
+              <h6>{{voiturephy.prixHA}}$ à l'achat</h6>          
+              <h6>{{voiturephy.prixHT}}$ HT</h6>
+              <h6>{{voiturephy.prixTTC}}$ TTC</h6>
               {% endfor %}
 
             </p>
@@ -63,7 +67,6 @@
 
             <form class="d-flex justify-content-left">
               <!-- Default input -->
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
               <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
                 <i class="fa fa-shopping-cart ml-1"></i>
               </button>
@@ -87,10 +90,13 @@
         <!--Grid column-->
         <div class="col-md-6 text-center">
 
-          <h4 class="my-4 h4">Additional information</h4>
+      {% for voiturephy in voiturephy %}
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit voluptates,
-            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+          <h4 class="my-4 h4">{{voiturephy.version.vehicleDefinition.marque}} {{voiturephy.version.model}}</h4>
+
+          <p>Informations véhicule référent</p>
+
+      {% endfor %}
 
         </div>
         <!--Grid column-->
