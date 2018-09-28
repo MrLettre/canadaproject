@@ -51,7 +51,7 @@
               {% for voituredef in voituredef %}
               <h1>{{voituredef.nom}}</h1>
               {% endfor %}
-              {% for voiturephy in voiturephy %}
+              {% for voiturephy in voiturephy %} 
               <h6>{{voiturephy.prixHA}}$ à l'achat</h6>          
               <h6>{{voiturephy.prixHT}}$ HT</h6>
               <h6>{{voiturephy.prixTTC}}$ TTC</h6>
@@ -59,7 +59,7 @@
 
             </p>
 
-            <p class="lead font-weight-bold">Description</p>
+            <h4 class="lead font-weight-bold">Description</h4>
 
             {% for voiturephy in voiturephy %}
             <p>{{voiturephy.descriptif}}</p>
@@ -92,7 +92,7 @@
 
       {% for voiturephy in voiturephy %}
 
-          <h4 class="my-4 h4">{{voiturephy.version.vehicleDefinition.marque}} {{voiturephy.version.model}}</h4>
+          <h4 class="my-4 h4">{{voiturephy.version.vehicleDefinition.marque}} {{voiturephy.version.model}}: {{voiturephy.version.vehicleDefinition.typeVehicule}}</h4>
 
           <p>Informations véhicule référent</p>
 

@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\VehiculePhysique;
 use AppBundle\Entity\VehicleDefinition;
+use AppBundle\Entity\Vente;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -144,18 +145,14 @@ class VehiculePhysiqueController extends Controller
      */
     public function ficheProduit(VehiculePhysique $vehiculePhysique)
     {
-     
         $em = $this->getDoctrine()->getManager();
-
         $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(3); 
-
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findByid(3);
 
         return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [
             'voituredef' => $voituredef,
-            'voiturephy' => $voiturephy
+            'voiturephy' => $voiturephy,
         ]);
-    }
-
-
+    } 
 }
+
