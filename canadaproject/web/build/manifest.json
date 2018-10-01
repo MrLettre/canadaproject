@@ -16,5 +16,6 @@
   "web/adminPanelSeller.css": "/web/adminPanelSeller.css",
   "web/adminPanel.js": "/web/adminPanel.js",
   "web/adminPanel.css": "/web/adminPanel.css",
-  "web/rechercheVehicule.js": "/web/rechercheVehicule.js"
+  "web/rechercheVehicule.js": "/web/rechercheVehicule.js",
+  "web/rechercheVehiculeAdmin.js": "/web/rechercheVehiculeAdmin.js"
 }

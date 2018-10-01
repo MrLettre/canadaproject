@@ -13,7 +13,19 @@ class VersionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('actif')->add('puissanceTh')->add('puissanceHy')->add('puissanceEl')->add('autonimieTh')->add('autonomieHy')->add('autonomieEl')->add('model')->add('bdv')->add('transmission')->add('energie')->add('vehiculeDef');
+        $builder
+            ->add('model')
+            ->add('nom')
+            ->add('bdv')
+            ->add('transmission')
+            ->add('energie')
+            ->add('puissanceTh')
+            ->add('puissanceEl')
+            ->add('autonimieTh')
+            ->add('autonomieHy')
+            ->add('autonomieEl')
+            ->add('actif')
+        ;
     }/**
      * {@inheritdoc}
      */

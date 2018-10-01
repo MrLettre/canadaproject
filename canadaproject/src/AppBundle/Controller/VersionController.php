@@ -48,7 +48,7 @@ class VersionController extends Controller
             $em->persist($version);
             $em->flush();
 
-            return $this->redirectToRoute('version_show', array('id' => $version->getId()));
+            return $this->redirectToRoute('vehicledefinition_new');
         }
 
         return $this->render('Form/version/new.html.twig', array(

@@ -1,16 +1,31 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
     <h1>Marque creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    <div class="form-group">
+        {{ form_label(form.nom, 'Nom de la nouvelle marque : ') }}
+        {{ form_widget(form.nom, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.nom) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.imageFile, 'Uploader le logo de la marque : ') }}
+        {{ form_widget(form.imageFile) }}
+        {{ form_errors(form.imageFile) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.actif, 'actif') }}
+        {{ form_widget(form.actif) }}
+        {{ form_errors(form.actif) }}
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="créer une marque" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('marque_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <p>
+        <a href="{{ path('vehicledefinition_new') }}">Retour à la création d'une définition de véhicule</a>
+    </p>
 {% endblock %}

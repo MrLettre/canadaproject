@@ -39,7 +39,7 @@ class VehiculePhysique
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Region", inversedBy="vehiculePhysiques")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $region;
 

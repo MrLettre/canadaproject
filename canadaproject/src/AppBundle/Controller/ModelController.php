@@ -48,7 +48,7 @@ class ModelController extends Controller
             $em->persist($model);
             $em->flush();
 
-            return $this->redirectToRoute('model_show', array('id' => $model->getId()));
+            return $this->redirectToRoute('version_new');
         }
 
         return $this->render('Form/model/new.html.twig', array(

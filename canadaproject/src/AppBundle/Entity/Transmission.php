@@ -139,4 +139,9 @@ class Transmission
     {
         return $this->versions;
     }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
 }

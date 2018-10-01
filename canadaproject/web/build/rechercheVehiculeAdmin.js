@@ -73,7 +73,23 @@
 /*! all exports used */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/garniermaxime/Documents/sitesweb/CATDATA/canadaproject/canadaproject/assets/js/rechercheVehiculeAdmin.js'");
+$(document).on('change', '#appbundle_vehicledefinition_marque, #appbundle_vehicledefinition_model', function () {
+    var $field = $(this);
+    var $marqueField = $('#appbundle_vehicledefinition_marque');
+    var $form = $field.closest('form');
+    var target = '#' + $field.attr('id').replace('model', 'version').replace('marque', 'model');
+    // Les données à envoyer en Ajax
+    var data = {};
+    data[$marqueField.attr('name')] = $marqueField.val();
+    data[$field.attr('name')] = $field.val();
+    // On soumet les données
+    $.post($form.attr('action'), data).then(function (data) {
+        // On récupère le nouveau <select>
+        var $input = $(data).find(target);
+        // On remplace notre <select> actuel
+        $(target).replaceWith($input);
+    });
+});
 
 /***/ })
 
