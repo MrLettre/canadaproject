@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contacts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Statutcontact</th>
+                <th>Motifcontact</th>
+                <th>Nomstecontact</th>
+                <th>Civilitecontact</th>
+                <th>Nomcontact</th>
+                <th>Prenomcontact</th>
+                <th>Emailcontact</th>
+                <th>Phonecontact</th>
+                <th>Adressecontact</th>
+                <th>Codepostalcontact</th>
+                <th>Villecontact</th>
+                <th>Messagecontact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td><a href="{{ path('contact_show', { 'id': contact.id }) }}">{{ contact.id }}</a></td>
+                <td>{{ contact.statutContact }}</td>
+                <td>{{ contact.motifContact }}</td>
+                <td>{{ contact.nomSteContact }}</td>
+                <td>{{ contact.civiliteContact }}</td>
+                <td>{{ contact.nomContact }}</td>
+                <td>{{ contact.prenomContact }}</td>
+                <td>{{ contact.emailContact }}</td>
+                <td>{{ contact.phoneContact }}</td>
+                <td>{{ contact.adresseContact }}</td>
+                <td>{{ contact.codePostalContact }}</td>
+                <td>{{ contact.villeContact }}</td>
+                <td>{{ contact.messageContact }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contact_show', { 'id': contact.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contact_edit', { 'id': contact.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contact_new') }}">Create a new contact</a>
+        </li>
+    </ul>
+{% endblock %}
