@@ -13,7 +13,10 @@ class ModelType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('actif')->add('marque')->add('typeVehicule');
+        $builder->add('nom')
+            ->add('actif')
+            ->add('marque')
+            ->add('typeVehicule');
     }/**
      * {@inheritdoc}
      */

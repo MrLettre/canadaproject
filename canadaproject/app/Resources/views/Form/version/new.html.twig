@@ -1,16 +1,80 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Version creation</h1>
+    <h1>Créer une version</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    <div class="form-group">
+        {{ form_label(form.model, 'modèle') }}
+        {{ form_widget(form.model, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.model) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.nom, 'nom') }}
+        {{ form_widget(form.nom, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.nom) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.bdv, 'Boîte de vitesse') }}
+        {{ form_widget(form.bdv, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.bdv) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.transmission, 'Transmission') }}
+        {{ form_widget(form.transmission, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.transmission) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.energie, 'Carburant') }}
+        {{ form_widget(form.energie, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.energie) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.puissanceTh, 'Puissance Thermique') }}
+        {{ form_widget(form.puissanceTh, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.puissanceTh) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.puissanceEl, 'Puissance Electrique') }}
+        {{ form_widget(form.puissanceEl, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.puissanceEl) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.autonimieTh, 'Autonomie Thermique') }}
+        {{ form_widget(form.autonimieTh, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.autonimieTh) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.autonomieEl, 'Autonomie Electrique') }}
+        {{ form_widget(form.autonomieEl, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.autonomieEl) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.autonomieHy, 'Autonomie Hybride') }}
+        {{ form_widget(form.autonomieHy, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.autonomieHy) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.actif, 'actif') }}
+        {{ form_widget(form.actif) }}
+        {{ form_errors(form.actif) }}
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="créer une version" />
+
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('version_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <p>
+            <a href="{{ path('vehicledefinition_new') }}">Retour à la création d'une définition de véhicule</a>
+        </p>
 {% endblock %}

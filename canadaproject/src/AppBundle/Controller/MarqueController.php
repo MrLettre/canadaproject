@@ -49,7 +49,7 @@ class MarqueController extends Controller
             $em->persist($marque);
             $em->flush();
 
-            return $this->redirectToRoute('marque_show', array('id' => $marque->getId()));
+            return $this->redirectToRoute('model_new');
         }
 
         return $this->render('Form/marque/new.html.twig', array(
