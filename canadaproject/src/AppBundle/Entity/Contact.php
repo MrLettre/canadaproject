@@ -1,0 +1,406 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Contact
+ *
+ * @ORM\Table(name="contact")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ */
+class Contact
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statutContact", type="string", length=255)
+     */
+    private $statutContact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="motifContact", type="string", length=255)
+     */
+    private $motifContact;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="nomSteContact", type="string", length=255, nullable=true)
+     */
+    private $nomSteContact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civiliteContact", type="string", length=255)
+     */
+    private $civiliteContact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomContact", type="string", length=255)
+     */
+    private $nomContact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenomContact", type="string", length=255)
+     */
+    private $prenomContact;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="emailContact", type="string", length=255, nullable=true)
+     */
+    private $emailContact;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="phoneContact", type="string", length=255, nullable=true)
+     */
+    private $phoneContact;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="adresseContact", type="string", length=255, nullable=true)
+     */
+    private $adresseContact;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="codePostalContact", type="integer", nullable=true)
+     */
+    private $codePostalContact;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="villeContact", type="string", length=255, nullable=true)
+     */
+    private $villeContact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="messageContact", type="text")
+     */
+    private $messageContact;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set statutContact.
+     *
+     * @param string $statutContact
+     *
+     * @return Contact
+     */
+    public function setStatutContact($statutContact)
+    {
+        $this->statutContact = $statutContact;
+
+        return $this;
+    }
+
+    /**
+     * Get statutContact.
+     *
+     * @return string
+     */
+    public function getStatutContact()
+    {
+        return $this->statutContact;
+    }
+
+    /**
+     * Set motifContact.
+     *
+     * @param string $motifContact
+     *
+     * @return Contact
+     */
+    public function setMotifContact($motifContact)
+    {
+        $this->motifContact = $motifContact;
+
+        return $this;
+    }
+
+    /**
+     * Get motifContact.
+     *
+     * @return string
+     */
+    public function getMotifContact()
+    {
+        return $this->motifContact;
+    }
+
+    /**
+     * Set nomSteContact.
+     *
+     * @param string|null $nomSteContact
+     *
+     * @return Contact
+     */
+    public function setNomSteContact($nomSteContact = null)
+    {
+        $this->nomSteContact = $nomSteContact;
+
+        return $this;
+    }
+
+    /**
+     * Get nomSteContact.
+     *
+     * @return string|null
+     */
+    public function getNomSteContact()
+    {
+        return $this->nomSteContact;
+    }
+
+    /**
+     * Set civiliteContact.
+     *
+     * @param string $civiliteContact
+     *
+     * @return Contact
+     */
+    public function setCiviliteContact($civiliteContact)
+    {
+        $this->civiliteContact = $civiliteContact;
+
+        return $this;
+    }
+
+    /**
+     * Get civiliteContact.
+     *
+     * @return string
+     */
+    public function getCiviliteContact()
+    {
+        return $this->civiliteContact;
+    }
+
+    /**
+     * Set nomContact.
+     *
+     * @param string $nomContact
+     *
+     * @return Contact
+     */
+    public function setNomContact($nomContact)
+    {
+        $this->nomContact = $nomContact;
+
+        return $this;
+    }
+
+    /**
+     * Get nomContact.
+     *
+     * @return string
+     */
+    public function getNomContact()
+    {
+        return $this->nomContact;
+    }
+
+    /**
+     * Set prenomContact.
+     *
+     * @param string $prenomContact
+     *
+     * @return Contact
+     */
+    public function setPrenomContact($prenomContact)
+    {
+        $this->prenomContact = $prenomContact;
+
+        return $this;
+    }
+
+    /**
+     * Get prenomContact.
+     *
+     * @return string
+     */
+    public function getPrenomContact()
+    {
+        return $this->prenomContact;
+    }
+
+    /**
+     * Set emailContact.
+     *
+     * @param string|null $emailContact
+     *
+     * @return Contact
+     */
+    public function setEmailContact($emailContact = null)
+    {
+        $this->emailContact = $emailContact;
+
+        return $this;
+    }
+
+    /**
+     * Get emailContact.
+     *
+     * @return string|null
+     */
+    public function getEmailContact()
+    {
+        return $this->emailContact;
+    }
+
+    /**
+     * Set phoneContact.
+     *
+     * @param string|null $phoneContact
+     *
+     * @return Contact
+     */
+    public function setPhoneContact($phoneContact = null)
+    {
+        $this->phoneContact = $phoneContact;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneContact.
+     *
+     * @return string|null
+     */
+    public function getPhoneContact()
+    {
+        return $this->phoneContact;
+    }
+
+    /**
+     * Set adresseContact.
+     *
+     * @param string|null $adresseContact
+     *
+     * @return Contact
+     */
+    public function setAdresseContact($adresseContact = null)
+    {
+        $this->adresseContact = $adresseContact;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseContact.
+     *
+     * @return string|null
+     */
+    public function getAdresseContact()
+    {
+        return $this->adresseContact;
+    }
+
+    /**
+     * Set codePostalContact.
+     *
+     * @param int|null $codePostalContact
+     *
+     * @return Contact
+     */
+    public function setCodePostalContact($codePostalContact = null)
+    {
+        $this->codePostalContact = $codePostalContact;
+
+        return $this;
+    }
+
+    /**
+     * Get codePostalContact.
+     *
+     * @return int|null
+     */
+    public function getCodePostalContact()
+    {
+        return $this->codePostalContact;
+    }
+
+    /**
+     * Set villeContact.
+     *
+     * @param string|null $villeContact
+     *
+     * @return Contact
+     */
+    public function setVilleContact($villeContact = null)
+    {
+        $this->villeContact = $villeContact;
+
+        return $this;
+    }
+
+    /**
+     * Get villeContact.
+     *
+     * @return string|null
+     */
+    public function getVilleContact()
+    {
+        return $this->villeContact;
+    }
+
+    /**
+     * Set messageContact.
+     *
+     * @param string $messageContact
+     *
+     * @return Contact
+     */
+    public function setMessageContact($messageContact)
+    {
+        $this->messageContact = $messageContact;
+
+        return $this;
+    }
+
+    /**
+     * Get messageContact.
+     *
+     * @return string
+     */
+    public function getMessageContact()
+    {
+        return $this->messageContact;
+    }
+}
