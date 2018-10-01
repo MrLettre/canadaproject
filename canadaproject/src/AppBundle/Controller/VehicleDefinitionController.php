@@ -48,7 +48,7 @@ class VehicleDefinitionController extends Controller
             $em->persist($vehicleDefinition);
             $em->flush();
 
-            return $this->redirectToRoute('vehicledefinition_show', array('id' => $vehicleDefinition->getId()));
+            return $this->redirectToRoute('vehicledefinition_index');
         }
 
         return $this->render('Form/vehicledefinition/new.html.twig', array(
