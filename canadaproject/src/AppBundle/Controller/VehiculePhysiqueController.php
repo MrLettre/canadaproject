@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\VehiculePhysique;
+use AppBundle\Entity\VehicleDefinition;
+use AppBundle\Entity\Vente;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -60,7 +62,7 @@ class VehiculePhysiqueController extends Controller
     /**
      * Finds and displays a vehiculePhysique entity.
      *
-     * @Route("/{id}", name="vehiculephysique_show")
+     * @Route("/{id}/lol", name="vehiculephysique_show")
      * @Method("GET")
      */
     public function showAction(VehiculePhysique $vehiculePhysique)
@@ -101,7 +103,7 @@ class VehiculePhysiqueController extends Controller
     /**
      * Deletes a vehiculePhysique entity.
      *
-     * @Route("/{id}", name="vehiculephysique_delete")
+     * @Route("/{id}/lol", name="vehiculephysique_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, VehiculePhysique $vehiculePhysique)
@@ -133,4 +135,25 @@ class VehiculePhysiqueController extends Controller
             ->getForm()
         ;
     }
+
+
+        /**
+     * Finds and displays a vehiculePhysique entity.
+     *
+     * @Route("/{id}", name="vehiculephysique_show")
+     * @Method("GET")
+     */
+    public function ficheProduit(VehiculePhysique $vehiculePhysique, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $id = $id;
+        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(['id' => $id]); 
+        $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findByid(['id' => $id]);
+
+        return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [
+            'voituredef' => $voituredef,
+            'voiturephy' => $voiturephy,
+        ]);
+    } 
 }
+
