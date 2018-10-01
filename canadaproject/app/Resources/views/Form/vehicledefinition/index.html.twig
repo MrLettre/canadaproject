@@ -1,37 +1,36 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Vehicledefinitions list</h1>
-
+<h1>Liste du Parc Auto</h1>
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Nom de Définition</th>
+            <th>Marque</th>
+            <th>Modèle</th>
+            <th>Version</th>
+
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for vehicleDefinition in vehicleDefinitions %}
             <tr>
-                <td><a href="{{ path('vehicledefinition_show', { 'id': vehicleDefinition.id }) }}">{{ vehicleDefinition.id }}</a></td>
+                <td>{{ vehicleDefinition.id }}</td>
+                <td>{{ vehicleDefinition.nom }}</td>
+                <td>{{ vehicleDefinition.version.model.marque }}</td>
+                <td>{{ vehicleDefinition.version.model }}</td>
+                <td>{{ vehicleDefinition.version }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('vehicledefinition_show', { 'id': vehicleDefinition.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('vehicledefinition_edit', { 'id': vehicleDefinition.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-primary" href="{{ path('vehicledefinition_edit', { 'id': vehicleDefinition.id }) }}">edit</a>
                 </td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('vehicledefinition_new') }}">Create a new vehicleDefinition</a>
-        </li>
-    </ul>
+    </tbody>
+</table>
+<p>
+    <a class="btn btn-primary" href="{{ path('vehicledefinition_new') }}">Créer un véhicule</a>
+</p>
 {% endblock %}
+

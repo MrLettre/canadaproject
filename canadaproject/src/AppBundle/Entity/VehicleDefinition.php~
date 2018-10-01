@@ -13,7 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 class VehicleDefinition
 {
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Version", mappedBy="vehicleDefinition")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Version", inversedBy="vehicleDef")
+     * @ORM\JoinColumn(name="version_id", referencedColumnName="id")
      */
     protected $version;
 

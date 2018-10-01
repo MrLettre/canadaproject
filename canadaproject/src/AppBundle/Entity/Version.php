@@ -37,9 +37,9 @@ class Version
     private $energie;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\VehicleDefinition", cascade={"persist", "remove"}, inversedBy="version")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\VehicleDefinition", mappedBy="version")
      */
-    protected $vehicleDefinition;
+    protected $vehicleDef;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehiculePhysique", mappedBy="version")
@@ -566,5 +566,29 @@ class Version
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * Set vehicleDef.
+     *
+     * @param \AppBundle\Entity\VehicleDefinition|null $vehicleDef
+     *
+     * @return Version
+     */
+    public function setVehicleDef(\AppBundle\Entity\VehicleDefinition $vehicleDef = null)
+    {
+        $this->vehicleDef = $vehicleDef;
+
+        return $this;
+    }
+
+    /**
+     * Get vehicleDef.
+     *
+     * @return \AppBundle\Entity\VehicleDefinition|null
+     */
+    public function getVehicleDef()
+    {
+        return $this->vehicleDef;
     }
 }
