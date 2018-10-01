@@ -143,11 +143,12 @@ class VehiculePhysiqueController extends Controller
      * @Route("/{id}", name="vehiculephysique_show")
      * @Method("GET")
      */
-    public function ficheProduit(VehiculePhysique $vehiculePhysique)
+    public function ficheProduit(VehiculePhysique $vehiculePhysique, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(3); 
-        $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findByid(3);
+        $id = $id;
+        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(['id' => $id]); 
+        $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findByid(['id' => $id]);
 
         return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [
             'voituredef' => $voituredef,

@@ -90,6 +90,31 @@
         <!--Grid column-->
         <div class="col-md-6 text-center">
 
+     
+
+          <h4 class="my-4 h4">Options</h4>
+
+        {% for voiturephy in voiturephy %}
+          <p>{{voiturephy.options}}</p>
+        {% endfor %}
+
+      
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
       {% for voiturephy in voiturephy %}
 
           <h4 class="my-4 h4">{{voiturephy.version.vehicleDefinition.marque}} {{voiturephy.version.model}}: {{voiturephy.version.vehicleDefinition.typeVehicule}}</h4>
