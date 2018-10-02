@@ -57,7 +57,7 @@ class VehiculePhysique
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiclePhyStatut", inversedBy="vehiculePhysiques")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $vehiclePhyStatut;
 
@@ -577,6 +577,12 @@ class VehiculePhysique
      */
     public function getVersion()
     {
+        return $this->version;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
         return $this->version;
     }
 }

@@ -1,21 +1,125 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Contact edit</h1>
+    <h1 style="text-align: center; margin-bottom: 8vh; margin-top: 8vh;">Prise en charge</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <div class="form-group">
+        {{ form_label(edit_form.destinataireMailContact, 'Destinataire de la demande') }}
+        {{ form_widget(edit_form.destinataireMailContact, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.destinataireMailContact) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(edit_form.statutMailContact, 'Statut de la demande') }}
+        {{ form_widget(edit_form.statutMailContact, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.statutMailContact) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(edit_form.messageAdminContact, 'Message du SAV Carify') }}
+        {{ form_widget(edit_form.messageAdminContact, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.messageAdminContact) }}
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('contact_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+    <section class="contact-section col-md-12">
+
+        <!-- Form with header -->
+        <div class="card">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-lg-8">
+                    <div class="card-body form">
+
+                        <!-- Header -->
+                        <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Demande de contact:</h3>
+
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Demande émanant de :</h6> <p>{{ contact.statutContact }}</p>
+
+                                </div>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Motif de la demande :</h6> <p> {{ contact.motifContact }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Société (si professionnel) :</h6> <p> {{ contact.nomSteContact }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6> Nom du contact :</h6> <p> {{ contact.civiliteContact }} {{ contact.nomContact }} {{ contact.prenomContact }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-12">
+                                <div class="md-form mb-0">
+                                    <h6> Message :</h6> <p> {{ contact.messageContact }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-4">
+                    <div class="card-body contact text-center h-100 white-text">
+                        <h3 class="my-4 pb-2 white-text">Coordonnées du contact</h3>
+                        <hr class="hr-light my-4">
+                        <ul class="text-lg-left list-unstyled ml-4">
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="mail"></i> Email :</p>
+                                <p class="contact-adresse text-center white-color">{{ contact.emailContact }}</p>
+                            </li>
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Téléphone :</p>
+                                <p class="contact-adresse text-center white-color">{{ contact.phoneContact }}</p>
+                            </li>
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="map-pin"></i> Adresse :</p>
+                                <p class="contact-adresse text-center white-color">{{ contact.adresseContact }} <br> {{ contact.codePostalContact }} {{ contact.villeContact }}</p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+        <!-- Form with header -->
+    </section>
+
+
+
+
+
+    <input class="btn btn-primary" type="submit" value="Edit"/>
+    {{ form_row(edit_form._token) }}
+    {{ form_end(edit_form, {'render_rest': false}) }}
+
+        <p>
+            <a class="btn btn-success" href="{{ path('contact_index') }}">Revenir à la liste des demandes de contact</a>
+        </p>
 {% endblock %}
