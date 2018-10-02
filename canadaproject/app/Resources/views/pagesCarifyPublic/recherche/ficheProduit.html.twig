@@ -22,6 +22,9 @@
 
         <!--Grid column-->
         <div class="col-md-6 mb-4">
+        {% for voiturephy in voiturephy %}
+          <img src="/images/photosVehiculePhysique/{{ voiturephy.imageName }}" class="img-fluid" alt="PhotoVehicule">
+        {% endfor %}
 
           <span><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ voiturephy.imageName }}" width="500vw"></a></span>
 
@@ -58,7 +61,6 @@
               <h1>{{voituredef.nom}}</h1>
               {% endfor %}
               {% for voiturephy in voiturephy %}
-              <h6>{{voiturephy.prixHA}}$ à l'achat</h6>
               <h6>{{voiturephy.prixHT}}$ HT</h6>
               <h6>{{voiturephy.prixTTC}}$ TTC</h6>
               {% endfor %}
@@ -192,7 +194,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
 
           <img src="" class="img-fluid" alt="">
-
+          
         </div>
         <!--Grid column-->
 

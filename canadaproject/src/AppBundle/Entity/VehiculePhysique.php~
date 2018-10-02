@@ -579,4 +579,10 @@ class VehiculePhysique
     {
         return $this->version;
     }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->version;
+    }
 }

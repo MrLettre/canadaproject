@@ -140,7 +140,7 @@ class VehiculePhysiqueController extends Controller
         /**
      * Finds and displays a vehiculePhysique entity.
      *
-     * @Route("/{id}", name="vehiculephysique_show")
+     * @Route("/recherche/{id}", name="vehiculephysique_recherche")
      * @Method("GET")
      */
     public function ficheProduit(VehiculePhysique $vehiculePhysique, $id)
