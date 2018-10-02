@@ -45,6 +45,7 @@ class ContactController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $contact->setStatutMailContact('Non-lu');
             $em->persist($contact);
             $em->flush();
 
@@ -82,7 +83,7 @@ class ContactController extends Controller
     public function editAction(Request $request, Contact $contact)
     {
         $deleteForm = $this->createDeleteForm($contact);
-        $editForm = $this->createForm('AppBundle\Form\ContactType', $contact);
+        $editForm = $this->createForm('AppBundle\Form\EditContactType', $contact);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

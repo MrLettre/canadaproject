@@ -1,76 +1,120 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/listing_render.css') }}">
+{% endblock %}
+
 {% block body %}
     <h1>Contact</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ contact.id }}</td>
-            </tr>
-            <tr>
-                <th>Statutcontact</th>
-                <td>{{ contact.statutContact }}</td>
-            </tr>
-            <tr>
-                <th>Motifcontact</th>
-                <td>{{ contact.motifContact }}</td>
-            </tr>
-            <tr>
-                <th>Nomstecontact</th>
-                <td>{{ contact.nomSteContact }}</td>
-            </tr>
-            <tr>
-                <th>Civilitecontact</th>
-                <td>{{ contact.civiliteContact }}</td>
-            </tr>
-            <tr>
-                <th>Nomcontact</th>
-                <td>{{ contact.nomContact }}</td>
-            </tr>
-            <tr>
-                <th>Prenomcontact</th>
-                <td>{{ contact.prenomContact }}</td>
-            </tr>
-            <tr>
-                <th>Emailcontact</th>
-                <td>{{ contact.emailContact }}</td>
-            </tr>
-            <tr>
-                <th>Phonecontact</th>
-                <td>{{ contact.phoneContact }}</td>
-            </tr>
-            <tr>
-                <th>Adressecontact</th>
-                <td>{{ contact.adresseContact }}</td>
-            </tr>
-            <tr>
-                <th>Codepostalcontact</th>
-                <td>{{ contact.codePostalContact }}</td>
-            </tr>
-            <tr>
-                <th>Villecontact</th>
-                <td>{{ contact.villeContact }}</td>
-            </tr>
-            <tr>
-                <th>Messagecontact</th>
-                <td>{{ contact.messageContact }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="contact-section col-md-12">
 
-    <ul>
-        <li>
-            <a href="{{ path('contact_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('contact_edit', { 'id': contact.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <!-- Form with header -->
+        <div class="card">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-lg-8">
+                    <div class="card-body form">
+
+                        <!-- Header -->
+                        <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Demande de contact:</h3>
+
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Demande émanant de :</h6> <p>{{ contact.statutContact }}</p>
+
+                                </div>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Motif de la demande :</h6> <p> {{ contact.motifContact }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Société (si professionnel) :</h6> <p> {{ contact.nomSteContact }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6> Nom du contact :</h6> <p> {{ contact.civiliteContact }} {{ contact.nomContact }} {{ contact.prenomContact }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-12">
+                                <div class="md-form mb-0">
+                                   <h6> Message :</h6> <p> {{ contact.messageContact }}</p>
+                                </div>
+                                <div class="col-md-12" style="display: flex">
+                                    <p>
+                                        <a class="btn btn-primary" href="{{ path('contact_edit', { 'id': contact.id }) }}">Prendre en charge la demande</a>
+                                    </p>
+                                    <p>
+                                        <a class="btn btn-success"href="{{ path('contact_index') }}">Revenir à la liste des demandes de contact</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-4">
+                    <div class="card-body contact text-center h-100 white-text">
+                        <h3 class="my-4 pb-2 white-text">Coordonnées du contact</h3>
+                        <hr class="hr-light my-4">
+                        <ul class="text-lg-left list-unstyled ml-4">
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="mail"></i> Email :</p>
+                                <p class="contact-adresse text-center white-color">{{ contact.emailContact }}</p>
+                            </li>
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Téléphone :</p>
+                                <p class="contact-adresse text-center white-color">{{ contact.phoneContact }}</p>
+                            </li>
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="map-pin"></i> Adresse :</p>
+                                <p class="contact-adresse text-center white-color">{{ contact.adresseContact }} <br> {{ contact.codePostalContact }} {{ contact.villeContact }}</p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+
+
+            </div>
+            <!-- Grid row -->
+        </div>
+        <!-- Form with header -->
+    </section>
+
+
+
+
+
+
+
+
+
+
 {% endblock %}

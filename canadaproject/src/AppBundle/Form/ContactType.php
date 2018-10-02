@@ -27,7 +27,6 @@ class ContactType extends AbstractType
                   'Je suis client Carify' => 'Client',
                   'Autre' => 'Autre'
                 ],
-                'data' => 'nul'
             ])
             ->add('motifContact', ChoiceType::class, [
                 'choices' => [
@@ -35,7 +34,7 @@ class ContactType extends AbstractType
                     'Je souhaite devenir vendeur' => 'Je souhaite devenir vendeur',
                     'Je suis un potentiel client et souhaite des informations complémentaires sur un produit/démarche de souscription/autre...' =>'Je suis un potentiel client',
                     'Demande de SAV' => 'SAV',
-                    'Autre' => 'autre'
+                    'Autre' => 'Autre'
                 ]
             ])
             ->add('nomSteContact')

@@ -14,6 +14,8 @@ Encore
     .addEntry('user', './assets/scss/user.scss')
     .addEntry('rechercheVehicule', './assets/js/rechercheVehiculeVendeur.js')
     .addEntry('rechercheVehiculeAdmin', './assets/js/rechercheVehiculeAdmin.js')
+    .addEntry('listing_render', './assets/scss/listing_render.scss')
+
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSassLoader();
