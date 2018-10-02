@@ -11,15 +11,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Marque</th>
-                <th>Modèle</th>
-                <th>Version</th>
-                <th>Datemiseenligne</th>
-                <th>Kilometrage</th>
-                <th>Datedemiseencirculation</th>
-                <th>Photo</th>
-                <th>Prixht</th>
-                <th>Actions</th>
+                <th scope="col">Marque</th>
+                <th scope="col">Modèle</th>
+                <th scope="col">Version</th>
+                <th scope="col">Datemiseenligne</th>
+                <th scope="col">Kilometrage</th>
+                <th scope="col">Datedemiseencirculation</th>
+                <th scope="col">Prixht</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
                 <td>{{ vehiculePhysique.kilometrage }}</td>
                 <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ vehiculePhysique.prixHT }}</td>
-                <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="100" height="auto"></a></td>
+                <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">edit</a>
                 </td>
