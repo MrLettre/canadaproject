@@ -1,24 +1,24 @@
 {% extends 'admin/vendeurBase.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/listing_render.css') }}">
+{% endblock %}
+
 {% block body %}
     <h1>Liste du Parc Auto</h1>
 
-    <table>
+<div class="table-responsive">
+    <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Marque</th>
                 <th>Modèle</th>
                 <th>Version</th>
                 <th>Datemiseenligne</th>
-                <th>Datedevente</th>
                 <th>Kilometrage</th>
                 <th>Datedemiseencirculation</th>
+                <th>Photo</th>
                 <th>Prixht</th>
-                <th>Prixttc</th>
-                <th>Prixha</th>
-                <th>Descriptif</th>
-                <th>Imagename</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -28,16 +28,11 @@
                 <td>{{ vehiculePhysique.version.model.marque }}</td>
                 <td>{{ vehiculePhysique.version.model }}</td>
                 <td>{{ vehiculePhysique.version }}</td>
-                <td><a href="{{ path('vehiculephysique_show', { 'id': vehiculePhysique.id }) }}">{{ vehiculePhysique.id }}</a></td>
                 <td>{% if vehiculePhysique.dateMiseEnLigne %}{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if vehiculePhysique.dateDeVente %}{{ vehiculePhysique.dateDeVente|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ vehiculePhysique.kilometrage }}</td>
                 <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ vehiculePhysique.prixHT }}</td>
-                <td>{{ vehiculePhysique.prixTTC }}</td>
-                <td>{{ vehiculePhysique.prixHA }}</td>
-                <td>{{ vehiculePhysique.descriptif }}</td>
-                <td>{{ vehiculePhysique.imageName }}</td>
+                <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="100" height="auto"></a></td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">edit</a>
                 </td>
@@ -45,6 +40,7 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
         <p>
             <a class="btn btn-primary" href="{{ path('vehiculephysique_new') }}">Créer un véhicule</a>
         </p>

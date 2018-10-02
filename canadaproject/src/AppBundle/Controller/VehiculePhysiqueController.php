@@ -160,4 +160,3 @@ class VehiculePhysiqueController extends Controller
     } 
 }
 
-Â
