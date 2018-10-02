@@ -40,10 +40,14 @@
                 {% endfor %}
               </a>
               <a href="">
-                <span class="badge blue mr-1">New</span>
+              {% for voiturephy in voiturephy %}
+                <span class="badge blue mr-1">mise en ligne: {{voiturephy.dateMiseEnLigne|date('Y-m-d')}}</span>
+              {% endfor %}  
               </a>
               <a href="">
-                <span class="badge red mr-1">Bestseller</span>
+              {% for voiturephy in voiturephy %}
+                <span class="badge red mr-1">Mise en circulation: {{voiturephy.dateDeMiseEnCirculation|date('Y-m-d')}}</span>
+              {% endfor %}  
               </a>
             </div>
 
@@ -58,6 +62,14 @@
               {% endfor %}
 
             </p>
+
+            <hr>
+
+            {% for voiturephy in voiturephy %}
+            <h6> Vendeur: {{ voiturephy.concession}}</h6>
+            {% endfor %}
+
+            <hr>
 
             <h4 class="lead font-weight-bold">Description</h4>
 
@@ -94,9 +106,10 @@
 
           <h4 class="my-4 h4">Options</h4>
 
-        {% for voiturephy in voiturephy %}
-          <p>{{voiturephy.options}}</p>
-        {% endfor %}
+         {% for optionsphy in optionsphy %}
+          <p>- {{optionsphy}}</p>
+         {% endfor %} 
+        
 
       
 
@@ -117,9 +130,34 @@
 
       {% for voiturephy in voiturephy %}
 
-          <h4 class="my-4 h4">{{voiturephy.version.vehicleDefinition.marque}} {{voiturephy.version.model}}: {{voiturephy.version.vehicleDefinition.typeVehicule}}</h4>
+          <h3 class="my-4 h4">{{voiturephy.version.model.marque}} {{voiturephy.version.model}}: {{voiturephy.version.model.typeVehicule}}</h3>
 
-          <p>Informations véhicule référent</p>
+          <h6>Boite de Vitesse: {{ voiturephy.version.bdv}}</h6>
+          <h6>Transmission: {{ voiturephy.version.transmission}}</h6>
+          <h6>Energie: {{ voiturephy.version.energie}}</h6>
+
+           <table>
+        <thead>
+            <tr>
+                <th>Puissance Thermique</th>
+                <th>Puissance Hybride</th>
+                <th>Puissance Electrique</th>
+                <th>Autonomie thermique</th>
+                <th>Autonomie Hybride</th>
+                <th>Autonomie electrique</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>{{ voiturephy.version.puissanceTh }}</td>
+                <td>{{ voiturephy.version.puissanceHy }}</td>
+                <td>{{ voiturephy.version.puissanceEl }}</td>
+                <td>{{ voiturephy.version.autonimieTh }}</td>
+                <td>{{ voiturephy.version.autonomieHy }}</td>
+                <td>{{ voiturephy.version.autonomieEl }}</td>
+            </tr>
+        </tbody>
 
       {% endfor %}
 
