@@ -4,7 +4,81 @@
     <h1>Vehiculephysique edit</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
+    <div class="form-group">
+        {{ form_label(edit_form.concession, 'Point de vente') }}
+        {{ form_widget(edit_form.concession, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.concession) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.marque, 'Marque') }}
+        {{ form_widget(edit_form.marque, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.marque) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.model, 'Modèle') }}
+        {{ form_widget(edit_form.model, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.model) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.version, 'Version') }}
+        {{ form_widget(edit_form.version, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.version) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.dateDeMiseEnCirculation, 'Date de mise en circulation') }}
+        {{ form_widget(edit_form.dateDeMiseEnCirculation) }}
+        {{ form_errors(edit_form.dateDeMiseEnCirculation) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.kilometrage, 'Kilométrage réel') }}
+        {{ form_widget(edit_form.kilometrage) }}
+        {{ form_errors(edit_form.kilometrage) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.options, 'Choisissez les options du véhicule') }}
+        {{ form_widget(edit_form.options) }}
+        {{ form_errors(edit_form.options) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.descriptif, 'Descriptif du véhicule') }}
+        {{ form_widget(edit_form.descriptif, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.descriptif) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.prixha, 'Prix d\'achat') }}
+        {{ form_widget(edit_form.prixha, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.prixha) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.prixht, 'Prix HT') }}
+        {{ form_widget(edit_form.prixht, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.prixht) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.prixttc, 'Prix TTC') }}
+        {{ form_widget(edit_form.prixttc, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(edit_form.prixttc) }}
+    </div>
+
+    <div class="form-group">
+        <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
+        {{ form_label(edit_form.imageFile, 'Photos du véhicule') }}
+        {{ form_widget(edit_form.imageFile) }}
+        {{ form_errors(edit_form.imageFile) }}
+    </div>
+    
+    
+    
         <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
