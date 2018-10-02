@@ -43,7 +43,7 @@
             </tr>
             <tr>
                 <th>Imagename</th>
-                <td>{{ vehiculePhysique.imageName }}</td>
+                <td><img src="{{ vich_uploader_asset(vehiculePhysique.imageFile, 'imageFile') }}" style="max-width: 250px"/></td>
             </tr>
         </tbody>
     </table>
