@@ -26,33 +26,13 @@ class VehiclesValidationStatut
      */
     private $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="brouillon", type="integer", nullable=true)
-     */
-    private $brouillon;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="enAttenteDeValidation", type="integer", nullable=true)
+     * @ORM\Column(name="statut", type="string", nullable=true)
      */
-    private $enAttenteDeValidation;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="enLigne", type="integer", nullable=true)
-     */
-    private $enLigne;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="refuse", type="integer", nullable=true)
-     */
-    private $refuse;
+    private $statut;
 
 
     /**
