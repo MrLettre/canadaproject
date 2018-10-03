@@ -4,14 +4,9 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Marque;
 use AppBundle\Entity\Model;
-use AppBundle\Entity\VehicleDefinition;
 use AppBundle\Entity\Version;
-use Doctrine\DBAL\Types\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -27,6 +22,7 @@ class VehiculePhysiqueType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('validationStatut')
             ->add('concession')
             ->add('kilometrage')
             ->add('dateDeMiseEnCirculation')
