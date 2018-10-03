@@ -151,10 +151,10 @@ class AdminController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         
-        $ventesTotales = $em->getRepository('AppBundle:Vente')->findAll();
+        $total = $em->getRepository('AppBundle:Cart')->findAll();
         // replace this example code with whatever you need
         return $this->render('admin/vendeur/statistiques.html.twig', [
-            'ventesTotales' => $ventesTotales,
+            'total' => $total,
         ]);
     }
 
