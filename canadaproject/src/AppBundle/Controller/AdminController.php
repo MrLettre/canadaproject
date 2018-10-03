@@ -148,8 +148,14 @@ class AdminController extends Controller
      */
     public function adminSellerStats()
     {
+
+        $em = $this->getDoctrine()->getManager();
+        
+        $ventesTotales = $em->getRepository('AppBundle:Vente')->findAll();
         // replace this example code with whatever you need
-        return $this->render('admin/vendeur/statistiques.html.twig');
+        return $this->render('admin/vendeur/statistiques.html.twig', [
+            'ventesTotales' => $ventesTotales,
+        ]);
     }
 
      /**
