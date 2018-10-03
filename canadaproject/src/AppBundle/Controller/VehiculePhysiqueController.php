@@ -147,7 +147,7 @@ class VehiculePhysiqueController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $id = $id;
-        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(['id' => $id]); 
+        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(['id' => $id]);
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findByid(['id' => $id]);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
 
@@ -157,6 +157,35 @@ class VehiculePhysiqueController extends Controller
             'voiturephy' => $voiturephy,
             'optionsphy' => $optionsphy,
         ]);
-    } 
+    }
+
+    /**
+     * Permet de mofifier le statut du vehphy .
+     *
+     * @Route("/{id}/validation", name="vehiculephysique_validation")
+     * @Method({"GET", "POST"})
+     */
+    public function validationAction(Request $request, VehiculePhysique $vehiculePhysique, $id)
+    {
+        $validationForm = $this->createForm('AppBundle\Form\AdminVehiculePhysiqueType', $vehiculePhysique);
+        $validationForm->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
+        $optionVeh = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
+
+
+        if ($validationForm->isSubmitted() && $validationForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('vehiculephysique_index', array('id' => $vehiculePhysique->getId()));
+        }
+
+        return $this->render('Form/vehiculephysique/validation.html.twig', array(
+            'vehiculePhysique' => $vehiculePhysique,
+            'validation_form' => $validationForm->createView(),
+            'optionVeh' => $optionVeh,
+        ));
+    }
+
 }
 
