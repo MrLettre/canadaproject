@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\VehiclesValidationStatut;
 use AppBundle\Entity\VehiculePhysique;
 use AppBundle\Entity\VehicleDefinition;
 use AppBundle\Entity\Vente;
@@ -62,7 +63,7 @@ class VehiculePhysiqueController extends Controller
     /**
      * Finds and displays a vehiculePhysique entity.
      *
-     * @Route("/{id}/lol", name="vehiculephysique_show")
+     * @Route("/{id}/show", name="vehiculephysique_show")
      * @Method("GET")
      */
     public function showAction(VehiculePhysique $vehiculePhysique)
@@ -143,7 +144,7 @@ class VehiculePhysiqueController extends Controller
      * @Route("/recherche/{id}", name="vehiculephysique_recherche")
      * @Method("GET")
      */
-    public function ficheProduit(VehiculePhysique $vehiculePhysique, $id)
+    public function ficheProduit($id)
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -159,31 +160,51 @@ class VehiculePhysiqueController extends Controller
         ]);
     }
 
+    /** GESTION DES VALIDATIONS DE VEHICULES PHYSIQUES PAR L'ADMINISTRATEUR */
+
     /**
-     * Permet de mofifier le statut du vehphy .
+     * Lists all vehiculePhysique entities.
      *
-     * @Route("/{id}/validation", name="vehiculephysique_validation")
+     * @Route("/validation", name="vehiculephysique_validation_index")
+     * @Method("GET")
+     */
+    public function indexValidationAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $vehiculePhysiques = $em->getRepository('AppBundle:VehiculePhysique')->findAll();
+
+        return $this->render('Form/vehiculephysique/validation_index.html.twig', array(
+            'vehiculePhysiques' => $vehiculePhysiques,
+        ));
+    }
+
+
+    /**
+     * Permet de mofifier le statut du vehphy pour l'admin.
+     *
+     * @Route("/{id}/validation/edit", name="vehiculephysique_validation_edit")
      * @Method({"GET", "POST"})
      */
-    public function validationAction(Request $request, VehiculePhysique $vehiculePhysique, $id)
+    public function validationAction(Request $request, VehiculePhysique $vehiculePhysique)
     {
-        $validationForm = $this->createForm('AppBundle\Form\AdminVehiculePhysiqueType', $vehiculePhysique);
+        $vehiclesValidationStatut = new Vehiclesvalidationstatut();
+        $validationForm = $this->createForm('AppBundle\Form\AdminVehiculePhysiqueType', $vehiclesValidationStatut);
         $validationForm->handleRequest($request);
 
-        $em = $this->getDoctrine()->getManager();
-        $optionVeh = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
-
-
         if ($validationForm->isSubmitted() && $validationForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em =$this->getDoctrine()->getManager();
+            $statutId = $vehiclesValidationStatut->getStatut($vehiclesValidationStatut);
+            $vehiculePhysique->setValidationStatut($statutId);
+            $em->persist($vehiculePhysique);
+            $em->flush();
 
-            return $this->redirectToRoute('vehiculephysique_index', array('id' => $vehiculePhysique->getId()));
+            return $this->redirectToRoute('vehiculephysique_index');
         }
 
         return $this->render('Form/vehiculephysique/validation.html.twig', array(
             'vehiculePhysique' => $vehiculePhysique,
             'validation_form' => $validationForm->createView(),
-            'optionVeh' => $optionVeh,
         ));
     }
 

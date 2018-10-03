@@ -112,4 +112,10 @@ class VehiclesValidationStatut
         return $this->statut;
     }
 
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->statut;
+    }
+
 }
