@@ -25,7 +25,7 @@ class CartController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $carts = $em->getRepository('AppBundle:Cart')->findAll();
-
+        
         return $this->render('Form/cart/index.html.twig', array(
             'carts' => $carts,
         ));
