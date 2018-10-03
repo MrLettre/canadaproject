@@ -41,21 +41,21 @@
             <div class="mb-3">
               <a href="">
                {% for voiturephy in voiturephy %}
-                <span class="badge grey mr-1">{{voiturephy.kilometrage}} KM</span>
+                <span class="badge grey mr-1">mise en ligne: {{voiturephy.dateMiseEnLigne|date('Y-m-d')}}</span>
                 {% endfor %}
               </a>
               <a href="">
               {% for voiturephy in voiturephy %}
-                <span class="badge blue mr-1">mise en ligne: {{voiturephy.dateMiseEnLigne|date('Y-m-d')}}</span>
+                <span class="badge blue mr-1">Mise en circulation: {{voiturephy.dateDeMiseEnCirculation|date('Y-m-d')}}</span>
               {% endfor %}  
               </a>
               <a href="">
               {% for voiturephy in voiturephy %}
-                <span class="badge red mr-1">Mise en circulation: {{voiturephy.dateDeMiseEnCirculation|date('Y-m-d')}}</span>
+                <span class="badge red mr-1">{{voiturephy.kilometrage}} KM</span>
               {% endfor %}  
               </a>
             </div>
-
+           
             <p class="lead">
               {% for voituredef in voituredef %}
               <h1>{{voituredef.nom}}</h1>
@@ -142,28 +142,57 @@
 
           <hr>
 
-           <table>
-        <thead>
-            <tr>
-                <th>Puissance Thermique</th>
-                <th>Puissance Hybride</th>
-                <th>Puissance Electrique</th>
-                <th>Autonomie thermique</th>
-                <th>Autonomie Hybride</th>
-                <th>Autonomie electrique</th>
-            </tr>
-        </thead>
+        <table cellpadding="65">
 
-        <tbody>
+          {% if voiturephy.version.energie == 'Electrique' %}
+          <thead> 
             <tr>
-                <td>{{ voiturephy.version.puissanceTh }}</td>
-                <td>{{ voiturephy.version.puissanceHy }}</td>
-                <td>{{ voiturephy.version.puissanceEl }}</td>
-                <td>{{ voiturephy.version.autonimieTh }}</td>
-                <td>{{ voiturephy.version.autonomieHy }}</td>
-                <td>{{ voiturephy.version.autonomieEl }}</td>
+              <th>Puissance Electrique</th>
+              <th>Autonomie electrique</th>
             </tr>
-        </tbody>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ voiturephy.version.puissanceEl }}</td>
+              <td>{{ voiturephy.version.autonomieEl }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+
+          {% if voiturephy.version.energie == 'Thermique' %}
+          <thead> 
+            <tr>
+              <th>Puissance Thermique</th>
+              <th>Autonomie Thermique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ voiturephy.version.puissanceTh }}</td>
+              <td>{{ voiturephy.version.autonimieTh }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+
+          {% if voiturephy.version.energie == 'Hybride' %}
+          <thead> 
+            <tr>
+              <th>Puissance Thermique</th>
+              <th>Autonomie Thermique</th>
+              <th>Puissance Electrique</th>
+              <th>Autonomie electrique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ voiturephy.version.puissanceTh }}</td>
+              <td>{{ voiturephy.version.autonimieTh }}</td>
+              <td>{{ voiturephy.version.puissanceEl }}</td>
+              <td>{{ voiturephy.version.autonomieEl }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+
 
         </table>
 
