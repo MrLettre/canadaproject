@@ -45,101 +45,7 @@ class VehiclesValidationStatut
         return $this->id;
     }
 
-    /**
-     * Set brouillon
-     *
-     * @param integer $brouillon
-     *
-     * @return VehiclesValidationStatut
-     */
-    public function setBrouillon($brouillon)
-    {
-        $this->brouillon = $brouillon;
 
-        return $this;
-    }
-
-    /**
-     * Get brouillon
-     *
-     * @return int
-     */
-    public function getBrouillon()
-    {
-        return $this->brouillon;
-    }
-
-    /**
-     * Set enAttenteDeValidation
-     *
-     * @param integer $enAttenteDeValidation
-     *
-     * @return VehiclesValidationStatut
-     */
-    public function setEnAttenteDeValidation($enAttenteDeValidation)
-    {
-        $this->enAttenteDeValidation = $enAttenteDeValidation;
-
-        return $this;
-    }
-
-    /**
-     * Get enAttenteDeValidation
-     *
-     * @return int
-     */
-    public function getEnAttenteDeValidation()
-    {
-        return $this->enAttenteDeValidation;
-    }
-
-    /**
-     * Set enLigne
-     *
-     * @param integer $enLigne
-     *
-     * @return VehiclesValidationStatut
-     */
-    public function setEnLigne($enLigne)
-    {
-        $this->enLigne = $enLigne;
-
-        return $this;
-    }
-
-    /**
-     * Get enLigne
-     *
-     * @return int
-     */
-    public function getEnLigne()
-    {
-        return $this->enLigne;
-    }
-
-    /**
-     * Set refuse
-     *
-     * @param integer $refuse
-     *
-     * @return VehiclesValidationStatut
-     */
-    public function setRefuse($refuse)
-    {
-        $this->refuse = $refuse;
-
-        return $this;
-    }
-
-    /**
-     * Get refuse
-     *
-     * @return int
-     */
-    public function getRefuse()
-    {
-        return $this->refuse;
-    }
     /**
      * Constructor
      */
@@ -181,4 +87,29 @@ class VehiclesValidationStatut
     {
         return $this->vehiculePhysiques;
     }
+
+    /**
+     * Set statut.
+     *
+     * @param string|null $statut
+     *
+     * @return VehiclesValidationStatut
+     */
+    public function setStatut($statut = null)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut.
+     *
+     * @return string|null
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
 }

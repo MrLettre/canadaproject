@@ -22,7 +22,7 @@ class Cart
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Vente", inversedBy="carts")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $vente;
 
