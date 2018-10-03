@@ -146,8 +146,8 @@ class VehiculePhysiqueController extends Controller
     public function ficheProduit(VehiculePhysique $vehiculePhysique, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $id = $id;
-        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(['id' => $id]);
+        
+        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(['id' => $id]); 
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findByid(['id' => $id]);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
 
