@@ -11,10 +11,15 @@
     <table class="table">
         <thead>
             <tr>
+                <th scope="col">Etat</th>
                 <th scope="col">Marque</th>
                 <th scope="col">Modèle</th>
                 <th scope="col">Version</th>
+                {% for vehiculePhysique in vehiculePhysiques %}
+                {% if vehiculePhysique.dateMiseEnLigne %}
                 <th scope="col">Datemiseenligne</th>
+                {% endif %}
+                {% endfor %}
                 <th scope="col">Kilometrage</th>
                 <th scope="col">Datedemiseencirculation</th>
                 <th scope="col">Prixht</th>
@@ -25,10 +30,11 @@
         <tbody>
         {% for vehiculePhysique in vehiculePhysiques %}
             <tr>
+                <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
                 <td>{{ vehiculePhysique.version.model.marque }}</td>
                 <td>{{ vehiculePhysique.version.model }}</td>
                 <td>{{ vehiculePhysique.version }}</td>
-                <td>{% if vehiculePhysique.dateMiseEnLigne %}{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}{% endif %}</td>
+                {% if vehiculePhysique.dateMiseEnLigne %}<td>{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}</td>{% endif %}
                 <td>{{ vehiculePhysique.kilometrage }}</td>
                 <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ vehiculePhysique.prixHT }}</td>
