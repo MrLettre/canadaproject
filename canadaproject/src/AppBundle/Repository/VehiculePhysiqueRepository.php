@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class VehiculePhysiqueRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findActive() {
+        return $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.validationStatut = '2'")
+            ->getResult();
+    }
 }
