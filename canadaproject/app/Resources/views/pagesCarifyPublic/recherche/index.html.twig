@@ -5,10 +5,37 @@
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script> <!-- Package d'icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 {% endblock %}
 
 {% block body %}
 
+    <section>
+        <div class="container py-3">
+            {% for vehiculePhysique in vehiculePhysiques %}
+                <div class="card">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" class="w-100">
+                        </div>
+                        <div class="col-md-8 px-3">
+                            <div class="card-block px-3">
+                                <h4 class="card-title">{{ vehiculePhysique.version.model.marque }} {{ vehiculePhysique.version.model }} {{ vehiculePhysique.version }}</h4>
+                                <p class="card-text">{{ vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}</p>
+                                <p class="card-text">{{ vehiculePhysique.version.energie }}</p>
+                                <p class="card-text">{{ vehiculePhysique.version }}</p>
+                                <p class="card-text">{{ vehiculePhysique.kilometrage }}km</p>
+                                <p class="card-text">{{ vehiculePhysique.prixht }}$ HT</p>
+                                <a href="#" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}
 
 {% block javascripts %}
