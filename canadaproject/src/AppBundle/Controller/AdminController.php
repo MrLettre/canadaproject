@@ -161,13 +161,18 @@ class AdminController extends Controller
 
         $venteT = $em->test();
 
-       
-        
+        $venteTotales = count($venteT);
 
+        $venteTo = $em->findAll(); 
+
+        
+        
         // replace this example code with whatever you need
         return $this->render('admin/vendeur/statistiques.html.twig', [
           //  'ventesTotales'       =>$ventesTotales,
             'venteT'                 =>$venteT,
+            'venteTo'               =>$venteTo,
+            'venteTotales'          =>$venteTotales,
         ]);
     }
 

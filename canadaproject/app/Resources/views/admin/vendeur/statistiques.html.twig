@@ -6,9 +6,18 @@
 
 {% block body %}
 
+<h4>Vente Totale de Vehicules: {{venteTotales}}</h4>
+
 {% for venteT in venteT %}
+{{ venteT.id }}
+    {% for vehiculePhysiques in venteT.vehiculePhysiques %}
+  <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
 
 {% endfor %}
+
+{% endfor %}
+
+
 
 
 

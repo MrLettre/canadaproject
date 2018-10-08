@@ -139,4 +139,10 @@ class Cart
     {
         $this->vehiculePhysiques->removeElement($vehiculePhysique);
     }
+
+    public function __toString()
+    {
+    
+        return $this->vehiculePhysiques;
+    }
 }
