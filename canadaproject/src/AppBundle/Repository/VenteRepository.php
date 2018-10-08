@@ -14,7 +14,7 @@ class VenteRepository extends \Doctrine\ORM\EntityRepository
     public function vente()
     {
 
-        $dql = 'SELECT c FROM AppBundle:Vente c';
+        $dql = 'SELECT v FROM AppBundle:Vente v where v.id > 0';
         $query = $this->getEntityManager()->createQuery($dql);
         return $query->execute();
 

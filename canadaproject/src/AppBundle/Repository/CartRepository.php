@@ -27,9 +27,10 @@ class CartRepository extends \Doctrine\ORM\EntityRepository
     public function test()
     {
 
-        $dql = 'SELECT c FROM AppBundle:Cart c JOIN AppBundle:VehiculePhysique v';
+        $dql = 'SELECT c FROM AppBundle:Cart c where c.id > 0';
         $query = $this->getEntityManager()->createQuery($dql);
         return $query->execute();
+
 
     }
 
