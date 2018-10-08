@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class VenteRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function vente()
+    {
+
+        $dql = 'SELECT c FROM AppBundle:Vente c';
+        $query = $this->getEntityManager()->createQuery($dql);
+        return $query->execute();
+
+    }
+
 }
