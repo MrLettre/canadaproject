@@ -13,6 +13,7 @@
   "web/header.js": "/web/header.js",
   "web/header.css": "/web/header.css",
   "web/blocRecherche.js": "/web/blocRecherche.js",
+  "web/blocRecherche.css": "/web/blocRecherche.css",
   "web/adminPanelTwo.js": "/web/adminPanelTwo.js",
   "web/adminPanelTwo.css": "/web/adminPanelTwo.css",
   "web/adminPanelSellerTwo.js": "/web/adminPanelSellerTwo.js",

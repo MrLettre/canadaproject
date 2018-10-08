@@ -3,6 +3,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('build/recherche.css') }}">
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/blocRecherche.css') }}">
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script> <!-- Package d'icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -11,27 +12,84 @@
 {% endblock %}
 
 {% block body %}
-
+    <section style="margin: 0 0 0 0; padding: 0 0 0 0">
+        {% include 'pagesCarifyPublic/recherche/rechercheFormVehPhy.html.twig'  %}
+    </section>
     <section>
         <div class="container py-3">
             {% for vehiculePhysique in vehiculePhysiques %}
                 <div class="card">
+                    <a href="vehiculephysique/recherche/{{ vehiculePhysique.id }}" style="text-decoration: none; color: inherit">
                     <div class="row ">
                         <div class="col-md-4">
                             <img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" class="w-100">
                         </div>
                         <div class="col-md-8 px-3">
                             <div class="card-block px-3">
-                                <h4 class="card-title">{{ vehiculePhysique.version.model.marque }} {{ vehiculePhysique.version.model }} {{ vehiculePhysique.version }}</h4>
-                                <p class="card-text">{{ vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}</p>
-                                <p class="card-text">{{ vehiculePhysique.version.energie }}</p>
-                                <p class="card-text">{{ vehiculePhysique.version }}</p>
-                                <p class="card-text">{{ vehiculePhysique.kilometrage }}km</p>
-                                <p class="card-text">{{ vehiculePhysique.prixht }}$ HT</p>
-                                <a href="#" class="btn btn-primary">Read More</a>
+                                <h4 class="card-title" style="text-align: center">{{ vehiculePhysique.version.model.marque }} {{ vehiculePhysique.version.model }} {{ vehiculePhysique.version }}</h4>
+                                         <div class="container" style="margin-bottom: 2vh">
+                                             <h6>Caractéristiques</h6>
+                                             <div class="row" style="display: flex">
+                                                 <div class="col-md-6">
+                                                    <p class="card-text">Date de mise en circulation : {{ vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}</p>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <p class="card-text">Kilométrage réel : {{ vehiculePhysique.kilometrage }}km</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="card-text">Carburant : {{ vehiculePhysique.version.energie }}</p>
+                                                </div>
+                                             </div>
+                                        </div>
+                                {% if vehiculePhysique.version.energie == 'essence' %}
+                                    <div class="container" style="display: flex">
+                                        <div class="col-md-6">
+                                            <p class="card-text">Puissance : {{ vehiculePhysique.version.puissanceTh }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="card-text">Autonomie : {{ vehiculePhysique.version.autonimieTh }}</p>
+                                        </div>
+                                    </div>
+                                {% elseif vehiculePhysique.version.energie == 'diesel' %}
+                                    <div class="container" style="display: flex">
+                                        <div class="col-md-6">
+                                            <p class="card-text">Puissance : {{ vehiculePhysique.version.puissanceTh }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="card-text">Autonomie : {{ vehiculePhysique.version.autonimieTh }}</p>
+                                        </div>
+                                    </div>
+                                {% elseif vehiculePhysique.version.energie == 'electrique' %}
+                                    <div class="container" style="display: flex">
+                                        <div class="col-md-6">
+                                            <p class="card-text">Puissance : {{ vehiculePhysique.version.puissanceEl }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="card-text">Autonomie : {{ vehiculePhysique.version.autonomieEl }}</p>
+                                        </div>
+                                    </div>
+                                {% elseif vehiculePhysique.version.energie == 'hybride' %}
+                                    <div class="container" style="display: flex">
+                                        <div class="col-md-6">
+                                            <h6>Puissance</h6>
+                                                <p class="card-text">Puissance : {{ vehiculePhysique.version.puissanceHy }}cv</p>
+                                                <p class="card-text">Puissance moteur Th : {{ vehiculePhysique.version.puissanceTh }}cv</p>
+                                                <p class="card-text">Puissance moteur El : {{ vehiculePhysique.version.puissanceEl }}cv</p>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-6">
+                                            <h6>Autonomie</h6>
+                                                <p class="card-text">Autonomie : {{ vehiculePhysique.version.autonomieHy }}km</p>
+                                                <p class="card-text">Autonomie moteur Th : {{ vehiculePhysique.version.autonimieTh }}km</p>
+                                                <p class="card-text">Autonomie moteur El : {{ vehiculePhysique.version.autonomieEl }}km</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
