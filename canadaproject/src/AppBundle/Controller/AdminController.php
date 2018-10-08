@@ -167,7 +167,7 @@ class AdminController extends Controller
         // replace this example code with whatever you need
         return $this->render('admin/vendeur/statistiques.html.twig', [
           //  'ventesTotales'       =>$ventesTotales,
-            'vente'                =>$vente,
+            'vente'                 =>$vente,
         ]);
     }
 
