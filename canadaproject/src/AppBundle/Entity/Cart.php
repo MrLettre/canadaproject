@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Cart
@@ -58,7 +59,11 @@ class Cart
         return $this->id;
     }
 
-    public function getVehiculePhysiques()
+
+    /**
+     * @return Collection
+     */
+    public function getVehiculePhysiques(): Collection
     {
         return $this->vehiculePhysiques;
     }

@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Marque;
+use AppBundle\Entity\VehiculePhysique;
+use AppBundle\Entity\Concession;
 
 class AdminController extends Controller
 {
@@ -146,15 +148,24 @@ class AdminController extends Controller
      /**
      * @Route("/adminSellerStats", name="adminSellerStats")
      */
-    public function adminSellerStats()
+    public function adminSellerStats(Request $request)
     {
-
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager()->getRepository('AppBundle:Cart');
         
-        $total = $em->getRepository('AppBundle:Cart')->findAll();
+        /**$ventesTotales = $em->ventesTotales();**/
+       
+        //$ventesTotales = $em->ventesTotales();
+        //$em = $this->getDoctrine()->getManager();
+
+        $test = $em->test();
+
+       
+        
+
         // replace this example code with whatever you need
         return $this->render('admin/vendeur/statistiques.html.twig', [
-            'total' => $total,
+          //  'ventesTotales'       =>$ventesTotales,
+            'test'                =>$test,
         ]);
     }
 
