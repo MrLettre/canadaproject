@@ -189,7 +189,7 @@ class RechercheVehPhyType extends AbstractType
                 'choices' => [
                     'Boîte de vitesse' => 'null',
                     'Automatique' => 'Automatique',
-                    'Manuelle' => 'Diesel',
+                    'Manuelle' => 'Manuelle',
                     'Séquentielle' => 'Séquentielle',
                     'Autre' => 'Autre',
                 ]
