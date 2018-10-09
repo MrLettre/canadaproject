@@ -26,7 +26,6 @@ class RechercheController extends Controller
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         $vehiculePhysiques = $em->getRepository('AppBundle:VehiculePhysique')->findActive();
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($recherche);
@@ -44,12 +43,23 @@ class RechercheController extends Controller
             $bdv = $recherche->getBdv();
             $energie = $recherche->getEnergie();
 
-            $vehiculePhysique = $em->getRepository('AppBundle:VehiculePhysique')
+            $arrayVeh = $em->getRepository('AppBundle:VehiculePhysique')
                 ->findByRecherche($marque, $model, $version, $miseEnCircuMax, $miseEnCircuMin, $kiloMax, $kiloMin, $prixMax, $prixMin, $bdv, $energie);
+            //var_dump($arrayVeh);die();
 
+            $ids='';
+            foreach($arrayVeh as $key => $value){
+                $ids .= $value['id'] . ',';
+            }
+            $ids =substr($ids,0,-1);
 
-            return $this->redirectToRoute('pagesCarifyPublic/recherche/index.html.twig', array(
-                'vehiculePhysique' => $vehiculePhysique,
+            if($ids != ''){
+            $vehiculePhysiques = $em->getRepository('AppBundle:VehiculePhysique')->findIds($ids);
+            }
+
+            return $this->render('pagesCarifyPublic/recherche/index.html.twig', array(
+                'vehiculePhysiques' => $vehiculePhysiques,
+                'form' => $form->createView(),
             ));
         }
 
