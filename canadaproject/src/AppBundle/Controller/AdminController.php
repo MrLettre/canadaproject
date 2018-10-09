@@ -163,11 +163,15 @@ class AdminController extends Controller
         //Ventes annuelles par an
         $venteAnnuelles = $em->getRepository('AppBundle:Cart')->ventesAnnuelles();
 
-        
+        //Ventes 1er trimestre
+        $venteTrimUn = $em->getRepository('AppBundle:Cart')->ventesTrimUn();
+
+      
         return $this->render('admin/vendeur/statistiques.html.twig', [
             'venteTotales'           =>$venteTotales,
             'venteTotalesCompte'     =>$venteTotalesCompte,
-            'venteAnnuelles'         =>$venteAnnuelles,
+            'venteAnnuelles'         =>$venteAnnuelles,  
+  
         ]);
     }
 

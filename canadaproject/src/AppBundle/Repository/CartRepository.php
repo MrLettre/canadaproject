@@ -26,12 +26,24 @@ class CartRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('c')
                  ->where('c.vente is not null')
-                 ->andWhere('c.dateMiseAuPanier > 2018-01-01')
+                 ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
                  ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->setParameter('debutAnnee', 20180101)  
+                 ->setParameter('finAnnee', 20181231)
                  ->getQuery();
 
         return $query->getResult();         
     }
 
+    // Recuperation des ventes 1er trimestre
+    public function ventesTrimUn()
+    {
+        $query = $this->createQueryBuilder('c')
+                 ->where('c.vente is not null')
+                 ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
 
 }
