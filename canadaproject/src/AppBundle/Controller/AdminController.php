@@ -160,11 +160,16 @@ class AdminController extends Controller
         //Chiffre des ventes totales de toutes les années
         $venteTotalesCompte = count($venteTotales);
 
+        $debutAnnee ="2018";
+        $finAnnee="2018";
+        $premierTriDeb="2018";
+        $premierTriFin="2018";
+
         //Ventes annuelles par an
-        $venteAnnuelles = $em->getRepository('AppBundle:Cart')->ventesAnnuelles();
+        $venteAnnuelles = $em->getRepository('AppBundle:Cart')->ventesAnnuelles($debutAnnee, $finAnnee);
 
         //Ventes 1er trimestre
-        $venteTrimUn = $em->getRepository('AppBundle:Cart')->ventesTrimUn();
+        $venteTrimUn = $em->getRepository('AppBundle:Cart')->ventesTrimUn($premierTriDeb, $premierTriFin);
 
       
         return $this->render('admin/vendeur/statistiques.html.twig', [

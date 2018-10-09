@@ -50,7 +50,7 @@
 
 {% for venteTrimUn in venteTrimUn %}
 
-{% if venteTrimUn.dateMiseAuPanier is not null %}
+
 
   <h6>Date de vente: {{ venteTrimUn.dateMiseAuPanier|date('Y-m-d')}}</h6>
     {% for vehiculePhysiques in venteTrimUn.vehiculePhysiques %}
@@ -59,9 +59,9 @@
 
 {% else %}
 
-<p> pas de ventes ce trimestre petit pd </p>
+<p> pas de ventes ce trimestre </p>
 
-{% endif %}
+
 
 {% endfor %}
 

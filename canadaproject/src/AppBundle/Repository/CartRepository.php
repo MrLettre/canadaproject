@@ -22,27 +22,27 @@ class CartRepository extends \Doctrine\ORM\EntityRepository
     }
 
 // Recuperation des ventes annuelles
-    public function ventesAnnuelles()
+    public function ventesAnnuelles($debutAnnee, $finAnnee)
     {
         $query = $this->createQueryBuilder('c')
                  ->where('c.vente is not null')
                  ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
                  ->orderBy('c.dateMiseAuPanier', 'ASC')
-                 ->setParameter('debutAnnee', 20180101)  
-                 ->setParameter('finAnnee', 20181231)
+                 ->setParameter('debutAnnee', $debutAnnee.'0101')  
+                 ->setParameter('finAnnee', $finAnnee.'1231')
                  ->getQuery();
 
         return $query->getResult();         
     }
 
     // Recuperation des ventes 1er trimestre
-    public function ventesTrimUn()
+    public function ventesTrimUn($premierTriDeb, $premierTriFin)
     {
         $query = $this->createQueryBuilder('c')
                  ->where('c.vente is not null')
                  ->andWhere('c.dateMiseAuPanier BETWEEN :premierTriDeb AND :premierTriFin')
-                 ->setParameter('premierTriDeb', 20180101)  
-                 ->setParameter('premierTriFin', 20180331)
+                 ->setParameter('premierTriDeb', $premierTriDeb.'0101')  
+                 ->setParameter('premierTriFin', $premierTriFin.'0331')
                  ->orderBy('c.dateMiseAuPanier', 'ASC')
                  ->getQuery();
 
