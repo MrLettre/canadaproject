@@ -40,6 +40,9 @@ class CartRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('c')
                  ->where('c.vente is not null')
+                 ->andWhere('c.dateMiseAuPanier BETWEEN :premierTriDeb AND :premierTriFin')
+                 ->setParameter('premierTriDeb', 20180101)  
+                 ->setParameter('premierTriFin', 20180331)
                  ->orderBy('c.dateMiseAuPanier', 'ASC')
                  ->getQuery();
 

@@ -171,6 +171,7 @@ class AdminController extends Controller
             'venteTotales'           =>$venteTotales,
             'venteTotalesCompte'     =>$venteTotalesCompte,
             'venteAnnuelles'         =>$venteAnnuelles,  
+            'venteTrimUn'            =>$venteTrimUn,
   
         ]);
     }
