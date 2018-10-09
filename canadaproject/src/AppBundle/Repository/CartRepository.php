@@ -49,4 +49,46 @@ class CartRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();         
     }
 
+            // Recuperation des ventes 2er trimestre
+            public function ventesTrimDeux($premierTriDeb, $premierTriFin)
+            {
+                $query = $this->createQueryBuilder('c')
+                         ->where('c.vente is not null')
+                         ->andWhere('c.dateMiseAuPanier BETWEEN :premierTriDeb AND :premierTriFin')
+                         ->setParameter('premierTriDeb', $premierTriDeb.'0401')  
+                         ->setParameter('premierTriFin', $premierTriFin.'0630')
+                         ->orderBy('c.dateMiseAuPanier', 'ASC')
+                         ->getQuery();
+        
+                return $query->getResult();         
+            }
+
+                        // Recuperation des ventes 3eme trimestre
+                        public function ventesTrimTrois($premierTriDeb, $premierTriFin)
+                        {
+                            $query = $this->createQueryBuilder('c')
+                                     ->where('c.vente is not null')
+                                     ->andWhere('c.dateMiseAuPanier BETWEEN :premierTriDeb AND :premierTriFin')
+                                     ->setParameter('premierTriDeb', $premierTriDeb.'0701')  
+                                     ->setParameter('premierTriFin', $premierTriFin.'0930')
+                                     ->orderBy('c.dateMiseAuPanier', 'ASC')
+                                     ->getQuery();
+                    
+                            return $query->getResult();         
+                        }
+
+                                // Recuperation des ventes 4eme trimestre
+                                public function ventesTrimQuatre($premierTriDeb, $premierTriFin)
+                                {
+                                    $query = $this->createQueryBuilder('c')
+                                             ->where('c.vente is not null')
+                                             ->andWhere('c.dateMiseAuPanier BETWEEN :premierTriDeb AND :premierTriFin')
+                                             ->setParameter('premierTriDeb', $premierTriDeb.'1001')  
+                                             ->setParameter('premierTriFin', $premierTriFin.'1231')
+                                             ->orderBy('c.dateMiseAuPanier', 'ASC')
+                                             ->getQuery();
+                            
+                                    return $query->getResult();         
+                                }                
+
 }
