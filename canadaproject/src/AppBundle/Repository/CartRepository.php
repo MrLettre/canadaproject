@@ -21,4 +21,17 @@ class CartRepository extends \Doctrine\ORM\EntityRepository
         return $query->execute();
     }
 
+// Recuperation des ventes annuelles
+    public function ventesAnnuelles()
+    {
+        $query = $this->createQueryBuilder('c')
+                 ->where('c.vente is not null')
+                 ->andWhere('c.dateMiseAuPanier > 2018-01-01')
+                 ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+
 }

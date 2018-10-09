@@ -1,4 +1,4 @@
-{% extends 'admin/vendeurBase.html.twig' %}
+
 
 {% block stylesheets %}
   
@@ -20,10 +20,31 @@
 
 <hr>
 
+{# Ventes annuelles #}
+
+<h4>Ventes annuelles</h4>
+
+{% for venteAnnuelles in venteAnnuelles %}
+
+{% if venteAnnuelles.dateMiseAuPanier|date('Y-m-d') >= '2018-01-01'|date('Y-m-d') %}
+
+  <h6>Date de vente: {{ venteAnnuelles.dateMiseAuPanier|date('Y-m-d')}}</h6>
+    {% for vehiculePhysiques in venteAnnuelles.vehiculePhysiques %}
+      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+    {% endfor %}
+    {% endif %}
+{% endfor %}
+
+{# Fin ventes annuelles #}
+
+
+<hr>
+
+{# Ventes par trimestres #}
 
 
 
-
+{# Fin ventes trimestres #}
 
 
 
