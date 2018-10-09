@@ -11,27 +11,14 @@ namespace AppBundle\Repository;
 class CartRepository extends \Doctrine\ORM\EntityRepository
 {
 
+
+// Recuperation des ventes totales 
+
     public function ventesTotales()
     {
-        $query = $this->createQueryBuilder('c')
-        ->where ('c.vente is not null')
-        ->join('c.VehiculePhysique', 'v', 'WITH', 'c.id = v.id');
-        
-       
-        $ventesTotales = $query->getQuery()->getResult();
-
-        
-        return $ventesTotales;
-    }
-
-    public function test()
-    {
-
-        $dql = 'SELECT c FROM AppBundle:Cart c where c.vente is not null';
+        $dql = 'SELECT c FROM AppBundle:Cart c where c.vente is not null order by c.dateMiseAuPanier ASC';
         $query = $this->getEntityManager()->createQuery($dql);
         return $query->execute();
-
-
     }
 
 }

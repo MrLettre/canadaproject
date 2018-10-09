@@ -6,16 +6,20 @@
 
 {% block body %}
 
-<h4>Vente Totale de Vehicules: {{venteTotales}}</h4>
 
-{% for venteT in venteT %}
-{{ venteT.id }}
-    {% for vehiculePhysiques in venteT.vehiculePhysiques %}
-  <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+{# Pour les ventes totales #}
+<h4>Vente Totale de Vehicules: {{venteTotalesCompte}}</h4>
 
+{% for venteTotales in venteTotales %}
+  <h6>Date de vente: {{ venteTotales.dateMiseAuPanier|date('Y-m-d')}}</h6>
+    {% for vehiculePhysiques in venteTotales.vehiculePhysiques %}
+      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+    {% endfor %}
 {% endfor %}
+{# Fin ventes totales #}
 
-{% endfor %}
+<hr>
+
 
 
 

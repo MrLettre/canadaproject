@@ -152,27 +152,16 @@ class AdminController extends Controller
      */
     public function adminSellerStats(Request $request)
     {
-        $em = $this->getDoctrine()->getManager()->getRepository('AppBundle:Cart');
+        $em = $this->getDoctrine()->getManager();
         
-        /**$ventesTotales = $em->ventesTotales();**/
-       
-        //$ventesTotales = $em->ventesTotales();
-        //$em = $this->getDoctrine()->getManager();
+        $venteTotales = $em->getRepository('AppBundle:Cart')->ventesTotales();
 
-        $venteT = $em->test();
+        $venteTotalesCompte = count($venteTotales);
 
-        $venteTotales = count($venteT);
-
-        $venteTo = $em->findAll(); 
-
-        
-        
         // replace this example code with whatever you need
         return $this->render('admin/vendeur/statistiques.html.twig', [
-          //  'ventesTotales'       =>$ventesTotales,
-            'venteT'                 =>$venteT,
-            'venteTo'               =>$venteTo,
-            'venteTotales'          =>$venteTotales,
+            'venteTotales'           =>$venteTotales,
+            'venteTotalesCompte'     =>$venteTotalesCompte,
         ]);
     }
 
