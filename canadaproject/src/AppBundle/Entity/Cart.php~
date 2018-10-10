@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Cart
@@ -22,7 +23,7 @@ class Cart
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Vente", inversedBy="carts")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $vente;
 
@@ -58,7 +59,11 @@ class Cart
         return $this->id;
     }
 
-    public function getVehiculePhysiques()
+
+    /**
+     * @return Collection
+     */
+    public function getVehiculePhysiques(): Collection
     {
         return $this->vehiculePhysiques;
     }
@@ -133,5 +138,11 @@ class Cart
     public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
     {
         $this->vehiculePhysiques->removeElement($vehiculePhysique);
+    }
+
+    public function __toString()
+    {
+    
+        return $this->vehiculePhysiques;
     }
 }

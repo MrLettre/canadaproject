@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Collection;
 
 
 /**
@@ -161,7 +162,11 @@ class VehiculePhysique
     {
         return $this->id;
     }
-    public function getCarts()
+
+    /**
+     * @return Collection
+     */
+    public function getCarts(): Collection
     {
         return $this->carts;
     }
