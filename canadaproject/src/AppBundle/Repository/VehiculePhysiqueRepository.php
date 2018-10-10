@@ -10,4 +10,158 @@ namespace AppBundle\Repository;
  */
 class VehiculePhysiqueRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findActive() {
+        return $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.validationStatut = '2' ORDER BY v.dateMiseEnLigne ASC")
+            ->getResult();
+    }
+
+    public function findById($id) {
+        return $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.id = $id ORDER BY v.dateMiseEnLigne ASC")
+            ->getResult();
+    }
+
+    public function findIds($ids) {
+        return $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.id IN ($ids) ORDER BY v.dateMiseEnLigne ASC")
+            ->getResult();
+    }
+
+    public function findByRecherche($marque, $model, $version, $miseEnCircuMax, $miseEnCircuMin, $kiloMax, $kiloMin, $prixMax, $prixMin, $bdv, $energie) {
+                    $query = $this->createQueryBuilder('v')
+                    ->join('v.version', 'ver')
+                    ->join('ver.model', 'mod')
+                    ->join('mod.marque', 'm')
+                    ->join('ver.bdv','b')
+                    ->join('ver.energie','e');
+
+            // ON DEFINIT D'ABORD QUE LE VEHICULE DOIT ETRE EN LIGNE POUR ETRE DANS LES REPONSES
+                    $query->where('v.validationStatut = 2');
+
+                // SI LA VERSION EST FOURNIE
+
+                if( !is_null($version)){
+                    $query->AndWhere('ver.nom = :version')
+
+                        ->setParameters(array(
+                            'version' => $version,
+                        ));
+                }
+
+                // SI LE MODEL EST FOURNIE
+
+                if(!is_null($model) && is_null($version)){
+                    $query->AndWhere('mod.nom = :model')
+
+                        ->setParameters(array(
+                            'model' => $model,
+                        ));
+                }
+
+                // SI LA MARQUE EST FOURNIE
+
+                if((!is_null($marque)) && is_null($model) && is_null($version)){
+                    $query->AndWhere('m.nom = :marque')
+
+                        ->setParameters(array(
+                            'marque' => $marque,
+                        ));
+                }
+
+        // GESTION DES CHAMPS MIN & MAX SI LES DEUX SONT REMPLIS
+
+                //GESTION DATE DE MISE EN CIRCULATION
+
+                    if(($miseEnCircuMin != 'null') && ($miseEnCircuMax == 'null')){
+                        $query->AndWhere('v.dateDeMiseEnCirculation > :dateDeMiseEnCirculationMin')
+
+                        ->setParameters(array(
+                            'dateDeMiseEnCirculationMin' => $miseEnCircuMin.'0101',
+                        ));
+                    }elseif (($miseEnCircuMin == 'null') && ($miseEnCircuMax != 'null')){
+                        $query->AndWhere('v.dateDeMiseEnCirculation < :dateDeMiseEnCirculationMax')
+                            ->setParameters(array(
+                                'dateDeMiseEnCirculationMax' => $miseEnCircuMax.'1231'
+                            ));
+
+                    }elseif (($miseEnCircuMin != 'null') && ($miseEnCircuMax != 'null')){
+                        $query->AndWhere('v.dateDeMiseEnCirculation BETWEEN :dateDeMiseEnCirculationMin AND :dateDeMiseEnCirculationMax')
+
+                            ->setParameters(array(
+                                'dateDeMiseEnCirculationMin' => $miseEnCircuMin,
+                                'dateDeMiseEnCirculationMax' => $miseEnCircuMax
+                            ));
+
+                    }
+
+                    //GESTION KILOMETRAGE
+
+                    if(($kiloMin != 'null') && ($kiloMax == 'null')){
+                        $query->AndWhere('v.kilometrage > :kiloMin')
+
+                            ->setParameters(array(
+                                'kiloMin' => $kiloMin,
+                            ));
+                    }elseif (($kiloMin == 'null') && ($kiloMax != 'null')){
+                        $query->AndWhere('v.kilometrage < :kiloMax')
+                            ->setParameters(array(
+                                'kiloMax' => $kiloMax
+                            ));
+
+                    }elseif (($kiloMin != 'null') && ($kiloMax != 'null')){
+                        $query->AndWhere('v.kilometrage BETWEEN :kiloMin AND :kiloMax')
+
+                            ->setParameters(array(
+                                'kiloMin' => $kiloMin,
+                                'kiloMax' => $kiloMax
+                            ));
+                    }
+
+                    //GESTION PRIX
+
+                    if(($prixMin != 'null') && ($prixMax == 'null')){
+                        $query->AndWhere('v.prixHT > :prixMin')
+
+                            ->setParameters(array(
+                                'prixMin' => $prixMin,
+                            ));
+                    }elseif (($prixMin == 'null') && ($prixMax != 'null')){
+                        $query->AndWhere('v.prixHT < :prixMax')
+                            ->setParameters(array(
+                                'prixMax' => $prixMax
+                            ));
+
+                    }elseif (($prixMin != 'null') && ($prixMax != 'null')){
+                        $query->AndWhere('v.prixHT BETWEEN :prixMin AND :prixMax')
+
+                            ->setParameters(array(
+                                'prixMin' => $prixMin,
+                                'prixMax' => $prixMax
+                            ));
+                    }
+
+                    // SI LA BDV EST FOURNIE
+
+                    if($bdv != 'null'){
+                        $query->AndWhere('b.nom = :bdv')
+
+                            ->setParameters(array(
+                                'bdv' => $bdv,
+                            ));
+                    }
+
+                    // SI L' ENERGIE EST FOURNIE
+
+                    if($energie != 'null'){
+                        $query->AndWhere('e.nom = :energie')
+
+                            ->setParameters(array(
+                                'energie' => $energie,
+                            ));
+                    }
+
+
+        return $query->getQuery()->getArrayResult();
+    }
 }

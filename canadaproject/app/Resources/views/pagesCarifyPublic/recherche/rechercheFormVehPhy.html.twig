@@ -1,0 +1,102 @@
+{% block body %}
+    <div class="container py-3">
+        <div class="card" id="blocRecherche">
+            {{ form_start(form) }}
+                <div class="row ">
+                    <div class="col-md-12 px-3">
+                        <div class="card-block px-3" style=" display: flex; justify-content: space-around;">
+                            <div class="form-group">
+                                {{ form_label(form.marque, 'Marque') }}
+                                {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
+                                {{ form_errors(form.marque) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.model, 'Modèle') }}
+                                {{ form_widget(form.model, {'attr':{class:'form-control'}}) }}
+                                {{ form_errors(form.model) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.version, 'Version') }}
+                                {{ form_widget(form.version, {'attr':{class:'form-control'}}) }}
+                                {{ form_errors(form.version) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 px-3" style="display: flex;">
+                        <div class="col-md-6">
+                            <div class="card-block px-3">
+                                <div class="form-group">
+                                    <p>Prix entre :
+                                    {{ form_label(form.prixMin, ' ') }}
+                                    {{ form_widget(form.prixMin, {'attr':{class:'form-control'}}) }}
+                                    {{ form_errors(form.prixMin) }}
+                                    et
+                                    {{ form_label(form.prixMax, ' ') }}
+                                    {{ form_widget(form.prixMax, {'attr':{class:'form-control'}}) }}
+                                    {{ form_errors(form.prixMax) }}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <p>Kilomètrage entre :
+                                        {{ form_label(form.kilometreMin, ' ') }}
+                                        {{ form_widget(form.kilometreMin, {'attr':{class:'form-control'}}) }}
+                                        {{ form_errors(form.kilometreMin) }}
+                                        et
+                                        {{ form_label(form.kilometeMax, ' ') }}
+                                        {{ form_widget(form.kilometeMax, {'attr':{class:'form-control'}}) }}
+                                        {{ form_errors(form.kilometeMax) }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 px-3">
+                            <div class="card-block px-3">
+                                <div class="form-group">
+                                    <p>Année entre :
+                                        {{ form_label(form.dateDeMiseEnCirculationMin, ' ') }}
+                                        {{ form_widget(form.dateDeMiseEnCirculationMin, {'attr':{class:'form-control'}}) }}
+                                        {{ form_errors(form.dateDeMiseEnCirculationMin) }}
+                                        et
+                                        {{ form_label(form.dateDeMiseEnCirculationMax, ' ') }}
+                                        {{ form_widget(form.dateDeMiseEnCirculationMax, {'attr':{class:'form-control'}}) }}
+                                        {{ form_errors(form.dateDeMiseEnCirculationMax) }}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <p>Energie :
+                                        {{ form_label(form.energie, ' ') }}
+                                        {{ form_widget(form.energie, {'attr':{class:'form-control'}}) }}
+                                        {{ form_errors(form.energie) }}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <p>Boîte de vitesse :
+                                        {{ form_label(form.Bdv, ' ') }}
+                                        {{ form_widget(form.Bdv, {'attr':{class:'form-control'}}) }}
+                                        {{ form_errors(form.Bdv) }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-block px-3">
+                            <input class="btn btn-primary" type="submit" value="recherche">
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}
+

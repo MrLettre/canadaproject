@@ -196,6 +196,9 @@ class VehiculePhysiqueController extends Controller
             $em =$this->getDoctrine()->getManager();
             $statutId = $vehiclesValidationStatut->getStatut($vehiclesValidationStatut);
             $vehiculePhysique->setValidationStatut($statutId);
+            if($statutId == 'Validé'){
+                $vehiculePhysique->setDateMiseEnLigne(new \DateTime('now'));
+            }
             $em->persist($vehiculePhysique);
             $em->flush();
 
