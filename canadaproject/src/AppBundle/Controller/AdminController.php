@@ -159,8 +159,8 @@ class AdminController extends Controller
     public function adminSellerStats(Request $request)
     {
 
-        $defaultData = array('message' => 'Choisir une date');
-        $form = $this->createFormBuilder($defaultData)
+        
+        $form = $this->createFormBuilder()
                 ->add('Choix', ChoiceType::class,[
                     'choices' => [
                         '2018' => 2018,
@@ -174,6 +174,7 @@ class AdminController extends Controller
                         '2025' => 2025,
             ]
         ])
+        ->add('save', SubmitType::class, array('label' => 'Choisir la date'))
                 ->getForm();
 
 
@@ -187,8 +188,11 @@ class AdminController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $date = $form->getData();
-    
+            $dateArray = $form->getData();
+
+            foreach($dateArray as $key=>$date){
+                $dateArray = $date;
+            }    
 }
 
         $debutAnnee = $date;
@@ -210,7 +214,6 @@ class AdminController extends Controller
   
 
         return $this->render('admin/vendeur/statistiques.html.twig', [
-            'defaultData'            =>$defaultData,
             'form'                   =>$form->createView(),
             'venteTotalesCompte'     =>$venteTotalesCompte,
             'venteTotales'           =>$venteTotales,
