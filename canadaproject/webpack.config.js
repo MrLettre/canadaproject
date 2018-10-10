@@ -17,6 +17,7 @@ Encore
     .addEntry('listing_render', './assets/scss/listing_render.scss')
     .addEntry('recherche', './assets/scss/recherche.scss')
     .addEntry('blocRecherche', './assets/scss/blocRecherche.scss')
+    .addEntry('menuCompaRecherche', './assets/scss/menuCompaRecherche.scss')
 
 
     .cleanupOutputBeforeBuild()

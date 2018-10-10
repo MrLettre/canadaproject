@@ -5,12 +5,71 @@
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script> <!-- Package d'icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% endblock %}
 
-{% block body %}
+    {% block body %}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+    <!------------------------------------------------------ MENU LATERAL ------------------------------------------------->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 bg-secondary">
+                {{ form_start(form) }}
+                <div class="filter-sidebar">
+                    <div class="row card-body py-2 mb-3 bg-dark twhite">
+                        <h4><i class="fa fa-car"></i> CARIFY SEARCH</h4>
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
+                        {{ form_errors(form.marque) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.model, {'attr':{class:'form-control'}}) }}
+                        {{ form_errors(form.model) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.version, {'attr':{class:'form-control'}}) }}
+                        {{ form_errors(form.version) }}
+                    </div>
+
+
+                    <hr>
+                    <button type="btn" class="btn btn-primary">Chercher</button>
+                    <div class="pb-3"></div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------------------ FIN DU MENU LATERAL ------------------------------------------------->
 
 {% endblock %}
 
 {% block javascripts %}
+    <!-- Requête Ajax -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/front.js"></script>
+    <script src="{{ asset('build/rechercheVehiculeAdmin.js') }}"></script>
 
+    <script>$(document).on('change', '#appbundle_vehicledefinition_marque, #appbundle_vehicledefinition_model', function () {
+            let $field = $(this)
+            let $marqueField = $('#appbundle_vehicledefinition_marque')
+            let $form = $field.closest('form')
+            let target = '#' + $field.attr('id').replace('model', 'version').replace('marque', 'model')
+            // Les données à envoyer en Ajax
+            let data = {}
+            data[$marqueField.attr('name')] = $marqueField.val()
+            data[$field.attr('name')] = $field.val()
+            // On soumet les données
+            $.post($form.attr('action'), data).then(function (data) {
+                // On récupère le nouveau <select>
+                let $input = $(data).find(target)
+                // On remplace notre <select> actuel
+                $(target).replaceWith($input)
+            })
+        })</script>
 {% endblock %}
