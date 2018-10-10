@@ -10,6 +10,12 @@ use AppBundle\Entity\VehiculePhysique;
 use AppBundle\Entity\Concession;
 use AppBundle\Entity\Vente;
 use AppBundle\Entity\Cart;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class AdminController extends Controller
 {
@@ -152,34 +158,68 @@ class AdminController extends Controller
      */
     public function adminSellerStats(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
 
+        $defaultData = array('message' => 'Choisir une date');
+        $form = $this->createFormBuilder($defaultData)
+                ->add('Choix', ChoiceType::class,[
+                    'choices' => [
+                        '2018' => 2018,
+                        '2019' => 2019,
+                        '2020' => 2020,
+                        '2021' => 2021,
+                        '2022' => 2022,
+                        '2023' => 2023,
+                        '2024' => 2024,
+                        '2024' => 2024,
+                        '2025' => 2025,
+            ]
+        ])
+                ->getForm();
+
+
+        $form->handleRequest($request);
+
+        $date = '';
+
+        $em = $this->getDoctrine()->getManager();
         //Récupération de toutes les ventes totales de toutes les années
         $venteTotales = $em->getRepository('AppBundle:Cart')->ventesTotales();
 
-        //Chiffre des ventes totales de toutes les années
-        $venteTotalesCompte = count($venteTotales);
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        $debutAnnee ="2018";
-        $finAnnee="2018";
-        $premierTriDeb="2018";
-        $premierTriFin="2018";
+            $date = $form->getData();
+    
+}
 
+        $debutAnnee = $date;
+        $finAnnee = $date;
+        $premierTriDeb = $date;
+        $premierTriFin = $date;
+
+     
         //Ventes annuelles par an
         $venteAnnuelles = $em->getRepository('AppBundle:Cart')->ventesAnnuelles($debutAnnee, $finAnnee);
 
         //Ventes 1er trimestre
         $venteTrimUn = $em->getRepository('AppBundle:Cart')->ventesTrimUn($premierTriDeb, $premierTriFin);
 
-      
+        //Chiffre des ventes totales de toutes les années
+        $venteTotalesCompte = count($venteTotales);
+        
+ 
+  
+
         return $this->render('admin/vendeur/statistiques.html.twig', [
-            'venteTotales'           =>$venteTotales,
+            'defaultData'            =>$defaultData,
+            'form'                   =>$form->createView(),
             'venteTotalesCompte'     =>$venteTotalesCompte,
+            'venteTotales'           =>$venteTotales,
             'venteAnnuelles'         =>$venteAnnuelles,  
             'venteTrimUn'            =>$venteTrimUn,
-  
+            
         ]);
     }
+
 
      /**
      * @Route("/adminSellerAfterSale", name="adminSellerAfterSale")
