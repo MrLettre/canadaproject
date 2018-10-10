@@ -30,10 +30,13 @@
                 {{ vehicleDefinition.version.autonomieEl }}
 
                 {# {{ vehicleDefinition.version.model.dimensions }}      #}          <!-- A ajouter -->
+                    {% for colors in version.couleursDisponibles %}
+                        {{ colors.nom }}
+                    {% endfor %}
+                {% for options in version.options %}
+                    {{ options.nom }}
+                {% endfor %}
 
-                {{ vehicleDefinition.version.couleursDisponibles }}
-
-                {{ vehicleDefinition.version.options }}
 
                 {{ vehicleDefinition.version.transmission }}
                 {# {{ vehicleDefinition.version.nbreDePortes }}        #}            <!-- A ajouter -->

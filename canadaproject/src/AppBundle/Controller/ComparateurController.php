@@ -46,10 +46,11 @@ class ComparateurController extends Controller
      */
     public function showAction(VehicleDefinition $vehicleDefinition)
     {
-
+        $version = $vehicleDefinition->getVersion();
 
         return $this->render('pagesCarifyPublic/comparateur/show.html.twig', array(
             'vehicleDefinition' => $vehicleDefinition,
+            'version' => $version,
         ));
     }
 }
