@@ -1,3 +1,4 @@
+{% extends 'admin/vendeurBase.html.twig' %}
 
 
 {% block stylesheets %}
@@ -71,7 +72,66 @@
 
 {# Fin ventes 1er trimestre #}
 
+{# Ventes 2eme trimestre #}
 
+<h5>Vente du deuxiemme trimestre</h5>
+
+{% for venteTrimDeux in venteTrimDeux %}
+
+  <h6>Date de vente: {{ venteTrimDeux.dateMiseAuPanier|date('Y-m-d')}}</h6>
+    {% for vehiculePhysiques in venteTrimDeux.vehiculePhysiques %}
+      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+    {% endfor %}
+
+{% else %}
+
+<p> pas de ventes ce trimestre </p>
+
+{% endfor %}
+
+
+{# Fin ventes 2eme trimestre #}
+
+
+{# Ventes 3eme trimestre #}
+
+<h5>Vente du troisième trimestre</h5>
+
+{% for venteTrimTrois in venteTrimTrois %}
+
+  <h6>Date de vente: {{ venteTrimTrois.dateMiseAuPanier|date('Y-m-d')}}</h6>
+    {% for vehiculePhysiques in venteTrimTrois.vehiculePhysiques %}
+      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+    {% endfor %}
+
+{% else %}
+
+<p> pas de ventes ce trimestre </p>
+
+{% endfor %}
+
+
+{# Fin ventes 3eme trimestre #}
+
+{# Ventes 4eme trimestre #}
+
+<h5>Vente du quatrième trimestre</h5>
+
+{% for venteTrimQuatre in venteTrimQuatre %}
+
+  <h6>Date de vente: {{ venteTrimQuatre.dateMiseAuPanier|date('Y-m-d')}}</h6>
+    {% for vehiculePhysiques in venteTrimQuatre.vehiculePhysiques %}
+      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+    {% endfor %}
+
+{% else %}
+
+<p> pas de ventes ce trimestre </p>
+
+{% endfor %}
+
+
+{# Fin ventes 4eme trimestre #}
 
 
 
