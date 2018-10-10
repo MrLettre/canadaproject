@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class VehicleDefinitionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findVehDefById($id) {
+        return $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v WHERE v.id = $id")
+            ->getResult();
+    }
 }
