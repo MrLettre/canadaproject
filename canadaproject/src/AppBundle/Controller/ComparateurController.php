@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\AppBundle;
+use AppBundle\Entity\VehicleDefinition;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,11 +20,37 @@ class ComparateurController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $activeComparateur = true;
+        $vehicleComparaison = new Vehicledefinition();
+        $form = $this->createForm('AppBundle\Form\ComparateurType', $vehicleComparaison);
+        $form->handleRequest($request);
 
-        // replace this example code with whatever you need
-        return $this->render('pagesCarifyPublic/comparateur/index.html.twig', ['activeComparateur' => $activeComparateur,
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $id = $vehicleComparaison->getVersion()->getVehicleDef()->getId();
+
+            return $this->redirectToRoute('comparateur_show', array(
+                'id' => $id
+            ));
+        }
+
+        return $this->render('pagesCarifyPublic/comparateur/index.html.twig', array(
+            'vehicleComparaison' => $vehicleComparaison,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a vehicleDefinition entity.
+     *
+     * @Route("/{id}/show", name="comparateur_show")
+     * @Method("GET")
+     */
+    public function showAction(VehicleDefinition $vehicleDefinition)
+    {
+        $version = $vehicleDefinition->getVersion();
+
+        return $this->render('pagesCarifyPublic/comparateur/show.html.twig', array(
+            'vehicleDefinition' => $vehicleDefinition,
+            'version' => $version,
+        ));
     }
 }

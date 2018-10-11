@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+
+                <img src="/images/logoMarques/{{ vehicleDefinition.version.model.marque.imageName }}"width="80" height="auto">
+
+                {{ vehicleDefinition.version.model.marque }}
+
+                {{ vehicleDefinition.version.model }}
+
+                {{ vehicleDefinition.version }}
+
+                {# {{ vehicleDefinition.version.prixNeufHT }}           #}           <!-- A ajouter -->
+
+                {{ vehicleDefinition.version.model.typeVehicule }}
+
+                {{ vehicleDefinition.version.energie }}
+
+                {{ vehicleDefinition.version.puissanceTh }}
+                {{ vehicleDefinition.version.puissanceHy }}
+                {{ vehicleDefinition.version.puissanceEl }}
+
+                {{ vehicleDefinition.version.autonimieTh }}
+                {{ vehicleDefinition.version.autonomieHy }}
+                {{ vehicleDefinition.version.autonomieEl }}
+
+                {# {{ vehicleDefinition.version.model.dimensions }}      #}          <!-- A ajouter -->
+                    {% for colors in version.couleursDisponibles %}
+                        {{ colors.nom }}
+                    {% endfor %}
+                {% for options in version.options %}
+                    {{ options.nom }}
+                {% endfor %}
+
+
+                {{ vehicleDefinition.version.transmission }}
+                {# {{ vehicleDefinition.version.nbreDePortes }}        #}            <!-- A ajouter -->
+                {# {{ vehicleDefinition.version.nbreDePlaces }}           #}         <!-- A ajouter -->
+
+</div>
+<div class="col-md-6">
+
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
