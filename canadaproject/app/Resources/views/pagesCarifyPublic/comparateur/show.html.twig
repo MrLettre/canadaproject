@@ -42,12 +42,58 @@
                 {# {{ vehicleDefinition.version.nbreDePortes }}        #}            <!-- A ajouter -->
                 {# {{ vehicleDefinition.version.nbreDePlaces }}           #}         <!-- A ajouter -->
 
-</div>
-<div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+                {% include "pagesCarifyPublic/comparateur/comparateurGauche.html.twig" %}
 
-</div>
-</div>
-</div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                        {% if id2 is defined %}
+                            <img src="/images/logoMarques/{{ id2.version.model.marque.imageName }}"width="80" height="auto">
+
+                            {{ id2.version.model.marque }}
+
+                            {{ id2.version.model }}
+
+                            {{ id2.version }}
+
+                            {# {{ vehicleDefinition.version.prixNeufHT }}           #}           <!-- A ajouter -->
+
+                            {{ id2.version.model.typeVehicule }}
+
+                            {{ id2.version.energie }}
+
+                            {{ id2.version.puissanceTh }}
+                            {{ id2.version.puissanceHy }}
+                            {{ id2.version.puissanceEl }}
+
+                            {{ id2.version.autonimieTh }}
+                            {{ id2.version.autonomieHy }}
+                            {{ id2.version.autonomieEl }}
+
+                            {# {{ vehicleDefinition.version.model.dimensions }}      #}          <!-- A ajouter -->
+                            {% for colors in version.couleursDisponibles %}
+                                {{ colors.nom }}
+                            {% endfor %}
+                            {% for options in version.options %}
+                                {{ options.nom }}
+                            {% endfor %}
+
+
+                            {{ vehicle2.version.transmission }}
+                            {# {{ vehicleDefinition.version.nbreDePortes }}        #}            <!-- A ajouter -->
+                            {# {{ vehicleDefinition.version.nbreDePlaces }}           #}         <!-- A ajouter -->
+                        {% else %}
+
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 
