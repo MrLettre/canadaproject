@@ -1,4 +1,3 @@
-{% extends 'admin/vendeurBase.html.twig' %}
 
 
 {% block stylesheets %}
@@ -134,13 +133,15 @@
 {# Fin ventes 4eme trimestre #}
 
 
-
-
-
-
-
-
 {# Fin ventes trimestres #}
+
+<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+<canvas id="myChart"></canvas>
+</div>
+
+
+
+
 
 
 
@@ -152,5 +153,36 @@
 
 
 {% block javascripts %}
-   
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+
+
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ["1er trimestre", "2eme trimestre", "3eme trimestre", "4eme trimestre"],
+        datasets: [{
+            label: "Ventes par trimestres",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{{chartTrimUn}}, {{chartTrimDeux}}, {{chartTrimTrois}}, {{chartTrimQuatre}}],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+
+
+
 {% endblock %}

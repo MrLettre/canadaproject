@@ -209,7 +209,7 @@ class AdminController extends Controller
         $quatriemeTriDeb = $date;
         $quatriemeTriFin = $date;
 
-     
+
         //Ventes annuelles par an
         $venteAnnuelles = $em->getRepository('AppBundle:Cart')->ventesAnnuelles($debutAnnee, $finAnnee);
 
@@ -229,6 +229,12 @@ class AdminController extends Controller
         //Chiffre des ventes totales de toutes les années
         $venteTotalesCompte = count($venteTotales);
 
+        //variable pour les charts
+        $chartTrimUn = count($venteTrimUn);
+        $chartTrimDeux = count($venteTrimDeux);
+        $chartTrimTrois = count($venteTrimTrois);
+        $chartTrimQuatre = count($venteTrimQuatre);
+
 
 
 
@@ -241,6 +247,10 @@ class AdminController extends Controller
             'venteTrimDeux' => $venteTrimDeux,
             'venteTrimTrois' => $venteTrimTrois,
             'venteTrimQuatre' => $venteTrimQuatre,
+            'chartTrimUn'  => $chartTrimUn,
+            'chartTrimDeux' => $chartTrimDeux,
+            'chartTrimTrois' => $chartTrimTrois,
+            'chartTrimQuatre' => $chartTrimQuatre,
         ]);
     }
 
