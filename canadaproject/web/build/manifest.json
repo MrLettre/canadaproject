@@ -4,6 +4,8 @@
   "web/user.css": "/web/user.css",
   "web/recherche.js": "/web/recherche.js",
   "web/recherche.css": "/web/recherche.css",
+  "web/menuCompaRecherche.js": "/web/menuCompaRecherche.js",
+  "web/menuCompaRecherche.css": "/web/menuCompaRecherche.css",
   "web/style.js": "/web/style.js",
   "web/style.css": "/web/style.css",
   "web/login.js": "/web/login.js",
