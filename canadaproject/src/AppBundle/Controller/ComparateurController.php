@@ -44,13 +44,30 @@ class ComparateurController extends Controller
      * @Route("/{id}/show", name="comparateur_show")
      * @Method("GET")
      */
-    public function showAction(VehicleDefinition $vehicleDefinition)
+    public function showAction(Request $request, VehicleDefinition $vehicleDefinition)
     {
+        $vehicle2 = new Vehicledefinition();
+        $form = $this->createForm('AppBundle\Form\ComparateurType', $vehicle2);
+        $form->handleRequest($request);
         $version = $vehicleDefinition->getVersion();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $id2 = $vehicle2->getVersion()->getVehicleDef();
+
+            return $this->render('pagesCarifyPublic/comparateur/show.html.twig', array(
+                'vehicle2' => $vehicle2,
+                'id2' => $id2,
+                'vehicleDefinition' => $vehicleDefinition,
+                'version' => $version,
+                'form' => $form->createView(),
+            ));
+        }
 
         return $this->render('pagesCarifyPublic/comparateur/show.html.twig', array(
             'vehicleDefinition' => $vehicleDefinition,
             'version' => $version,
+            'vehicle2' => $vehicle2,
+            'form' => $form->createView(),
         ));
     }
 }
