@@ -136,7 +136,7 @@
 {# Fin ventes trimestres #}
 
 <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-<canvas id="myChart"></canvas>
+<canvas id="trimestre"></canvas>
 </div>
 
 
@@ -162,7 +162,7 @@
 
 
 <script>
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('trimestre').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'bar',
