@@ -99,6 +99,192 @@ class CartRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery();
 
         return $query->getResult();
-    }                
+    }    
+    
+    
+    // Recuperation des ventes annuelles
+
+    public function ventesJanvier($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('c')
+                 ->where('c.vente is not null')
+                 ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->setParameter('debutAnnee', $debutAnnee.'0101')  
+                 ->setParameter('finAnnee', $finAnnee.'0131')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+        // Recuperation des ventes annuelles
+
+        public function ventesFevrier($debutAnnee, $finAnnee)
+        {
+            $query = $this->createQueryBuilder('c')
+                     ->where('c.vente is not null')
+                     ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                     ->orderBy('c.dateMiseAuPanier', 'ASC')
+                     ->setParameter('debutAnnee', $debutAnnee.'0201')  
+                     ->setParameter('finAnnee', $finAnnee.'0229')
+                     ->getQuery();
+    
+            return $query->getResult();         
+        }
+
+
+            // Recuperation des ventes annuelles
+
+    public function ventesMars($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('c')
+                 ->where('c.vente is not null')
+                 ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->setParameter('debutAnnee', $debutAnnee.'0301')  
+                 ->setParameter('finAnnee', $finAnnee.'0331')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+
+        // Recuperation des ventes annuelles
+
+        public function ventesAvril($debutAnnee, $finAnnee)
+        {
+            $query = $this->createQueryBuilder('c')
+                     ->where('c.vente is not null')
+                     ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                     ->orderBy('c.dateMiseAuPanier', 'ASC')
+                     ->setParameter('debutAnnee', $debutAnnee.'0401')  
+                     ->setParameter('finAnnee', $finAnnee.'0430')
+                     ->getQuery();
+    
+            return $query->getResult();         
+        }
+
+            // Recuperation des ventes annuelles
+
+    public function ventesMai($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('c')
+                 ->where('c.vente is not null')
+                 ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->setParameter('debutAnnee', $debutAnnee.'0501')  
+                 ->setParameter('finAnnee', $finAnnee.'0531')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+
+        // Recuperation des ventes annuelles
+
+        public function ventesJuin($debutAnnee, $finAnnee)
+        {
+            $query = $this->createQueryBuilder('c')
+                     ->where('c.vente is not null')
+                     ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                     ->orderBy('c.dateMiseAuPanier', 'ASC')
+                     ->setParameter('debutAnnee', $debutAnnee.'0601')  
+                     ->setParameter('finAnnee', $finAnnee.'0631')
+                     ->getQuery();
+    
+            return $query->getResult();         
+        }
+
+            // Recuperation des ventes annuelles
+
+    public function ventesJuillet($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('c')
+                 ->where('c.vente is not null')
+                 ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->setParameter('debutAnnee', $debutAnnee.'0701')  
+                 ->setParameter('finAnnee', $finAnnee.'0731')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+
+        // Recuperation des ventes annuelles
+
+        public function ventesAout($debutAnnee, $finAnnee)
+        {
+            $query = $this->createQueryBuilder('c')
+                     ->where('c.vente is not null')
+                     ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                     ->orderBy('c.dateMiseAuPanier', 'ASC')
+                     ->setParameter('debutAnnee', $debutAnnee.'0801')  
+                     ->setParameter('finAnnee', $finAnnee.'0831')
+                     ->getQuery();
+    
+            return $query->getResult();         
+        }
+
+            // Recuperation des ventes annuelles
+
+    public function ventesSeptembre($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('c')
+                 ->where('c.vente is not null')
+                 ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->setParameter('debutAnnee', $debutAnnee.'0901')  
+                 ->setParameter('finAnnee', $finAnnee.'0931')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+        // Recuperation des ventes annuelles
+
+        public function ventesOctobre($debutAnnee, $finAnnee)
+        {
+            $query = $this->createQueryBuilder('c')
+                     ->where('c.vente is not null')
+                     ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                     ->orderBy('c.dateMiseAuPanier', 'ASC')
+                     ->setParameter('debutAnnee', $debutAnnee.'1001')  
+                     ->setParameter('finAnnee', $finAnnee.'1031')
+                     ->getQuery();
+    
+            return $query->getResult();         
+        }
+
+            // Recuperation des ventes annuelles
+
+    public function ventesNovembre($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('c')
+                 ->where('c.vente is not null')
+                 ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('c.dateMiseAuPanier', 'ASC')
+                 ->setParameter('debutAnnee', $debutAnnee.'1101')  
+                 ->setParameter('finAnnee', $finAnnee.'1131')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+        // Recuperation des ventes annuelles
+
+        public function ventesDecembre($debutAnnee, $finAnnee)
+        {
+            $query = $this->createQueryBuilder('c')
+                     ->where('c.vente is not null')
+                     ->andWhere('c.dateMiseAuPanier BETWEEN :debutAnnee AND :finAnnee')
+                     ->orderBy('c.dateMiseAuPanier', 'ASC')
+                     ->setParameter('debutAnnee', $debutAnnee.'1201')  
+                     ->setParameter('finAnnee', $finAnnee.'1231')
+                     ->getQuery();
+    
+            return $query->getResult();         
+        }
+
 
 }

@@ -1,4 +1,4 @@
-
+{% extends 'admin/vendeurBase.html.twig' %}
 
 {% block stylesheets %}
   
@@ -41,10 +41,31 @@
 
 {% endfor %}
 
+
+<section class="section3">
+            <div class="container ">
+                <div class="row">
+                    <div class="stat2 col-8 offset-2">
+                        <canvas id="annuel" width="200" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
 {# Fin ventes annuelles #}
 
 
 <hr>
+
+
+
+
+
+
+
 
 {# Ventes par trimestres #}
 
@@ -135,9 +156,15 @@
 
 {# Fin ventes trimestres #}
 
-<div class="chart-container" style="position: relative; height:40vh; width:80vw">
-<canvas id="trimestre"></canvas>
-</div>
+<section class="section3">
+  <div class="container ">
+       <div class="row">
+          <div class="stat2 col-8 offset-2">
+              <canvas id="trimestre" width="200" height="100"></canvas>
+          </div>
+      </div>
+  </div>
+</section>
 
 
 
@@ -175,13 +202,88 @@ var chart = new Chart(ctx, {
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [{{chartTrimUn}}, {{chartTrimDeux}}, {{chartTrimTrois}}, {{chartTrimQuatre}}],
+             backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
         }]
     },
 
     // Configuration options go here
-    options: {}
+    options: {
+            scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+    
 });
 </script>
+
+<script>
+var ctx = document.getElementById('annuel').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ["1er trimestre", "2eme trimestre", "3eme trimestre", "4eme trimestre"],
+        datasets: [{
+            label: "Ventes annuelles par trimestres",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{{chartTrimUn}}, {{chartTrimDeux}}, {{chartTrimTrois}}, {{chartTrimQuatre}}],
+             backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+       scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+    
+});
+</script>
+
 
 
 
