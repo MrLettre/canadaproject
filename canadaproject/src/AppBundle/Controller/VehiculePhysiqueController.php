@@ -17,22 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class VehiculePhysiqueController extends Controller
 {
-    /**
-     * Lists all vehiculePhysique entities.
-     *
-     * @Route("/", name="vehiculephysique_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
 
-        $vehiculePhysiques = $em->getRepository('AppBundle:VehiculePhysique')->findAll();
-
-        return $this->render('Form/vehiculephysique/index.html.twig', array(
-            'vehiculePhysiques' => $vehiculePhysiques,
-        ));
-    }
 
     /**
      * Creates a new vehiculePhysique entity.
@@ -160,24 +145,7 @@ class VehiculePhysiqueController extends Controller
         ]);
     }
 
-    /** GESTION DES VALIDATIONS DE VEHICULES PHYSIQUES PAR L'ADMINISTRATEUR */
 
-    /**
-     * Lists all vehiculePhysique entities.
-     *
-     * @Route("/validation", name="vehiculephysique_validation_index")
-     * @Method("GET")
-     */
-    public function indexValidationAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $vehiculePhysiques = $em->getRepository('AppBundle:VehiculePhysique')->findAll();
-
-        return $this->render('Form/vehiculephysique/validation_index.html.twig', array(
-            'vehiculePhysiques' => $vehiculePhysiques,
-        ));
-    }
 
 
     /**

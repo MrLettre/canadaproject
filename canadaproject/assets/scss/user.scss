@@ -1,5 +1,5 @@
-$color-foncer: #006633;
-$color-claire: rgba(159, 202, 27, 0.6);
+$color-foncer: #2945B1;
+$color-claire: #5E7AE5;
 
 .container>h1{
   text-align: center;
@@ -21,12 +21,12 @@ button>a:hover {
 }
 .card{
   width: 100%;
-  border: 2px solid #93c01f;
+  border: 2px solid #2945B1;
 }
 
 .card-header{
   margin-bottom: 2vh;
-  border-bottom: 2px solid #93c01f;
+  border-bottom: 2px solid #2945B1;
 }
 
 .gestion{
@@ -38,7 +38,7 @@ button>a:hover {
 }
 
 button{
-  background-color: #93c01f;
+  background-color: #5E7AE5;
   font-size: 14px;
   line-height: 24px;
   padding: 10px 23px;
@@ -54,7 +54,7 @@ button:focus,
 button:focus:active,
 button:active,
 button:hover {
-  background-color: #93c01f;
+  background-color: #5E7AE5;
   border: 1px solid transparent;
 }
 
