@@ -1,4 +1,4 @@
-{% extends 'admin/vendeurBase.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('build/listing_render.css') }}">
@@ -8,10 +8,8 @@
 <div class="container">
     <div class="col-md-12">
         <h1>Liste du Parc Auto</h1>
-        {% for vehiculePhysique in vehiculePhysiques %}
-            {% if vehiculePhysique.validationStatut == '' %}
+        <h3 >Véhicules en attente de validation</h3>
                 <div class="table-responsive">
-                    <h3 >Véhicules en attente de validation</h3>
                     <table class="table">
                         <thead>
                         <tr>
@@ -19,37 +17,38 @@
                             <th scope="col">Marque</th>
                             <th scope="col">Modèle</th>
                             <th scope="col">Version</th>
-                            {% if vehiculePhysique.dateMiseEnLigne %}
-                                <th scope="col">Datemiseenligne</th>
-                            {% endif %}
                             <th scope="col">Kilometrage</th>
-                            <th scope="col">Datedemiseencirculation</th>
+                            <th scope="col">Mise en circulation</th>
                             <th scope="col">Prixht</th>
                             <th scope="col">Photo</th>
                             <th scope="col">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
+                        {% for vehiculePhysique in vehiculePhysiques %}
+                        {% if vehiculePhysique.validationStatut == '' %}
                         <tr>
                             <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
                             <td>{{ vehiculePhysique.version.model.marque }}</td>
                             <td>{{ vehiculePhysique.version.model }}</td>
                             <td>{{ vehiculePhysique.version }}</td>
-                            {% if vehiculePhysique.dateMiseEnLigne %}<td>{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}</td>{% endif %}
                             <td>{{ vehiculePhysique.kilometrage }}</td>
-                            <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
+                            <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}{% endif %}</td>
                             <td>{{ vehiculePhysique.prixHT }}</td>
                             <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                             <td>
                                 <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modifier le véhicule</a>
                             </td>
                         </tr>
+                        {% endif %}
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
-            {% elseif vehiculePhysique.validationStatut == 'Validé' %}
+
+        <h3>Véhicules en ligne</h3>
+
                 <div class="table-responsive">
-                    <h3>Véhicules en ligne</h3>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -57,37 +56,44 @@
                                     <th scope="col">Marque</th>
                                     <th scope="col">Modèle</th>
                                     <th scope="col">Version</th>
+                                    {% for vehiculePhysique in vehiculePhysiques %}
                                     {% if vehiculePhysique.dateMiseEnLigne %}
-                                    <th scope="col">Datemiseenligne</th>
+                                    <th scope="col">Mise en ligne</th>
                                     {% endif %}
+                                    {% endfor %}
                                     <th scope="col">Kilometrage</th>
-                                    <th scope="col">Datedemiseencirculation</th>
+                                    <th scope="col">Mise en circulation</th>
                                     <th scope="col">Prixht</th>
                                     <th scope="col">Photo</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            {% for vehiculePhysique in vehiculePhysiques %}
+                            {% if vehiculePhysique.validationStatut == 'Validé' %}
                                 <tr>
                                     <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
                                     <td>{{ vehiculePhysique.version.model.marque }}</td>
                                     <td>{{ vehiculePhysique.version.model }}</td>
                                     <td>{{ vehiculePhysique.version }}</td>
-                                    {% if vehiculePhysique.dateMiseEnLigne %}<td>{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}</td>{% endif %}
+                                    <td>{{ vehiculePhysique.dateMiseEnLigne|date('d-m-Y') }}</td>
                                     <td>{{ vehiculePhysique.kilometrage }}</td>
-                                    <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
+                                    <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}{% endif %}</td>
                                     <td>{{ vehiculePhysique.prixHT }}</td>
                                     <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                                     <td>
                                         <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modifier le véhicule</a>
                                     </td>
                                 </tr>
+                            {% endif %}
+                            {% endfor %}
                             </tbody>
                         </table>
                 </div>
-            {% else%}
+
+        <h3>Véhicules refusés par l'administrateur</h3>
+
                 <div class="table-responsive">
-                    <h3>Véhicules refusés par l'administrateur</h3>
                     <table class="table">
                         <thead>
                         <tr>
@@ -95,36 +101,35 @@
                             <th scope="col">Marque</th>
                             <th scope="col">Modèle</th>
                             <th scope="col">Version</th>
-                            {% if vehiculePhysique.dateMiseEnLigne %}
-                                <th scope="col">Datemiseenligne</th>
-                            {% endif %}
                             <th scope="col">Kilometrage</th>
-                            <th scope="col">Datedemiseencirculation</th>
+                            <th scope="col">Mise en circulation</th>
                             <th scope="col">Prixht</th>
                             <th scope="col">Photo</th>
                             <th scope="col">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
+                        {% for vehiculePhysique in vehiculePhysiques %}
+                        {% if vehiculePhysique.validationStatut == 'Refusé' %}
                         <tr>
                             <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
                             <td>{{ vehiculePhysique.version.model.marque }}</td>
                             <td>{{ vehiculePhysique.version.model }}</td>
                             <td>{{ vehiculePhysique.version }}</td>
-                            {% if vehiculePhysique.dateMiseEnLigne %}<td>{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}</td>{% endif %}
                             <td>{{ vehiculePhysique.kilometrage }}</td>
-                            <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
+                            <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}{% endif %}</td>
                             <td>{{ vehiculePhysique.prixHT }}</td>
                             <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                             <td>
                                 <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modifier le véhicule</a>
                             </td>
                         </tr>
+                        {% endif %}
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
-            {% endif %}
-        {% endfor %}
+
 
          <p>
             <a class="btn btn-primary" href="{{ path('vehiculephysique_new') }}">Créer un véhicule</a>

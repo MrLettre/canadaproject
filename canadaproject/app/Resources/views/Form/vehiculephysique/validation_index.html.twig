@@ -5,28 +5,25 @@
 {% endblock %}
 
 {% block body %}
-    <h1>En attente de validation</h1>
+    <h1>Véhicules en attente de validation</h1>
+    <div class="table-responsive">
+    <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Etat</th>
+        <th scope="col">Vendeur</th>
+        <th scope="col">Marque</th>
+        <th scope="col">Modèle</th>
+        <th scope="col">Version</th>
+        <th scope="col">Kilometrage</th>
+        <th scope="col">Datedemiseencirculation</th>
+        <th scope="col">Prixht</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
     {% for vehiculePhysique in vehiculePhysiques %}
     {% if vehiculePhysique.validationStatut == '' %}
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Etat</th>
-                <th scope="col">Vendeur</th>
-                <th scope="col">Marque</th>
-                <th scope="col">Modèle</th>
-                <th scope="col">Version</th>
-                    {% if vehiculePhysique.dateMiseEnLigne %}
-                        <th scope="col">Datemiseenligne</th>
-                    {% endif %}
-                <th scope="col">Kilometrage</th>
-                <th scope="col">Datedemiseencirculation</th>
-                <th scope="col">Prixht</th>
-                <th scope="col">Photo</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
             <tbody>
                 <tr>
                     <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
@@ -34,7 +31,6 @@
                     <td>{{ vehiculePhysique.version.model.marque }}</td>
                     <td>{{ vehiculePhysique.version.model }}</td>
                     <td>{{ vehiculePhysique.version }}</td>
-                    {% if vehiculePhysique.dateMiseEnLigne %}<td>{{ vehiculePhysique.dateMiseEnLigne|date('d-m-Y') }}</td>{% endif %}
                     <td>{{ vehiculePhysique.kilometrage }}</td>
                     <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
                     <td>{{ vehiculePhysique.prixHT }}</td>
@@ -45,10 +41,11 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
-    </div>
     {% endif %}
     {% endfor %}
+        </table>
+    </div>
+
 
 {% endblock %}
 

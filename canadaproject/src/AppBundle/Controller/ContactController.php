@@ -14,22 +14,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class ContactController extends Controller
 {
-    /**
-     * Lists all contact entities.
-     *
-     * @Route("/", name="contact_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $contacts = $em->getRepository('AppBundle:Contact')->findAll();
-
-        return $this->render('Form/contact/index.html.twig', array(
-            'contacts' => $contacts,
-        ));
-    }
 
     /**
      * Creates a new contact entity.

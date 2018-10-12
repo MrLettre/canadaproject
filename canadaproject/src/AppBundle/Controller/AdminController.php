@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Marque;
@@ -60,21 +61,153 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/adminStats", name="adminStats")
+     * @Route("/admin/statistiques", name="adminStats")
      */
-    public function adminStats()
+    public function adminStats(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('admin/admin/adminStats.html.twig');
+        //Formulaire non relié à une entité pour choisir la date
+        $form = $this->createFormBuilder()
+            ->add('Choix', ChoiceType::class, [
+                'choices' => [
+                    '2018' => 2018,
+                    '2019' => 2019,
+                    '2020' => 2020,
+                    '2021' => 2021,
+                    '2022' => 2022,
+                    '2023' => 2023,
+                    '2024' => 2024,
+                    '2024' => 2024,
+                    '2025' => 2025,
+                ]
+            ])
+            ->add('save', SubmitType::class, array('label' => 'Choisir la date'))
+            ->getForm();
+
+
+        $form->handleRequest($request);
+
+        $date = '';
+
+        $em = $this->getDoctrine()->getManager();
+        //Récupération de toutes les ventes totales de toutes les années
+        $venteTotales = $em->getRepository('AppBundle:Cart')->ventesTotales();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            //Recuperation de la date selectionné en array
+            $date = implode($form->getData());
+        }
+
+        //Attribution de la date aux variables
+        $debutAnnee = $date;
+        $finAnnee = $date;
+        $premierTriDeb = $date;
+        $premierTriFin = $date;
+        $deuxiemeTriDeb = $date;
+        $deuxiemeTriFin = $date;
+        $troisiemeTriDeb = $date;
+        $troisiemeTriFin = $date;
+        $quatriemeTriDeb = $date;
+        $quatriemeTriFin = $date;
+
+
+        //Ventes annuelles par an
+        $venteAnnuelles = $em->getRepository('AppBundle:Cart')->ventesAnnuelles($debutAnnee, $finAnnee);
+
+        //Ventes 1er trimestre
+        $venteTrimUn = $em->getRepository('AppBundle:Cart')->ventesTrimUn($premierTriDeb, $premierTriFin);
+
+
+        //Ventes 2eme trimestre
+        $venteTrimDeux = $em->getRepository('AppBundle:Cart')->ventesTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin);
+
+        //Ventes 3eme trimestre
+        $venteTrimTrois = $em->getRepository('AppBundle:Cart')->ventesTrimTrois($troisiemeTriDeb, $troisiemeTriFin);
+
+        //Ventes 4eme trimestre
+        $venteTrimQuatre = $em->getRepository('AppBundle:Cart')->ventesTrimQuatre($quatriemeTriDeb, $quatriemeTriFin);
+
+        //Chiffre des ventes totales de toutes les années
+        $venteTotalesCompte = count($venteTotales);
+
+        //variable pour les charts
+        $chartTrimUn = count($venteTrimUn);
+        $chartTrimDeux = count($venteTrimDeux);
+        $chartTrimTrois = count($venteTrimTrois);
+        $chartTrimQuatre = count($venteTrimQuatre);
+
+
+
+
+        return $this->render('admin/admin/adminStats.html.twig', [
+            'form' => $form->createView(),
+            'venteTotalesCompte' => $venteTotalesCompte,
+            'venteTotales' => $venteTotales,
+            'venteAnnuelles' => $venteAnnuelles,
+            'venteTrimUn' => $venteTrimUn,
+            'venteTrimDeux' => $venteTrimDeux,
+            'venteTrimTrois' => $venteTrimTrois,
+            'venteTrimQuatre' => $venteTrimQuatre,
+            'chartTrimUn'  => $chartTrimUn,
+            'chartTrimDeux' => $chartTrimDeux,
+            'chartTrimTrois' => $chartTrimTrois,
+            'chartTrimQuatre' => $chartTrimQuatre,
+        ]);
     }
 
-     /**
-     * @Route("/adminAutoPark", name="adminAutoPark")
+    /** GESTION DES VALIDATIONS DE VEHICULES PHYSIQUES PAR L'ADMINISTRATEUR */
+
+    /**
+     * Lists all vehiculePhysique entities.
+     *
+     * @Route("/admin/validation", name="vehiculephysique_validation_index")
+     * @Method("GET")
      */
-    public function adminAutoPark()
+    public function indexValidationAction()
     {
-        // replace this example code with whatever you need
-        return $this->render('admin/admin/adminAutoPark.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $vehiculePhysiques = $em->getRepository('AppBundle:VehiculePhysique')->findAll();
+
+        return $this->render('Form/vehiculephysique/validation_index.html.twig', array(
+            'vehiculePhysiques' => $vehiculePhysiques,
+        ));
+    }
+
+    /** GESTION DES DEMANDES DE CONTACT PAR LES CLIENTS OU PROSPECTS */
+
+    /**
+     * Lists all contact entities.
+     *
+     * @Route("/admin/contact", name="contact_index")
+     * @Method("GET")
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $contacts = $em->getRepository('AppBundle:Contact')->findAll();
+
+        return $this->render('Form/contact/index.html.twig', array(
+            'contacts' => $contacts,
+        ));
+    }
+
+    /**
+     * Lists all vehiculePhysique entities.
+     *
+     * @Route("/admin/listeVehPhy", name="vehiculephysique_index")
+     * @Method("GET")
+     */
+    public function indexVehPhyAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $vehiculePhysiques = $em->getRepository('AppBundle:VehiculePhysique')->findAll();
+
+        return $this->render('Form/vehiculephysique/index.html.twig', array(
+            'vehiculePhysiques' => $vehiculePhysiques,
+        ));
     }
 
      /**
@@ -158,100 +291,6 @@ class AdminController extends Controller
      */
     public function adminSellerStats(Request $request)
     {
-
-       //Formulaire non relié à une entité pour choisir la date
-        $form = $this->createFormBuilder()
-            ->add('Choix', ChoiceType::class, [
-                'choices' => [
-                    '2018' => 2018,
-                    '2019' => 2019,
-                    '2020' => 2020,
-                    '2021' => 2021,
-                    '2022' => 2022,
-                    '2023' => 2023,
-                    '2024' => 2024,
-                    '2024' => 2024,
-                    '2025' => 2025,
-                ]
-            ])
-            ->add('save', SubmitType::class, array('label' => 'Choisir la date'))
-            ->getForm();
-
-
-        $form->handleRequest($request);
-
-        $date = '';
-
-        $em = $this->getDoctrine()->getManager();
-        //Récupération de toutes les ventes totales de toutes les années
-        $venteTotales = $em->getRepository('AppBundle:Cart')->ventesTotales();
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            //Recuperation de la date selectionné en array
-            $dateArray = $form->getData();
-
-            //Recupèrer la date sélectionnée en string
-            foreach ($dateArray as $key => $date) {
-                $dateArray = $date;
-            }
-        }
-
-        //Attribution de la date aux variables
-        $debutAnnee = $date;
-        $finAnnee = $date;
-        $premierTriDeb = $date;
-        $premierTriFin = $date;
-        $deuxiemeTriDeb = $date;
-        $deuxiemeTriFin = $date;
-        $troisiemeTriDeb = $date;
-        $troisiemeTriFin = $date;
-        $quatriemeTriDeb = $date;
-        $quatriemeTriFin = $date;
-
-
-        //Ventes annuelles par an
-        $venteAnnuelles = $em->getRepository('AppBundle:Cart')->ventesAnnuelles($debutAnnee, $finAnnee);
-
-        //Ventes 1er trimestre
-        $venteTrimUn = $em->getRepository('AppBundle:Cart')->ventesTrimUn($premierTriDeb, $premierTriFin);
-
-
-        //Ventes 2eme trimestre
-        $venteTrimDeux = $em->getRepository('AppBundle:Cart')->ventesTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin);
-
-        //Ventes 3eme trimestre
-        $venteTrimTrois = $em->getRepository('AppBundle:Cart')->ventesTrimTrois($troisiemeTriDeb, $troisiemeTriFin);
-
-        //Ventes 4eme trimestre
-        $venteTrimQuatre = $em->getRepository('AppBundle:Cart')->ventesTrimQuatre($quatriemeTriDeb, $quatriemeTriFin);
-
-        //Chiffre des ventes totales de toutes les années
-        $venteTotalesCompte = count($venteTotales);
-
-        //variable pour les charts
-        $chartTrimUn = count($venteTrimUn);
-        $chartTrimDeux = count($venteTrimDeux);
-        $chartTrimTrois = count($venteTrimTrois);
-        $chartTrimQuatre = count($venteTrimQuatre);
-
-
-
-
-        return $this->render('admin/vendeur/statistiques.html.twig', [
-            'form' => $form->createView(),
-            'venteTotalesCompte' => $venteTotalesCompte,
-            'venteTotales' => $venteTotales,
-            'venteAnnuelles' => $venteAnnuelles,
-            'venteTrimUn' => $venteTrimUn,
-            'venteTrimDeux' => $venteTrimDeux,
-            'venteTrimTrois' => $venteTrimTrois,
-            'venteTrimQuatre' => $venteTrimQuatre,
-            'chartTrimUn'  => $chartTrimUn,
-            'chartTrimDeux' => $chartTrimDeux,
-            'chartTrimTrois' => $chartTrimTrois,
-            'chartTrimQuatre' => $chartTrimQuatre,
-        ]);
     }
 
 

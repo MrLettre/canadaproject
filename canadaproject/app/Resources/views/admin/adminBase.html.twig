@@ -60,27 +60,31 @@
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
-          <h5 class="sidenav-heading">Main</h5>
+          <h5 class="sidenav-heading">ADMINISTRATION</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled"> 
-            <li><a href="{{ path('adminMySeller') }}"> <i class="icon-home"></i>Mes Vendeurs</a></li>
-            <li><a href="{{ path('adminMyClient') }}"> <i class="icon-form"></i>Mes Clients</a></li>
-            <li><a href="{{ path('adminStats') }}"> <i class="fa fa-bar-chart"></i>Statistiques</a></li>
-            <li><a href="tables.html"> <i class="icon-grid"></i>Contact</a></li>
-            <li><a href="{{ path('adminAfterSale') }}"> <i class="icon-grid"></i>Service Après Vente</a></li>
-            <li><a href="{{ path('adminAutoPark') }}"> <i class="icon-grid"></i>Parc Automobile</a></li>
-            <li><a href="{{ path('adminAddCar') }}"> <i class="icon-grid"></i>Ajouter un Véhicule</a></li>
+            <li><i class="icon-home"></i>Utilisateurs</li>
+                <li><a href="/register"> <i class="icon-grid"></i>Créer un Utilisateur</a></li>
+                <li><a href="#"> <i class="icon-grid"></i>Liste des Utilisateurs</a></li>
+            <li><i class="icon-form"></i>Mes Vendeurs</li>
+                <li><a href="{{ path('vehiculephysique_validation_index') }}"> <i class="icon-grid"></i>Validation véhicules</a></li>
+                <li><a href="{{ path('vehiculephysique_index') }}"> <i class="icon-grid"></i>Parc Automobile</a></li>
+            <li><i class="icon-grid"></i>Contact</li>
+            <li><a href="{{ path('contact_index') }}"> <i class="icon-grid"></i>Demandes de Contact</a></li>
+            <li><i class="icon-grid"></i>Comparateur Carify</li>
+            <li><a href="{{ path('vehicledefinition_new') }}"> <i class="icon-grid"></i>Ajouter un Véhicule</a></li>
+            <li><a href="{{ path('vehicledefinition_index') }}"> <i class="icon-grid"></i>Liste des Véhicules</a></li>
 
-           
+
+
           </ul>
         </div>
         <div class="admin-menu">
-          <h5 class="sidenav-heading">Second menu</h5>
-          <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-            <li> <a href="#"> <i class="icon-screen"> </i>Bim</a></li>
-            <li> <a href="#"> <i class="icon-flask"> </i><Bam></Bam>
+          <h5 class="sidenav-heading">STATISTIQUES</h5>
+          <ul id="side-admin-menu" class="side-menu list-unstyled">
+              <li><a href="{{ path('adminStats') }}"> <i class="fa fa-bar-chart"></i>Statistiques</a></li>
+
                 <div class="badge badge-info">Special</div></a></li>
-            <li> <a href=""> <i class="icon-flask"> </i>Boom</a></li>
-            <li> <a href=""> <i class="icon-picture"> </i>Plouf</a></li>
+
           </ul>
         </div>
       </div>
