@@ -45,6 +45,12 @@ class VehicleDefinitionController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $model = $vehicleDefinition->getVersion()->getModel();
+            $marque = $vehicleDefinition->getVersion()->getModel()->getMarque();
+            $type = $vehicleDefinition->getVersion()->getModel()->getTypeVehicule();
+            $vehicleDefinition->setMarque($marque);
+            $vehicleDefinition->setModel($model);
+            $vehicleDefinition->setTypeVehicule($type);
             $em->persist($vehicleDefinition);
             $em->flush();
 

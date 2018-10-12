@@ -138,7 +138,7 @@ class VehiculePhysiqueController extends Controller
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
 
 
-        return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [
+        return $this->render('pagesCarifyPublic/rstatutecherche/ficheProduit.html.twig', [
             'voituredef' => $voituredef,
             'voiturephy' => $voiturephy,
             'optionsphy' => $optionsphy,
