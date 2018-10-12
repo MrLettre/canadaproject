@@ -133,8 +133,8 @@ class VehiculePhysiqueController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findByid(['id' => $id]); 
-        $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findByid(['id' => $id]);
+        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findById($id);
+        $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
 
 
