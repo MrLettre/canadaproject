@@ -12,7 +12,7 @@ class VehiculePhysiqueRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findActive() {
         return $this->getEntityManager()
-            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.validationStatut = '2' ORDER BY v.dateMiseEnLigne ASC")
+            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.validationStatut = '2' ORDER BY v.dateMiseEnLigne DESC")
             ->getResult();
     }
 

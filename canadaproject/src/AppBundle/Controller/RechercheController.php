@@ -45,7 +45,6 @@ class RechercheController extends Controller
 
             $arrayVeh = $em->getRepository('AppBundle:VehiculePhysique')
                 ->findByRecherche($marque, $model, $version, $miseEnCircuMax, $miseEnCircuMin, $kiloMax, $kiloMin, $prixMax, $prixMin, $bdv, $energie);
-            //var_dump($arrayVeh);die();
 
             $ids='';
             foreach($arrayVeh as $key => $value){
