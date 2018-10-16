@@ -1,48 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Article</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Sujet</th>
-                <td>{{ article.sujet }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ article.titre }}</td>
-            </tr>
-            <tr>
-                <th>Resume</th>
-                <td>{{ article.resume }}</td>
-            </tr>
-            <tr>
-                <th>Article</th>
-                <td>{{ article.article }}</td>
-            </tr>
-            <tr>
-                <th>Resumeimportant</th>
-                <td>{{ article.resumeImportant }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('article_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('article_edit', { 'id': article.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="blog-card">
+        <div class="article">
+            <h2>{{ article.sujet }} :</h2>
+            <h1>{{ article.titre }}</h1>
+            <p>{{ article.resume }}</p>
+            <br>
+            <p>{{ article.resumeImportant }}</p>
+            <br>
+            <p style="text-align: center"><img src="/images/photoArticle/{{ article.imageName }}"></p>
+            <br>{{ article.article }}
+            <br>
+            <p class="read-more"><a href="/article">Revenir à la liste des articles</a>
+            </p>
+        </div>
+    </div>
 {% endblock %}
