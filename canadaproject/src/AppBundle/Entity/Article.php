@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -60,7 +61,7 @@ class Article
     private $resumeImportant;
 
     /**
-     * @Vich\UploadableField(mapping="photosVehiculePhysique_images", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="photosArticle_images", fileNameProperty="imageName")
      *
      * @var File
      * @Assert\File(

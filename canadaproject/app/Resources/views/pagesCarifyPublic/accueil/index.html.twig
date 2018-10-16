@@ -45,56 +45,27 @@
         <br><br>
     </div>
 
-    <div class="blog-card">
-        <div class="meta">
-            <div class="photo" style="background-image: url(https://cdn.pixabay.com/photo/2016/09/06/13/37/maserati-1649119_960_720.jpg)"></div>
-            <ul class="details"><li class="tags">
-                <li>Hybride</li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>Dossier Hybride :</h1>
-            <h2>Comparatif 2018 : Quelle hybride acheter?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ultrices metus. Vivamus et nunc nulla. Pellentesque vehicula ex ac pretium molestie. Etiam tempor imperdiet velit, a finibus mauris cursus ut. Integer volutpat mauris vel leo cursus tempus. Fusce condimentum mollis tellus eget dapibus. Donec arcu ante, imperdiet sit amet pretium dignissim, venenatis sed lectus. Phasellus sed suscipit ante. Donec pretium lacus faucibus, pretium urna non, gravida arcu. Vestibulum egestas urna ac tortor mollis, quis sodales est vulputate. Duis ac arcu felis. Vestibulum varius non odio ac tempor. Donec mattis, urna non egestas rutrum, velit sapien sollicitudin dolor, non commodo lorem neque ac odio. Integer aliquet nibh enim, consequat finibus mi mattis ac.</p>
-                <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ultrices metus. Vivamus et nunc nulla. Pellentesque vehicula ex ac pretium molestie. Etiam tempor imperdiet velit, a finibus mauris cursus ut. Integer volutpat mauris vel leo cursus tempus. </p>
-            <p class="read-more">
-
-            </p>
-        </div>
-    </div>
-    <div class="blog-card alt">
-        <div class="meta">
-            <div class="photo" style="background-image: url(https://cdn.pixabay.com/photo/2016/06/14/04/19/car-1455746_960_720.jpg)"></div>
-            <ul class="details">
-                <li class="author">Ecologie</li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>Dossier CO2 :</h1>
-            <h2>Quelles évolutions pour la planète ?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ultrices metus. Vivamus et nunc nulla. Pellentesque vehicula ex ac pretium molestie. Etiam tempor imperdiet velit, a finibus mauris cursus ut. Integer volutpat mauris vel leo cursus tempus. Fusce condimentum mollis tellus eget dapibus. Donec arcu ante, imperdiet sit amet pretium dignissim, venenatis sed lectus. Phasellus sed suscipit ante. Donec pretium lacus faucibus, pretium urna non, gravida arcu. Vestibulum egestas urna ac tortor mollis, quis sodales est vulputate. Duis ac arcu felis. Vestibulum varius non odio ac tempor. Donec mattis, urna non egestas rutrum, velit sapien sollicitudin dolor, non commodo lorem neque ac odio. Integer aliquet nibh enim, consequat finibus mi mattis ac.</p>
-                <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ultrices metus. Vivamus et nunc nulla. Pellentesque vehicula ex ac pretium molestie. Etiam tempor imperdiet velit, a finibus mauris cursus ut. Integer volutpat mauris vel leo cursus tempus.</p>
-        </div>
-    </div>
+    {% for article in articles %}
 
     <div class="blog-card">
         <div class="meta">
-            <div class="photo" style="background-image: url(https://cdn.pixabay.com/photo/2014/10/09/23/35/car-482683_960_720.jpg)"></div>
+            <div class="photo" style="background-image: url('/images/photoArticle/{{ article.imageName }}')"></div>
             <ul class="details"><li class="tags">
-                <li>Le Mondial de l'Auto</li>
+                <li>{{ article.sujet }}</li>
             </ul>
         </div>
         <div class="description">
-            <h1>Mondial de l'auto 2018 :</h1>
-            <h2>Les voitures du futur</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ultrices metus. Vivamus et nunc nulla. Pellentesque vehicula ex ac pretium molestie. Etiam tempor imperdiet velit, a finibus mauris cursus ut. Integer volutpat mauris vel leo cursus tempus. Fusce condimentum mollis tellus eget dapibus. Donec arcu ante, imperdiet sit amet pretium dignissim, venenatis sed lectus. Phasellus sed suscipit ante. Donec pretium lacus faucibus, pretium urna non, gravida arcu. Vestibulum egestas urna ac tortor mollis, quis sodales est vulputate. Duis ac arcu felis. Vestibulum varius non odio ac tempor. Donec mattis, urna non egestas rutrum, velit sapien sollicitudin dolor, non commodo lorem neque ac odio. Integer aliquet nibh enim, consequat finibus mi mattis ac.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ultrices metus. Vivamus et nunc nulla. Pellentesque vehicula ex ac pretium molestie. Etiam tempor imperdiet velit, a finibus mauris cursus ut. Integer volutpat mauris vel leo cursus tempus. Fusce condimentum mollis tellus eget dapibus. Donec arcu ante, imperdiet sit amet pretium dignissim, venenatis sed lectus. Phasellus sed suscipit ante. Donec pretium lacus faucibus, pretium urna non, gravida arcu. Vestibulum egestas urna ac tortor mollis, quis sodales est vulputate. Duis ac arcu felis. Vestibulum varius non odio ac tempor. Donec mattis, urna non egestas rutrum, velit sapien sollicitudin dolor, non commodo lorem neque ac odio. Integer aliquet nibh enim, consequat finibus mi mattis ac.</p>
-            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ultrices metus. Vivamus et nunc nulla. Pellentesque vehicula ex ac pretium molestie. Etiam tempor imperdiet velit, a finibus mauris cursus ut. Integer volutpat mauris vel leo cursus tempus.</p>
-            <p class="read-more">
-
+            <h1>Dossier {{ article.sujet }} :</h1>
+            <h2>{{ article.titre }}</h2>
+            <p>{{ article.resume }}</p>
+                <br>{{ article.resumeImportant }}</p>
+            <p class="read-more"><a href="/article/{{ article.id }}">Lire l'article</a>
             </p>
         </div>
     </div>
+
+    {% endfor %}
+
     <button onclick="topFunction()" id="myBtn" title="haut de page">
         <i data-feather="chevron-up"></i>
     </button>
