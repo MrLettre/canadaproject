@@ -1,47 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Articles list</h1>
+    {% for article in articles|reverse %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Sujet</th>
-                <th>Titre</th>
-                <th>Resume</th>
-                <th>Article</th>
-                <th>Resumeimportant</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
-                <td>{{ article.sujet }}</td>
-                <td>{{ article.titre }}</td>
-                <td>{{ article.resume }}</td>
-                <td>{{ article.article }}</td>
-                <td>{{ article.resumeImportant }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('article_show', { 'id': article.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="blog-card" style="max-height: 40vh">
+            <div class="meta">
+                <div class="photo" style="background-image: url('/images/photoArticle/{{ article.imageName }}')"></div>
+                <ul class="details"><li class="tags">
+                    <li>{{ article.sujet }}</li>
+                </ul>
+            </div>
+            <div class="description">
+                <h1>Dossier {{ article.sujet }} :</h1>
+                <h2>{{ article.titre }}</h2>
+                <br>{{ article.resumeImportant }}
+                <p class="read-more"><a href="/article/{{ article.id }}">Lire l'article</a>
+                </p>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('article_new') }}">Create a new article</a>
-        </li>
-    </ul>
+    {% endfor %}
 {% endblock %}

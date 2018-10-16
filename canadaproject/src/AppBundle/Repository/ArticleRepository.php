@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findArticleAccueil(){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT a FROM AppBundle:Article a ORDER BY a.id DESC");
+            $query->setMaxResults(3);
+        return $query->getResult();
+    }
 }
