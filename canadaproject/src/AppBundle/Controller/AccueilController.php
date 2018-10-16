@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Repository\ArticleRepository;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
@@ -22,12 +23,13 @@ class AccueilController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $activeAccueil = true;
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository('AppBundle:Article')->findArticleAccueil();
 
         // replace this example code with whatever you need
-        return $this->render('pagesCarifyPublic/accueil/index.html.twig', ['activeAccueil' => $activeAccueil,
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        return $this->render('pagesCarifyPublic/accueil/index.html.twig', array(
+            'articles' => $articles,
+        ));
     }
 
 
