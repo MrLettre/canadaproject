@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.min.css" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -15,17 +23,53 @@
 
                 <div class="container">
                     <div class="row">
-                           <div class="col-xs-6 col-sm-6 col-md-6">
+                           <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
                 <img src="/images/logoMarques/{{ vehicleDefinition.version.model.marque.imageName }}" width="80" height="auto">
 
+
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+
+                        {% if id2 is defined %}
+                            <img src="/images/logoMarques/{{ id2.version.model.marque.imageName }}"width="80" height="auto">
+                           
+
+                            {% else %}
+
+                            {% endif %}
+                      </div>
+
+                   </div>
+                 </div>     
+
+
+                    <div class="container">
+                    <div class="row">
+                           <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+
+               
+
                 <img src="/images/logoModeles/{{ vehicleDefinition.version.model.imageName }}"width="80" height="auto">
 
-                {{ vehicleDefinition.version.model.marque }}
+                </div>
 
-                {{ vehicleDefinition.version.model }}
+                <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
-                {{ vehicleDefinition.version }}
+                        {% if id2 is defined %}
+                            
+                            <img src="/images/logoModeles/{{ id2.version.model.imageName }}"width="80" height="auto">
+
+                            {% else %}
+
+                            {% endif %}
+                      </div>
+
+                   </div>
+                 </div>        
+
+              
 
 
                 {# {{ vehicleDefinition.version.prixNeufHT }}           #}           <!-- A ajouter -->
@@ -43,11 +87,23 @@
 
 
 
-                        <div class="col-xs-6 col-sm-6 col-md-6">
+                   <div class="container">
+                    <div class="row">  
+
+                     <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                        
+                        {{ vehicleDefinition.version.model.marque }}
+
+                        {{ vehicleDefinition.version.model }}
+
+                        {{ vehicleDefinition.version }}
+
+                     </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
                         {% if id2 is defined %}
-                            <img src="/images/logoMarques/{{ id2.version.model.marque.imageName }}"width="80" height="auto">
-                            <img src="/images/logoModeles/{{ id2.version.model.imageName }}"width="80" height="auto">
+                       
 
                              <!--fait--!>   {{ id2.version.model.marque }}
 
@@ -308,7 +364,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
       <div class="table-responsive">
       <caption class="text-center">Couleurs</caption>
-        <table  class="table table-bordered table-hover">
+        <table  class="table table-bordered table-hover text-center">
           <tbody>
           {% for colors in version.couleursDisponibles %}
             <tr>
