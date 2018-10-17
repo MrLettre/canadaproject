@@ -5,6 +5,17 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
+                {% include "pagesCarifyPublic/comparateur/comparateurGauche.html.twig" %}
+            </div>
+        </div>
+    </div>         
+
+
+    <br><br><br>
+
+                <div class="container">
+                    <div class="row">
+                           <div class="col-xs-6 col-sm-6 col-md-6">
 
                 <img src="/images/logoMarques/{{ vehicleDefinition.version.model.marque.imageName }}" width="80" height="auto">
 
@@ -19,39 +30,19 @@
 
                 {# {{ vehicleDefinition.version.prixNeufHT }}           #}           <!-- A ajouter -->
 
-                {{ vehicleDefinition.version.model.typeVehicule }}
-
-                {{ vehicleDefinition.version.energie }}
-
-                {{ vehicleDefinition.version.puissanceTh }}
-                {{ vehicleDefinition.version.puissanceHy }}
-                {{ vehicleDefinition.version.puissanceEl }}
-
-                {{ vehicleDefinition.version.autonimieTh }}
-                {{ vehicleDefinition.version.autonomieHy }}
-                {{ vehicleDefinition.version.autonomieEl }}
 
                 {# {{ vehicleDefinition.version.model.dimensions }}      #}
                 <!-- A ajouter -->
-                {% for colors in version.couleursDisponibles %}
-                    {{ colors.nom }}
-                {% endfor %}
-                {% for options in version.options %}
-                    {{ options.nom }}
-                {% endfor %}
-
-                {{ vehicleDefinition.version.transmission }}
+               
                 {# {{ vehicleDefinition.version.nbreDePortes }}        #}
                 <!-- A ajouter -->
                 {# {{ vehicleDefinition.version.nbreDePlaces }}           #}
                 <!-- A ajouter -->
 
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                {% include "pagesCarifyPublic/comparateur/comparateurGauche.html.twig" %}
 
-                <div class="container">
-                    <div class="row">
+
+
                         <div class="col-xs-6 col-sm-6 col-md-6">
 
                         {% if id2 is defined %}
@@ -62,36 +53,24 @@
 
                              <!--fait--!>   {{ id2.version.model }}
 
-                              <!--Nom version a mettre en haut--!>  {{ id2.version }}
+                                            {{ id2.version.nom}}
+
+                              <!--Nom version a mettre en haut--!>  
 
                                 {# {{ vehicleDefinition.version.prixNeufHT }}           #}
                                 <!-- A ajouter -->
 
-                               <!--fait--!> {{ id2.version.model.typeVehicule }}
-
-                              <!--fait--!>  {{ id2.version.energie }}
-
-                               <!--fait--!> {{ id2.version.puissanceTh }}
-                               <!--fait--!> {{ id2.version.puissanceHy }}
-                               <!--fait--!> {{ id2.version.puissanceEl }}
-
-                               <!--fait--!> {{ id2.version.autonimieTh }}
-                                <!--fait--!>{{ id2.version.autonomieHy }}
-                               <!--fait--!> {{ id2.version.autonomieEl }}
+                            
 
                                 {# {{ vehicleDefinition.version.model.dimensions }}      #}
                                 <!-- A ajouter -->
 
                                 
-                               <!--fait--!> {% for colors2 in version2.couleursDisponibles %}
-                                    {{ colors2.nom }}
-                                {% endfor %}
+                               
     
-                                <!--fait--!>{% for options in version.options %}
-                                    {{ options.nom }}
-                                {% endfor %}
+                                
 
-                                <!--fait--!>{{ vehicle2.version.transmission }}
+                                
                                 {# {{ vehicleDefinition.version.nbreDePortes }}        #}
                                 <!-- A ajouter -->
                                 {# {{ vehicleDefinition.version.nbreDePlaces }}           #}
@@ -106,7 +85,7 @@
         </div>
     </div>
 
-
+<br><br><br><br>
 
     
 
@@ -115,35 +94,6 @@
 
 
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <tbody>
-                    <tr>
-                        <td>{{ vehicleDefinition.version.model.marque }}</td>
-                        <td>Marque</td>
-                        <td>{{ id2.version.model.marque }}</td>
-                    </tr>
-                </tbody>
-            </div>
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <tbody>
-                    <tr>
-                        <td>{{ vehicleDefinition.version.model }}</td>
-                        <td>Model</td>
-                        <td>{{ id2.version.model }}</td>
-                    </tr>
-                </tbody>
-            </div>
-        </div>
-    </div>
 
     <hr>
 
