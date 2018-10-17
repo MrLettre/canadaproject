@@ -38,6 +38,45 @@
         </a>
     </div>
 
+    <!-- DERNIERS AJOUTS A LA VENTE -->
+    <div class="title-home animated fadeInRight ">
+        <br><br>
+        <hr class="trait">
+        <h1 class="titreAccueil text-center text-monospace">ELLES N'ATTENDENT QUE VOUS</h1>
+        <hr class="trait">
+        <br><br>
+    </div>
+
+    <div class="vignettes">
+    {% for vehPhy in vehPhys %}
+        <!-- Card Light -->
+        <div class="lightCard">
+            <!-- Card image -->
+            <div class="view overlay vehover">
+                <img class="card-img-top vehphoto" src="/images/photosVehiculePhysique/{{ vehPhy.imageName }}" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h6 class="card-title">{{ vehPhy.version.model.marque }} {{ vehPhy.version.model }} {{ vehPhy.version }}</h6>
+                <hr>
+                <h4 style="color: #5E7AE5">{{ vehPhy.prixHT }} $</h4>
+                <!-- Link -->
+                <a href="/vehiculephysique/recherche/{{ vehPhy.id }}" class="black-text d-flex justify-content-end"><h5>Consulter l'annonce <i class="fa fa-angle-double-right"></i></h5></a>
+
+            </div>
+
+        </div>
+        <!-- Card Light -->
+    {% endfor %}
+    </div>
+
+
+
+
     <!-- DERNIERS AJOUTS AU COMPARATEUR CARIFY -->
     <div class="title-home animated fadeInRight ">
         <br><br>
@@ -47,18 +86,31 @@
         <br><br>
     </div>
 
+    <div class="vignettes">
     {% for vehDef in vehDefs %}
-        <div class="blog-card">
-            <div class="">
-                <div class="photo" style="background-image: url({#'/images/photoArticle/{{ vehDef.imageName }}'#})"></div>
+        <!-- Card Light -->
+        <div class="lightCard">
+            <!-- Card image -->
+            <div class="view overlay vehover">
+                <img class="card-img-top vehphoto" src="/images/logoModeles/{{ vehDef.version.model.imageName }}" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
             </div>
-            <div class="description">
-                <ul class="">
-                    <li>{{ vehDef.nom }}</li>
-                </ul>
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title">{{ vehDef.nom }}</h4>
+                <hr>
+               <!-- Link -->
+                <a href="/comparateur/{{ vehDef.id }}/show" class="black-text d-flex justify-content-end"><h5>Aller comparer <i class="fa fa-angle-double-right"></i></h5></a>
+
             </div>
+
         </div>
+        <!-- Card Light -->
     {% endfor %}
+    </div>
 
 
 
@@ -76,19 +128,21 @@
     <div class="blog-card">
         <div class="meta">
             <div class="photo" style="background-image: url('/images/photoArticle/{{ article.imageName }}')"></div>
-            <ul class="details"><li class="tags">
-                <li>{{ article.sujet }}</li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>Dossier {{ article.sujet }} :</h1>
-            <h2>{{ article.titre }}</h2>
-            <p>{{ article.resume }}</p>
-                <br>{{ article.resumeImportant }}
-            <p class="read-more"><a href="/article/{{ article.id }}">Lire l'article</a>
-            </p>
+                <ul class="details"><li class="tags">
+                    <li>{{ article.sujet }}</li>
+                </ul>
+            </div>
+            <div class="description">
+                <h1>Dossier {{ article.sujet }} :</h1>
+                <h2>{{ article.titre }}</h2>
+                <p>{{ article.resume }}</p>
+                    <br>{{ article.resumeImportant }}
+                <p class="read-more"><a href="/article/{{ article.id }}">Lire l'article</a>
+                </p>
+            </div>
         </div>
     </div>
+
 
     {% endfor %}
 
@@ -98,9 +152,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        feather.replace()
-    </script>
+
     <script src="{{ asset('build/app.js') }}"></script>
 
 
