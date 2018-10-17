@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
     <h1>Article creation</h1>
@@ -8,9 +8,5 @@
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('article_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <p class="read-more"><a href="/admin/article">Revenir à la liste des articles</a>
 {% endblock %}

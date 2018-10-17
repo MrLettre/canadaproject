@@ -1,0 +1,21 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block body %}
+
+    <div class="blog-card">
+        <div class="article">
+            <h2>{{ article.sujet }} :</h2>
+            <h1>{{ article.titre }}</h1>
+            <p>{{ article.resume }}</p>
+            <br>
+            <p>{{ article.resumeImportant }}</p>
+            <br>
+            <p style="text-align: center"><img src="/images/photoArticle/{{ article.imageName }}"></p>
+            <br>{{ article.article }}
+            <br>
+            <p class="read-more"><a href="/admin/article">Revenir à la liste des articles</a>
+            <p class="read-more"><a href="/admin/article/{{ article.id }}/edit">Editer cet article</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
