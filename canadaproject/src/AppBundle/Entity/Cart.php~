@@ -14,18 +14,12 @@ use Doctrine\Common\Collections\Collection;
  */
 class Cart
 {
-    /**
-     * Many Users have Many Groups.
-     * @ORM\ManyToMany(targetEntity="VehiculePhysique", inversedBy="carts")
-     * @ORM\JoinTable(name="VehPhy_carts")
-     */
-    private $vehiculePhysiques;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Vente", inversedBy="carts")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity=CartContent::class, cascade={"persist", "remove"}, inversedBy="cart")
+     * @ORM\JoinColumn(name="cartContent", nullable=false)
      */
-    private $vente;
+    protected $cartContent;
 
     /**
      * @var int
@@ -39,15 +33,23 @@ class Cart
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateMiseAuPanier", type="datetime")
+     * @ORM\Column(name="dateCreationPanier", type="datetime")
      */
-    private $dateMiseAuPanier;
+    private $dateCreationPanier;
 
-    public function __construct()
-    {
-        $this->vehiculePhysiques = new ArrayCollection();
-    }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceCart", type="string")
+     */
+    private $referenceCart;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="actif", type="boolean", options={"default":false})
+     */
+    private $actif;
 
     /**
      * Get id
@@ -60,89 +62,7 @@ class Cart
     }
 
 
-    /**
-     * @return Collection
-     */
-    public function getVehiculePhysiques(): Collection
-    {
-        return $this->vehiculePhysiques;
-    }
 
-    /**
-     * Set dateMiseAuPanier
-     *
-     * @param \DateTime $dateMiseAuPanier
-     *
-     * @return Cart
-     */
-    public function setDateMiseAuPanier($dateMiseAuPanier)
-    {
-        $this->dateMiseAuPanier = $dateMiseAuPanier;
 
-        return $this;
-    }
 
-    /**
-     * Get dateMiseAuPanier
-     *
-     * @return \DateTime
-     */
-    public function getDateMiseAuPanier()
-    {
-        return $this->dateMiseAuPanier;
-    }
-
-    /**
-     * Set vente
-     *
-     * @param \AppBundle\Entity\Vente $vente
-     *
-     * @return Cart
-     */
-    public function setVente(\AppBundle\Entity\Vente $vente)
-    {
-        $this->vente = $vente;
-
-        return $this;
-    }
-
-    /**
-     * Get vente
-     *
-     * @return \AppBundle\Entity\Vente
-     */
-    public function getVente()
-    {
-        return $this->vente;
-    }
-
-    /**
-     * Add vehiculePhysique
-     *
-     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
-     *
-     * @return Cart
-     */
-    public function addVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
-    {
-        $this->vehiculePhysiques[] = $vehiculePhysique;
-
-        return $this;
-    }
-
-    /**
-     * Remove vehiculePhysique
-     *
-     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
-     */
-    public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
-    {
-        $this->vehiculePhysiques->removeElement($vehiculePhysique);
-    }
-
-    public function __toString()
-    {
-    
-        return $this->vehiculePhysiques;
-    }
 }

@@ -20,6 +20,11 @@ use Doctrine\Common\Collections\Collection;
 class VehiculePhysique
 {
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartContent", mappedBy="vehiculePhysique")
+     */
+    private $cartContents;
+
+    /**
      * Many VehiculePhysiques have Many Options.
      * @ORM\ManyToMany(targetEntity="VehicleOption", mappedBy="vehiculePhysiques")
      */
@@ -43,12 +48,6 @@ class VehiculePhysique
      * @ORM\JoinColumn(nullable=true)
      */
     private $region;
-
-    /**
-     * Many VehiculePhysiques have Many Carts.
-     * @ORM\ManyToMany(targetEntity="Cart", mappedBy="vehiculePhysiques")
-     */
-    protected $carts;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Concession", inversedBy="vehiculePhysiques")
@@ -147,12 +146,6 @@ class VehiculePhysique
     private $imageName;
 
 
-    public function __construct()
-    {
-        $this->carts = new ArrayCollection();
-    }
-
-
     /**
      * Get id
      *
@@ -161,14 +154,6 @@ class VehiculePhysique
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getCarts(): Collection
-    {
-        return $this->carts;
     }
 
     /**
@@ -470,30 +455,6 @@ class VehiculePhysique
     }
 
     /**
-     * Add cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     *
-     * @return VehiculePhysique
-     */
-    public function addCart(\AppBundle\Entity\Cart $cart)
-    {
-        $this->carts[] = $cart;
-
-        return $this;
-    }
-
-    /**
-     * Remove cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     */
-    public function removeCart(\AppBundle\Entity\Cart $cart)
-    {
-        $this->carts->removeElement($cart);
-    }
-
-    /**
      * Set concession
      *
      * @param \AppBundle\Entity\Concession $concession
@@ -589,5 +550,49 @@ class VehiculePhysique
     {
         // TODO: Implement __toString() method.
         return $this->version;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cartContents = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->options = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return VehiculePhysique
+     */
+    public function addCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContents[] = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Remove cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        return $this->cartContents->removeElement($cartContent);
+    }
+
+    /**
+     * Get cartContents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCartContents()
+    {
+        return $this->cartContents;
     }
 }
