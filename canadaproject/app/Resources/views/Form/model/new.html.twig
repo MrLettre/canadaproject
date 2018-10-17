@@ -11,15 +11,21 @@
     </div>
 
     <div class="form-group">
+        {{ form_label(form.nom, 'Nom du modèle') }}
+        {{ form_widget(form.nom, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.nom) }}
+    </div>
+
+    <div class="form-group">
         {{ form_label(form.typeVehicule, 'Type de véhicule') }}
         {{ form_widget(form.typeVehicule, {'attr':{class:'form-control'}}) }}
         {{ form_errors(form.typeVehicule) }}
     </div>
 
     <div class="form-group">
-        {{ form_label(form.nom, 'Nom du modèle') }}
-        {{ form_widget(form.nom, {'attr':{class:'form-control'}}) }}
-        {{ form_errors(form.nom) }}
+        {{ form_label(form.imageFile, 'Image du modèle') }}
+        {{ form_widget(form.imageFile, {'attr':{class:'form-control'}}) }}
+        {{ form_errors(form.imageFile) }}
     </div>
 
     <div class="form-group">
