@@ -42,11 +42,9 @@ class ArticleController extends Controller
      */
     public function showAction(Article $article)
     {
-        $deleteForm = $this->createDeleteForm($article);
 
         return $this->render('article/show.html.twig', array(
             'article' => $article,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
