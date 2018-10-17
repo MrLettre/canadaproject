@@ -28,6 +28,13 @@ class VehiculePhysiqueRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    public function findLastNine(){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT a FROM AppBundle:VehiculePhysique a ORDER BY a.id DESC");
+        $query->setMaxResults(3);
+        return $query->getResult();
+    }
+
     public function findByRecherche($marque, $model, $version, $miseEnCircuMax, $miseEnCircuMin, $kiloMax, $kiloMin, $prixMax, $prixMin, $bdv, $energie) {
                     $query = $this->createQueryBuilder('v')
                     ->join('v.version', 'ver')
