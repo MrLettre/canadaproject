@@ -25,12 +25,14 @@ class AccueilController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('AppBundle:Article')->findArticleAccueil();
-        $vehDefs = $em->getRepository('AppBundle:VehicleDefinition')->findLastFive();
+        $vehDefs = $em->getRepository('AppBundle:VehicleDefinition')->findLastThree();
+        $vehPhys = $em->getRepository('AppBundle:VehiculePhysique')->findLastNine();
 
         // replace this example code with whatever you need
         return $this->render('pagesCarifyPublic/accueil/index.html.twig', array(
             'articles' => $articles,
             'vehDefs' => $vehDefs,
+            'vehPhys' => $vehPhys,
         ));
     }
 

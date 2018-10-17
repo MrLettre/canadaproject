@@ -41,7 +41,7 @@ class ComparateurController extends Controller
     /**
      * Finds and displays a vehicleDefinition entity.
      *
-     * @Route("/{id}/show", name="comparateur_show")
+     * @Route("/comparateur/{id}/show", name="comparateur_show")
      * @Method("GET")
      */
     public function showAction(Request $request, VehicleDefinition $vehicleDefinition)
