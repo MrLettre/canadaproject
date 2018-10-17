@@ -53,12 +53,14 @@ class ComparateurController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $id2 = $vehicle2->getVersion()->getVehicleDef();
+            $version2 = $vehicle2->getVersion();
 
             return $this->render('pagesCarifyPublic/comparateur/show.html.twig', array(
                 'vehicle2' => $vehicle2,
                 'id2' => $id2,
                 'vehicleDefinition' => $vehicleDefinition,
                 'version' => $version,
+                'version2'=>$version2,
                 'form' => $form->createView(),
             ));
         }
