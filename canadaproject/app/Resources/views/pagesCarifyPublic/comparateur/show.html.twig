@@ -58,40 +58,40 @@
                             <img src="/images/logoMarques/{{ id2.version.model.marque.imageName }}"width="80" height="auto">
                             <img src="/images/logoModeles/{{ id2.version.model.imageName }}"width="80" height="auto">
 
-                                {{ id2.version.model.marque }}
+                             <!--fait--!>   {{ id2.version.model.marque }}
 
-                                {{ id2.version.model }}
+                             <!--fait--!>   {{ id2.version.model }}
 
-                                {{ id2.version }}
+                              <!--Nom version a mettre en haut--!>  {{ id2.version }}
 
                                 {# {{ vehicleDefinition.version.prixNeufHT }}           #}
                                 <!-- A ajouter -->
 
-                                {{ id2.version.model.typeVehicule }}
+                               <!--fait--!> {{ id2.version.model.typeVehicule }}
 
-                                {{ id2.version.energie }}
+                              <!--fait--!>  {{ id2.version.energie }}
 
-                                {{ id2.version.puissanceTh }}
-                                {{ id2.version.puissanceHy }}
-                                {{ id2.version.puissanceEl }}
+                               <!--fait--!> {{ id2.version.puissanceTh }}
+                               <!--fait--!> {{ id2.version.puissanceHy }}
+                               <!--fait--!> {{ id2.version.puissanceEl }}
 
-                                {{ id2.version.autonimieTh }}
-                                {{ id2.version.autonomieHy }}
-                                {{ id2.version.autonomieEl }}
+                               <!--fait--!> {{ id2.version.autonimieTh }}
+                                <!--fait--!>{{ id2.version.autonomieHy }}
+                               <!--fait--!> {{ id2.version.autonomieEl }}
 
                                 {# {{ vehicleDefinition.version.model.dimensions }}      #}
                                 <!-- A ajouter -->
 
                                 
-                                {% for colors2 in version2.couleursDisponibles %}
+                               <!--fait--!> {% for colors2 in version2.couleursDisponibles %}
                                     {{ colors2.nom }}
                                 {% endfor %}
     
-                                {% for options in version.options %}
+                                <!--fait--!>{% for options in version.options %}
                                     {{ options.nom }}
                                 {% endfor %}
 
-                                {{ vehicle2.version.transmission }}
+                                <!--fait--!>{{ vehicle2.version.transmission }}
                                 {# {{ vehicleDefinition.version.nbreDePortes }}        #}
                                 <!-- A ajouter -->
                                 {# {{ vehicleDefinition.version.nbreDePlaces }}           #}
@@ -202,8 +202,150 @@
 <hr>
 
 
+<div class="container">
 
-ouiiiiii
+<div class="row">
+
+<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+
+<table>
+{% if vehicleDefinition.version.energie == 'electrique' %}
+          <thead> 
+            <tr>
+              <th>Puissance Electrique</th>
+              <th>Autonomie electrique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ vehicleDefinition.version.puissanceEl }}</td>
+              <td>{{ vehicleDefinition.version.autonomieEl }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+
+          {% if vehicleDefinition.version.energie == 'essence' %}
+          <thead> 
+            <tr>
+              <th>Puissance Thermique</th>
+              <th>Autonomie Thermique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ vehicleDefinition.version.puissanceTh }}</td>
+              <td>{{ vehicleDefinition.version.autonimieTh }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+
+          {% if vehicleDefinition.version.energie == 'hybride' %}
+          <thead> 
+            <tr>
+              <th>Puissance Thermique</th>
+              <th>Autonomie Thermique</th>
+              <th>Puissance Electrique</th>
+              <th>Autonomie electrique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ vehicleDefinition.version.puissanceTh }}</td>
+              <td>{{ vehicleDefinition.version.autonimieTh }}</td>
+              <td>{{ vehicleDefinition.version.puissanceEl }}</td>
+              <td>{{ vehicleDefinition.version.autonomieEl }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+
+
+        </table>
+</div>
+
+<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+
+<table cellpadding="10">
+{% if id2.version.energie == 'electrique' %}
+          <thead> 
+            <tr>
+              <th>Puissance Electrique</th>
+              <th>Autonomie electrique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ id2.version.puissanceEl }}</td>
+              <td>{{ id2.version.autonomieEl }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+
+          {% if id2.version.energie == 'essence' %}
+          <thead> 
+            <tr>
+              <th>Puissance Thermique</th>
+              <th>Autonomie Thermique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ id2.version.puissanceTh }}</td>
+              <td>{{ id2.version.autonimieTh }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+
+          {% if id2.version.energie == 'hybride' %}
+          <thead> 
+            <tr>
+              <th>Puissance Thermique</th>
+              <th>Autonomie Thermique</th>
+              <th>Puissance Electrique</th>
+              <th>Autonomie electrique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ id2.version.puissanceTh }}</td>
+              <td>{{ id2.version.autonimieTh }}</td>
+              <td>{{ id2.version.puissanceEl }}</td>
+              <td>{{ id2.version.autonomieEl }}</td>
+            </tr>
+          </tbody>
+          {% endif %}
+        </table>
+</div>
+
+
+
+</div>
+</div>
+
+<hr>
+
+<div class="section">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <div class="table-responsive">
+      <caption class="text-center">Options</caption>
+        <table  class="table table-bordered table-hover">
+          <tbody>
+          {% for options in version.options %}
+            <tr>
+                <td>{{ options.nom }}</td>
+              {% endfor %}
+              {% for options2 in version2.options %}
+                <td>{{ options2.nom }}</td>
+              {% endfor %}
+              </tr>
+          </tbody>
+          </table>
+      </div><!--end of .table-responsive-->
+    </div>
+  </div>
+</div>
+</div>
 
 
 
@@ -220,10 +362,10 @@ ouiiiiii
           <tbody>
           {% for colors in version.couleursDisponibles %}
             <tr>
-              <td>{{ colors.nom }}</td>
+                <td>{{ colors.nom }}</td>
               {% endfor %}
               {% for colors2 in version2.couleursDisponibles %}
-              <td>{{ colors2.nom }}</td>
+                <td>{{ colors2.nom }}</td>
               {% endfor %}
               </tr>
               
