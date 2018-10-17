@@ -1,0 +1,112 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CartContent
+ *
+ * @ORM\Table(name="cart_content")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CartContentRepository")
+ */
+class CartContent
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiculePhysique", inversedBy="cartContents")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $vehiculePhysique;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Cart::class, mappedBy="cartContent")
+     */
+    protected $cart;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Vente::class, mappedBy="cartContent")
+     */
+    protected $vente;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="dateMiseAJourPanier", type="datetime", nullable=true)
+     */
+    private $dateMiseAJourPanier;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateMiseAuPanier", type="datetime")
+     */
+    private $dateMiseAuPanier;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateMiseAJourPanier.
+     *
+     * @param \DateTime|null $dateMiseAJourPanier
+     *
+     * @return CartContent
+     */
+    public function setDateMiseAJourPanier($dateMiseAJourPanier = null)
+    {
+        $this->dateMiseAJourPanier = $dateMiseAJourPanier;
+
+        return $this;
+    }
+
+    /**
+     * Get dateMiseAJourPanier.
+     *
+     * @return \DateTime|null
+     */
+    public function getDateMiseAJourPanier()
+    {
+        return $this->dateMiseAJourPanier;
+    }
+
+    /**
+     * Set dateMiseAuPanier.
+     *
+     * @param \DateTime $dateMiseAuPanier
+     *
+     * @return CartContent
+     */
+    public function setDateMiseAuPanier($dateMiseAuPanier)
+    {
+        $this->dateMiseAuPanier = $dateMiseAuPanier;
+
+        return $this;
+    }
+
+    /**
+     * Get dateMiseAuPanier.
+     *
+     * @return \DateTime
+     */
+    public function getDateMiseAuPanier()
+    {
+        return $this->dateMiseAuPanier;
+    }
+}

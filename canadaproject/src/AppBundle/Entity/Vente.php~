@@ -13,9 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Vente
 {
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Cart", mappedBy="vente")
+     * @ORM\OneToOne(targetEntity=CartContent::class, cascade={"persist", "remove"}, inversedBy="vente")
+     * @ORM\JoinColumn(name="cartContent", nullable=false)
      */
-    private $carts;
+    protected $cartContent;
 
     /**
      * @var int
@@ -26,6 +27,20 @@ class Vente
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceVente", type="string")
+     */
+    private $referenceVente;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateVente", type="datetime")
+     */
+    private $dateVente;
+
 
     /**
      * Get id
@@ -33,52 +48,6 @@ class Vente
      * @return int
      */
     public function getId()
-    {
-        return $this->id;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->carts = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     *
-     * @return Vente
-     */
-    public function addCart(\AppBundle\Entity\Cart $cart)
-    {
-        $this->carts[] = $cart;
-
-        return $this;
-    }
-
-    /**
-     * Remove cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     */
-    public function removeCart(\AppBundle\Entity\Cart $cart)
-    {
-        $this->carts->removeElement($cart);
-    }
-
-    /**
-     * Get carts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCarts()
-    {
-        return $this->carts;
-    }
-
-    public function __toString()
     {
         return $this->id;
     }

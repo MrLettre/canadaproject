@@ -13,9 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Vente
 {
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Cart", mappedBy="vente")
+     * @ORM\OneToOne(targetEntity=CartContent::class, cascade={"persist", "remove"}, inversedBy="vente")
+     * @ORM\JoinColumn(name="cartContent", nullable=false)
      */
-    private $carts;
+    protected $cartContent;
 
     /**
      * @var int
@@ -25,6 +26,20 @@ class Vente
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceVente", type="string")
+     */
+    private $referenceVente;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateVente", type="datetime")
+     */
+    private $dateVente;
 
 
     /**
@@ -36,50 +51,76 @@ class Vente
     {
         return $this->id;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->carts = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add cart
+     * Set referenceVente.
      *
-     * @param \AppBundle\Entity\Cart $cart
+     * @param string $referenceVente
      *
      * @return Vente
      */
-    public function addCart(\AppBundle\Entity\Cart $cart)
+    public function setReferenceVente($referenceVente)
     {
-        $this->carts[] = $cart;
+        $this->referenceVente = $referenceVente;
 
         return $this;
     }
 
     /**
-     * Remove cart
+     * Get referenceVente.
      *
-     * @param \AppBundle\Entity\Cart $cart
+     * @return string
      */
-    public function removeCart(\AppBundle\Entity\Cart $cart)
+    public function getReferenceVente()
     {
-        $this->carts->removeElement($cart);
+        return $this->referenceVente;
     }
 
     /**
-     * Get carts
+     * Set dateVente.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \DateTime $dateVente
+     *
+     * @return Vente
      */
-    public function getCarts()
+    public function setDateVente($dateVente)
     {
-        return $this->carts;
+        $this->dateVente = $dateVente;
+
+        return $this;
     }
 
-    public function __toString()
+    /**
+     * Get dateVente.
+     *
+     * @return \DateTime
+     */
+    public function getDateVente()
     {
-        return $this->id;
+        return $this->dateVente;
+    }
+
+    /**
+     * Set cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return Vente
+     */
+    public function setCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContent = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Get cartContent.
+     *
+     * @return \AppBundle\Entity\CartContent
+     */
+    public function getCartContent()
+    {
+        return $this->cartContent;
     }
 }
