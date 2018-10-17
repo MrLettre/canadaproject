@@ -78,9 +78,12 @@
 
                                 {# {{ vehicleDefinition.version.model.dimensions }}      #}
                                 <!-- A ajouter -->
-                                {% for colors in version.couleursDisponibles %}
-                                    {{ colors.nom }}
+
+                                
+                                {% for colors2 in version2.couleursDisponibles %}
+                                    {{ colors2.nom }}
                                 {% endfor %}
+    
                                 {% for options in version.options %}
                                     {{ options.nom }}
                                 {% endfor %}
@@ -99,6 +102,15 @@
             </div>
         </div>
     </div>
+
+
+
+    
+
+
+    {% if id2 is defined %}
+
+
 
     <div class="container">
         <div class="row">
@@ -169,15 +181,31 @@
 
 
 
-
-
-
-
-
-
-
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <tbody>
+                    <tr>
+                        <td>{{ vehicleDefinition.version.transmission }}</td>
+                        <td>Transmission</td>
+                        <td>{{ vehicle2.version.transmission }}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+</div>
 
 <hr>
+
+
+
+
+
+
+
+
+</hr>
 
 
 <div class="container">
@@ -187,14 +215,16 @@
       <caption class="text-center">Couleurs</caption>
         <table  class="table table-bordered table-hover">
           <tbody>
+          {% for colors in version.couleursDisponibles %}
             <tr>
-              <td>Noir</td>
-              <td>lgbt</td>
+              <td>{{ colors.nom }}</td>
+              {% endfor %}
+              {% for colors2 in version2.couleursDisponibles %}
+              <td>{{ colors2.nom }}</td>
+              {% endfor %}
               </tr>
-              <tr>
-               <td>Bleu</td>
-              <td>Rose</td>
-            </tr>
+              
+            
           </tbody>
           </table>
       </div><!--end of .table-responsive-->
@@ -203,7 +233,9 @@
 </div>
 
 
+{% else %}
 
+{% endif %}
 
 
 
