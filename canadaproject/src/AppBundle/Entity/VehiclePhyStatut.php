@@ -27,32 +27,11 @@ class VehiclePhyStatut
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="disponible", type="integer", nullable=true)
+     * @ORM\Column(name="statut", type="string", length=255, unique=true)
      */
-    private $disponible;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="vendu", type="integer", nullable=true)
-     */
-    private $vendu;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="enEssai", type="integer", nullable=true)
-     */
-    private $enEssai;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="retireParLeVendeur", type="integer", nullable=true)
-     */
-    private $retireParLeVendeur;
+    private $statut;
 
 
     /**
@@ -64,102 +43,6 @@ class VehiclePhyStatut
     {
         return $this->id;
     }
-
-    /**
-     * Set disponible
-     *
-     * @param integer $disponible
-     *
-     * @return VehiclePhyStatut
-     */
-    public function setDisponible($disponible)
-    {
-        $this->disponible = $disponible;
-
-        return $this;
-    }
-
-    /**
-     * Get disponible
-     *
-     * @return int
-     */
-    public function getDisponible()
-    {
-        return $this->disponible;
-    }
-
-    /**
-     * Set vendu
-     *
-     * @param integer $vendu
-     *
-     * @return VehiclePhyStatut
-     */
-    public function setVendu($vendu)
-    {
-        $this->vendu = $vendu;
-
-        return $this;
-    }
-
-    /**
-     * Get vendu
-     *
-     * @return int
-     */
-    public function getVendu()
-    {
-        return $this->vendu;
-    }
-
-    /**
-     * Set enEssai
-     *
-     * @param integer $enEssai
-     *
-     * @return VehiclePhyStatut
-     */
-    public function setEnEssai($enEssai)
-    {
-        $this->enEssai = $enEssai;
-
-        return $this;
-    }
-
-    /**
-     * Get enEssai
-     *
-     * @return int
-     */
-    public function getEnEssai()
-    {
-        return $this->enEssai;
-    }
-
-    /**
-     * Set retireParLeVendeur
-     *
-     * @param integer $retireParLeVendeur
-     *
-     * @return VehiclePhyStatut
-     */
-    public function setRetireParLeVendeur($retireParLeVendeur)
-    {
-        $this->retireParLeVendeur = $retireParLeVendeur;
-
-        return $this;
-    }
-
-    /**
-     * Get retireParLeVendeur
-     *
-     * @return int
-     */
-    public function getRetireParLeVendeur()
-    {
-        return $this->retireParLeVendeur;
-    }
     /**
      * Constructor
      */
@@ -169,7 +52,31 @@ class VehiclePhyStatut
     }
 
     /**
-     * Add vehiculePhysique
+     * Set statut.
+     *
+     * @param string $statut
+     *
+     * @return VehiclePhyStatut
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut.
+     *
+     * @return string
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Add vehiculePhysique.
      *
      * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
      *
@@ -183,17 +90,19 @@ class VehiclePhyStatut
     }
 
     /**
-     * Remove vehiculePhysique
+     * Remove vehiculePhysique.
      *
      * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
     {
-        $this->vehiculePhysiques->removeElement($vehiculePhysique);
+        return $this->vehiculePhysiques->removeElement($vehiculePhysique);
     }
 
     /**
-     * Get vehiculePhysiques
+     * Get vehiculePhysiques.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

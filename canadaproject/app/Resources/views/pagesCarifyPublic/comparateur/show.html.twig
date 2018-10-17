@@ -9,11 +9,14 @@
 
                 <img src="/images/logoMarques/{{ vehicleDefinition.version.model.marque.imageName }}"width="80" height="auto">
 
+                <img src="/images/logoModeles/{{ vehicleDefinition.version.model.imageName }}"width="80" height="auto">
+
                 {{ vehicleDefinition.version.model.marque }}
 
                 {{ vehicleDefinition.version.model }}
 
                 {{ vehicleDefinition.version }}
+
 
                 {# {{ vehicleDefinition.version.prixNeufHT }}           #}           <!-- A ajouter -->
 
@@ -52,6 +55,7 @@
 
                         {% if id2 is defined %}
                             <img src="/images/logoMarques/{{ id2.version.model.marque.imageName }}"width="80" height="auto">
+                            <img src="/images/logoModeles/{{ id2.version.model.imageName }}"width="80" height="auto">
 
                             {{ id2.version.model.marque }}
 

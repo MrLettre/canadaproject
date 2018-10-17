@@ -15,4 +15,11 @@ class VehicleDefinitionRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v WHERE v.id = $id")
             ->getResult();
     }
+
+    public function findLastFive(){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT a FROM AppBundle:VehicleDefinition a ORDER BY a.id DESC");
+        $query->setMaxResults(5);
+        return $query->getResult();
+    }
 }

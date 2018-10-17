@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Model
  *
  * @ORM\Table(name="model")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ModelRepository")
+ * @Vich\Uploadable
  */
 class Model
 {
@@ -33,6 +37,25 @@ class Model
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehicleDefinition", mappedBy="model")
      */
     private $vehiculeDefinitions;
+
+    /**
+     * @Vich\UploadableField(mapping="logoModeles_images", fileNameProperty="imageName")
+     *
+     *
+     * @Assert\File(
+     *     maxSize = "5M",
+     *     maxSizeMessage = "Votre fichier est trop volumineux, veuillez choisir un fichier plus petit",
+     * )
+     * @var File
+     */
+    protected $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
 
     /**
      * @var int
@@ -248,5 +271,53 @@ class Model
     public function getVehiculeDefinitions()
     {
         return $this->vehiculeDefinitions;
+    }
+
+    /**
+     * Set imageFile.
+     *
+     * @param string $imageFile
+     *
+     * @return Marque
+     */
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+
+        return $this;
+    }
+
+    /**
+     * Get imageFile.
+     *
+     * @return string
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set imageName.
+     *
+     * @param string $imageName
+     *
+     * @return Marque
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName.
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 }
