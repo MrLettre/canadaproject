@@ -13,8 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Vente
 {
     /**
-     * @ORM\OneToOne(targetEntity=CartContent::class, cascade={"persist", "remove"}, inversedBy="vente")
-     * @ORM\JoinColumn(name="cartContent", nullable=false)
+     * @ORM\OneToOne(targetEntity=CartContent::class, mappedBy="vente")
      */
     protected $cartContent;
 

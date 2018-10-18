@@ -320,4 +320,40 @@ class User extends BaseUser
     {
         return $this->societe;
     }
+
+    /**
+     * Add concession.
+     *
+     * @param \AppBundle\Entity\Concession $concession
+     *
+     * @return User
+     */
+    public function addConcession(\AppBundle\Entity\Concession $concession)
+    {
+        $this->concessions[] = $concession;
+
+        return $this;
+    }
+
+    /**
+     * Remove concession.
+     *
+     * @param \AppBundle\Entity\Concession $concession
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeConcession(\AppBundle\Entity\Concession $concession)
+    {
+        return $this->concessions->removeElement($concession);
+    }
+
+    /**
+     * Get concessions.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConcessions()
+    {
+        return $this->concessions;
+    }
 }

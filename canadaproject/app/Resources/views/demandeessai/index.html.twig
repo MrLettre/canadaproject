@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Demandeessais list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reference</th>
+                <th>Datedemande</th>
+                <th>Dateessaiplanning</th>
+                <th>Commentaireclient</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demandeEssai in demandeEssais %}
+            <tr>
+                <td><a href="{{ path('demandeessai_show', { 'id': demandeEssai.id }) }}">{{ demandeEssai.id }}</a></td>
+                <td>{{ demandeEssai.reference }}</td>
+                <td>{% if demandeEssai.dateDemande %}{{ demandeEssai.dateDemande|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if demandeEssai.dateEssaiPlanning %}{{ demandeEssai.dateEssaiPlanning|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ demandeEssai.commentaireClient }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('demandeessai_show', { 'id': demandeEssai.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('demandeessai_edit', { 'id': demandeEssai.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('demandeessai_new') }}">Create a new demandeEssai</a>
+        </li>
+    </ul>
+{% endblock %}

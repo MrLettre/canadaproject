@@ -19,12 +19,14 @@ class CartContent
     private $vehiculePhysique;
 
     /**
-     * @ORM\OneToOne(targetEntity=Cart::class, mappedBy="cartContent")
+     * @ORM\OneToOne(targetEntity=Cart::class, cascade={"persist", "remove"}, inversedBy="cartContent")
+     * @ORM\JoinColumn(name="cart", nullable=false)
      */
     protected $cart;
 
     /**
-     * @ORM\OneToOne(targetEntity=Vente::class, mappedBy="cartContent")
+     * @ORM\OneToOne(targetEntity=Vente::class, cascade={"persist", "remove"}, inversedBy="cartContent")
+     * @ORM\JoinColumn(name="Vente", nullable=false)
      */
     protected $vente;
 

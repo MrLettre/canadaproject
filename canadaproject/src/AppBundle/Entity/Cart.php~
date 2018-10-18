@@ -16,8 +16,7 @@ class Cart
 {
 
     /**
-     * @ORM\OneToOne(targetEntity=CartContent::class, cascade={"persist", "remove"}, inversedBy="cart")
-     * @ORM\JoinColumn(name="cartContent", nullable=false)
+     * @ORM\OneToOne(targetEntity=CartContent::class, mappedBy="cart")
      */
     protected $cartContent;
 
