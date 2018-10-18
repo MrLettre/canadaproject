@@ -27,7 +27,7 @@
             <tbody>
                 <tr>
                     <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
-                    <td>{{ vehiculePhysique.concession }}</td>
+                    <td>{{ vehiculePhysique.concession.nom }}</td>
                     <td>{{ vehiculePhysique.version.model.marque }}</td>
                     <td>{{ vehiculePhysique.version.model }}</td>
                     <td>{{ vehiculePhysique.version }}</td>

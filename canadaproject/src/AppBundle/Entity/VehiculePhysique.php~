@@ -551,4 +551,48 @@ class VehiculePhysique
         // TODO: Implement __toString() method.
         return $this->version;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cartContents = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->options = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return VehiculePhysique
+     */
+    public function addCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContents[] = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Remove cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        return $this->cartContents->removeElement($cartContent);
+    }
+
+    /**
+     * Get cartContents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCartContents()
+    {
+        return $this->cartContents;
+    }
 }
