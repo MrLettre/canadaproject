@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cartcontents list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datemiseajourpanier</th>
+                <th>Datemiseaupanier</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cartContent in cartContents %}
+            <tr>
+                <td><a href="{{ path('cartcontent_show', { 'id': cartContent.id }) }}">{{ cartContent.id }}</a></td>
+                <td>{% if cartContent.dateMiseAJourPanier %}{{ cartContent.dateMiseAJourPanier|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cartContent.dateMiseAuPanier %}{{ cartContent.dateMiseAuPanier|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cartcontent_show', { 'id': cartContent.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cartcontent_edit', { 'id': cartContent.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cartcontent_new') }}">Create a new cartContent</a>
+        </li>
+    </ul>
+{% endblock %}
