@@ -51,4 +51,76 @@ class Vente
     {
         return $this->id;
     }
+
+    /**
+     * Set referenceVente.
+     *
+     * @param string $referenceVente
+     *
+     * @return Vente
+     */
+    public function setReferenceVente($referenceVente)
+    {
+        $this->referenceVente = $referenceVente;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceVente.
+     *
+     * @return string
+     */
+    public function getReferenceVente()
+    {
+        return $this->referenceVente;
+    }
+
+    /**
+     * Set dateVente.
+     *
+     * @param \DateTime $dateVente
+     *
+     * @return Vente
+     */
+    public function setDateVente($dateVente)
+    {
+        $this->dateVente = $dateVente;
+
+        return $this;
+    }
+
+    /**
+     * Get dateVente.
+     *
+     * @return \DateTime
+     */
+    public function getDateVente()
+    {
+        return $this->dateVente;
+    }
+
+    /**
+     * Set cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return Vente
+     */
+    public function setCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContent = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Get cartContent.
+     *
+     * @return \AppBundle\Entity\CartContent
+     */
+    public function getCartContent()
+    {
+        return $this->cartContent;
+    }
 }

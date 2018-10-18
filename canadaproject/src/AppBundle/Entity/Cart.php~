@@ -65,4 +65,100 @@ class Cart
 
 
 
+
+    /**
+     * Set dateCreationPanier.
+     *
+     * @param \DateTime $dateCreationPanier
+     *
+     * @return Cart
+     */
+    public function setDateCreationPanier($dateCreationPanier)
+    {
+        $this->dateCreationPanier = $dateCreationPanier;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreationPanier.
+     *
+     * @return \DateTime
+     */
+    public function getDateCreationPanier()
+    {
+        return $this->dateCreationPanier;
+    }
+
+    /**
+     * Set referenceCart.
+     *
+     * @param string $referenceCart
+     *
+     * @return Cart
+     */
+    public function setReferenceCart($referenceCart)
+    {
+        $this->referenceCart = $referenceCart;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceCart.
+     *
+     * @return string
+     */
+    public function getReferenceCart()
+    {
+        return $this->referenceCart;
+    }
+
+    /**
+     * Set actif.
+     *
+     * @param bool $actif
+     *
+     * @return Cart
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+
+        return $this;
+    }
+
+    /**
+     * Get actif.
+     *
+     * @return bool
+     */
+    public function getActif()
+    {
+        return $this->actif;
+    }
+
+    /**
+     * Set cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return Cart
+     */
+    public function setCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContent = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Get cartContent.
+     *
+     * @return \AppBundle\Entity\CartContent
+     */
+    public function getCartContent()
+    {
+        return $this->cartContent;
+    }
 }

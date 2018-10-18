@@ -1,0 +1,60 @@
+{% extends "admin/adminBase.html.twig"%}
+
+{% block body %}
+
+
+    <div class="container">
+
+        <h1 style="text-align: center">Informations  </h1>
+        <div class="row" style="display: flex;">
+
+
+            <div class="col card">
+                <ul>
+
+                    <li><h2>Informations personnelles</h2></li>
+                    <li><span>Société:</span> {{ user.societe }}</li>
+                    <li><span>Prénom:</span> {{ user.prenom }}</li>
+                    <li><span>Nom: </span> {{ user.nom }}</li>
+                    <li><span>Adresse: </span> {{ user.adresse }}</li>
+                    <li><span>Code postal: </span> {{ user.codePostal }}</li>
+                    <li><span>Ville: </span> {{ user.ville }}</li>
+                    <li><span>Email: </span> {{ user.email }}</li>
+                    <li><span>Téléphone: </span> {{ user.numeroTelephone }}</li>
+
+                </ul>
+
+            </div>
+
+            <div class="col card">
+                <ul>
+                    <li><h2>Informations</h2></li>
+                    <li><span>Concessions:  </span>
+                        {% for concession in user.concessions %}
+                            {{ concession.name }}<br>
+                            {{ concession.adresse }}
+                            {{ concession.codePostal }}
+                            {{ concession.Ville }}
+                        {% endfor %}
+                    </li>
+                    <li><span>Membre depuis:</span> {% if user.dateCreationProfil %}{{ user.dateCreationProfil|date('d-m-Y') }}{% endif %}</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <ul>
+            <li>
+                <a href="{{ path('user_index') }}">Liste des utilisateurs</a>
+            </li>
+            <li>
+                <a href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+{% endblock %}
