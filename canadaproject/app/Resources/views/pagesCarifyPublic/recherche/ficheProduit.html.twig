@@ -81,13 +81,15 @@
             <p>{{voiturephy.descriptif}}</p>
             {% endfor %}
 
-            <form class="d-flex justify-content-left">
-              <!-- Default input -->
-              <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
-                <i class="fa fa-shopping-cart ml-1"></i>
-              </button>
+            {{ form_start(formCart) }}
+            {{ form_widget(formCart) }}
+            {{ form_end(formCart) }}
 
-            </form>
+              {{ form_start(formEssai) }}
+              {{ form_widget(formEssai) }}
+              {{ form_end(formEssai) }}
+
+
 
           </div>
           <!--Content-->

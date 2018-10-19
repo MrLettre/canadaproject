@@ -24,6 +24,12 @@ class DemandeEssai
      */
     private $vehiculePhysique;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="demandesEssais")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user;
+
 
     /**
      * @var int
@@ -215,5 +221,29 @@ class DemandeEssai
     public function getVehiculePhysique()
     {
         return $this->vehiculePhysique;
+    }
+
+    /**
+     * Set user.
+     *
+     * @param \AppBundle\Entity\User|null $user
+     *
+     * @return DemandeEssai
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \AppBundle\Entity\User|null
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

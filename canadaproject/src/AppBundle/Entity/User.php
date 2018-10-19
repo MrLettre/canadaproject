@@ -19,6 +19,11 @@ class User extends BaseUser
     private $concessions;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeEssai", mappedBy="user")
+     */
+    private $demandesEssais;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -355,5 +360,41 @@ class User extends BaseUser
     public function getConcessions()
     {
         return $this->concessions;
+    }
+
+    /**
+     * Add demandesEssai.
+     *
+     * @param \AppBundle\Entity\DemandeEssai $demandesEssai
+     *
+     * @return User
+     */
+    public function addDemandesEssai(\AppBundle\Entity\DemandeEssai $demandesEssai)
+    {
+        $this->demandesEssais[] = $demandesEssai;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandesEssai.
+     *
+     * @param \AppBundle\Entity\DemandeEssai $demandesEssai
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeDemandesEssai(\AppBundle\Entity\DemandeEssai $demandesEssai)
+    {
+        return $this->demandesEssais->removeElement($demandesEssai);
+    }
+
+    /**
+     * Get demandesEssais.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemandesEssais()
+    {
+        return $this->demandesEssais;
     }
 }

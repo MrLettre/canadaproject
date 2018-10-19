@@ -6,6 +6,7 @@ use AppBundle\Entity\DemandeEssai;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Demandeessai controller.
@@ -34,25 +35,50 @@ class DemandeEssaiController extends Controller
     /**
      * Creates a new demandeEssai entity.
      *
-     * @Route("/new", name="demandeessai_new")
+     * @Route("{id}/new", name="demandeessai_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $voiturephy)
     {
+        // SI L'UTILISATEUR N'EST PAS ENREGISTRE OU IDENTIFIE ALORS ON NE LUI DONNE PAS ACCES
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+        $user = $this->getUser();
+        if ($user == null) {
+            return $this->redirectToRoute('/login');
+        }
+
         $demandeEssai = new Demandeessai();
         $form = $this->createForm('AppBundle\Form\DemandeEssaiType', $demandeEssai);
         $form->handleRequest($request);
 
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $dateDemande = new \DateTime('now');
+            $ref= 'ESSAI'.$dateDemande.'-'.rand(0, 99999);
+            $concession = $voiturephy->getConcession();
+
+            $demandeEssai->setReference($ref);
+            $demandeEssai->setDateDemande($dateDemande);
+            $demandeEssai->setVehiculePhysique($voiturephy);
+            $demandeEssai->setConcession($concession);
+            $demandeEssai->setUser($user);
+
+
             $em->persist($demandeEssai);
             $em->flush();
 
             return $this->redirectToRoute('demandeessai_show', array('id' => $demandeEssai->getId()));
         }
 
+
+
         return $this->render('demandeessai/new.html.twig', array(
+            'voiturephy' => $voiturephy,
             'demandeEssai' => $demandeEssai,
+            'user'=>$user,
             'form' => $form->createView(),
         ));
     }
