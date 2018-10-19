@@ -37,7 +37,7 @@ class CartContentController extends Controller
      * @Route("/new", name="cartcontent_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $voiturephy)
     {
         $cartContent = new Cartcontent();
         $form = $this->createForm('AppBundle\Form\CartContentType', $cartContent);
@@ -54,6 +54,7 @@ class CartContentController extends Controller
         return $this->render('cartcontent/new.html.twig', array(
             'cartContent' => $cartContent,
             'form' => $form->createView(),
+            'voiturephy' => $voiturephy,
         ));
     }
 

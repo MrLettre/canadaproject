@@ -76,6 +76,13 @@ class VehiculePhysique
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceVehPhy", type="string", nullable=true)
+     */
+    private $referenceVehPhy;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateMiseEnLigne", type="date", nullable=true)
@@ -554,7 +561,7 @@ class VehiculePhysique
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return $this->version;
+        return $this->referenceVehPhy;
     }
     /**
      * Constructor

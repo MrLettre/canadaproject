@@ -76,6 +76,13 @@ class VehiculePhysique
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceVehPhy", type="string", nullable=true)
+     */
+    private $referenceVehPhy;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateMiseEnLigne", type="date", nullable=true)
@@ -554,7 +561,7 @@ class VehiculePhysique
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return $this->version;
+        return $this->referenceVehPhy;
     }
     /**
      * Constructor
@@ -635,5 +642,29 @@ class VehiculePhysique
     public function getDemandesEssais()
     {
         return $this->demandesEssais;
+    }
+
+    /**
+     * Set referenceVehPhy.
+     *
+     * @param string|null $referenceVehPhy
+     *
+     * @return VehiculePhysique
+     */
+    public function setReferenceVehPhy($referenceVehPhy = null)
+    {
+        $this->referenceVehPhy = $referenceVehPhy;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceVehPhy.
+     *
+     * @return string|null
+     */
+    public function getReferenceVehPhy()
+    {
+        return $this->referenceVehPhy;
     }
 }
