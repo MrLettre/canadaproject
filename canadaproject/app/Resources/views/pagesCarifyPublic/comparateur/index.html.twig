@@ -16,20 +16,29 @@
     <!------------------------------------------------------ MENU LATERAL ------------------------------------------------->
     <div class="container">
         <div class="row">
-            <div class="col-md-12" style="display: flex">
-                {% for marque in marques %}
-                    <div class="col-3">
-                        <a href="#myModal" role="button" ><img src="/images/logoMarques/{{ marque.imageName }}" width="80" height="auto"></a><br>
-                        {{ marque.nom }}
-                    </div>
-                {% endfor %}
+
+                {% set selectedMarqueGrouped = marques|batch(6) %}
+                {% for group in selectedMarqueGrouped %}
+                    {% set panelClass = 'panel--' ~ loop.index %}
+            <div class="col-md-12" >
+                <div class="panel {{ panelClass }}" style="display: flex">
+                        {% for entry in group %}
+                        <div class="col-2" style="text-align: center">
+                            <a href="#myModal" role="button" ><img src="/images/logoMarques/{{ entry.imageName }}" width="80" height="auto"></a><br>
+                            {{ entry.nom }}
+                        </div>
+                        {% endfor %}
+                </div>
             </div>
+                    {% endfor %}
             <div class="col-md-12">
                 {% for style in styles %}
+                    {{ style.nom }}
                 {% endfor %}
             </div>
             <div class="col-md-12">
                 {% for energy in energies %}
+                    {{ energy.nom }}
                 {% endfor %}
             </div>
         </div>
