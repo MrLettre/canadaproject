@@ -18,6 +18,8 @@ Encore
     .addEntry('recherche', './assets/scss/recherche.scss')
     .addEntry('blocRecherche', './assets/scss/blocRecherche.scss')
     .addEntry('menuCompaRecherche', './assets/scss/menuCompaRecherche.scss')
+    .addEntry('ficheProduit', './assets/scss/ficheProduit.scss')
+
 
 
     .cleanupOutputBeforeBuild()
