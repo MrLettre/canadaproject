@@ -3,6 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\AppBundle;
+use AppBundle\Entity\Energie;
+use AppBundle\Entity\Marque;
+use AppBundle\Entity\TypeVehicule;
 use AppBundle\Entity\VehicleDefinition;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,21 +23,18 @@ class ComparateurController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $vehicleComparaison = new Vehicledefinition();
-        $form = $this->createForm('AppBundle\Form\ComparateurType', $vehicleComparaison);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $id = $vehicleComparaison->getVersion()->getVehicleDef()->getId();
+        $marques = $em->getRepository('AppBundle:Marque')->findAll();
 
-            return $this->redirectToRoute('comparateur_show', array(
-                'id' => $id
-            ));
-        }
+        $energies = $em->getRepository('AppBundle:Energie')->findAll();
+
+        $styles = $em->getRepository('AppBundle:TypeVehicule')->findAll();
 
         return $this->render('pagesCarifyPublic/comparateur/index.html.twig', array(
-            'vehicleComparaison' => $vehicleComparaison,
-            'form' => $form->createView(),
+            'marques' => $marques,
+            'energies' => $energies,
+            'styles' => $styles,
         ));
     }
 
