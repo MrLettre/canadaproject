@@ -14,6 +14,8 @@
   "web/listing_render.css": "/web/listing_render.css",
   "web/header.js": "/web/header.js",
   "web/header.css": "/web/header.css",
+  "web/ficheProduit.js": "/web/ficheProduit.js",
+  "web/ficheProduit.css": "/web/ficheProduit.css",
   "web/blocRecherche.js": "/web/blocRecherche.js",
   "web/blocRecherche.css": "/web/blocRecherche.css",
   "web/adminPanelTwo.js": "/web/adminPanelTwo.js",
