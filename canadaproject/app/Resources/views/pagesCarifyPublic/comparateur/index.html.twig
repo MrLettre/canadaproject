@@ -16,31 +16,21 @@
     <!------------------------------------------------------ MENU LATERAL ------------------------------------------------->
     <div class="container">
         <div class="row">
-            <div class="col-md-3 bg-secondary">
-                {{ form_start(form) }}
-                <div class="filter-sidebar">
-                    <div class="row card-body py-2 mb-3 bg-dark twhite">
-                        <h4><i class="fa fa-car"></i> CARIFY SEARCH</h4>
+            <div class="col-md-12" style="display: flex">
+                {% for marque in marques %}
+                    <div class="col-3">
+                        <a href="#myModal" role="button" ><img src="/images/logoMarques/{{ marque.imageName }}" width="80" height="auto"></a><br>
+                        {{ marque.nom }}
                     </div>
-                    <div class="form-group">
-                        {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
-                        {{ form_errors(form.marque) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_widget(form.model, {'attr':{class:'form-control'}}) }}
-                        {{ form_errors(form.model) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_widget(form.version, {'attr':{class:'form-control'}}) }}
-                        {{ form_errors(form.version) }}
-                    </div>
-
-
-                    <hr>
-                    <button type="btn" class="btn btn-primary">Chercher</button>
-                    <div class="pb-3"></div>
-                </div>
-                {{ form_end(form) }}
+                {% endfor %}
+            </div>
+            <div class="col-md-12">
+                {% for style in styles %}
+                {% endfor %}
+            </div>
+            <div class="col-md-12">
+                {% for energy in energies %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -50,26 +40,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <!-- Requête Ajax -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/front.js"></script>
-    <script src="{{ asset('build/rechercheVehiculeAdmin.js') }}"></script>
 
-    <script>$(document).on('change', '#appbundle_vehicledefinition_marque, #appbundle_vehicledefinition_model', function () {
-            let $field = $(this)
-            let $marqueField = $('#appbundle_vehicledefinition_marque')
-            let $form = $field.closest('form')
-            let target = '#' + $field.attr('id').replace('model', 'version').replace('marque', 'model')
-            // Les données à envoyer en Ajax
-            let data = {}
-            data[$marqueField.attr('name')] = $marqueField.val()
-            data[$field.attr('name')] = $field.val()
-            // On soumet les données
-            $.post($form.attr('action'), data).then(function (data) {
-                // On récupère le nouveau <select>
-                let $input = $(data).find(target)
-                // On remplace notre <select> actuel
-                $(target).replaceWith($input)
-            })
-        })</script>
 {% endblock %}
