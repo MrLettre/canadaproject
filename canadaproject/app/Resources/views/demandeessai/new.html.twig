@@ -27,7 +27,7 @@
 
                         <!-- Grid column -->
                         <div class="col-lg-8">
-                            {{ form_start(form, { 'attr': {'id': 'info'} } ) }}
+                            {{ form_start(formEssai, { 'attr': {'id': 'info'} } ) }}
                             <div class="card-body form">
 
                                 <!-- Header -->
@@ -112,7 +112,7 @@
                                     <!-- Grid column -->
                                     <div class="col-md-12">
                                         <div class="md-form mb-0">
-                                            {{ form_widget(form.dateDemande) }}
+                                            {{ form_widget(formEssai.dateDemande) }}
                                         </div>
                                     </div>
                                     <!-- Grid column -->
@@ -122,9 +122,9 @@
                                     <!-- Grid column -->
                                     <div class="col-md-12">
                                         <div class="md-form mb-0">
-                                            {{ form_widget(form.commentaireClient, { 'attr': {'class': 'form-control md-textarea'} }) }}
+                                            {{ form_widget(formEssai.commentaireClient, { 'attr': {'class': 'form-control md-textarea'} }) }}
                                             <label for="form-contact-message">Votre message</label>
-                                            {{ form_row(form._token) }}
+                                            {{ form_row(formEssai._token) }}
                                             <button type="submit" class="btn btn-outline-primary waves-effect" id="Envoyer">Envoyer <i class="fab fa-telegram-plane"></i></button>
                                         </div>
                                     </div>

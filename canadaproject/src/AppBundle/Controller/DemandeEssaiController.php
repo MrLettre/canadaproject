@@ -48,12 +48,12 @@ class DemandeEssaiController extends Controller
         }
 
         $demandeEssai = new Demandeessai();
-        $form = $this->createForm('AppBundle\Form\DemandeEssaiType', $demandeEssai);
-        $form->handleRequest($request);
+        $formEssai = $this->createForm('AppBundle\Form\DemandeEssaiType', $demandeEssai);
+        $formEssai->handleRequest($request);
 
 
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formEssai->isSubmitted() && $formEssai->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
             $dateDemande = new \DateTime('now');
@@ -65,13 +65,12 @@ class DemandeEssaiController extends Controller
             $demandeEssai->setVehiculePhysique($voiturephy);
             $demandeEssai->setConcession($concession);
             $demandeEssai->setUser($user);
-            $idveh = $voiturephy;
 
 
             $em->persist($demandeEssai);
             $em->flush();
 
-            return $this->redirectToRoute('vehiculephysique_show', array('id' => $voiturephy));
+            return $this->redirectToRoute('demandeessai_show', array('id' => $demandeEssai->getId()));
         }
 
 
@@ -80,7 +79,7 @@ class DemandeEssaiController extends Controller
             'voiturephy' => $voiturephy,
             'demandeEssai' => $demandeEssai,
             'user'=>$user,
-            'form' => $form->createView(),
+            'formEssai' => $formEssai->createView(),
         ));
     }
 
