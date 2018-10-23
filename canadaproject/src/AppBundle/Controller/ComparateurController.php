@@ -34,6 +34,21 @@ class ComparateurController extends Controller
         $form = $this->createForm('AppBundle\Form\AddToCompareType', $selection);
         $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            var_dump($selection);
+
+
+
+            die();
+
+            $em->persist();
+            $em->flush();
+
+            return $this->redirectToRoute('displaySelection');
+        }
+
+
         return $this->render('pagesCarifyPublic/comparateur/index.html.twig', array(
             'marques' => $marques,
             'energies' => $energies,
