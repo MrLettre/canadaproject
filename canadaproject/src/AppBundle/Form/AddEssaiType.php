@@ -15,8 +15,8 @@ class AddEssaiType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('save', SubmitType::class, array(
-                'attr' => array('class' => 'save'),
+            ->add('Demande d\'essai', SubmitType::class, array(
+                'attr' => array('class' => 'saveEssai'),
             ));
     }/**
  * {@inheritdoc}
