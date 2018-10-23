@@ -7,6 +7,7 @@ use AppBundle\Entity\Energie;
 use AppBundle\Entity\Marque;
 use AppBundle\Entity\TypeVehicule;
 use AppBundle\Entity\VehicleDefinition;
+use AppBundle\Form\AddToCompareType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,15 +27,19 @@ class ComparateurController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $marques = $em->getRepository('AppBundle:Marque')->findAll();
-
         $energies = $em->getRepository('AppBundle:Energie')->findAll();
-
         $styles = $em->getRepository('AppBundle:TypeVehicule')->findAll();
+
+        $selection = new AddToCompareType();
+        $form = $this->createForm('AppBundle\Form\AddToCompareType', $selection);
+        $form->handleRequest($request);
 
         return $this->render('pagesCarifyPublic/comparateur/index.html.twig', array(
             'marques' => $marques,
             'energies' => $energies,
             'styles' => $styles,
+            'selection' => $selection,
+            'form' => $form->createView()
         ));
     }
 

@@ -19,6 +19,8 @@ Encore
     .addEntry('blocRecherche', './assets/scss/blocRecherche.scss')
     .addEntry('menuCompaRecherche', './assets/scss/menuCompaRecherche.scss')
     .addEntry('ficheProduit', './assets/scss/ficheProduit.scss')
+    .addEntry('addToCompare', './assets/js/addToCompare.js')
+
 
 
 
