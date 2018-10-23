@@ -23,8 +23,8 @@
             <div class="col-md-12" >
                 <div class="panel {{ panelClass }}" style="display: flex">
                         {% for entry in group %}
-                        <div class="col-2" style="text-align: center">
-                            <a href="#myModal" role="button" ><img src="/images/logoMarques/{{ entry.imageName }}" width="80" height="auto"></a><br>
+                        <div class="col-2 ladivJsdeClement" style="text-align: center" id="{{ entry.id }}">
+                            <img src="/images/logoMarques/{{ entry.imageName }}" width="80" height="auto"><br>
                             {{ entry.nom }}
                         </div>
                         {% endfor %}
@@ -42,6 +42,8 @@
                 {% endfor %}
             </div>
         </div>
+        {{ form(form) }}
+
     </div>
 
     <!------------------------------------------------------ FIN DU MENU LATERAL ------------------------------------------------->
@@ -49,5 +51,12 @@
 {% endblock %}
 
 {% block javascripts %}
+
+    <script>
+        $('.ladivJsdeClement').on('click', function () {
+            $('#appbundle_vehicledefinition_save').val($(this).id);
+            $("form[name='appbundle_vehicledefinition']").submit;
+        });
+    </script>
 
 {% endblock %}
