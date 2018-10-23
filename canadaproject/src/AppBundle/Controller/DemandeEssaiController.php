@@ -65,12 +65,13 @@ class DemandeEssaiController extends Controller
             $demandeEssai->setVehiculePhysique($voiturephy);
             $demandeEssai->setConcession($concession);
             $demandeEssai->setUser($user);
+            $idveh = $voiturephy;
 
 
             $em->persist($demandeEssai);
             $em->flush();
 
-            return $this->redirectToRoute('demandeessai_show', array('id' => $demandeEssai->getId()));
+            return $this->redirectToRoute('vehiculephysique_show', array('id' => $voiturephy));
         }
 
 
