@@ -35,63 +35,42 @@
 
                                 <!-- Grid row -->
                                 <div class="row">
-                                    <!-- Grid column -->
-                                    <div class="col-md-12">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.nomSteContact, { 'attr': {'class': 'form-control'} }) }}
-                                            <label for="form-contact-name" class="nom">Saisissez le nom de votre société</label>
-                                            <p id="nom_id" class="text-left red-text animated bounce">Saisissez le nom de votre société</p>
-                                            <p id="nom_valid" class="text-left red-text animated bounce">Veuillez saisir un nom de société valide.</p>
-                                        </div>
-                                    </div>
+
+                                    {% if user.societe != 'null' %}
 
                                     <!-- Grid column -->
-                                    <div class="col-md-2">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.civiliteContact, { 'attr': {'class': 'form-control'} }) }}
-                                            {{ form_errors(form.civiliteContact) }}
+                                    <div class="col-md-12">
+                                        <div>
+                                            <p>Société : {{ user.societe }}</p>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    <!-- Grid column -->
+                                    <div class="col-md-5">
+                                        <div>
+                                            <p>Nom : {{ user.nom }}</p>
                                         </div>
                                     </div>
 
                                     <!-- Grid column -->
                                     <div class="col-md-5">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.nomContact, { 'attr': {'class': 'form-control text-uppercase'} }) }}
-                                            <label for="form-contact-name" class="nom">Nom</label>
-                                            <p id="nom_id" class="text-left red-text animated bounce">Veuillez saisir votre nom</p>
-                                            <p id="nom_valid" class="text-left red-text animated bounce">Veuillez saisir un nom valide.</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Grid column -->
-                                    <div class="col-md-5">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.prenomContact, { 'attr': {'class': 'form-control text-capitalize'} }) }}
-                                            <label for="form-contact-name" class="">Prénom</label>
-                                            <p id="prenom_id" class="text-left red-text animated bounce">Veuillez saisir votre prénom.</p>
-                                            <p id="prenom_valid" class="text-left red-text animated bounce">Veuillez saisir un prénom valide</p>
-
+                                        <div>
+                                            <p>Prénom : {{ user.prenom }}</p>
                                         </div>
                                     </div>
 
                                     <!-- Grid column -->
                                     <div class="col-md-6">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.emailContact, { 'attr': {'class': 'form-control'} }) }}
-                                            <label for="form-contact-email" class="">Email</label>
-                                            <p id="email_id" class="text-left red-text animated bounce">Veuillez saisir une adresse mail.</p>
-                                            <p id="email_valid" class="text-left red-text animated bounce">Veuillez saisir une adresse email valide</p>
+                                        <div>
+                                            <p> Email : {{ user.email }}</p>
                                         </div>
                                     </div>
 
                                     <!-- Grid column -->
                                     <div class="col-md-6">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.phoneContact, { 'attr': {'class': 'form-control'} }) }}
-                                            <label for="form-contact-phone" class="">Votre téléphone</label>
-                                            <p id="telephone_id" class="text-left red-text animated bounce">Veuillez saisir votre téléphone.</p>
-                                            <p id="telephone_valid" class="text-left red-text animated bounce">Veuillez saisir un numéro de téléphone valide.</p>
-
+                                        <div>
+                                            <p>Votre téléphone : {{ user.numeroTelephone }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -100,11 +79,10 @@
                                 <div class="row">
                                     <!-- Grid column -->
                                     <div class="col-md-12">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.adresseContact, { 'attr': {'class': 'form-control', 'placeholder': ""} }) }}
-                                            <label for="form-contact-company" class="">Votre adresse</label>
-                                            <p id="adresse_id" class="text-left red-text animated bounce">Veuillez saisir votre adresse.</p>
-
+                                        <div>
+                                            <p>
+                                                Votre adresse : {{ user.adresse }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -113,11 +91,8 @@
                                 <div class="row">
                                     <!-- Grid column -->
                                     <div class="col-md-12">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.codePostalContact, { 'attr': {'class': 'form-control', 'placeholder': ""} }) }}
-                                            <label for="form-contact-company" class="">Votre code postale</label>
-                                            <p id="adresse_id" class="text-left red-text animated bounce">Veuillez saisir votre code postale.</p>
-
+                                        <div>
+                                            <p>Votre code postale : </p>
                                         </div>
                                     </div>
                                 </div>
@@ -126,21 +101,28 @@
                                 <div class="row">
                                     <!-- Grid column -->
                                     <div class="col-md-12">
-                                        <div class="md-form mb-0">
-                                            {{ form_widget(form.villeContact, { 'attr': {'class': 'form-control', 'placeholder': ""} }) }}
-                                            <label for="form-contact-company" class="">Votre ville</label>
-                                            <p id="adresse_id" class="text-left red-text animated bounce">Veuillez saisir votre ville.</p>
-
+                                        <div>
+                                            <p>Votre ville : {{ user.codePostal }} {{ user.ville }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- Grid row -->
                                 <div class="row">
                                     <!-- Grid column -->
                                     <div class="col-md-12">
                                         <div class="md-form mb-0">
-                                            {{ form_widget(form.messageContact, { 'attr': {'class': 'form-control md-textarea'} }) }}
+                                            {{ form_widget(form.dateDemande) }}
+                                        </div>
+                                    </div>
+                                    <!-- Grid column -->
+                                </div>
+                                <!-- Grid row -->
+                                <div class="row">
+                                    <!-- Grid column -->
+                                    <div class="col-md-12">
+                                        <div class="md-form mb-0">
+                                            {{ form_widget(form.commentaireClient, { 'attr': {'class': 'form-control md-textarea'} }) }}
                                             <label for="form-contact-message">Votre message</label>
                                             {{ form_row(form._token) }}
                                             <button type="submit" class="btn btn-outline-primary waves-effect" id="Envoyer">Envoyer <i class="fab fa-telegram-plane"></i></button>
@@ -154,31 +136,28 @@
                         <!-- Grid column -->
 
                         <!-- Grid column -->
-                        {% for vehPhy in VehPhys %}
+                        {% for voiture in voiturephy %}
                         <div class="col-lg-4">
                             <div class="card-body contact text-center h-100 white-text">
                                 <h3 class="my-4 pb-2 white-text">Véhicule</h3>
                                 <hr class="hr-light my-4">
                                 <ul class="text-lg-left list-unstyled ml-4">
                                     <li>
-                                        <p class="contact-adresse text-center white-color"><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehPhy.imageName }}" width="80" height="auto"></a></p>
+                                        <p class="contact-adresse text-center white-color"><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ voiture.imageName }}" width="80" height="auto"></a></p>
                                     </li>
                                     <li>
                                         <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Marque :</p>
-                                        <p class="contact-adresse text-center white-color">{{ vehPhy.version.model.marque }} {{ vehPhy.version.model }} {{ vehPhy.marque }}</p>
+                                        <p class="contact-adresse text-center white-color">{{ voiture.version.model.marque }} {{ voiture.version.model }} {{ voiture.version }}</p>
                                     </li>
                                     <li>
                                         <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Modèle :</p>
-                                        <p class="contact-adresse text-center white-color">{{ vehPhy.version.model.marque }} {{ vehPhy.version.model }}</p>
+                                        <p class="contact-adresse text-center white-color">{{ voiture.version.model.marque }} {{ voiture.version.model }}</p>
                                     </li>
                                     <li>
                                         <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Mise en Circulation :</p>
-                                        <p class="contact-adresse text-center white-color"> {{ vehPhy.dateDeMiseEnCirculation|date('d-m-Y') }}</p>
+                                        <p class="contact-adresse text-center white-color"> {{ voiture.dateDeMiseEnCirculation|date('d-m-Y') }}</p>
                                     </li>
-                                    <li>
-                                        <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Prix :</p>
-                                        <p class="contact-adresse text-center white-color"> {{ vehPhy.prixHT }}</p>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
