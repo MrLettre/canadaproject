@@ -22,4 +22,28 @@ class VehicleDefinitionRepository extends \Doctrine\ORM\EntityRepository
         $query->setMaxResults(3);
         return $query->getResult();
     }
+
+    public function findByMarque($choiceMarque){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v WHERE v.marque = $choiceMarque");
+        return $query->getResult();
+    }
+
+    public function findByStyle($choiceStyle){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v WHERE v.typeVehicule = $choiceStyle");
+        return $query->getResult();
+    }
+
+    public function findByEnergy($choiceEnergy){
+        $query = $this->createQueryBuilder('v')
+            ->join('v.version', 'ver')
+            ->join('ver.energie', 'e');
+
+        $query->where('e.id = :choiceEnergy')
+                ->setParameters(array(
+                    'choiceEnergy' => $choiceEnergy,
+                    )
+                );
+    }
 }
