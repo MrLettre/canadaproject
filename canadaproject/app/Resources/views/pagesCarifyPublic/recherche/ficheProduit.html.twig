@@ -14,6 +14,10 @@
 
 {% block body %}
 
+<div class="container">
+  <div class="row">
+
+
     {% for voituredef in voituredef %}
         <div class="hero">
     <h1>{{voituredef.nom}}</h1>
@@ -22,89 +26,12 @@
   </div>
     {% endfor %}
 
-
-    
-
-    <!--Possibilité 1-->
-
-    {% for voiturephy in voiturephy %}
-
-        <div class="container-fluid" style="padding-top: 20vh">
-            <div class="row">
-
-
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <!-- Card Light -->
-               
-                    <!-- Card image -->
-                    <div class="view overlay vehover">
-                        <img class="card-img-top vehphoto" src="/images/photosVehiculePhysique/{{ voiturephy.imageName }}" alt="Card image cap" style="border-radius: 20px;">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-                    <!-- Card content -->
-                    <div class="card-body">
-                        <!-- Title -->
-                        <h6 class="card-title">{{ voiturephy.version.model.marque }}
-                            {{ voiturephy.version.model }}
-                            {{ voiturephy.version }}</h6>
-                        <hr>
-                        <h4 style="color: blue;">{{ voiturephy.prixHT }} $</h4>
-                        <hr>
-                        <h6>Mise en ligne: {{voiturephy.dateMiseEnLigne|date('Y-m-d')}}</h6>
-                    </div>
-                
-                <!-- Card Light -->
-            {% endfor %}
-        
-        </div>
-
-        <div class="col-xs-6 col-sm-6 col-md-6">
-
-            {% for voituredef in voituredef %}
-                <h1 style="color: blue;">{{voituredef.nom}}</h1>
-            {% endfor %}
-
-            <p class="lead">
-                {% for voiturephy in voiturephy %}
-                    <h4>Mise en circulation:
-                        {{voiturephy.dateDeMiseEnCirculation|date('Y-m-d')}}</h4>
-                {% endfor %}
-                {% for voiturephy in voiturephy %}
-                    <h4>{{voiturephy.prixHT}}$ HT</h4>
-                    <h5>{{voiturephy.kilometrage}}
-                        KM</h5>
-                {% endfor %}
-
-            </p>
-
-            <hr>
-
-            {% for voiturephy in voiturephy %}
-                <h6>
-                    Vendeur:
-                    {{ voiturephy.concession}}</h6>
-            {% endfor %}
-
-            <hr>
-
-            {{ form_start(formCart) }}
-            {{ form_widget(formCart) }}
-            {{ form_end(formCart) }}
-
-            {{ form_start(formEssai) }}
-            {{ form_widget(formEssai) }}
-            {{ form_end(formEssai) }}
-
-        </div>
-
-    </div>
-</div>
+   </div>
+</div>  
 
 <!--Possibilité 2-->
 
-<div class="container" style="padding-top: 20vh">
+<div class="container" style="padding-top: 30vh">
     <div class="row">
 
         <div class="col-md-6">
@@ -126,8 +53,10 @@
                 {% endfor %}
                 {% for voiturephy in voiturephy %}
                     <h4>{{voiturephy.prixHT}}$ HT</h4>
-                    <h5>{{voiturephy.kilometrage}}
-                        KM</h5>
+                    <h5>{{voiturephy.kilometrage}}KM</h5>
+                {% endfor %}
+                {% for voiturephy in voiturephy %}
+                   <span class="badge grey mr-1">mise en ligne: {{voiturephy.dateMiseEnLigne|date('Y-m-d')}}</span>
                 {% endfor %}
 
             </p>
@@ -155,85 +84,7 @@
     </div>
 </div>
 
-<!--Possibilité 3-->
 
-<main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
-
-        <!--Grid row-->
-        <div class="row wow fadeIn">
-            {% for voiturephy in voiturephy %}
-
-                <!--Grid column-->
-                <div class="col-md-6 mb-4">
-                    {% for voiturephy in voiturephy %}
-                        <img src="/images/photosVehiculePhysique/{{ voiturephy.imageName }}" class="img-fluid" alt="PhotoVehicule" >
-                    {% endfor %}
-
-                    <span>
-                        <a href="#myModal" role="button"><img src="/images/photosVehiculePhysique/{{ voiturephy.imageName }}" width="500vw" style="border-radius: 20px;"></a>
-                    </span>
-
-                </div>
-                <!--Grid column-->
-            {% endfor %}
-
-            <!--Grid column-->
-            <div class="col-md-6 mb-4">
-
-                <!--Content-->
-                <div class="p-4">
-
-                    <div class="mb-3">
-                        {% for voituredef in voituredef %}
-                            <h1>{{voituredef.nom}}</h1>
-                        {% endfor %}
-                    </div>
-
-                    <p class="lead">
-                        {% for voituredef in voituredef %}
-                            <h1>{{voituredef.nom}}</h1>
-                        {% endfor %}
-                        {% for voiturephy in voiturephy %}
-                            <h4>{{voiturephy.prixHT}}$ HT</h4>
-                            <h5>{{voiturephy.kilometrage}}
-                                KM</h5>
-                        {% endfor %}
-
-                    </p>
-
-                    <hr>
-
-                    {% for voiturephy in voiturephy %}
-                        <h6>
-                            Vendeur:
-                            {{ voiturephy.concession}}</h6>
-                    {% endfor %}
-
-                    <hr>
-
-                    <h4 class="lead font-weight-bold">Description</h4>
-
-                    {% for voiturephy in voiturephy %}
-                        <p>{{voiturephy.descriptif}}</p>
-                    {% endfor %}
-
-                    {{ form_start(formCart) }}
-                    {{ form_widget(formCart) }}
-                    {{ form_end(formCart) }}
-
-                    {{ form_start(formEssai) }}
-                    {{ form_widget(formEssai) }}
-                    {{ form_end(formEssai) }}
-
-                </div>
-                <!--Content-->
-
-            </div>
-            <!--Grid column-->
-
-        </div>
-        <!--Grid row-->
 
         <hr>
 
