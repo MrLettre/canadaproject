@@ -16,6 +16,8 @@
   "web/header.css": "/web/header.css",
   "web/ficheProduit.js": "/web/ficheProduit.js",
   "web/ficheProduit.css": "/web/ficheProduit.css",
+  "web/comparateurShow.js": "/web/comparateurShow.js",
+  "web/comparateurShow.css": "/web/comparateurShow.css",
   "web/blocRecherche.js": "/web/blocRecherche.js",
   "web/blocRecherche.css": "/web/blocRecherche.css",
   "web/adminPanelTwo.js": "/web/adminPanelTwo.js",
@@ -27,5 +29,6 @@
   "web/adminPanel.js": "/web/adminPanel.js",
   "web/adminPanel.css": "/web/adminPanel.css",
   "web/rechercheVehicule.js": "/web/rechercheVehicule.js",
-  "web/rechercheVehiculeAdmin.js": "/web/rechercheVehiculeAdmin.js"
+  "web/rechercheVehiculeAdmin.js": "/web/rechercheVehiculeAdmin.js",
+  "web/addToCompare.js": "/web/addToCompare.js"
 }
