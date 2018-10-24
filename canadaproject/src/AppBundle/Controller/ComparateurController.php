@@ -38,12 +38,7 @@ class ComparateurController extends Controller
             $em = $this->getDoctrine()->getManager();
             var_dump($selection);
 
-
-
-            die();
-
-            $em->persist();
-            $em->flush();
+            
 
             return $this->redirectToRoute('displaySelection');
         }
