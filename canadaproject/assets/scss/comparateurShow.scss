@@ -1,0 +1,36 @@
+.row.gris{
+    background-color: whitesmoke;
+    box-shadow: 3px 3px 2px 3px #aaa; 
+    border-radius: 15px;
+    opacity: 0.8;
+    transition: transform .2s;
+    border-style: groove;
+    border-color: rgb(172, 172, 172);
+    border-width: 0.5px;
+}
+
+.row.gris:hover {
+    opacity: 1.0;
+    transform: scale(1.1);
+}
+
+.img-fluid.lol{
+    box-shadow: 1px 1px 12px #555;
+    border-radius: 5px;
+    transition: transform .2s;
+    border-style: groove;
+    border-color: black;
+    border-width: 1px;
+}
+
+.img-fluid.lol:hover{
+    transform: scale(1.2);
+}
+
+.row.img{
+    padding-top: 8vh;
+}
+
+.caption h4{
+    font-family: 'Cinzel', serif;
+}
