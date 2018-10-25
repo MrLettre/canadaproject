@@ -31,16 +31,41 @@
                 </div>
             </div>
                     {% endfor %}
-            <div class="col-md-12">
-                {% for style in styles %}
-                    {{ style.nom }}
-                {% endfor %}
-            </div>
-            <div class="col-md-12">
-                {% for energy in energies %}
-                    {{ energy.nom }}
-                {% endfor %}
-            </div>
+        </div>
+        <div class="row">
+
+            {% set selectedStyleGrouped = styles|batch(6) %}
+            {% for group in selectedStyleGrouped %}
+                {% set panelClass = 'panel--' ~ loop.index %}
+                <div class="col-md-12" >
+                    <div class="panel {{ panelClass }}" style="display: flex">
+                        {% for entry in group %}
+                            <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
+                                <br>
+                                {{ entry.nom }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="row">
+
+            {% set selectedEnergyGrouped = energies|batch(6) %}
+            {% for group in selectedEnergyGrouped %}
+                {% set panelClass = 'panel--' ~ loop.index %}
+                <div class="col-md-12" >
+                    <div class="panel {{ panelClass }}" style="display: flex">
+                        {% for entry in group %}
+                            <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
+                                <br>
+                                {{ entry.nom }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
         </div>
         {{ form(form) }}
 
@@ -54,12 +79,8 @@
 
     <script>
         $('.ladivJsdeClement').on('click', function () {
-            console.log( "click" );
-            console.log( $(this).attr('id') );
-            console.log( $("form[name='appbundle_vehicledefinition']") );
-
-            $('#appbundle_vehicledefinition_save').val($(this).attr('id'));
-            $("form[name='appbundle_vehicledefinition']").submit();
+            $('#form_Marque').val($(this).attr('id'));
+            $("#form").parent().submit();
         });
     </script>
 

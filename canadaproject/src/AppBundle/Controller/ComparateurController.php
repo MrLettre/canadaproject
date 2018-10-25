@@ -11,6 +11,8 @@ use AppBundle\Form\AddToCompareType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -30,17 +32,53 @@ class ComparateurController extends Controller
         $energies = $em->getRepository('AppBundle:Energie')->findAll();
         $styles = $em->getRepository('AppBundle:TypeVehicule')->findAll();
 
-        $selection = new AddToCompareType();
-        $form = $this->createForm('AppBundle\Form\AddToCompareType', $selection);
-        $form->handleRequest($request);
+        $data = [];
+        $form = $this->createFormBuilder($data)
+            ->add('Marque', IntegerType::class, array(
+                'attr' => array('hidden' => true),
+                'label' => false,
+                'required' => false
+            ))
+            ->add('Type', IntegerType::class, array(
+                'attr' => array('hidden' => true),
+                'label' => false,
+                'required' => false
+            ))
+            ->add('Energy', IntegerType::class, array(
+                'attr' => array('hidden' => true),
+                'label' => false,
+                'required' => false
+            ))
+            ->add('save', SubmitType::class, array(
+                'attr' => array('hidden' => true),
+            ))
+            ->getForm();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+       // var_dump($request->request);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            $data = $form->getData();
+            $marque = $data["Marque"];
+            $type = $data["Type"];
+            $energy = $data["Energy"];
+
             $em = $this->getDoctrine()->getManager();
-            var_dump($selection);
 
-            
+            if ($marques != 'NULL'){
+                $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByMarque($marque);
+            }elseif ($type != 'NULL'){
+                $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByType($type);
+            }elseif ($energy != 'NULL'){
+                $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByEnergy($energy);
+            }
 
-            return $this->redirectToRoute('displaySelection');
+            var_dump($recherche);
+            die();
+
+            return $this->render('displaySelection', array(
+                'recherche' => $recherche,
+            ));
         }
 
 
@@ -48,7 +86,7 @@ class ComparateurController extends Controller
             'marques' => $marques,
             'energies' => $energies,
             'styles' => $styles,
-            'selection' => $selection,
+            'data' => $data,
             'form' => $form->createView()
         ));
     }
