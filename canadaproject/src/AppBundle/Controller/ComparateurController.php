@@ -54,33 +54,16 @@ class ComparateurController extends Controller
             ))
             ->getForm();
 
-       // var_dump($request->request);
-
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             $data = $form->getData();
-            $marque = $data["Marque"];
-            $type = $data["Type"];
-            $energy = $data["Energy"];
 
-            $em = $this->getDoctrine()->getManager();
+            $test = implode(",", $data);
 
-            if ($marques != 'NULL'){
-                $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByMarque($marque);
-            }elseif ($type != 'NULL'){
-                $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByType($type);
-            }elseif ($energy != 'NULL'){
-                $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByEnergy($energy);
-            }
-
-            var_dump($recherche);
-            die();
-
-            return $this->render('displaySelection', array(
-                'recherche' => $recherche,
+            return $this->redirectToRoute('display_Selection', array(
+                'test' => $test,
             ));
         }
-
 
         return $this->render('pagesCarifyPublic/comparateur/index.html.twig', array(
             'marques' => $marques,
@@ -90,6 +73,39 @@ class ComparateurController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    /**
+     * Finds and displays a vehicleDefinition entity.
+     *
+     * @Route("/comparateur/{test}/displaySelection", name="display_Selection")
+     * @Method("GET")
+     */
+    public function displayAction(Request $request, $test)
+    {
+        $data = explode(",", $test);
+        $marque = $data[0];
+        $type = $data[1];
+        $energy = $data[2];
+
+        $em = $this->getDoctrine()->getManager();
+
+        if ($data[0] != ''){
+            $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByMarque($marque);
+        }elseif ($data[1] != ''){
+            $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByType($type);
+        }elseif ($data[2] != ''){
+            $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByEnergy($energy);
+        }
+
+        return $this->render('pagesCarifyPublic/comparateur/displaySelection.html.twig', array(
+            'recherche' => $recherche,
+        ));
+
+    }
+
+
+
+
 
     /**
      * Finds and displays a vehicleDefinition entity.
