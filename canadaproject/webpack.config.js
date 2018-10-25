@@ -20,6 +20,7 @@ Encore
     .addEntry('menuCompaRecherche', './assets/scss/menuCompaRecherche.scss')
     .addEntry('ficheProduit', './assets/scss/ficheProduit.scss')
     .addEntry('comparateurShow', './assets/scss/comparateurShow.scss')
+    .addEntry('comparateurAccueil', './assets/scss/comparateurAccueil.scss')
     .addEntry('addToCompare', './assets/js/addToCompare.js')
 
 

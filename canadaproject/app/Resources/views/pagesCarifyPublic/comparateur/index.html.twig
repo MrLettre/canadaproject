@@ -1,48 +1,94 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('build/comparateur.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/style.css') }}">
+    
+    
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script> <!-- Package d'icons -->
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
+
+        <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('build/comparateurAccueil.css') }}">
 {% endblock %}
 
     {% block body %}
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+   
 
-    <!------------------------------------------------------ MENU LATERAL ------------------------------------------------->
-    <div class="container">
+
+ <div class="container">
         <div class="row">
+            <div class="col-md-12 text-center" >
+
+    <h1>Faites votre choix ! </h1>
+
+
+     </div>
+   </div>
+</div>     
+
+<br><br><br><br><br>
+    
+    <div class="container-fluid">
+
+
+        <div class="row">
+        <div class="col-md-12 text-center" >
+            <h3>Par Marque</h3>
+        </div>
+        </div>
+
+        <br><br>
+
+
+
+        <div class="row">
+
+                
 
                 {% set selectedMarqueGrouped = marques|batch(6) %}
                 {% for group in selectedMarqueGrouped %}
                     {% set panelClass = 'panel--' ~ loop.index %}
-            <div class="col-md-12" >
+            <div class="col-md-12 text-center" >
                 <div class="panel {{ panelClass }}" style="display: flex">
                         {% for entry in group %}
                         <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
-                            <img src="/images/logoMarques/{{ entry.imageName }}" width="80" height="auto"><br>
-                            {{ entry.nom }}
+                            <img src="/images/logoMarques/{{ entry.imageName }}" width="80" height="80"><br>
+                            <h4>{{ entry.nom }}</h4>
                         </div>
                         {% endfor %}
                 </div>
             </div>
                     {% endfor %}
         </div>
+
+        <br><br><br><br>
+
+
         <div class="row">
+        <div class="col-md-12 text-center" >
+            <h3>Par Catégorie</h3>
+        </div>
+        </div>
+
+        <br><br>
+
+
+        <div class="row">
+
 
             {% set selectedStyleGrouped = styles|batch(6) %}
             {% for group in selectedStyleGrouped %}
                 {% set panelClass = 'panel--' ~ loop.index %}
-                <div class="col-md-12" >
+                <div class="col-md-12 text-center" >
                     <div class="panel {{ panelClass }}" style="display: flex">
                         {% for entry in group %}
                             <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
-                                {{ entry.nom }}
+                                <h4>{{ entry.nom }}</h4>
                             </div>
                         {% endfor %}
                     </div>
@@ -50,17 +96,31 @@
             {% endfor %}
 
         </div>
+
+        <br><br><br><br>
+
+
         <div class="row">
+        <div class="col-md-12 text-center" >
+            <h3>Par Energie</h3>
+        </div>
+        </div>
+
+<br><br>
+
+        <div class="row">
+
+        
 
             {% set selectedEnergyGrouped = energies|batch(6) %}
             {% for group in selectedEnergyGrouped %}
                 {% set panelClass = 'panel--' ~ loop.index %}
-                <div class="col-md-12" >
+                <div class="col-md-12 text-center" >
                     <div class="panel {{ panelClass }}" style="display: flex">
                         {% for entry in group %}
                             <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
-                                {{ entry.nom }}
+                                <h4>{{ entry.nom }}</h4>
                             </div>
                         {% endfor %}
                     </div>
@@ -71,11 +131,16 @@
 
     </div>
 
-    <!------------------------------------------------------ FIN DU MENU LATERAL ------------------------------------------------->
+ <br><br><br><br>
+    
 
 {% endblock %}
 
 {% block javascripts %}
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <script>
         $('.ladivJsdeClement').on('click', function () {
