@@ -18,6 +18,8 @@
   "web/ficheProduit.css": "/web/ficheProduit.css",
   "web/comparateurShow.js": "/web/comparateurShow.js",
   "web/comparateurShow.css": "/web/comparateurShow.css",
+  "web/comparateurAccueil.js": "/web/comparateurAccueil.js",
+  "web/comparateurAccueil.css": "/web/comparateurAccueil.css",
   "web/blocRecherche.js": "/web/blocRecherche.js",
   "web/blocRecherche.css": "/web/blocRecherche.css",
   "web/adminPanelTwo.js": "/web/adminPanelTwo.js",
