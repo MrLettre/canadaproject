@@ -46,7 +46,7 @@
 
 
 
-        <div class="row blue">
+        <div class="row select">
 
                 
 
@@ -78,7 +78,7 @@
         <br><br>
 
 
-        <div class="row blue">
+        <div class="row select">
 
 
             {% set selectedStyleGrouped = styles|batch(6) %}
@@ -89,6 +89,15 @@
                         {% for entry in group %}
                             <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
+                                {% if entry == "Berline" %}
+                                <img src="/images/icons/berline.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "SUV" %}
+                                <img src="/images/icons/suv.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "cabriolet" %}
+                                <img src="/images/icons/cabriolet.png" width="80" height="80"><br>
+                                {% endif %}
                                 <h4>{{ entry.nom }}</h4>
                             </div>
                         {% endfor %}
@@ -109,7 +118,7 @@
 
 <br><br>
 
-        <div class="row blue">
+        <div class="row select">
 
         
 
@@ -121,6 +130,18 @@
                         {% for entry in group %}
                             <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
+                                {% if entry == "essence" %}
+                                <img src="/images/icons/oil.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "diesel" %}
+                                <img src="/images/icons/oil.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "hybride" %}
+                                <img src="/images/icons/hybrid.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "electrique" %}
+                                <img src="/images/icons/electric.png" width="80" height="80"><br>
+                                {% endif %}
                                 <h4>{{ entry.nom }}</h4>
                             </div>
                         {% endfor %}
