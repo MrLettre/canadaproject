@@ -83,19 +83,21 @@ class ComparateurController extends Controller
     public function displayAction(Request $request, $test)
     {
         $data = explode(",", $test);
+
         $marque = $data[0];
         $type = $data[1];
         $energy = $data[2];
 
         $em = $this->getDoctrine()->getManager();
 
-        if ($data[0] != ''){
+        if ($data[0] != ""){
             $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByMarque($marque);
-        }elseif ($data[1] != ''){
+        }elseif ($data[1] != ""){
             $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByType($type);
-        }elseif ($data[2] != ''){
+        }elseif ($data[2] != ""){
             $recherche = $em->getRepository('AppBundle:VehicleDefinition')->findByEnergy($energy);
         }
+
 
         return $this->render('pagesCarifyPublic/comparateur/displaySelection.html.twig', array(
             'recherche' => $recherche,

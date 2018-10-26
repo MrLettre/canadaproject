@@ -36,14 +36,10 @@ class VehicleDefinitionRepository extends \Doctrine\ORM\EntityRepository
     }
 
     public function findByEnergy($energy){
-        $query = $this->createQueryBuilder('v')
-            ->join('v.version', 'ver')
-            ->join('ver.energie', 'e');
-
-        $query->where('e.id = :$energy')
-                ->setParameters(array(
-                    '$energy' => $energy,
-                    )
-                );
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v 
+                                JOIN v.version ver 
+                                WHERE ver.energie = $energy");
+        return $query->getResult();
     }
 }
