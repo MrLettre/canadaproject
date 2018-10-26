@@ -27,7 +27,6 @@
 
             </div>
 
-
             <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
                 {% if id2 is defined %}
@@ -48,7 +47,9 @@
                 <img class="img-fluid lol" src="/images/logoModeles/{{ vehicleDefinition.version.model.imageName }}" width="400" height="auto">
 
                 <div class="caption">
-                    <h4>{{ vehicleDefinition.version.model.marque }} {{ vehicleDefinition.version.model }} {{ vehicleDefinition.version }}</h4>
+                    <h4>{{ vehicleDefinition.version.model.marque }}
+                        {{ vehicleDefinition.version.model }}
+                        {{ vehicleDefinition.version }}</h4>
                 </div>
             </div>
 
@@ -57,10 +58,13 @@
                 {% if id2 is defined %}
 
                     <img class="img-fluid lol" src="/images/logoModeles/{{ id2.version.model.imageName }}" width="400" height="auto">
-                   
-                       <div class="caption">
-                            <h4> {{ id2.version.model.marque }}  {{ id2.version.model }} {{ id2.version.nom}}</h4>
-                       </div>
+
+                    <div class="caption">
+                        <h4>
+                            {{ id2.version.model.marque }}
+                            {{ id2.version.model }}
+                            {{ id2.version.nom}}</h4>
+                    </div>
 
                 {% else %}
 
@@ -83,7 +87,6 @@
 
 </div>
 
-
 </div>
 </div>
 </div>
@@ -91,7 +94,6 @@
 <br><br>
 
 {% if id2 is defined %}
-
 
 <hr>
 
@@ -174,7 +176,7 @@
 </tbody>
 {% endif %}
 
-{% if vehicleDefinition.version.energie == 'essence' or vehicleDefinition.version.energie == 'diesel'  %}
+{% if vehicleDefinition.version.energie == 'essence' or vehicleDefinition.version.energie == 'diesel' %}
 <thead>
     <tr>
         <th>Puissance Thermique</th>
@@ -272,38 +274,38 @@
 
 <div class="container">
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-            <h5>Options</h5>
+<h5>Options</h5>
 
-        </div>
-    </div>
+</div>
+</div>
 </div>
 
 <div class="row gris d-flex justify-content-center wow fadeIn">
 
-    <!--Grid column-->
-    <div class="col-xs-6 col-sm-6 col-md-6 text-center">
-        
-        {% for options in version.options %}
-            <p>{{ options.nom }}</p>
-        {% endfor %}
-    </div>
-    <!--Grid column-->
+<!--Grid column-->
+<div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
-    <!--Grid row-->
+{% for options in version.options %}
+<p>{{ options.nom }}</p>
+{% endfor %}
+</div>
+<!--Grid column-->
 
-    <!--Grid column-->
-    <div class="col-xs-6 col-sm-6 col-md-6 text-center">
-        
-        {% for options2 in version2.options %}
-            <p>{{ options2.nom }}</p>
-        {% endfor %}
-    </div>
-    <!--Grid column-->
+<!--Grid row-->
 
-    <!--Grid row-->
+<!--Grid column-->
+<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+
+{% for options2 in version2.options %}
+<p>{{ options2.nom }}</p>
+{% endfor %}
+</div>
+<!--Grid column-->
+
+<!--Grid row-->
 
 </div>
 </div>
@@ -315,11 +317,11 @@
 <div class="container">
 
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+<div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-        <h5>Couleurs</h5>
+<h5>Couleurs</h5>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -328,10 +330,9 @@
 <!--Grid column-->
 <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
-    
-    {% for colors in version.couleursDisponibles %}
-        <p>{{ colors.nom }}</p>
-    {% endfor %}
+{% for colors in version.couleursDisponibles %}
+<p>{{ colors.nom }}</p>
+{% endfor %}
 </div>
 <!--Grid column-->
 
@@ -339,10 +340,10 @@
 
 <!--Grid column-->
 <div class="col-xs-6 col-sm-6 col-md-6 text-center">
-    
-    {% for colors2 in version2.couleursDisponibles %}
-        <p>{{ colors2.nom }}</p>
-    {% endfor %}
+
+{% for colors2 in version2.couleursDisponibles %}
+<p>{{ colors2.nom }}</p>
+{% endfor %}
 </div>
 <!--Grid column-->
 
@@ -350,26 +351,10 @@
 
 </div>
 </div>
-
 {% else %}
-
-{% endif %}
-
-
-
-
-{% endblock %}
-
-
-
-
-
-{% block javascripts %}
- <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/js/mdb.min.js"></script>
-
-
-
+{% endif %}{% endblock %}{% block javascripts %}
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/js/mdb.min.js"></script>
 <script>
 
 var $a = $(document).width() < 1000;
@@ -377,11 +362,7 @@ var $a = $(document).width() < 1000;
 console.log($a);
 
 if ($(document).width() < 1000) {
-    $( ".petitTexte" ).html( "Test" );
-   console.log('salut');
+$(".petitTexte").html("Test");
+console.log('salut');
 }
-</script>
-
-
-
-{% endblock %}
+</script>{% endblock %}

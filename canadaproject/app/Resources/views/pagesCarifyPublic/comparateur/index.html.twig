@@ -13,6 +13,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('build/comparateurAccueil.css') }}">
+
 {% endblock %}
 
     {% block body %}
@@ -45,7 +46,7 @@
 
 
 
-        <div class="row">
+        <div class="row blue">
 
                 
 
@@ -77,7 +78,7 @@
         <br><br>
 
 
-        <div class="row">
+        <div class="row blue">
 
 
             {% set selectedStyleGrouped = styles|batch(6) %}
@@ -108,7 +109,7 @@
 
 <br><br>
 
-        <div class="row">
+        <div class="row blue">
 
         
 
@@ -132,6 +133,9 @@
     </div>
 
  <br><br><br><br>
+
+
+ 
     
 
 {% endblock %}
