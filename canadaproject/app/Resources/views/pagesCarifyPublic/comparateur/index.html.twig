@@ -87,7 +87,7 @@
                 <div class="col-md-12 text-center" >
                     <div class="panel {{ panelClass }}" style="display: flex">
                         {% for entry in group %}
-                            <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
+                            <div class="col-2 ladivStyledeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
                                 {% if entry == "Berline" %}
                                 <img src="/images/icons/berline.png" width="80" height="80"><br>
@@ -128,7 +128,7 @@
                 <div class="col-md-12 text-center" >
                     <div class="panel {{ panelClass }}" style="display: flex">
                         {% for entry in group %}
-                            <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
+                            <div class="col-2 ladivNrjdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
                                 {% if entry == "essence" %}
                                 <img src="/images/icons/oil.png" width="80" height="80"><br>
@@ -170,6 +170,18 @@
     <script>
         $('.ladivJsdeClement').on('click', function () {
             $('#form_Marque').val($(this).attr('id'));
+            $("#form").parent().submit();
+        });
+    </script>
+    <script>
+        $('.ladivStyledeClement').on('click', function () {
+            $('#form_Type').val($(this).attr('id'));
+            $("#form").parent().submit();
+        });
+    </script>
+    <script>
+        $('.ladivNrjdeClement').on('click', function () {
+            $('#form_Energy').val($(this).attr('id'));
             $("#form").parent().submit();
         });
     </script>
