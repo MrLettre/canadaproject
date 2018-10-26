@@ -23,9 +23,9 @@
         <!------------------------------------------------------ MENU LATERAL ------------------------------------------------->
         <div class="container">
             <div class="row">
-                <div class="vignettes">
+                <div class="vignettes" style="flex-direction: column">
 
-                {% set selectedRechercheGrouped = recherche|batch(4) %}
+                {% set selectedRechercheGrouped = recherche|batch(3) %}
                 {% for group in selectedRechercheGrouped %}
                     {% set panelClass = 'panel--' ~ loop.index %}
                     <div class="col-md-12" >
@@ -42,8 +42,8 @@
                                         <!-- Title -->
                                         <h6 class="card-title">{{ entry.version.model.marque }} {{ entry.version.model }} {{ entry.version }}</h6>
                                     </div>
-
                                 </div>
+                                <br>
                                 <!-- Card Light -->
                             {% endfor %}
                         </div>
