@@ -18,10 +18,10 @@
   <div class="row">
 
 
-    {% for voituredef in voituredef %}
+    {% for voiturephy in voiturephy %}
         <div class="hero">
-    <h1>{{voituredef.nom}}</h1>
-    <img src="/images/logoModeles/Renaultzoe.jpg" />
+    <h1>{{ voiturephy.version.model.marque }} {{ voiturephy.version.model }} {{ voiturephy.version }}</h1>
+    <img src="/images/logoModeles/{{ voiturephy.version.model.imageName }}" />
      <div class="bar"></div>
   </div>
     {% endfor %}
@@ -42,8 +42,8 @@
 
         <div class="col-md-6">
 
-            {% for voituredef in voituredef %}
-                <h1>{{voituredef.nom}}</h1>
+            {% for voiturephy in voiturephy %}
+                <h1>{{ voiturephy.version.model.marque }}</h1>
             {% endfor %}
 
             <p class="lead">
@@ -72,11 +72,18 @@
             <hr>
 
             {{ form_start(formCart) }}
-            {{ form_widget(formCart) }}
+
+            {{ form_widget(formCart.AjouterAuPanier, {
+
+                'attr': {'class': 'btn btn-primary'}
+            }) }}
+
             {{ form_end(formCart) }}
 
             {{ form_start(formEssai) }}
-            {{ form_widget(formEssai) }}
+            {{ form_widget(formEssai.DemandeEssai,{
+                'attr': {'class': 'btn btn-success'}
+            }) }}
             {{ form_end(formEssai) }}
 
         </div>

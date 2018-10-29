@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    
-    
+
+    <link rel="stylesheet" href="{{ asset('build/comparateurAccueil.css') }}">
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script> <!-- Package d'icons -->
-    
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
 
-        <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('build/comparateurAccueil.css') }}">
 
 {% endblock %}
 
@@ -27,19 +27,19 @@
             </div>
 
             {% set selectedMarqueGrouped = marques|batch(6) %}
-                {% for group in selectedMarqueGrouped %}
-                    {% set panelClass = 'panel--' ~ loop.index %}
-            <div class="col-md-12 text-center contenuComp" >
-                <div class="panel {{ panelClass }}" style="display: flex">
+            {% for group in selectedMarqueGrouped %}
+                {% set panelClass = 'panel--' ~ loop.index %}
+                <div class="col-md-12 text-center contenuComp" >
+                    <div class="panel {{ panelClass }}" style="display: flex">
                         {% for entry in group %}
-                        <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
-                            <img src="/images/logoMarques/{{ entry.imageName }}" width="80" height="80"><br>
-                            <h4>{{ entry.nom }}</h4>
-                        </div>
+                            <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
+                                <img src="/images/logoMarques/{{ entry.imageName }}" width="80" height="80"><br>
+                                <h4>{{ entry.nom }}</h4>
+                            </div>
                         {% endfor %}
+                    </div>
                 </div>
-            </div>
-                    {% endfor %}
+            {% endfor %}
         </div>
 
         <div class="row" style="flex-direction: column">
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            {% set selectedStyleGrouped = styles|batch(6) %}
+            {% set selectedStyleGrouped = styles|batch(5) %}
             {% for group in selectedStyleGrouped %}
                 {% set panelClass = 'panel--' ~ loop.index %}
                 <div class="col-md-12 text-center contenuComp" >
@@ -59,13 +59,13 @@
                             <div class="col-2 ladivStyledeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
                                 {% if entry == "Berline" %}
-                                <img src="/images/icons/berline.png" width="80" height="80"><br>
+                                    <img src="/images/icons/berline.png" width="80" height="80"><br>
                                 {% endif %}
                                 {% if entry == "SUV" %}
-                                <img src="/images/icons/suv.png" width="80" height="80"><br>
+                                    <img src="/images/icons/suv.png" width="80" height="80"><br>
                                 {% endif %}
                                 {% if entry == "cabriolet" %}
-                                <img src="/images/icons/cabriolet.png" width="80" height="80"><br>
+                                    <img src="/images/icons/cabriolet.png" width="80" height="80"><br>
                                 {% endif %}
                                 <h4>{{ entry.nom }}</h4>
                             </div>
@@ -95,16 +95,16 @@
                             <div class="col-2 ladivNrjdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
                                 {% if entry == "essence" %}
-                                <img src="/images/icons/oil.png" width="80" height="80"><br>
+                                    <img src="/images/icons/oil.png" width="80" height="80"><br>
                                 {% endif %}
                                 {% if entry == "diesel" %}
-                                <img src="/images/icons/oil.png" width="80" height="80"><br>
+                                    <img src="/images/icons/oil.png" width="80" height="80"><br>
                                 {% endif %}
                                 {% if entry == "hybride" %}
-                                <img src="/images/icons/hybrid.png" width="80" height="80"><br>
+                                    <img src="/images/icons/hybrid.png" width="80" height="80"><br>
                                 {% endif %}
                                 {% if entry == "electrique" %}
-                                <img src="/images/icons/electric.png" width="80" height="80"><br>
+                                    <img src="/images/icons/electric.png" width="80" height="80"><br>
                                 {% endif %}
                                 <h4>{{ entry.nom }}</h4>
                             </div>
@@ -118,13 +118,13 @@
 
 
 
-{% endblock %}
+    {% endblock %}
 
 {% block javascripts %}
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <script>
         $('.ladivJsdeClement').on('click', function () {
