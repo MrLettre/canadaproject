@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ModelType extends AbstractType
 {
@@ -13,10 +14,12 @@ class ModelType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')
+        $builder
+            ->add('nom')
             ->add('actif')
             ->add('marque')
-            ->add('typeVehicule');
+            ->add('typeVehicule')
+            ->add('imageFile', VichFileType::class);
     }/**
      * {@inheritdoc}
      */

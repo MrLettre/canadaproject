@@ -8,12 +8,6 @@
         {{ form_start(form) }}
 
         <div class="form-group">
-            {{ form_label(form.nom, 'Nom technique du véhicule (Marque-Modèle-Finition)') }}
-            {{ form_widget(form.nom, {'attr':{class:'form-control'}}) }}
-            {{ form_errors(form.nom) }}
-        </div>
-
-        <div class="form-group">
             {{ form_label(form.marque, 'Marque') }}
             {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
             {{ form_errors(form.marque) }}
@@ -42,6 +36,12 @@
         <p>
             <a class="btn btn-success" href="{{ path('version_new') }}">créer une version</a>
         </p>
+
+        <div class="form-group">
+            {{ form_label(form.nom, 'Donnez un nom à ce véhicule :') }}
+            {{ form_widget(form.nom) }}
+            {{ form_errors(form.nom) }}
+        </div>
 
         <div class="form-group">
             {{ form_label(form.options, 'Sélectionnez les options disponibles pour ce véhicule :') }}

@@ -12,7 +12,7 @@ class VehiculePhysiqueRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findActive() {
         return $this->getEntityManager()
-            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.validationStatut = '2' ORDER BY v.dateMiseEnLigne ASC")
+            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.validationStatut = '2' ORDER BY v.dateMiseEnLigne DESC")
             ->getResult();
     }
 
@@ -26,6 +26,13 @@ class VehiculePhysiqueRepository extends \Doctrine\ORM\EntityRepository
         return $this->getEntityManager()
             ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.id IN ($ids) ORDER BY v.dateMiseEnLigne ASC")
             ->getResult();
+    }
+
+    public function findLastNine(){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT a FROM AppBundle:VehiculePhysique a ORDER BY a.id DESC");
+        $query->setMaxResults(3);
+        return $query->getResult();
     }
 
     public function findByRecherche($marque, $model, $version, $miseEnCircuMax, $miseEnCircuMin, $kiloMax, $kiloMin, $prixMax, $prixMin, $bdv, $energie) {

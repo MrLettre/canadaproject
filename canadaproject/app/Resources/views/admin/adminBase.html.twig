@@ -41,6 +41,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script> <!-- Package d'icons -->
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="/images/header/Carify_LogoAccueil.png" />
     </head>
     
         {% block header %}
@@ -64,7 +65,7 @@
           <ul id="side-main-menu" class="side-menu list-unstyled"> 
             <li><i class="icon-home"></i>Utilisateurs</li>
                 <li><a href="/register"> <i class="icon-grid"></i>Créer un Utilisateur</a></li>
-                <li><a href="#"> <i class="icon-grid"></i>Liste des Utilisateurs</a></li>
+                <li><a href="/user"> <i class="icon-grid"></i>Liste des Utilisateurs</a></li>
             <li><i class="icon-form"></i>Mes Vendeurs</li>
                 <li><a href="{{ path('vehiculephysique_validation_index') }}"> <i class="icon-grid"></i>Validation véhicules</a></li>
                 <li><a href="{{ path('vehiculephysique_index') }}"> <i class="icon-grid"></i>Parc Automobile</a></li>
@@ -87,6 +88,15 @@
 
           </ul>
         </div>
+          <div class="admin-menu">
+              <h5 class="sidenav-heading">ARTICLES&DOSSIERS</h5>
+              <ul id="side-admin-menu" class="side-menu list-unstyled">
+                  <li><i class="icon-grid"></i>Gestion des articles</li>
+                  <li><a href="{{ path('article_admin_new') }}"> <i class="icon-grid"></i>Créer un article</a></li>
+                  <li><a href="{{ path('article_admin_index') }}"> <i class="icon-grid"></i>Liste des articles</a></li>
+
+              </ul>
+          </div>
       </div>
     </nav>
     <div class="page">

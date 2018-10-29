@@ -15,4 +15,31 @@ class VehicleDefinitionRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v WHERE v.id = $id")
             ->getResult();
     }
+
+    public function findLastThree(){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT a FROM AppBundle:VehicleDefinition a ORDER BY a.id DESC");
+        $query->setMaxResults(3);
+        return $query->getResult();
+    }
+
+    public function findByMarque($marque){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v WHERE v.marque = $marque");
+        return $query->getResult();
+    }
+
+    public function findByType($type){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v WHERE v.typeVehicule = $type");
+        return $query->getResult();
+    }
+
+    public function findByEnergy($energy){
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehicleDefinition v 
+                                JOIN v.version ver 
+                                WHERE ver.energie = $energy");
+        return $query->getResult();
+    }
 }

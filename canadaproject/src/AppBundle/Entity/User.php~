@@ -14,6 +14,16 @@ use FOS\UserBundle\Model\User as BaseUser;
 class User extends BaseUser
 {
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Concession", cascade={"persist"}, fetch="EAGER")
+     */
+    private $concessions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeEssai", mappedBy="user")
+     */
+    private $demandesEssais;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -21,6 +31,13 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="societe", type="string", length=45, nullable=true)
+     */
+    private $societe;
 
     /**
      * @var string
@@ -283,5 +300,101 @@ class User extends BaseUser
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set societe.
+     *
+     * @param string|null $societe
+     *
+     * @return User
+     */
+    public function setSociete($societe = null)
+    {
+        $this->societe = $societe;
+
+        return $this;
+    }
+
+    /**
+     * Get societe.
+     *
+     * @return string|null
+     */
+    public function getSociete()
+    {
+        return $this->societe;
+    }
+
+    /**
+     * Add concession.
+     *
+     * @param \AppBundle\Entity\Concession $concession
+     *
+     * @return User
+     */
+    public function addConcession(\AppBundle\Entity\Concession $concession)
+    {
+        $this->concessions[] = $concession;
+
+        return $this;
+    }
+
+    /**
+     * Remove concession.
+     *
+     * @param \AppBundle\Entity\Concession $concession
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeConcession(\AppBundle\Entity\Concession $concession)
+    {
+        return $this->concessions->removeElement($concession);
+    }
+
+    /**
+     * Get concessions.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConcessions()
+    {
+        return $this->concessions;
+    }
+
+    /**
+     * Add demandesEssai.
+     *
+     * @param \AppBundle\Entity\DemandeEssai $demandesEssai
+     *
+     * @return User
+     */
+    public function addDemandesEssai(\AppBundle\Entity\DemandeEssai $demandesEssai)
+    {
+        $this->demandesEssais[] = $demandesEssai;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandesEssai.
+     *
+     * @param \AppBundle\Entity\DemandeEssai $demandesEssai
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeDemandesEssai(\AppBundle\Entity\DemandeEssai $demandesEssai)
+    {
+        return $this->demandesEssais->removeElement($demandesEssai);
+    }
+
+    /**
+     * Get demandesEssais.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemandesEssais()
+    {
+        return $this->demandesEssais;
     }
 }

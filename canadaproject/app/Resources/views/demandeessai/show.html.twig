@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Demandeessai</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demandeEssai.id }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ demandeEssai.reference }}</td>
+            </tr>
+            <tr>
+                <th>Datedemande</th>
+                <td>{% if demandeEssai.dateDemande %}{{ demandeEssai.dateDemande|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dateessaiplanning</th>
+                <td>{% if demandeEssai.dateEssaiPlanning %}{{ demandeEssai.dateEssaiPlanning|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Commentaireclient</th>
+                <td>{{ demandeEssai.commentaireClient }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('demandeessai_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('demandeessai_edit', { 'id': demandeEssai.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -101,6 +101,10 @@ vich_uploader:
             uri_prefix:         /images/logoMarques
             upload_destination: '%kernel.project_dir%/web/images/logoMarques'
             namer: Vich\UploaderBundle\Naming\HashNamer
+        logoModeles_images:
+            uri_prefix:         /images/logoModeles
+            upload_destination: '%kernel.project_dir%/web/images/logoModeles'
+            namer: Vich\UploaderBundle\Naming\HashNamer
         photosVehiculePhysique_images:
             uri_prefix:         /images/photosVehiculePhysique
             upload_destination: '%kernel.project_dir%/web/images/photosVehiculePhysique'
@@ -109,3 +113,7 @@ vich_uploader:
             uri_prefix:         /images/photosVehiculeCouleursDispo
             upload_destination: '%kernel.project_dir%/web/images/photosVehiculeCouleursDispo'
             namer: Vich\UploaderBundle\Naming\HashNamer
+        photosArticle_images:
+                    uri_prefix:         /images/photoArticle
+                    upload_destination: '%kernel.project_dir%/web/images/photoArticle'
+                    namer: Vich\UploaderBundle\Naming\HashNamer

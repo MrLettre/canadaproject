@@ -1,75 +1,148 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('build/comparateur.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('build/comparateurAccueil.css') }}">
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script> <!-- Package d'icons -->
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/css/mdb.min.css" rel="stylesheet">
+
 {% endblock %}
 
     {% block body %}
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-    <!------------------------------------------------------ MENU LATERAL ------------------------------------------------->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 bg-secondary">
-                {{ form_start(form) }}
-                <div class="filter-sidebar">
-                    <div class="row card-body py-2 mb-3 bg-dark twhite">
-                        <h4><i class="fa fa-car"></i> CARIFY SEARCH</h4>
-                    </div>
-                    <div class="form-group">
-                        {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
-                        {{ form_errors(form.marque) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_widget(form.model, {'attr':{class:'form-control'}}) }}
-                        {{ form_errors(form.model) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_widget(form.version, {'attr':{class:'form-control'}}) }}
-                        {{ form_errors(form.version) }}
-                    </div>
-
-
-                    <hr>
-                    <button type="btn" class="btn btn-primary">Chercher</button>
-                    <div class="pb-3"></div>
+        <div class="row" style="flex-direction: column">
+            <div class="contourTitreComp">
+                <div class="titreComp">
+                    <h1 >Quelles marques de véhicule recherchez-vous ?</h1>
+                    <h3> Choisissez parmis les marques de notre catalogue</h3>
                 </div>
-                {{ form_end(form) }}
             </div>
+
+            {% set selectedMarqueGrouped = marques|batch(6) %}
+            {% for group in selectedMarqueGrouped %}
+                {% set panelClass = 'panel--' ~ loop.index %}
+                <div class="col-md-12 text-center contenuComp" >
+                    <div class="panel {{ panelClass }}" style="display: flex">
+                        {% for entry in group %}
+                            <div class="col-2 ladivJsdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
+                                <img src="/images/logoMarques/{{ entry.imageName }}" width="80" height="80"><br>
+                                <h4>{{ entry.nom }}</h4>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    </div>
 
-    <!------------------------------------------------------ FIN DU MENU LATERAL ------------------------------------------------->
+        <div class="row" style="flex-direction: column">
+            <div class="contourTitreComp">
+                <div class="titreComp">
+                    <h1>Quel type de véhicule recherchez-vous ?</h1>
+                    <h3> Sélectionnez votre véhicule selon son format</h3>
+                </div>
+            </div>
 
-{% endblock %}
+            {% set selectedStyleGrouped = styles|batch(5) %}
+            {% for group in selectedStyleGrouped %}
+                {% set panelClass = 'panel--' ~ loop.index %}
+                <div class="col-md-12 text-center contenuComp" >
+                    <div class="panel {{ panelClass }}" style="display: flex">
+                        {% for entry in group %}
+                            <div class="col-2 ladivStyledeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
+                                <br>
+                                {% if entry == "Berline" %}
+                                    <img src="/images/icons/berline.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "SUV" %}
+                                    <img src="/images/icons/suv.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "cabriolet" %}
+                                    <img src="/images/icons/cabriolet.png" width="80" height="80"><br>
+                                {% endif %}
+                                <h4>{{ entry.nom }}</h4>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="row" style="flex-direction: column">
+            <div class="contourTitreComp">
+                <div class="titreComp">
+                    <h1>Quel carburant recherchez-vous ?</h1>
+                    <h3> A chacun son énergie</h3>
+                </div>
+            </div>
+
+
+            {% set selectedEnergyGrouped = energies|batch(6) %}
+            {% for group in selectedEnergyGrouped %}
+                {% set panelClass = 'panel--' ~ loop.index %}
+                <div class="col-md-12 text-center contenuComp" >
+                    <div class="panel {{ panelClass }}" style="display: flex">
+                        {% for entry in group %}
+                            <div class="col-2 ladivNrjdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
+                                <br>
+                                {% if entry == "essence" %}
+                                    <img src="/images/icons/oil.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "diesel" %}
+                                    <img src="/images/icons/oil.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "hybride" %}
+                                    <img src="/images/icons/hybrid.png" width="80" height="80"><br>
+                                {% endif %}
+                                {% if entry == "electrique" %}
+                                    <img src="/images/icons/electric.png" width="80" height="80"><br>
+                                {% endif %}
+                                <h4>{{ entry.nom }}</h4>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {{ form(form) }}
+
+
+
+
+    {% endblock %}
 
 {% block javascripts %}
-    <!-- Requête Ajax -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/front.js"></script>
-    <script src="{{ asset('build/rechercheVehiculeAdmin.js') }}"></script>
 
-    <script>$(document).on('change', '#appbundle_vehicledefinition_marque, #appbundle_vehicledefinition_model', function () {
-            let $field = $(this)
-            let $marqueField = $('#appbundle_vehicledefinition_marque')
-            let $form = $field.closest('form')
-            let target = '#' + $field.attr('id').replace('model', 'version').replace('marque', 'model')
-            // Les données à envoyer en Ajax
-            let data = {}
-            data[$marqueField.attr('name')] = $marqueField.val()
-            data[$field.attr('name')] = $field.val()
-            // On soumet les données
-            $.post($form.attr('action'), data).then(function (data) {
-                // On récupère le nouveau <select>
-                let $input = $(data).find(target)
-                // On remplace notre <select> actuel
-                $(target).replaceWith($input)
-            })
-        })</script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <script>
+        $('.ladivJsdeClement').on('click', function () {
+            $('#form_Marque').val($(this).attr('id'));
+            $("#form").parent().submit();
+        });
+    </script>
+    <script>
+        $('.ladivStyledeClement').on('click', function () {
+            $('#form_Type').val($(this).attr('id'));
+            $("#form").parent().submit();
+        });
+    </script>
+    <script>
+        $('.ladivNrjdeClement').on('click', function () {
+            $('#form_Energy').val($(this).attr('id'));
+            $("#form").parent().submit();
+        });
+    </script>
+
 {% endblock %}

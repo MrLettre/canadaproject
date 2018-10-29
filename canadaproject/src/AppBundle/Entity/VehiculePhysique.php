@@ -20,6 +20,16 @@ use Doctrine\Common\Collections\Collection;
 class VehiculePhysique
 {
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeEssai", mappedBy="vehiculePhysique")
+     */
+    private $demandesEssais;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartContent", mappedBy="vehiculePhysique")
+     */
+    private $cartContents;
+
+    /**
      * Many VehiculePhysiques have Many Options.
      * @ORM\ManyToMany(targetEntity="VehicleOption", mappedBy="vehiculePhysiques")
      */
@@ -45,12 +55,6 @@ class VehiculePhysique
     private $region;
 
     /**
-     * Many VehiculePhysiques have Many Carts.
-     * @ORM\ManyToMany(targetEntity="Cart", mappedBy="vehiculePhysiques")
-     */
-    protected $carts;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Concession", inversedBy="vehiculePhysiques")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -70,6 +74,13 @@ class VehiculePhysique
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceVehPhy", type="string", nullable=true)
+     */
+    private $referenceVehPhy;
 
     /**
      * @var \DateTime
@@ -147,12 +158,6 @@ class VehiculePhysique
     private $imageName;
 
 
-    public function __construct()
-    {
-        $this->carts = new ArrayCollection();
-    }
-
-
     /**
      * Get id
      *
@@ -161,14 +166,6 @@ class VehiculePhysique
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getCarts(): Collection
-    {
-        return $this->carts;
     }
 
     /**
@@ -470,30 +467,6 @@ class VehiculePhysique
     }
 
     /**
-     * Add cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     *
-     * @return VehiculePhysique
-     */
-    public function addCart(\AppBundle\Entity\Cart $cart)
-    {
-        $this->carts[] = $cart;
-
-        return $this;
-    }
-
-    /**
-     * Remove cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     */
-    public function removeCart(\AppBundle\Entity\Cart $cart)
-    {
-        $this->carts->removeElement($cart);
-    }
-
-    /**
      * Set concession
      *
      * @param \AppBundle\Entity\Concession $concession
@@ -588,6 +561,110 @@ class VehiculePhysique
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return $this->version;
+        return $this->referenceVehPhy;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cartContents = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->options = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return VehiculePhysique
+     */
+    public function addCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContents[] = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Remove cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        return $this->cartContents->removeElement($cartContent);
+    }
+
+    /**
+     * Get cartContents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCartContents()
+    {
+        return $this->cartContents;
+    }
+
+    /**
+     * Add demandesEssai.
+     *
+     * @param \AppBundle\Entity\DemandeEssai $demandesEssai
+     *
+     * @return VehiculePhysique
+     */
+    public function addDemandesEssai(\AppBundle\Entity\DemandeEssai $demandesEssai)
+    {
+        $this->demandesEssais[] = $demandesEssai;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandesEssai.
+     *
+     * @param \AppBundle\Entity\DemandeEssai $demandesEssai
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeDemandesEssai(\AppBundle\Entity\DemandeEssai $demandesEssai)
+    {
+        return $this->demandesEssais->removeElement($demandesEssai);
+    }
+
+    /**
+     * Get demandesEssais.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemandesEssais()
+    {
+        return $this->demandesEssais;
+    }
+
+    /**
+     * Set referenceVehPhy.
+     *
+     * @param string|null $referenceVehPhy
+     *
+     * @return VehiculePhysique
+     */
+    public function setReferenceVehPhy($referenceVehPhy = null)
+    {
+        $this->referenceVehPhy = $referenceVehPhy;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceVehPhy.
+     *
+     * @return string|null
+     */
+    public function getReferenceVehPhy()
+    {
+        return $this->referenceVehPhy;
     }
 }

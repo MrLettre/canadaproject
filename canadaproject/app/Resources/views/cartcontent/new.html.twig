@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cartcontent creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    {{ dump( voiturephy) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('cartcontent_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

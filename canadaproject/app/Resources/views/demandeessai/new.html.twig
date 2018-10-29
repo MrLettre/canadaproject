@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <section class="jumbotron text-center" id="contactForm">
+        <div class="container">
+            <div class=" animated fadeInRight ">
+                <br><br>
+                <hr class="trait">
+                <h1 class="titreAccueil text-center text-monospace text-uppercase">Demande d'essai</h1>
+                <hr class="trait">
+                <br><br>
+            </div>
+            <p class="lead text-muted">
+                Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d'un droit d'accès et de rectification aux informations qui vous concernent. Si vous souhaitez exercer ce droit et obtenir la communication des informations vous concernant, toute demande en ce sens transmise doit être transmise au responsable de traitement
+                via l'adresse postale  ou via l'email.
+            </p>
+            <i data-feather="alert-triangle" style="color:red;"></i> * Champs obligatoires.
+            <br>
+            <br>
+            <section class="contact-section col-md-12">
+
+                <!-- Form with header -->
+                <div class="card">
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-lg-8">
+                            {{ form_start(formEssai, { 'attr': {'id': 'info'} } ) }}
+                            <div class="card-body form">
+
+                                <!-- Header -->
+                                <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Demandez un essai:</h3>
+
+                                <!-- Grid row -->
+                                <div class="row">
+
+                                    {% if user.societe != 'null' %}
+
+                                    <!-- Grid column -->
+                                    <div class="col-md-12">
+                                        <div>
+                                            <p>Société : {{ user.societe }}</p>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    <!-- Grid column -->
+                                    <div class="col-md-5">
+                                        <div>
+                                            <p>Nom : {{ user.nom }}</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid column -->
+                                    <div class="col-md-5">
+                                        <div>
+                                            <p>Prénom : {{ user.prenom }}</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid column -->
+                                    <div class="col-md-6">
+                                        <div>
+                                            <p> Email : {{ user.email }}</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Grid column -->
+                                    <div class="col-md-6">
+                                        <div>
+                                            <p>Votre téléphone : {{ user.numeroTelephone }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Grid row -->
+                                <div class="row">
+                                    <!-- Grid column -->
+                                    <div class="col-md-12">
+                                        <div>
+                                            <p>
+                                                Votre adresse : {{ user.adresse }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Grid row -->
+                                <div class="row">
+                                    <!-- Grid column -->
+                                    <div class="col-md-12">
+                                        <div>
+                                            <p>Votre code postale : </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Grid row -->
+                                <div class="row">
+                                    <!-- Grid column -->
+                                    <div class="col-md-12">
+                                        <div>
+                                            <p>Votre ville : {{ user.codePostal }} {{ user.ville }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Grid row -->
+                                <div class="row">
+                                    <!-- Grid column -->
+                                    <div class="col-md-12">
+                                        <div class="md-form mb-0">
+                                            {{ form_widget(formEssai.dateDemande) }}
+                                        </div>
+                                    </div>
+                                    <!-- Grid column -->
+                                </div>
+                                <!-- Grid row -->
+                                <div class="row">
+                                    <!-- Grid column -->
+                                    <div class="col-md-12">
+                                        <div class="md-form mb-0">
+                                            {{ form_widget(formEssai.commentaireClient, { 'attr': {'class': 'form-control md-textarea'} }) }}
+                                            <label for="form-contact-message">Votre message</label>
+                                            {{ form_row(formEssai._token) }}
+                                            <button type="submit" class="btn btn-outline-primary waves-effect" id="Envoyer">Envoyer <i class="fab fa-telegram-plane"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- Grid column -->
+                                </div>
+                                <!-- Grid row -->
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        {% for voiture in voiturephy %}
+                        <div class="col-lg-4">
+                            <div class="card-body contact text-center h-100 white-text">
+                                <h3 class="my-4 pb-2 white-text">Véhicule</h3>
+                                <hr class="hr-light my-4">
+                                <ul class="text-lg-left list-unstyled ml-4">
+                                    <li>
+                                        <p class="contact-adresse text-center white-color"><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ voiture.imageName }}" width="80" height="auto"></a></p>
+                                    </li>
+                                    <li>
+                                        <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Marque :</p>
+                                        <p class="contact-adresse text-center white-color">{{ voiture.version.model.marque }} {{ voiture.version.model }} {{ voiture.version }}</p>
+                                    </li>
+                                    <li>
+                                        <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Modèle :</p>
+                                        <p class="contact-adresse text-center white-color">{{ voiture.version.model.marque }} {{ voiture.version.model }}</p>
+                                    </li>
+                                    <li>
+                                        <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Mise en Circulation :</p>
+                                        <p class="contact-adresse text-center white-color"> {{ voiture.dateDeMiseEnCirculation|date('d-m-Y') }}</p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+                <!-- Form with header -->
+            </section>
+        </div>
+    </section>
+
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-primary">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+

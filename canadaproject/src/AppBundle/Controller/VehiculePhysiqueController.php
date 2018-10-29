@@ -8,7 +8,10 @@ use AppBundle\Entity\VehicleDefinition;
 use AppBundle\Entity\Vente;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use AppBundle\Form\TaskType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Vehiculephysique controller.
@@ -33,6 +36,9 @@ class VehiculePhysiqueController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $concession= $vehiculePhysique->getConcession();
+            $ref= 'VEHPHY'.'-'.$concession.rand(0, 99999);
+            $vehiculePhysique->setReferenceVehPhy($ref);
             $em->persist($vehiculePhysique);
             $em->flush();
 
@@ -123,13 +129,13 @@ class VehiculePhysiqueController extends Controller
     }
 
 
-        /**
+    /**
      * Finds and displays a vehiculePhysique entity.
      *
      * @Route("/recherche/{id}", name="vehiculephysique_recherche")
      * @Method("GET")
      */
-    public function ficheProduit($id)
+    public function ficheProduit(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -137,15 +143,39 @@ class VehiculePhysiqueController extends Controller
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
 
+        $formCart = $this->createForm('AppBundle\Form\AddToCartType');
+        $formCart->handleRequest($request);
 
-        return $this->render('pagesCarifyPublic/rstatutecherche/ficheProduit.html.twig', [
+        $formEssai = $this->createForm('AppBundle\Form\AddEssaiType');
+        $formEssai->handleRequest($request);
+
+        if ($formCart->isSubmitted() && $formCart->isValid()) {
+
+            $vehPhy = $this->forward('AppBundle:CartContent:new', array(
+               'voiturephy' => $voiturephy,
+            ));
+
+            return $vehPhy;
+        }
+
+        if ($formEssai->isSubmitted() && $formEssai->isValid()) {
+
+            $vehPhy = $this->forward('AppBundle:DemandeEssai:new', array(
+                'voiturephy' => $voiturephy,
+            ));
+
+            return $vehPhy;
+        }
+
+        return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [
             'voituredef' => $voituredef,
             'voiturephy' => $voiturephy,
             'optionsphy' => $optionsphy,
+            'formCart' => $formCart->createView(),
+            'formEssai' => $formEssai->createView(),
+
         ]);
     }
-
-
 
 
     /**

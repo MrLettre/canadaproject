@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for article in articles|reverse %}
+
+        <div class="blog-card" style="max-height: 40vh">
+            <div class="meta">
+                <div class="photo" style="background-image: url('/images/photoArticle/{{ article.imageName }}')"></div>
+                <ul class="details"><li class="tags">
+                    <li>{{ article.sujet }}</li>
+                </ul>
+            </div>
+            <div class="description">
+                <h1>Dossier {{ article.sujet }} :</h1>
+                <h2>{{ article.titre }}</h2>
+                <br>{{ article.resumeImportant }}
+                <p class="read-more"><a href="/article/{{ article.id }}">Lire l'article</a>
+                </p>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

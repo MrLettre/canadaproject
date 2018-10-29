@@ -18,6 +18,12 @@ Encore
     .addEntry('recherche', './assets/scss/recherche.scss')
     .addEntry('blocRecherche', './assets/scss/blocRecherche.scss')
     .addEntry('menuCompaRecherche', './assets/scss/menuCompaRecherche.scss')
+    .addEntry('ficheProduit', './assets/scss/ficheProduit.scss')
+    .addEntry('comparateurShow', './assets/scss/comparateurShow.scss')
+    .addEntry('comparateurAccueil', './assets/scss/comparateurAccueil.scss')
+    .addEntry('addToCompare', './assets/js/addToCompare.js')
+
+
 
 
     .cleanupOutputBeforeBuild()

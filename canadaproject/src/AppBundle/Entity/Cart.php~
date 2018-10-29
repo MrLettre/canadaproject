@@ -14,18 +14,11 @@ use Doctrine\Common\Collections\Collection;
  */
 class Cart
 {
-    /**
-     * Many Users have Many Groups.
-     * @ORM\ManyToMany(targetEntity="VehiculePhysique", inversedBy="carts")
-     * @ORM\JoinTable(name="VehPhy_carts")
-     */
-    private $vehiculePhysiques;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Vente", inversedBy="carts")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity=CartContent::class, mappedBy="cart")
      */
-    private $vente;
+    protected $cartContent;
 
     /**
      * @var int
@@ -39,15 +32,23 @@ class Cart
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateMiseAuPanier", type="datetime")
+     * @ORM\Column(name="dateCreationPanier", type="datetime")
      */
-    private $dateMiseAuPanier;
+    private $dateCreationPanier;
 
-    public function __construct()
-    {
-        $this->vehiculePhysiques = new ArrayCollection();
-    }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceCart", type="string")
+     */
+    private $referenceCart;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="actif", type="boolean", options={"default":false})
+     */
+    private $actif;
 
     /**
      * Get id
@@ -60,89 +61,103 @@ class Cart
     }
 
 
-    /**
-     * @return Collection
-     */
-    public function getVehiculePhysiques(): Collection
-    {
-        return $this->vehiculePhysiques;
-    }
+
+
+
 
     /**
-     * Set dateMiseAuPanier
+     * Set dateCreationPanier.
      *
-     * @param \DateTime $dateMiseAuPanier
+     * @param \DateTime $dateCreationPanier
      *
      * @return Cart
      */
-    public function setDateMiseAuPanier($dateMiseAuPanier)
+    public function setDateCreationPanier($dateCreationPanier)
     {
-        $this->dateMiseAuPanier = $dateMiseAuPanier;
+        $this->dateCreationPanier = $dateCreationPanier;
 
         return $this;
     }
 
     /**
-     * Get dateMiseAuPanier
+     * Get dateCreationPanier.
      *
      * @return \DateTime
      */
-    public function getDateMiseAuPanier()
+    public function getDateCreationPanier()
     {
-        return $this->dateMiseAuPanier;
+        return $this->dateCreationPanier;
     }
 
     /**
-     * Set vente
+     * Set referenceCart.
      *
-     * @param \AppBundle\Entity\Vente $vente
+     * @param string $referenceCart
      *
      * @return Cart
      */
-    public function setVente(\AppBundle\Entity\Vente $vente)
+    public function setReferenceCart($referenceCart)
     {
-        $this->vente = $vente;
+        $this->referenceCart = $referenceCart;
 
         return $this;
     }
 
     /**
-     * Get vente
+     * Get referenceCart.
      *
-     * @return \AppBundle\Entity\Vente
+     * @return string
      */
-    public function getVente()
+    public function getReferenceCart()
     {
-        return $this->vente;
+        return $this->referenceCart;
     }
 
     /**
-     * Add vehiculePhysique
+     * Set actif.
      *
-     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     * @param bool $actif
      *
      * @return Cart
      */
-    public function addVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    public function setActif($actif)
     {
-        $this->vehiculePhysiques[] = $vehiculePhysique;
+        $this->actif = $actif;
 
         return $this;
     }
 
     /**
-     * Remove vehiculePhysique
+     * Get actif.
      *
-     * @param \AppBundle\Entity\VehiculePhysique $vehiculePhysique
+     * @return bool
      */
-    public function removeVehiculePhysique(\AppBundle\Entity\VehiculePhysique $vehiculePhysique)
+    public function getActif()
     {
-        $this->vehiculePhysiques->removeElement($vehiculePhysique);
+        return $this->actif;
     }
 
-    public function __toString()
+    /**
+     * Set cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return Cart
+     */
+    public function setCartContent(\AppBundle\Entity\CartContent $cartContent)
     {
-    
-        return $this->vehiculePhysiques;
+        $this->cartContent = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Get cartContent.
+     *
+     * @return \AppBundle\Entity\CartContent
+     */
+    public function getCartContent()
+    {
+        return $this->cartContent;
     }
 }

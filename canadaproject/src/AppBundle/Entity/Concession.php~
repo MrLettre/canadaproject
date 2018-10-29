@@ -22,6 +22,11 @@ class Concession
     private $vehiculePhysiques;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeEssai", mappedBy="concession")
+     */
+    private $demandesEssais;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GroupeConcessionnaire", inversedBy="concessions")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -412,5 +417,41 @@ class Concession
     public function getVehiculePhysiques()
     {
         return $this->vehiculePhysiques;
+    }
+
+    /**
+     * Add demandesEssai.
+     *
+     * @param \AppBundle\Entity\DemandeEssai $demandesEssai
+     *
+     * @return Concession
+     */
+    public function addDemandesEssai(\AppBundle\Entity\DemandeEssai $demandesEssai)
+    {
+        $this->demandesEssais[] = $demandesEssai;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandesEssai.
+     *
+     * @param \AppBundle\Entity\DemandeEssai $demandesEssai
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeDemandesEssai(\AppBundle\Entity\DemandeEssai $demandesEssai)
+    {
+        return $this->demandesEssais->removeElement($demandesEssai);
+    }
+
+    /**
+     * Get demandesEssais.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemandesEssais()
+    {
+        return $this->demandesEssais;
     }
 }
