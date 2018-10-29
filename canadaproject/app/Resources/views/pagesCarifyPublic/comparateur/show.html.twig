@@ -139,8 +139,8 @@
 <hr>
 
 <div class="container">
-<div class="row gris">
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+    <div class="row gris">
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 <tbody>
 <tr>
     <td>{{ vehicleDefinition.version.transmission }}</td>
@@ -152,8 +152,8 @@
     {% endif %}
 </tr>
 </tbody>
-</div>
-</div>
+        </div>
+    </div>
 </div>
 </div>
 
@@ -280,37 +280,41 @@
 
 <div class="container">
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
 <h5>Options</h5>
 
-</div>
-</div>
+            </div>
+        </div>
 </div>
 
-<div class="row gris d-flex justify-content-center wow fadeIn">
+<div class="container">
+
+  <div class="row gris d-flex justify-content-center wow fadeIn">
 
 <!--Grid column-->
-<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+    <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
 {% for options in version.options %}
 <p>{{ options.nom }}</p>
 {% endfor %}
-</div>
+    </div>
 <!--Grid column-->
 
 <!--Grid row-->
 
 <!--Grid column-->
-<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+    <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 {% if id2 is defined %}
 {% for options2 in version2.options %}
 <p>{{ options2.nom }}</p>
 {% endfor %}
-</div>
+    </div>
 {% endif %}
 <!--Grid column-->
+  </div>
+</div>
 
 <hr>
 
@@ -326,6 +330,8 @@
 </div>
 </div>
 </div>
+
+<div class="container">
 
 <div class="row gris ">
 
@@ -353,6 +359,7 @@
 
 <!--Grid row-->
 
+</div>
 </div>
 </div>
 {% endblock %}{% block javascripts %}
