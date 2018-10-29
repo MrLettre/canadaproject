@@ -92,7 +92,7 @@
 
 <br><br>
 
-{% if id2 is defined %}
+
 
 <hr>
 
@@ -105,7 +105,9 @@
             <td>
                 <strong>Type</strong>
             </td>
+            {% if id2 is defined %}
             <td>{{ id2.version.model.typeVehicule }}</td>
+            {% endif %}
         </tr>
     </tbody>
 </div>
@@ -124,7 +126,9 @@
         <td>
             <strong>Energie</strong>
         </td>
+        {% if id2 is defined %}
         <td>{{ id2.version.energie }}</td>
+        {% endif %}
     </tr>
 </tbody>
 </div>
@@ -143,7 +147,9 @@
     <td>
         <strong>Transmission</strong>
     </td>
+    {% if id2 is defined %}
     <td>{{ vehicle2.version.transmission }}</td>
+    {% endif %}
 </tr>
 </tbody>
 </div>
@@ -214,6 +220,7 @@
 
 <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
+{% if id2 is defined %}
 <table cellpadding="10">
 {% if id2.version.energie == 'electrique' %}
 <thead>
@@ -265,7 +272,7 @@
 {% endif %}
 </table>
 </div>
-
+{% endif %}
 </div>
 </div>
 
@@ -297,11 +304,13 @@
 
 <!--Grid column-->
 <div class="col-xs-6 col-sm-6 col-md-6 text-center">
-
+{% if id2 is defined %}
 {% for options2 in version2.options %}
 <p>{{ options2.nom }}</p>
 {% endfor %}
 </div>
+{% endif %}
+<!--Grid column-->
 
 <hr>
 
@@ -334,18 +343,19 @@
 <!--Grid column-->
 <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
+{% if id2 is defined %}
 {% for colors2 in version2.couleursDisponibles %}
 <p>{{ colors2.nom }}</p>
 {% endfor %}
 </div>
+{% endif %}
 <!--Grid column-->
 
 <!--Grid row-->
 
 </div>
-
-{% else %}
-{% endif %}{% endblock %}{% block javascripts %}
+</div>
+{% endblock %}{% block javascripts %}
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/js/mdb.min.js"></script>
 <script>
