@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            {% set selectedStyleGrouped = styles|batch(6) %}
+            {% set selectedStyleGrouped = styles|batch(5) %}
             {% for group in selectedStyleGrouped %}
                 {% set panelClass = 'panel--' ~ loop.index %}
                 <div class="col-md-12 text-center contenuComp" >
