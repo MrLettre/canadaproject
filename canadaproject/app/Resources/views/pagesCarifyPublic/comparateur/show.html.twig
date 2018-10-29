@@ -14,6 +14,7 @@
 {% endblock %}
 
 {% block body %}
+    <br>
 
     {% include "pagesCarifyPublic/comparateur/comparateurGauche.html.twig" %}
 
@@ -42,9 +43,7 @@
     <div class="container">
         <div class="row img">
             <div class="col-xs-6 col-sm-6 col-md-6 text-center">
-
                 <img class="img-fluid lol" src="/images/logoModeles/{{ vehicleDefinition.version.model.imageName }}" width="400" height="auto">
-
                 <div class="caption">
                     <h4>{{ vehicleDefinition.version.model.marque }}
                         {{ vehicleDefinition.version.model }}
@@ -64,12 +63,10 @@
                             {{ id2.version.model }}
                             {{ id2.version.nom}}</h4>
                     </div>
-
                 {% else %}
 
                 {% endif %}
             </div>
-
         </div>
     </div>
 
@@ -84,268 +81,265 @@
     {# {{ vehicleDefinition.version.nbreDePlaces }}           #}
     <!-- A ajouter -->
 
-</div>
 
-</div>
-</div>
-</div>
 
 <br><br>
 
-{% if id2 is defined %}
 
 <hr>
 
-<div class="container">
-<div class="row gris">
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-    <tbody>
-        <tr>
-            <td>{{ vehicleDefinition.version.model.typeVehicule }}</td>
-            <td>
-                <strong>Type</strong>
-            </td>
-            <td>{{ id2.version.model.typeVehicule }}</td>
-        </tr>
-    </tbody>
-</div>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row gris">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <tbody>
+                    <tr>
+                        <td>
+                            {{ vehicleDefinition.version.model.typeVehicule }}
+                        </td>
+                        <td>
+                            <strong>Type</strong>
+                        </td>
+                    {% if id2 is defined %}
+                        <td>
+                            {{ id2.version.model.typeVehicule }}
+                        </td>
+                    {% endif %}
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <div class="row gris">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <tbody>
+                    <tr>
+                        <td>
+                            {{ vehicleDefinition.version.energie }}
+                        </td>
+                        <td>
+                            <strong>Energie</strong>
+                        </td>
+                        {% if id2 is defined %}
+                            <td>
+                            {{ id2.version.energie }}
+                        </td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
 
 <hr>
 
-<div class="container">
-<div class="row gris">
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-<tbody>
-    <tr>
-        <td>{{ vehicleDefinition.version.energie }}</td>
-        <td>
-            <strong>Energie</strong>
-        </td>
-        <td>{{ id2.version.energie }}</td>
-    </tr>
-</tbody>
-</div>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row gris">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <tbody>
+                    <tr>
+                        <td>
+                            {{ vehicleDefinition.version.transmission }}
+                            </td>
+                        <td>
+                            <strong>Transmission</strong>
+                        </td>
+                    {% if id2 is defined %}
+                        <td>
+                            {{ vehicle2.version.transmission }}
+                        </td>
+                    {% endif %}
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
 
 <hr>
 
-<div class="container">
-<div class="row gris">
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-<tbody>
-<tr>
-    <td>{{ vehicleDefinition.version.transmission }}</td>
-    <td>
-        <strong>Transmission</strong>
-    </td>
-    <td>{{ vehicle2.version.transmission }}</td>
-</tr>
-</tbody>
-</div>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row gris">
+            <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                <table>
+                {% if vehicleDefinition.version.energie == 'electrique' %}
+                    <thead>
+                        <tr>
+                            <th>Puissance Electrique</th>
+                            <th>Autonomie electrique</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ vehicleDefinition.version.puissanceEl }}</td>
+                            <td>{{ vehicleDefinition.version.autonomieEl }}</td>
+                        </tr>
+                    </tbody>
+                {% endif %}
 
-<hr>
+                {% if vehicleDefinition.version.energie == 'essence' or vehicleDefinition.version.energie == 'diesel' %}
+                    <thead>
+                        <tr>
+                            <th>Puissance Thermique</th>
+                            <th>Autonomie Thermique</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ vehicleDefinition.version.puissanceTh }}</td>
+                            <td>{{ vehicleDefinition.version.autonimieTh }}</td>
+                        </tr>
+                    </tbody>
+                {% endif %}
 
-<div class="container">
+                {% if vehicleDefinition.version.energie == 'hybride' %}
+                    <thead>
+                        <tr>
+                            <th>Puissance Thermique</th>
+                            <th>Autonomie Thermique</th>
+                            <th>Puissance Electrique</th>
+                            <th>Autonomie electrique</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ vehicleDefinition.version.puissanceTh }}</td>
+                            <td>{{ vehicleDefinition.version.autonimieTh }}</td>
+                            <td>{{ vehicleDefinition.version.puissanceEl }}</td>
+                            <td>{{ vehicleDefinition.version.autonomieEl }}</td>
+                        </tr>
+                    </tbody>
+                {% endif %}
 
-<div class="row gris">
+                </table>
+            </div>
 
-<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+            <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                {% if id2 is defined %}
 
-<table>
-{% if vehicleDefinition.version.energie == 'electrique' %}
-<thead>
-    <tr>
-        <th>Puissance Electrique</th>
-        <th>Autonomie electrique</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>{{ vehicleDefinition.version.puissanceEl }}</td>
-        <td>{{ vehicleDefinition.version.autonomieEl }}</td>
-    </tr>
-</tbody>
-{% endif %}
+                <table cellpadding="10">
+                {% if id2.version.energie == 'electrique' %}
+                    <thead>
+                        <tr>
+                            <th>Puissance Electrique</th>
+                            <th>Autonomie electrique</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ id2.version.puissanceEl }}</td>
+                            <td>{{ id2.version.autonomieEl }}</td>
+                        </tr>
+                    </tbody>
+                {% endif %}
 
-{% if vehicleDefinition.version.energie == 'essence' or vehicleDefinition.version.energie == 'diesel' %}
-<thead>
-    <tr>
-        <th>Puissance Thermique</th>
-        <th>Autonomie Thermique</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>{{ vehicleDefinition.version.puissanceTh }}</td>
-        <td>{{ vehicleDefinition.version.autonimieTh }}</td>
-    </tr>
-</tbody>
-{% endif %}
+                {% if id2.version.energie == 'essence' %}
+                    <thead>
+                        <tr>
+                            <th>Puissance Thermique</th>
+                            <th>Autonomie Thermique</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ id2.version.puissanceTh }}</td>
+                            <td>{{ id2.version.autonimieTh }}</td>
+                        </tr>
+                    </tbody>
+                {% endif %}
 
-{% if vehicleDefinition.version.energie == 'hybride' %}
-<thead>
-    <tr>
-        <th>Puissance Thermique</th>
-        <th>Autonomie Thermique</th>
-        <th>Puissance Electrique</th>
-        <th>Autonomie electrique</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>{{ vehicleDefinition.version.puissanceTh }}</td>
-        <td>{{ vehicleDefinition.version.autonimieTh }}</td>
-        <td>{{ vehicleDefinition.version.puissanceEl }}</td>
-        <td>{{ vehicleDefinition.version.autonomieEl }}</td>
-    </tr>
-</tbody>
-{% endif %}
+                {% if id2.version.energie == 'hybride' %}
+                    <thead>
+                        <tr>
+                            <th>Puissance Thermique</th>
+                            <th>Autonomie Thermique</th>
+                            <th>Puissance Electrique</th>
+                            <th>Autonomie electrique</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ id2.version.puissanceTh }}</td>
+                            <td>{{ id2.version.autonimieTh }}</td>
+                            <td>{{ id2.version.puissanceEl }}</td>
+                            <td>{{ id2.version.autonomieEl }}</td>
+                        </tr>
+                    </tbody>
+                {% endif %}
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
-</table>
-</div>
 
-<div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
-<table cellpadding="10">
-{% if id2.version.energie == 'electrique' %}
-<thead>
-    <tr>
-        <th>Puissance Electrique</th>
-        <th>Autonomie electrique</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>{{ id2.version.puissanceEl }}</td>
-        <td>{{ id2.version.autonomieEl }}</td>
-    </tr>
-</tbody>
-{% endif %}
 
-{% if id2.version.energie == 'essence' %}
-<thead>
-    <tr>
-        <th>Puissance Thermique</th>
-        <th>Autonomie Thermique</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>{{ id2.version.puissanceTh }}</td>
-        <td>{{ id2.version.autonimieTh }}</td>
-    </tr>
-</tbody>
-{% endif %}
+    <hr>
 
-{% if id2.version.energie == 'hybride' %}
-<thead>
-    <tr>
-        <th>Puissance Thermique</th>
-        <th>Autonomie Thermique</th>
-        <th>Puissance Electrique</th>
-        <th>Autonomie electrique</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>{{ id2.version.puissanceTh }}</td>
-        <td>{{ id2.version.autonimieTh }}</td>
-        <td>{{ id2.version.puissanceEl }}</td>
-        <td>{{ id2.version.autonomieEl }}</td>
-    </tr>
-</tbody>
-{% endif %}
-</table>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <h5>Options</h5>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row gris d-flex justify-content-center wow fadeIn">
 
-</div>
-</div>
+            <div class="col-xs-6 col-sm-6 col-md-6 text-center">
 
-<hr>
+                {% for options in version.options %}
+                <p>{{ options.nom }}</p>
+                {% endfor %}
+            </div>
+        {% if id2 is defined %}
+        <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                {% for options2 in version2.options %}
+                <p>{{ options2.nom }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        </div>
+    </div>
 
-<div class="container">
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    <hr>
 
-<h5>Options</h5>
 
-</div>
-</div>
-</div>
 
-<div class="row gris d-flex justify-content-center wow fadeIn">
-
-<!--Grid column-->
-<div class="col-xs-6 col-sm-6 col-md-6 text-center">
-
-{% for options in version.options %}
-<p>{{ options.nom }}</p>
-{% endfor %}
-</div>
-<!--Grid column-->
 
 <!--Grid row-->
 
-<!--Grid column-->
-<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+    <div class="container">
 
-{% for options2 in version2.options %}
-<p>{{ options2.nom }}</p>
-{% endfor %}
-</div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <h5>Couleurs</h5>
+                <div class="row gris ">
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                    {% for colors in version.couleursDisponibles %}
+                        <p>{{ colors.nom }}</p>
+                    {% endfor %}
+                    </div>
+                    {% if id2 is defined %}
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                        {% for colors2 in version2.couleursDisponibles %}
+                            <p>{{ colors2.nom }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 
-<hr>
+<br><br>
 
-<!--Grid row-->
-
-<div class="container">
-
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-<h5>Couleurs</h5>
-
-</div>
-</div>
-</div>
-
-<div class="row gris ">
-
-<!--Grid column-->
-<div class="col-xs-6 col-sm-6 col-md-6 text-center">
-
-{% for colors in version.couleursDisponibles %}
-<p>{{ colors.nom }}</p>
-{% endfor %}
-</div>
-<!--Grid column-->
-
-<!--Grid row-->
-
-<!--Grid column-->
-<div class="col-xs-6 col-sm-6 col-md-6 text-center">
-
-{% for colors2 in version2.couleursDisponibles %}
-<p>{{ colors2.nom }}</p>
-{% endfor %}
-</div>
-<!--Grid column-->
-
-<!--Grid row-->
-
-</div>
-
-{% else %}
-{% endif %}{% endblock %}{% block javascripts %}
+{% endblock %}
+{% block javascripts %}
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/js/mdb.min.js"></script>
 <script>
