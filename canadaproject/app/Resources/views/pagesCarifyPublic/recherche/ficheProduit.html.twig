@@ -14,20 +14,18 @@
 
 {% block body %}
 
-<div class="container">
-  <div class="row">
-
-
-    {% for voiturephy in voiturephy %}
-        <div class="hero">
-    <h1>{{ voiturephy.version.model.marque }} {{ voiturephy.version.model }} {{ voiturephy.version }}</h1>
-    <img src="/images/logoModeles/{{ voiturephy.version.model.imageName }}" />
-     <div class="bar"></div>
-  </div>
-    {% endfor %}
-
-   </div>
-</div>  
+    <div class="container">
+          <div class="row">
+                {% for voiturephy in voiturephy %}
+                <div class="hero">
+                    <h1>{{ voiturephy.version.model.marque }} {{ voiturephy.version.model }} {{ voiturephy.version }}</h1>
+                    <img src="/images/logoModeles/{{ voiturephy.version.model.imageName }}" />
+                 <div class="bar">
+                 </div>
+            </div>
+            {% endfor %}
+       </div>
+    </div>
 
 <!--Possibilité 2-->
 
