@@ -68,6 +68,13 @@ class DemandeEssai
      */
     private $commentaireClient;
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="statutMailEssai", type="string", length=255, nullable=true)
+     */
+    private $statutMailEssai;
+
 
     /**
      * Get id.

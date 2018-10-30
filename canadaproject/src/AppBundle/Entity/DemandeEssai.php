@@ -68,6 +68,13 @@ class DemandeEssai
      */
     private $commentaireClient;
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="statutMailEssai", type="string", length=255, nullable=true)
+     */
+    private $statutMailEssai;
+
 
     /**
      * Get id.
@@ -245,5 +252,29 @@ class DemandeEssai
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set statutMailEssai.
+     *
+     * @param string|null $statutMailEssai
+     *
+     * @return DemandeEssai
+     */
+    public function setStatutMailEssai($statutMailEssai = null)
+    {
+        $this->statutMailEssai = $statutMailEssai;
+
+        return $this;
+    }
+
+    /**
+     * Get statutMailEssai.
+     *
+     * @return string|null
+     */
+    public function getStatutMailEssai()
+    {
+        return $this->statutMailEssai;
     }
 }
