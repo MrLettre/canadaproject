@@ -26,8 +26,10 @@
                         </div>
                         <div class="col-md-8 px-3">
                             <div class="card-block px-3">
-                                <h4 class="card-title" style="text-align: center">{{ vehiculePhysique.version.model.marque }} {{ vehiculePhysique.version.model }} {{ vehiculePhysique.version }}</h4>
-                                         <div class="container" style="margin-bottom: 2vh">
+                                <br>
+                                <h4 class="card-title" style="text-align: center">{{ vehiculePhysique.version.model.marque }} {{ vehiculePhysique.version.model }} {{ vehiculePhysique.version }} <span style="font-weight: bold; color: #5E7AE5"> {{ vehiculePhysique.prixHT }} $</span></h4>
+
+                                <div class="container" style="margin-bottom: 2vh">
                                              <h6>Caractéristiques</h6>
                                              <div class="row" style="display: flex">
                                                  <div class="col-md-6">
@@ -84,6 +86,7 @@
                                                 <p class="card-text">Autonomie moteur El : {{ vehiculePhysique.version.autonomieEl }}km</p>
                                         </div>
                                     </div>
+                                    <br>
                                 {% endif %}
 
                             </div>
