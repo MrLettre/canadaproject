@@ -153,6 +153,13 @@ class AdminController extends Controller
     //FIN VENTE PAR MOIS
 
 
+  //variable pour les charts
+  $chartTrimUn = count($venteTrimUn);
+  $chartTrimDeux = count($venteTrimDeux);
+  $chartTrimTrois = count($venteTrimTrois);
+  $chartTrimQuatre = count($venteTrimQuatre);
+
+
     return $this->render('admin/admin/adminStats.html.twig', [
         'form' => $form->createView(),
             'venteTotalesCompte' => $venteTotalesCompte,
@@ -174,6 +181,10 @@ class AdminController extends Controller
             'venteOctobre' => $venteOctobre,
             'venteNovembre' => $venteNovembre,
             'venteDecembre' => $venteDecembre,
+            'chartTrimUn' => $chartTrimUn,
+            'chartTrimDeux' => $chartTrimDeux,
+            'chartTrimTrois' => $chartTrimTrois,
+            'chartTrimQuatre' => $chartTrimQuatre,
       ]);
     }
 
