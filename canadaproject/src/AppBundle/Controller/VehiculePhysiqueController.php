@@ -151,20 +151,16 @@ class VehiculePhysiqueController extends Controller
 
         if ($formCart->isSubmitted() && $formCart->isValid()) {
 
-            $vehPhy = $this->forward('AppBundle:CartContent:new', array(
-               'voiturephy' => $voiturephy,
+            return $this->redirectToRoute('cartcontent_new', array(
+                'id' => $id,
             ));
-
-            return $vehPhy;
         }
 
         if ($formEssai->isSubmitted() && $formEssai->isValid()) {
 
-            $vehPhy = $this->forward('AppBundle:DemandeEssai:new', array(
-                'voiturephy' => $voiturephy,
+            return $this->redirectToRoute('demandeessai_new', array(
+                'id' => $id,
             ));
-
-            return $vehPhy;
         }
 
         return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [
