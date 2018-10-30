@@ -55,6 +55,8 @@ class DemandeEssaiController extends Controller
         $em = $this->getDoctrine()->getManager();
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
 
+        $statut = 'Non-lu';
+
         if ($formEssai->isSubmitted() && $formEssai->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
@@ -67,6 +69,8 @@ class DemandeEssaiController extends Controller
             $demandeEssai->setVehiculePhysique($voiturephy[0]);
             $demandeEssai->setConcession($concession);
             $demandeEssai->setUser($user);
+            $demandeEssai->setStatutMailEssai($statut);
+
 
             $em->persist($demandeEssai);
             $em->flush();
@@ -107,7 +111,7 @@ class DemandeEssaiController extends Controller
     public function editAction(Request $request, DemandeEssai $demandeEssai)
     {
         $deleteForm = $this->createDeleteForm($demandeEssai);
-        $editForm = $this->createForm('AppBundle\Form\DemandeEssaiType', $demandeEssai);
+        $editForm = $this->createForm('AppBundle\Form\EditDemandeEssaiType', $demandeEssai);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
