@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Cart;
 use AppBundle\Entity\CartContent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -34,28 +35,34 @@ class CartContentController extends Controller
     /**
      * Creates a new cartContent entity.
      *
-     * @Route("/new", name="cartcontent_new")
+     * @Route("/{id}/new", name="cartcontent_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request, $voiturephy)
+    public function newAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
         $cartContent = new Cartcontent();
-        $form = $this->createForm('AppBundle\Form\CartContentType', $cartContent);
-        $form->handleRequest($request);
+        $cart = new Cart();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($cartContent);
-            $em->flush();
+        $ref = 'CART'.'-'.rand(0, 99999);
+        $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
+        $dateMaP = new \DateTime('now');
 
-            return $this->redirectToRoute('cartcontent_show', array('id' => $cartContent->getId()));
-        }
 
-        return $this->render('cartcontent/new.html.twig', array(
-            'cartContent' => $cartContent,
-            'form' => $form->createView(),
-            'voiturephy' => $voiturephy,
-        ));
+        $cart->setActif(1);
+        $cart->setReferenceCart($ref);
+        $cart->setDateCreationPanier($dateMaP);
+        $cartContent->setVehiculePhysique($voiturephy[0]);
+        $cartContent->setDateMiseAuPanier($dateMaP);
+        $cartContent->setDateMiseAJourPanier($dateMaP);
+        $cartContent->setCart($cart);
+        $em->persist($cart);
+        $em->persist($cartContent);
+
+        $em->flush();
+
+
+        return $this->redirectToRoute('vehiculephysique_recherche', array('id' => $id));
     }
 
     /**

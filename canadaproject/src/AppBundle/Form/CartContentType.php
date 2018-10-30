@@ -13,7 +13,12 @@ class CartContentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('dateMiseAJourPanier')->add('dateMiseAuPanier')->add('vehiculePhysique')->add('cart')->add('vente');
+        $builder
+            ->add('dateMiseAJourPanier')
+            ->add('dateMiseAuPanier')
+            ->add('vehiculePhysique')
+            ->add('cart')
+            ->add('vente');
     }/**
      * {@inheritdoc}
      */
