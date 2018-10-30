@@ -122,4 +122,10 @@ class Vente
     {
         return $this->cartContent;
     }
+
+
+    public function __toString()
+    {
+        return $this->referenceVente;
+    }
 }

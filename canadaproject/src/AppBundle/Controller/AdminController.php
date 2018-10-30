@@ -66,82 +66,95 @@ class AdminController extends Controller
      */
     public function adminStats(Request $request)
     {
-        //Formulaire non relié à une entité pour choisir la date
-        $form = $this->createFormBuilder()
-            ->add('Choix', ChoiceType::class, [
-                'choices' => [
-                    '2018' => 2018,
-                    '2019' => 2019,
-                    '2020' => 2020,
-                    '2021' => 2021,
-                    '2022' => 2022,
-                    '2023' => 2023,
-                    '2024' => 2024,
-                    '2024' => 2024,
-                    '2025' => 2025,
-                ]
-            ])
-            ->add('save', SubmitType::class, array('label' => 'Choisir la date'))
-            ->getForm();
+      //Formulaire non relié à une entité pour choisir la date
+      $form = $this->createFormBuilder()
+      ->add('Choix', ChoiceType::class, [
+          'choices' => [
+              '2018' => 2018,
+              '2019' => 2019,
+              '2020' => 2020,
+              '2021' => 2021,
+              '2022' => 2022,
+              '2023' => 2023,
+              '2024' => 2024,
+              '2024' => 2024,
+              '2025' => 2025,
+          ]
+      ])
+      ->add('save', SubmitType::class, array('label' => 'Choisir la date'))
+      ->getForm();
 
 
-        $form->handleRequest($request);
+            $form->handleRequest($request);
 
-        $date = '';
+            $date = '';
 
-        $em = $this->getDoctrine()->getManager();
-        //Récupération de toutes les ventes totales de toutes les années
-        $venteTotales = $em->getRepository('AppBundle:Cart')->ventesTotales();
+            
+            if ($form->isSubmitted() && $form->isValid()) {
 
-        if ($form->isSubmitted() && $form->isValid()) {
+                //Recuperation de la date selectionné en array
+                $date = implode($form->getData());
+            }
 
-            //Recuperation de la date selectionné en array
-            $date = implode($form->getData());
-        }
+            //Attribution de la date aux variables
+            $debutAnnee      = $date;
+            $finAnnee        = $date;
+            $premierTriDeb   = $date;
+            $premierTriFin   = $date;
+            $deuxiemeTriDeb  = $date;
+            $deuxiemeTriFin  = $date;
+            $troisiemeTriDeb = $date;
+            $troisiemeTriFin = $date;
+            $quatriemeTriDeb = $date;
+            $quatriemeTriFin = $date;
+            
 
-        //Attribution de la date aux variables
-        $debutAnnee = $date;
-        $finAnnee = $date;
-        $premierTriDeb = $date;
-        $premierTriFin = $date;
-        $deuxiemeTriDeb = $date;
-        $deuxiemeTriFin = $date;
-        $troisiemeTriDeb = $date;
-        $troisiemeTriFin = $date;
-        $quatriemeTriDeb = $date;
-        $quatriemeTriFin = $date;
-
-
-        //Ventes annuelles par an
-        $venteAnnuelles = $em->getRepository('AppBundle:Cart')->ventesAnnuelles($debutAnnee, $finAnnee);
-
-        //Ventes 1er trimestre
-        $venteTrimUn = $em->getRepository('AppBundle:Cart')->ventesTrimUn($premierTriDeb, $premierTriFin);
+           
 
 
-        //Ventes 2eme trimestre
-        $venteTrimDeux = $em->getRepository('AppBundle:Cart')->ventesTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin);
+  $em = $this->getDoctrine()->getManager();
+  //Récupération de toutes les ventes totales de toutes les années
+  $venteTotales = $em->getRepository('AppBundle:Vente')->findVentesTotales();
 
-        //Ventes 3eme trimestre
-        $venteTrimTrois = $em->getRepository('AppBundle:Cart')->ventesTrimTrois($troisiemeTriDeb, $troisiemeTriFin);
+  //Chiffre des ventes totales de toutes les années
+  $venteTotalesCompte = count($venteTotales);
 
-        //Ventes 4eme trimestre
-        $venteTrimQuatre = $em->getRepository('AppBundle:Cart')->ventesTrimQuatre($quatriemeTriDeb, $quatriemeTriFin);
+  //Ventes annuelles par an
+  $venteAnnuelles = $em->getRepository('AppBundle:Vente')->findVentesAnnuelles($debutAnnee, $finAnnee);
 
-        //Chiffre des ventes totales de toutes les années
-        $venteTotalesCompte = count($venteTotales);
+  //Ventes 1er trimestre
+  $venteTrimUn = $em->getRepository('AppBundle:Vente')->findVentesTrimUn($premierTriDeb, $premierTriFin);
 
-        //variable pour les charts
-        $chartTrimUn = count($venteTrimUn);
-        $chartTrimDeux = count($venteTrimDeux);
-        $chartTrimTrois = count($venteTrimTrois);
-        $chartTrimQuatre = count($venteTrimQuatre);
+  //Ventes 2eme trimestre
+  $venteTrimDeux = $em->getRepository('AppBundle:Vente')->findVentesTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin);
+
+  //Ventes 3eme trimestre
+  $venteTrimTrois = $em->getRepository('AppBundle:Vente')->findVentesTrimTrois($troisiemeTriDeb, $troisiemeTriFin);
+
+  //Ventes 4eme trimestre
+  $venteTrimQuatre = $em->getRepository('AppBundle:Vente')->findVentesTrimQuatre($quatriemeTriDeb, $quatriemeTriFin);
 
 
+    //VENTE PAR MOIS
+
+  $venteJanvier = $em->getRepository('AppBundle:Vente')->findVentesJanvier($debutAnnee, $finAnnee);
+  $venteFevrier = $em->getRepository('AppBundle:Vente')->findVentesFevrier($debutAnnee, $finAnnee);
+  $venteMars = $em->getRepository('AppBundle:Vente')->findVentesMars($debutAnnee, $finAnnee);
+  $venteAvril = $em->getRepository('AppBundle:Vente')->findVentesAvril($debutAnnee, $finAnnee);
+  $venteMai = $em->getRepository('AppBundle:Vente')->findVentesMai($debutAnnee, $finAnnee);
+  $venteJuin = $em->getRepository('AppBundle:Vente')->findVentesJuin($debutAnnee, $finAnnee);
+  $venteJuillet = $em->getRepository('AppBundle:Vente')->findVentesJuillet($debutAnnee, $finAnnee);
+  $venteAout = $em->getRepository('AppBundle:Vente')->findVentesAout($debutAnnee, $finAnnee);
+  $venteSeptembre = $em->getRepository('AppBundle:Vente')->findVentesSeptembre($debutAnnee, $finAnnee);
+  $venteOctobre = $em->getRepository('AppBundle:Vente')->findVentesOctobre($debutAnnee, $finAnnee);
+  $venteNovembre = $em->getRepository('AppBundle:Vente')->findVentesNovembre($debutAnnee, $finAnnee);
+  $venteDecembre = $em->getRepository('AppBundle:Vente')->findVentesDecembre($debutAnnee, $finAnnee);
+
+    //FIN VENTE PAR MOIS
 
 
-        return $this->render('admin/admin/adminStats.html.twig', [
-            'form' => $form->createView(),
+    return $this->render('admin/admin/adminStats.html.twig', [
+        'form' => $form->createView(),
             'venteTotalesCompte' => $venteTotalesCompte,
             'venteTotales' => $venteTotales,
             'venteAnnuelles' => $venteAnnuelles,
@@ -149,11 +162,19 @@ class AdminController extends Controller
             'venteTrimDeux' => $venteTrimDeux,
             'venteTrimTrois' => $venteTrimTrois,
             'venteTrimQuatre' => $venteTrimQuatre,
-            'chartTrimUn'  => $chartTrimUn,
-            'chartTrimDeux' => $chartTrimDeux,
-            'chartTrimTrois' => $chartTrimTrois,
-            'chartTrimQuatre' => $chartTrimQuatre,
-        ]);
+            'venteJanvier' => $venteJanvier,
+            'venteFevrier' => $venteFevrier,
+            'venteMars' => $venteMars,
+            'venteAvril' => $venteAvril,
+            'venteMai' => $venteMai,
+            'venteJuin' => $venteJuin,
+            'venteJuillet' => $venteJuillet,
+            'venteAout' => $venteAout,
+            'venteSeptembre' => $venteSeptembre,
+            'venteOctobre' => $venteOctobre,
+            'venteNovembre' => $venteNovembre,
+            'venteDecembre' => $venteDecembre,
+      ]);
     }
 
     /** GESTION DES VALIDATIONS DE VEHICULES PHYSIQUES PAR L'ADMINISTRATEUR */
