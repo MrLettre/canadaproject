@@ -36,7 +36,9 @@ class VehiculePhysiqueController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $concession= $vehiculePhysique->getConcession();
+            $user = $this->getUser();
+            $concession = $user->getConcession();
+            $vehiculePhysique->setConcession($concession);
             $ref= 'VEHPHY'.'-'.$concession.rand(0, 99999);
             $vehiculePhysique->setReferenceVehPhy($ref);
             $em->persist($vehiculePhysique);
@@ -151,20 +153,16 @@ class VehiculePhysiqueController extends Controller
 
         if ($formCart->isSubmitted() && $formCart->isValid()) {
 
-            $vehPhy = $this->forward('AppBundle:CartContent:new', array(
-               'voiturephy' => $voiturephy,
+            return $this->redirectToRoute('cartcontent_new', array(
+                'id' => $id,
             ));
-
-            return $vehPhy;
         }
 
         if ($formEssai->isSubmitted() && $formEssai->isValid()) {
 
-            $vehPhy = $this->forward('AppBundle:DemandeEssai:new', array(
-                'voiturephy' => $voiturephy,
+            return $this->redirectToRoute('demandeessai_new', array(
+                'id' => $id,
             ));
-
-            return $vehPhy;
         }
 
         return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [

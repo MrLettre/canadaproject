@@ -5,8 +5,57 @@
 {% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="col-md-12">
+            <h1>Liste du Parc Auto</h1>
 
 
+            <h3>Véhicules en ligne</h3>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Concession</th>
+                        <th scope="col">Marque</th>
+                        <th scope="col">Modèle</th>
+                        <th scope="col">Version</th>
+                        <th scope="col">Mise en ligne</th>
+                        <th scope="col">Kilometrage</th>
+                        <th scope="col">Mise en circulation</th>
+                        <th scope="col">Prixht</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for vehPhy in vehPhys %}
+                        {% if vehPhy.validationStatut == 'Validé' %}
+                            <tr>
+                                <td>{{ vehPhy.concession.nom }}</td>
+                                <td>{{ vehPhy.version.model.marque }}</td>
+                                <td>{{ vehPhy.version.model }}</td>
+                                <td>{{ vehPhy.version }}</td>
+                                <td>{{ vehPhy.dateMiseEnLigne|date('d-m-Y') }}</td>
+                                <td>{{ vehPhy.kilometrage }}km</td>
+                                <td>{% if vehPhy.dateDeMiseEnCirculation %}{{ vehPhy.dateDeMiseEnCirculation|date('m-Y') }}{% endif %}</td>
+                                <td>{{ vehPhy.prixHT }}$</td>
+                                <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehPhy.imageName }}" width="80" height="auto"></a></td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehPhy.id }) }}">Modifier</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                <a class="btn btn-primary" href="{{ path('vehiculephysique_new') }}">Créer un véhicule</a>
+            </p>
+        </div>
+    </div>
 
 
 

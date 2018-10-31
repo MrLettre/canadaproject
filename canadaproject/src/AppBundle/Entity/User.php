@@ -14,9 +14,11 @@ use FOS\UserBundle\Model\User as BaseUser;
 class User extends BaseUser
 {
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Concession", cascade={"persist"}, fetch="EAGER")
-     */
-    private $concessions;
+ * One User has One Concession.
+ * @ORM\OneToOne(targetEntity="Concession", inversedBy="user")
+ * @ORM\JoinColumn(name="concession_id", referencedColumnName="id")
+ */
+    private $concession;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeEssai", mappedBy="user")
@@ -396,5 +398,29 @@ class User extends BaseUser
     public function getDemandesEssais()
     {
         return $this->demandesEssais;
+    }
+
+    /**
+     * Set concession.
+     *
+     * @param \AppBundle\Entity\Concession|null $concession
+     *
+     * @return User
+     */
+    public function setConcession(\AppBundle\Entity\Concession $concession = null)
+    {
+        $this->concession = $concession;
+
+        return $this;
+    }
+
+    /**
+     * Get concession.
+     *
+     * @return \AppBundle\Entity\Concession|null
+     */
+    public function getConcession()
+    {
+        return $this->concession;
     }
 }

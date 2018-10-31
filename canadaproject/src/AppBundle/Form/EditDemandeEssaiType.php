@@ -3,10 +3,12 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CartContentType extends AbstractType
+class EditDemandeEssaiType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,18 +16,21 @@ class CartContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateMiseAJourPanier')
-            ->add('dateMiseAuPanier')
-            ->add('vehiculePhysique')
-            ->add('cart')
-            ->add('vente');
-    }/**
+            ->add('statutMailEssai', ChoiceType::class, [
+                'choices' => [
+                    'Non-lu' => 'Non-lu',
+                    'Demande traitée' => 'Demande traitée',
+                ],
+            ]);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\CartContent'
+            'data_class' => 'AppBundle\Entity\DemandeEssai'
         ));
     }
 
@@ -34,8 +39,6 @@ class CartContentType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_cartcontent';
+        return 'appbundle_demandeessai';
     }
-
-
 }

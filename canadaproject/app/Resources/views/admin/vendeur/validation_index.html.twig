@@ -1,0 +1,48 @@
+{% extends 'admin/vendeurBase.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/listing_render.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>Véhicules en attente de validation</h1>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Etat</th>
+                <th scope="col">Marque</th>
+                <th scope="col">Modèle</th>
+                <th scope="col">Version</th>
+                <th scope="col">Kilometrage</th>
+                <th scope="col">Date de mise en circulation</th>
+                <th scope="col">Prix HT</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            {% for vehiculePhysique in vehiculePhysiques %}
+                {% if vehiculePhysique.validationStatut == '' %}
+                    <tbody>
+                    <tr>
+                        <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
+                        <td>{{ vehiculePhysique.version.model.marque }}</td>
+                        <td>{{ vehiculePhysique.version.model }}</td>
+                        <td>{{ vehiculePhysique.version }}</td>
+                        <td>{{ vehiculePhysique.kilometrage }} km</td>
+                        <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('m-Y') }}{% endif %}</td>
+                        <td>{{ vehiculePhysique.prixHT }}$</td>
+                        <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
+                        <td>
+                            <a class="btn btn-success" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modifier</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+
+
+{% endblock %}
+

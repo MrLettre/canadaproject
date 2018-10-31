@@ -643,4 +643,28 @@ class VehiculePhysique
     {
         return $this->demandesEssais;
     }
+
+    /**
+     * Set referenceVehPhy.
+     *
+     * @param string|null $referenceVehPhy
+     *
+     * @return VehiculePhysique
+     */
+    public function setReferenceVehPhy($referenceVehPhy = null)
+    {
+        $this->referenceVehPhy = $referenceVehPhy;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceVehPhy.
+     *
+     * @return string|null
+     */
+    public function getReferenceVehPhy()
+    {
+        return $this->referenceVehPhy;
+    }
 }

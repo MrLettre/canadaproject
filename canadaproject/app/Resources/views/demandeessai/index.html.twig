@@ -1,45 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Demandeessais list</h1>
-
-    <table>
+    <h1>Gestion des demandes d'essai</h1>
+<div class="table-responsive">
+    <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Reference</th>
-                <th>Datedemande</th>
-                <th>Dateessaiplanning</th>
-                <th>Commentaireclient</th>
+                <th>Référence</th>
+                <th>Date demande</th>
+                <th>Date essai planning</th>
+                <th>Commentaire client</th>
+                <th>Véhicule</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for demandeEssai in demandeEssais %}
-            <tr>
-                <td><a href="{{ path('demandeessai_show', { 'id': demandeEssai.id }) }}">{{ demandeEssai.id }}</a></td>
+        {% if demandeEssai.statutMailEssai == '' %}
+        <tr>
                 <td>{{ demandeEssai.reference }}</td>
                 <td>{% if demandeEssai.dateDemande %}{{ demandeEssai.dateDemande|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if demandeEssai.dateEssaiPlanning %}{{ demandeEssai.dateEssaiPlanning|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ demandeEssai.commentaireClient }}</td>
+                <td><img style="max-width: 10vw" src="/images/photosVehiculePhysique/{{ demandeEssai.vehiculePhysique.imageName }}" ></td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('demandeessai_show', { 'id': demandeEssai.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('demandeessai_edit', { 'id': demandeEssai.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-primary" href="{{ path('demandeessai_show', { 'id': demandeEssai.id }) }}">Afficher</a>
+                    <a class="btn btn-success" href="{{ path('demandeessai_edit', { 'id': demandeEssai.id }) }}">Editer</a>
                 </td>
             </tr>
+        {% endif %}
         {% endfor %}
         </tbody>
     </table>
+</div>
 
-    <ul>
-        <li>
-            <a href="{{ path('demandeessai_new') }}">Create a new demandeEssai</a>
-        </li>
-    </ul>
 {% endblock %}
