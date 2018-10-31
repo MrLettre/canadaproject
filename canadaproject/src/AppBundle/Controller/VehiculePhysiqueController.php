@@ -36,7 +36,9 @@ class VehiculePhysiqueController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $concession= $vehiculePhysique->getConcession();
+            $user = $this->getUser();
+            $concession = $user->getConcession();
+            $vehiculePhysique->setConcession($concession);
             $ref= 'VEHPHY'.'-'.$concession.rand(0, 99999);
             $vehiculePhysique->setReferenceVehPhy($ref);
             $em->persist($vehiculePhysique);
