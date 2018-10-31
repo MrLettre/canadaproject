@@ -183,4 +183,10 @@ class CartContent
     {
         return $this->vente;
     }
+
+    public function __toString()
+    {
+        return $this->dateMiseAuPanier;
+    }
+
 }
