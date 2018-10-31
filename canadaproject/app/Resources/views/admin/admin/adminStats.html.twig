@@ -20,7 +20,7 @@
 <button id="hide">Cacher</button>
 <button id="show">Voir</button>
 
-  <div class="hideShow">
+  <div class="hideShowVt">
 
     {% for venteTotales in venteTotales %}
       <h6>Date de vente: {{ venteTotales.dateVente|date('Y-m-d')}}</h6>
@@ -410,14 +410,14 @@
 <script>
 $(document).ready(function(){
 
-    $(".hideShow").hide();
+    $(".hideShowVt").hide();
 
 
     $("#hide").click(function(){
-        $(".hideShow").hide("slow");
+        $(".hideShowVt").hide("slow");
     });
     $("#show").click(function(){
-        $(".hideShow").show("slow");
+        $(".hideShowVt").show("slow");
     });
 });
 </script>
