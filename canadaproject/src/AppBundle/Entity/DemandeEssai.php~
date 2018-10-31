@@ -253,4 +253,28 @@ class DemandeEssai
     {
         return $this->user;
     }
+
+    /**
+     * Set statutMailEssai.
+     *
+     * @param string|null $statutMailEssai
+     *
+     * @return DemandeEssai
+     */
+    public function setStatutMailEssai($statutMailEssai = null)
+    {
+        $this->statutMailEssai = $statutMailEssai;
+
+        return $this;
+    }
+
+    /**
+     * Get statutMailEssai.
+     *
+     * @return string|null
+     */
+    public function getStatutMailEssai()
+    {
+        return $this->statutMailEssai;
+    }
 }

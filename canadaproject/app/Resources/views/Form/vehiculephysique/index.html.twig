@@ -37,12 +37,12 @@
                                     <td>{{ vehiculePhysique.version.model }}</td>
                                     <td>{{ vehiculePhysique.version }}</td>
                                     <td>{{ vehiculePhysique.dateMiseEnLigne|date('d-m-Y') }}</td>
-                                    <td>{{ vehiculePhysique.kilometrage }}</td>
-                                    <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}{% endif %}</td>
-                                    <td>{{ vehiculePhysique.prixHT }}</td>
+                                    <td>{{ vehiculePhysique.kilometrage }}km</td>
+                                    <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('m-Y') }}{% endif %}</td>
+                                    <td>{{ vehiculePhysique.prixHT }}$</td>
                                     <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modifier le véhicule</a>
+                                        <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modifier</a>
                                     </td>
                                 </tr>
                             {% endif %}
