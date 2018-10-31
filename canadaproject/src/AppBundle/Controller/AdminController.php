@@ -30,16 +30,6 @@ class AdminController extends Controller
         return $this->render('admin/admin/index.html.twig');
     }
 
-    /**
-     * @Route("/adminSeller", name="adminHomepageSeller")
-     */
-    public function adminSellerPageAction()
-    {
-        // replace this example code with whatever you need
-        return $this->render('admin/vendeur/index.html.twig');
-    }
-
-
     //Routes pour les actions de la page Admin du site 
 
 
@@ -220,7 +210,7 @@ class AdminController extends Controller
         return $this->render('admin/admin/adminAfterSale.html.twig');
     }
 
-         /**
+    /**
      * @Route("/adminAddCar", name="adminAddCar")
      */
     public function adminAddCar(Request $request)
@@ -245,65 +235,7 @@ class AdminController extends Controller
             'form' => $form->createView(),
         ));
     
-}
-
-
-    // Routes pour les actions de la page Admin Vendeur du site  
-
-
-    /**
-     * @Route("/adminSellerCatalogue", name="adminSellerCatalogue")
-     */
-    public function adminSellerCatalogue()
-    {
-        // replace this example code with whatever you need
-        return $this->render('admin/vendeur/catalogue.html.twig');
     }
-
-    /**
-     * @Route("/adminSellerSales", name="adminSellerSales")
-     */
-    public function adminSellerSales()
-    {
-        // replace this example code with whatever you need
-        return $this->render('admin/vendeur/ventes.html.twig');
-    }
-
-    /**
-     * @Route("/adminSellerClients", name="adminSellerClients")
-     */
-    public function adminSellerClients()
-    {
-        // replace this example code with whatever you need
-        return $this->render('admin/vendeur/clients.html.twig');
-    }
-
-     /**
-     * @Route("/adminSellerContact", name="adminSellerContact")
-     */
-    public function adminSellerContact()
-    {
-        // replace this example code with whatever you need
-        return $this->render('admin/vendeur/contact.html.twig');
-    }
-
-     /**
-     * @Route("/adminSellerStats", name="adminSellerStats")
-     */
-    public function adminSellerStats(Request $request)
-    {
-    }
-
-
-     /**
-     * @Route("/adminSellerAfterSale", name="adminSellerAfterSale")
-     */
-    public function adminSellerAfterSale()
-    {
-        // replace this example code with whatever you need
-        return $this->render('admin/vendeur/sav.html.twig');
-    }
-
 
     /**
      * Lists all article entities.
@@ -425,5 +357,7 @@ class AdminController extends Controller
             ->getForm()
             ;
     }
+
+
 
 }
