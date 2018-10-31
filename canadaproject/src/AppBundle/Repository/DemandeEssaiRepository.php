@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class DemandeEssaiRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findEssaiByConcession($concession){
+        return $this->getEntityManager()
+            ->createQuery("SELECT d FROM AppBundle:DemandeEssai d WHERE d.concession = $concession ORDER BY d.dateDemande ASC")
+            ->getResult();
+    }
 }

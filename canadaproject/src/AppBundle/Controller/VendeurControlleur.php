@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Marque;
+use AppBundle\Entity\DemandeEssai;
 
 
 class VendeurControlleur extends Controller
@@ -58,6 +59,47 @@ class VendeurControlleur extends Controller
 
         return $this->render('admin/vendeur/validation_index.html.twig', array(
             'vehiculePhysiques' => $vehiculePhysiques,
+        ));
+    }
+
+    /**
+     * Lists all vehiculePhysique entities.
+     *
+     * @Route("/vendeur/demandeEssai", name="demandeEssai_validation_index")
+     * @Method("GET")
+     */
+    public function indexVendeurEssaiAction()
+    {
+        $user = $this->getUser();
+        $concession = $user->getConcession()->getId();
+        $em = $this->getDoctrine()->getManager();
+        $demandeEssais = $em->getRepository('AppBundle:DemandeEssai')->findEssaiByConcession($concession);
+
+        return $this->render('admin/vendeur/demandeEssai_index.html.twig', array(
+            'demandeEssais' => $demandeEssais,
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing demandeEssai entity.
+     *
+     * @Route("/vendeur/demandeEssai/{id}/edit", name="demandeessaivendeur_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editVendeurEssaiAction(Request $request, DemandeEssai $demandeEssai)
+    {
+        $editForm = $this->createForm('AppBundle\Form\EditDemandeEssaiType', $demandeEssai);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('demandeessai_edit', array('id' => $demandeEssai->getId()));
+        }
+
+        return $this->render('admin/vendeur/vendeurEditEssai.html.twig', array(
+            'demandeEssai' => $demandeEssai,
+            'edit_form' => $editForm->createView(),
         ));
     }
 
