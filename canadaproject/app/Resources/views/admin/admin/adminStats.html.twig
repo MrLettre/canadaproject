@@ -49,6 +49,11 @@
 
   <h4>Ventes annuelles</h4>
 
+  <button id="hideVa">Cacher</button>
+  <button id="showVa">Voir</button>
+
+  <div class="hideShowVa"
+
     {% for venteAnnuelles in venteAnnuelles %}
       <h6>Date de vente: {{ venteAnnuelles.dateVente|date('Y-m-d')}}</h6>
 
@@ -59,6 +64,8 @@
     <p>Pas de ventes cette année</p>
     
     {% endfor %}
+
+  </div>
 
     {# Fin ventes annuelles #}
 
@@ -85,6 +92,11 @@
 
   <h4>Vente par trimestres</h4>
 
+
+  <button id="hideVtr">Cacher</button>
+  <button id="showVtr">Voir</button>
+
+  <div class="hideShowVtr">
 
     {# Ventes 1er trimestre #}
 
@@ -167,6 +179,8 @@
 
     {# Fin ventes 4eme trimestre #}
 
+</div>
+
 <section>
     <div class="container">
       <div class="row">
@@ -182,6 +196,10 @@
 
   <h4>Vente par mois</h4>
 
+  <button id="hideVmo">Cacher</button>
+  <button id="showVmo">Voir</button>
+
+  <div class="hideShowVmo">
 
 
 {# Ventes par mois #}
@@ -378,6 +396,7 @@
 
     {% endfor %}
 
+</div>
 
 
 <section>
@@ -410,8 +429,7 @@
 <script>
 $(document).ready(function(){
 
-    $(".hideShowVt").hide();
-
+$(".hideShowVt").hide();
 
     $("#hideVt").click(function(){
         $(".hideShowVt").hide("slow");
@@ -419,7 +437,40 @@ $(document).ready(function(){
     $("#showVt").click(function(){
         $(".hideShowVt").show("slow");
     });
+
+
+    $(".hideShowVa").hide();
+
+    $("#hideVa").click(function(){
+        $(".hideShowVa").hide("slow");
+    });
+    $("#showVa").click(function(){
+        $(".hideShowVa").show("slow");
+    });
+
+      $(".hideShowVtr").hide();
+
+    $("#hideVtr").click(function(){
+        $(".hideShowVtr").hide("slow");
+    });
+    $("#showVtr").click(function(){
+        $(".hideShowVtr").show("slow");
+    });
+
+
+
+    $(".hideShowVmo").hide();
+
+    $("#hideVmo").click(function(){
+        $(".hideShowVmo").hide("slow");
+    });
+    $("#showVmo").click(function(){
+        $(".hideShowVmo").show("slow");
+    });
+
 });
+
+
 </script>
 
 
