@@ -17,8 +17,8 @@
     {# Pour les ventes totales #}
   <h4>Vente Totale de Vehicules: {{venteTotalesCompte}}</h4>
 
-<button id="hide">Cacher</button>
-<button id="show">Voir</button>
+<button id="hideVt">Cacher</button>
+<button id="showVt">Voir</button>
 
   <div class="hideShowVt">
 
@@ -413,10 +413,10 @@ $(document).ready(function(){
     $(".hideShowVt").hide();
 
 
-    $("#hide").click(function(){
+    $("#hideVt").click(function(){
         $(".hideShowVt").hide("slow");
     });
-    $("#show").click(function(){
+    $("#showVt").click(function(){
         $(".hideShowVt").show("slow");
     });
 });
