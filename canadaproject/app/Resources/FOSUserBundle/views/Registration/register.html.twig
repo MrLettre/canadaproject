@@ -59,6 +59,18 @@
                                     </div>
 
                                     <div>
+                                        <label for="dateNaissance">Date de naissance</label>
+                                        {{ form_widget(form.dateNaissance) }}
+                                        {{ form_errors(form.dateNaissance) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="tel">Téléphone</label>
+                                        {{ form_widget(form.numeroTelephone) }}
+                                        {{ form_errors(form.numeroTelephone) }}
+                                    </div>
+
+                                    <div>
                                         <label for="email">Email</label>
                                         {{ form_widget(form.email) }}
                                         {{ form_errors(form.email) }}
