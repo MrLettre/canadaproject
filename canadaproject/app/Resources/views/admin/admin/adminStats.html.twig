@@ -17,13 +17,18 @@
     {# Pour les ventes totales #}
   <h4>Vente Totale de Vehicules: {{venteTotalesCompte}}</h4>
 
+<button id="hideVt">Cacher</button>
+<button id="showVt">Voir</button>
+
+  <div class="hideShowVt">
+
     {% for venteTotales in venteTotales %}
       <h6>Date de vente: {{ venteTotales.dateVente|date('Y-m-d')}}</h6>
 
       <p>Vehicule : {{ venteTotales.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTotales.cartContent.vehiculePhysique.version.model.nom }} {{ venteTotales.cartContent.vehiculePhysique.version.nom }}</p>
     {% endfor %}
     {# Fin ventes totales #}
-
+  </div>
 
 
     <section>
@@ -44,6 +49,11 @@
 
   <h4>Ventes annuelles</h4>
 
+  <button id="hideVa">Cacher</button>
+  <button id="showVa">Voir</button>
+
+  <div class="hideShowVa"
+
     {% for venteAnnuelles in venteAnnuelles %}
       <h6>Date de vente: {{ venteAnnuelles.dateVente|date('Y-m-d')}}</h6>
 
@@ -54,6 +64,8 @@
     <p>Pas de ventes cette année</p>
     
     {% endfor %}
+
+  </div>
 
     {# Fin ventes annuelles #}
 
@@ -80,6 +92,11 @@
 
   <h4>Vente par trimestres</h4>
 
+
+  <button id="hideVtr">Cacher</button>
+  <button id="showVtr">Voir</button>
+
+  <div class="hideShowVtr">
 
     {# Ventes 1er trimestre #}
 
@@ -162,6 +179,8 @@
 
     {# Fin ventes 4eme trimestre #}
 
+</div>
+
 <section>
     <div class="container">
       <div class="row">
@@ -177,6 +196,10 @@
 
   <h4>Vente par mois</h4>
 
+  <button id="hideVmo">Cacher</button>
+  <button id="showVmo">Voir</button>
+
+  <div class="hideShowVmo">
 
 
 {# Ventes par mois #}
@@ -373,6 +396,7 @@
 
     {% endfor %}
 
+</div>
 
 
 <section>
@@ -399,6 +423,57 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+
+
+<script>
+$(document).ready(function(){
+
+$(".hideShowVt").hide();
+
+    $("#hideVt").click(function(){
+        $(".hideShowVt").hide("slow");
+    });
+    $("#showVt").click(function(){
+        $(".hideShowVt").show("slow");
+    });
+
+
+    $(".hideShowVa").hide();
+
+    $("#hideVa").click(function(){
+        $(".hideShowVa").hide("slow");
+    });
+    $("#showVa").click(function(){
+        $(".hideShowVa").show("slow");
+    });
+
+      $(".hideShowVtr").hide();
+
+    $("#hideVtr").click(function(){
+        $(".hideShowVtr").hide("slow");
+    });
+    $("#showVtr").click(function(){
+        $(".hideShowVtr").show("slow");
+    });
+
+
+
+    $(".hideShowVmo").hide();
+
+    $("#hideVmo").click(function(){
+        $(".hideShowVmo").hide("slow");
+    });
+    $("#showVmo").click(function(){
+        $(".hideShowVmo").show("slow");
+    });
+
+});
+
+
+</script>
+
+
 
 
    <script>
