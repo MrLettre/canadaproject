@@ -1,7 +1,6 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends extend  %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('build/login.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/register1.css') }}">
 
 {% endblock %}
 {% block fos_user_content %}
@@ -10,9 +9,17 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
-                    <div class="login-brand">
-                        Formulaire d'Inscription
-                    </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="login-brand">
+                            Créer un nouveau membre
+                        </div>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') == false %}
+                        <div class="login-brand">
+                            Formulaire d'Inscription
+                        </div>
+                    {% endif %}
+
                     <div class="card card-primary ">
                         {{ form_errors(form) }}
                         <div class="card-body register">
@@ -35,6 +42,12 @@
                                                     </div>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="OFF">
+                                        <label for="nom">Concession</label>
+                                        {{ form_widget(form.concession) }}
+                                        {{ form_errors(form.concession) }}
                                     </div>
                                     {% endif %}
 
@@ -103,6 +116,20 @@
     </section>
 {% endblock fos_user_content %}
 
-{% block javascript %}
-    <script src="{{ asset('build/register.js')}}"></script>
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+
+            $(function () {
+                $("#fos_user_registration_form_roles_1").click(function () {
+                    if ($(this).is(":checked")) {
+                        $(".OFF").show();
+                    } else {
+                        $(".OFF").hide();
+                    }
+                });
+            });
+        });
+
+    </script>
 {% endblock %}

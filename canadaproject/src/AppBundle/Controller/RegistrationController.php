@@ -84,9 +84,21 @@ class RegistrationController extends BaseController
             }
         }
 
+
+
+        if($this->getUser() == null){
+            $extend = "base.html.twig";
+        }elseif($this->getUser()->getRoles() != null){
+            $rank = $this->getUser()->getRoles();
+            if($rank[0] == 'ROLE_ADMIN'){
+                $extend = "admin/adminBase.html.twig";
+            }
+        }
+
         return $this->render('@FOSUser/Registration/register.html.twig', array(
             'form' => $form->createView(),
             'user'=>$this->getUser(),
+            'extend'=>$extend,
         ));
     }
 }

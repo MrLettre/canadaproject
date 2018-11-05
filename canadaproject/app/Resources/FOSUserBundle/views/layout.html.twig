@@ -1,6 +1,4 @@
-{% extends is_granted('ROLE_ADMIN') == 'true'
-? 'admin/adminBase.html.twig'
-: 'base.html.twig' %}
+{% extends extend %}
 
 
 {% block content %}
