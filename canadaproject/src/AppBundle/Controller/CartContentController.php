@@ -27,9 +27,9 @@ class CartContentController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        //$userId = $this->getUser()->getId();
+        $userId = $this->getUser()->getId();
 
-        $userId = '2';
+        
 
         $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
 

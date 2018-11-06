@@ -4,22 +4,53 @@
 
 {% block body %}
 
-<div class="container">
- <div class="row">
-
- {% for cart in cart %}
-    {{cart.vehiculePhysique.version.model}}
- {% endfor %}   
 
 
+   <h1>Votre Panier</h1>
+
+
+{% for cart in cart %}
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Marque</th>
+                <th scope="col">Modèle</th>
+                <th scope="col">Version</th>
+                <th scope="col">prixHT</th>
+                <th scope="col">Kilometrage</th>
+                <th scope="col">Photo</th>
+                
+            </tr>
+            </thead>
+            
+                    <tbody>
+                    <tr>
+                        <td>{{ cart.vehiculePhysique.version.model.marque }}</td>
+                        <td>{{ cart.vehiculePhysique.version.model }}</td>
+                        <td>{{ cart.vehiculePhysique.version }}</td>
+                        <td>{{ cart.vehiculePhysique.prixHT }} $</td>
+                        <td>{{ cart.vehiculePhysique.kilometrage }} km</td>
+                        <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ cart.vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
+                    </tr>
+                    </tbody>
+           
+        </table>
+    </div>
+
+{% else %}
+
+<h4>Votre panier est vide</h4>
+
+{% endfor %}
 
 
 
 
 
 
- </div>
-</div>
+
 
 
    
