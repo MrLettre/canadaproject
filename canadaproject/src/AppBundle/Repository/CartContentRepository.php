@@ -15,18 +15,14 @@ class CartContentRepository extends \Doctrine\ORM\EntityRepository
     {
        //select c from AppBundle:CartContent where user = userId join AppBundle:Cart where actif = 1
 
-
        $query = $this->createQueryBuilder('c')
        ->where('c.user = :userId')
        ->join('c.cart', 'cart')
-       ->where('c.actif = 1')
-       ->seParameter('userId', $userId)
+       ->andwhere('cart.actif = 1')
+       ->setParameter('userId', $userId)
        ->getQuery();
 
-    return $query->getResult();  
-
-
-
+    return $query->getResult(); 
 
     }
 
