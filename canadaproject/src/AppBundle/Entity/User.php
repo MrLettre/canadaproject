@@ -13,6 +13,14 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartContent", mappedBy="user")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $cartContents;
+
+
     /**
  * One User has One Concession.
  * @ORM\OneToOne(targetEntity="Concession", inversedBy="user")
@@ -422,5 +430,41 @@ class User extends BaseUser
     public function getConcession()
     {
         return $this->concession;
+    }
+
+    /**
+     * Add cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return User
+     */
+    public function addCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContents[] = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Remove cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        return $this->cartContents->removeElement($cartContent);
+    }
+
+    /**
+     * Get cartContents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCartContents()
+    {
+        return $this->cartContents;
     }
 }

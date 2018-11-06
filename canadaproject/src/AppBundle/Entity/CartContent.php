@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CartContent
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="cartContents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehiculePhysique", inversedBy="cartContents")
      * @ORM\JoinColumn(nullable=true)
@@ -189,4 +196,28 @@ class CartContent
         return $this->dateMiseAuPanier;
     }
 
+
+    /**
+     * Set user.
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return CartContent
+     */
+    public function setUser(\AppBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
