@@ -23,6 +23,7 @@ class VehiculePhysiqueType extends AbstractType
     {
         $builder
             ->add('validationStatut')
+            ->add('vehiclePhyStatut')
             ->add('concession')
             ->add('kilometrage')
             ->add('dateDeMiseEnCirculation')

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Cart;
+use AppBundle\Entity\User;
 use AppBundle\Entity\CartContent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -98,6 +99,7 @@ class CartContentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $cartContent = new Cartcontent();
         $cart = new Cart();
+        $user = $this->getUser();
 
         $ref = 'CART'.'-'.rand(0, 99999);
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
@@ -107,6 +109,7 @@ class CartContentController extends Controller
         $cart->setActif(1);
         $cart->setReferenceCart($ref);
         $cart->setDateCreationPanier($dateMaP);
+        $cartContent->setUser($user);
         $cartContent->setVehiculePhysique($voiturephy[0]);
         $cartContent->setDateMiseAuPanier($dateMaP);
         $cartContent->setDateMiseAJourPanier($dateMaP);

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\VehiclePhyStatut;
 use AppBundle\Entity\VehiclesValidationStatut;
 use AppBundle\Entity\VehiculePhysique;
 use AppBundle\Entity\VehicleDefinition;
@@ -140,7 +141,7 @@ class VehiculePhysiqueController extends Controller
     public function ficheProduit(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        
+        $user = $this->getUser();
         $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findById($id);
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
@@ -171,6 +172,7 @@ class VehiculePhysiqueController extends Controller
             'optionsphy' => $optionsphy,
             'formCart' => $formCart->createView(),
             'formEssai' => $formEssai->createView(),
+            'user' => $user,
 
         ]);
     }
@@ -185,6 +187,7 @@ class VehiculePhysiqueController extends Controller
     public function validationAction(Request $request, VehiculePhysique $vehiculePhysique)
     {
         $vehiclesValidationStatut = new Vehiclesvalidationstatut();
+        $vehiclePhyStatut = new VehiclePhyStatut();
         $validationForm = $this->createForm('AppBundle\Form\AdminVehiculePhysiqueType', $vehiclesValidationStatut);
         $validationForm->handleRequest($request);
 

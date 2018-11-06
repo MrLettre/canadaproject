@@ -10,10 +10,12 @@
 
     {{ form_start(validation_form) }}
     <div class="form-group">
-        {{ form_label(validation_form.statut, 'Statut du véhicule :') }}
+        {{ form_label(validation_form.statut, 'Mise en ligne :') }}
         {{ form_widget(validation_form.statut, {'attr':{class:'form-control'}}) }}
         {{ form_errors(validation_form.statut) }}
     </div>
+
+
     <section class="contact-section col-md-12">
 
         <!-- Form with header -->
