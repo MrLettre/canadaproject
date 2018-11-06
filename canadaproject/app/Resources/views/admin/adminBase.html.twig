@@ -64,8 +64,10 @@
           <h5 class="sidenav-heading">ADMINISTRATION</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled"> 
             <li><i class="icon-home"></i>Utilisateurs</li>
-                <li><a href="/register"> <i class="icon-grid"></i>Créer un Utilisateur</a></li>
-                <li><a href="/user"> <i class="icon-grid"></i>Liste des Utilisateurs</a></li>
+              <li><a href="/concession/new"> <i class="icon-grid"></i>Créer une Concession</a></li>
+              <li><a href="/register"> <i class="icon-grid"></i>Créer un Utilisateur</a></li>
+              <li><a href="/concession"> <i class="icon-grid"></i>Liste des Concessions</a></li>
+              <li><a href="/user"> <i class="icon-grid"></i>Liste des Utilisateurs</a></li>
             <li><i class="icon-form"></i>Mes Vendeurs</li>
                 <li><a href="{{ path('vehiculephysique_validation_index') }}"> <i class="icon-grid"></i>Validation véhicules</a></li>
                 <li><a href="{{ path('vehiculephysique_index') }}"> <i class="icon-grid"></i>Parc Automobile</a></li>
@@ -172,6 +174,7 @@
       {% endblock header %}
 
         {% block body %}{% endblock %}
+        {% block fos_user_content %}{% endblock %}
 
         <!-- Counts Section -->
         {% block footer %}
