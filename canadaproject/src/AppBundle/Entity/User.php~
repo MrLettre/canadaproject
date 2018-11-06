@@ -431,4 +431,40 @@ class User extends BaseUser
     {
         return $this->concession;
     }
+
+    /**
+     * Add cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return User
+     */
+    public function addCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContents[] = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Remove cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        return $this->cartContents->removeElement($cartContent);
+    }
+
+    /**
+     * Get cartContents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCartContents()
+    {
+        return $this->cartContents;
+    }
 }
