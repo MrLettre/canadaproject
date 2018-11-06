@@ -278,7 +278,7 @@ class AdminController extends Controller
         ));
     }
 
-    /** GESTION DES DEMANDES DE CONTACT PAR LES CLIENTS OU PROSPECTS */
+    /** GESTION DES DEMANDES DE CONTACT DES CLIENTS OU PROSPECTS */
 
     /**
      * Lists all contact entities.

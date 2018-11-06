@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\VehiclePhyStatut;
 use AppBundle\Entity\VehiclesValidationStatut;
 use AppBundle\Entity\VehiculePhysique;
 use AppBundle\Entity\VehicleDefinition;
@@ -185,6 +186,7 @@ class VehiculePhysiqueController extends Controller
     public function validationAction(Request $request, VehiculePhysique $vehiculePhysique)
     {
         $vehiclesValidationStatut = new Vehiclesvalidationstatut();
+        $vehiclePhyStatut = new VehiclePhyStatut();
         $validationForm = $this->createForm('AppBundle\Form\AdminVehiculePhysiqueType', $vehiclesValidationStatut);
         $validationForm->handleRequest($request);
 
