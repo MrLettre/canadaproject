@@ -72,6 +72,7 @@
 
             <hr>
 
+            {% if user != null %}
             {{ form_start(formCart) }}
 
             {{ form_widget(formCart.AjouterAuPanier, {
@@ -80,6 +81,9 @@
             }) }}
 
             {{ form_end(formCart) }}
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}"><button class="btn btn-primary" type="submit">AJOUTER AU PANIER</button></a>
+            {% endif %}
 
             {{ form_start(formEssai) }}
             {{ form_widget(formEssai.DemandeEssai,{
