@@ -15,6 +15,34 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class CartContentController extends Controller
 {
+
+    
+
+    /**
+     * @Route("/cartClient", name="cartClient")
+     * @Method("GET")
+     */
+    public function cartClient()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $userId = $this->getUser()->getId();
+
+        
+
+        $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+
+        
+            // replace this example code with whatever you need
+        
+            return $this->render('pagesCarifyPublic/cart/cartClient.html.twig', [
+                'cart' => $cart
+            ]);
+    }
+
+
+
     /**
      * Lists all cartContent entities.
      *
