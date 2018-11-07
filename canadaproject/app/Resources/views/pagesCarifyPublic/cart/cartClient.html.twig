@@ -18,10 +18,8 @@
                 <th scope="col">Marque</th>
                 <th scope="col">Modèle</th>
                 <th scope="col">Version</th>
-                <th scope="col">prixHT</th>
                 <th scope="col">Kilometrage</th>
                 <th scope="col">Photo</th>
-                
             </tr>
             </thead>
             
@@ -30,7 +28,6 @@
                         <td>{{ cart.vehiculePhysique.version.model.marque }}</td>
                         <td>{{ cart.vehiculePhysique.version.model }}</td>
                         <td>{{ cart.vehiculePhysique.version }}</td>
-                        <td>{{ cart.vehiculePhysique.prixHT }} $</td>
                         <td>{{ cart.vehiculePhysique.kilometrage }} km</td>
                         <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ cart.vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                     </tr>
@@ -38,6 +35,12 @@
            
         </table>
     </div>
+
+
+
+
+
+
 
 {% else %}
 
@@ -47,6 +50,17 @@
 
 
 
+{% for cart in cart %}
+
+<h5>Prix HT: {{ cart.vehiculePhysique.prixHT }} $</h4>
+
+<h5>Prix avec taxes: {{ cart.vehiculePhysique.prixHT * 1.19 }} $</h5>
+
+
+<button type="button" class="btn btn-danger"><a href="{{ path('clearCart') }}">Supprimer le panier</button>
+
+
+{% endfor %}
 
 
 

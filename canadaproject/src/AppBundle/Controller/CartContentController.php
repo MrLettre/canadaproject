@@ -43,6 +43,37 @@ class CartContentController extends Controller
     }
 
 
+    /**
+     * @Route("/clearCart", name="clearCart")
+     * @Method("GET")
+     */
+    public function clearClart()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $userId = $this->getUser()->getId();
+
+        
+
+        $clearCart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+
+       $test = $clearCart[0]->getCart()->setActif(0);
+
+       
+       $em->persist($test);
+
+       $em->flush($test);
+        
+
+        
+            // replace this example code with whatever you need
+        
+            return $this->render('pagesCarifyPublic/cart/cartSupprimer.html.twig', [
+                'clearCart' => $clearCart
+            ]);
+    }
+
 
     /**
      * Lists all cartContent entities.
