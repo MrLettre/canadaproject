@@ -23,6 +23,7 @@ Encore
     .addEntry('comparateurAccueil', './assets/scss/comparateurAccueil.scss')
     .addEntry('addToCompare', './assets/js/addToCompare.js')
     .addEntry('enregistrement', './assets/js/enregistrement.js')
+    .addEntry('cartClient', './assets/scss/cartClient.scss')
 
 
 

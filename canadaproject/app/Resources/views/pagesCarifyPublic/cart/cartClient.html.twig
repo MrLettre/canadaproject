@@ -1,15 +1,22 @@
-
-
 {% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('build/cartClient.css') }}">
+{% endblock %}
 
 {% block body %}
 
 
-
+<div class="text-center">
    <h1>Votre Panier</h1>
+<div>   
 
 
 {% for cart in cart %}
+
+
+<div class="container">
+  <div class="row border">
 
     <div class="table-responsive">
         <table class="table">
@@ -19,6 +26,7 @@
                 <th scope="col">Modèle</th>
                 <th scope="col">Version</th>
                 <th scope="col">Kilometrage</th>
+                <th scope="col">Prix HT</th>
                 <th scope="col">Photo</th>
             </tr>
             </thead>
@@ -29,6 +37,7 @@
                         <td>{{ cart.vehiculePhysique.version.model }}</td>
                         <td>{{ cart.vehiculePhysique.version }}</td>
                         <td>{{ cart.vehiculePhysique.kilometrage }} km</td>
+                        <td>{{ cart.vehiculePhysique.prixHT }} $</td>
                         <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ cart.vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                     </tr>
                     </tbody>
@@ -37,7 +46,8 @@
     </div>
 
 
-
+  </div>
+</div>    
 
 
 
@@ -50,17 +60,37 @@
 
 
 
+
+<div class="container">
+  <div class="row">
+
+
 {% for cart in cart %}
 
-<h5>Prix HT: {{ cart.vehiculePhysique.prixHT }} $</h4>
+        <h5>Prix HT: {{ cart.vehiculePhysique.prixHT }} $</h5>
 
-<h5>Prix avec taxes: {{ cart.vehiculePhysique.prixHT * 1.19 }} $</h5>
+ </div>
 
+ <hr>
 
-<button type="button" class="btn btn-danger"><a href="{{ path('clearCart') }}">Supprimer le panier</button>
+   <div class="row">
+
+        <h5>Prix avec taxes: {{ cart.vehiculePhysique.prixHT * 1.19 }} $</h5>
+
+   </div>
+
+<hr>
+
+  <div class="row">
+
+        <button type="button" class="btn btn-danger"><a href="{{ path('clearCart') }}">Supprimer le panier</button>
+
+  </div>
 
 
 {% endfor %}
+
+</div> 
 
 
 
@@ -68,4 +98,16 @@
 
 
    
+{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+
+
+
+
 {% endblock %}
