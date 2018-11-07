@@ -7,7 +7,8 @@ use AppBundle\Entity\User;
 use AppBundle\Entity\CartContent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Cartcontent controller.
@@ -29,9 +30,7 @@ class CartContentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $userId = $this->getUser()->getId();
-
         
-
         $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
 
         
