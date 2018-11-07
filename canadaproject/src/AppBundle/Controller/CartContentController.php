@@ -7,7 +7,8 @@ use AppBundle\Entity\User;
 use AppBundle\Entity\CartContent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Cartcontent controller.
@@ -29,9 +30,7 @@ class CartContentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $userId = $this->getUser()->getId();
-
         
-
         $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
 
         
@@ -42,6 +41,37 @@ class CartContentController extends Controller
             ]);
     }
 
+
+    /**
+     * @Route("/clearCart", name="clearCart")
+     * @Method("GET")
+     */
+    public function clearClart()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $userId = $this->getUser()->getId();
+
+        
+
+        $clearCart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+
+       $test = $clearCart[0]->getCart()->setActif(0);
+
+       
+       $em->persist($test);
+
+       $em->flush($test);
+        
+
+        
+            // replace this example code with whatever you need
+        
+            return $this->render('pagesCarifyPublic/cart/cartSupprimer.html.twig', [
+                'clearCart' => $clearCart
+            ]);
+    }
 
 
     /**

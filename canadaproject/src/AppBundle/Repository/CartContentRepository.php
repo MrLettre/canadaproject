@@ -26,4 +26,10 @@ class CartContentRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function cartCleared()
+    {
+        
+    }
+
+
 }
