@@ -56,17 +56,21 @@ class CartContentController extends Controller
 
         
 
-        $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+        $clearCart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
 
-        $cart;
+       $test = $clearCart[0]->getCart()->setActif(0);
 
+       
+       $em->persist($test);
+
+       $em->flush($test);
         
 
         
             // replace this example code with whatever you need
         
             return $this->render('pagesCarifyPublic/cart/cartSupprimer.html.twig', [
-                'cart' => $cart
+                'clearCart' => $clearCart
             ]);
     }
 
