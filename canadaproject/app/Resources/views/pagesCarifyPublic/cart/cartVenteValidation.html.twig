@@ -1,0 +1,64 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row justify-content-md-center" style="margin-top: 3vh">
+                <div class="col-md-10">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                            <span class="sr-only">100% effectué (success)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 3vh">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="display: flex">
+                        <h1>Votre commande a été enregistrée avec succès.</h1>
+                        <img src="/images/cartPaiement/validationCarify.png" height="60" alt="">
+                    </div>
+                    <br>
+                    <p>Un mail de confirmation vous parviendra dans quelques minutes. Vous y trouverez tous les détails de votre commande.</p>
+                    <p>Merci pour votre confiance, de la part de toute votre équipe CARIFY</p>
+                    <a href="/accueil" class="btn btn-success">Retour à l'accueil</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4" style="margin: 3vh 0 3vh 0">
+                        <img src="/images/header/Carify_LogoAccueil.png" style="width: 40vh" alt="">
+                    </div>
+
+                    <div class="col-md-8" style="margin: 3vh 0 3vh 0">
+
+                        <h3>Votre commande</h3>
+                        <h6>Référence : {{ vente.referenceVente }}</h6>
+                        {% for cart in cartForFinalTwig %}
+                            <h6>Nom : {{ cart.user.nom }} {{ cart.user.prenom }}</h6>
+                            <h6>Mail : {{ cart.user.email }}</h6>
+                            <h6>Tel : {{ cart.user.numeroTelephone }}</h6>
+                            <h6>Véhicule : {{ cart.vehiculePhysique.version.model.marque }} {{ cart.vehiculePhysique.version.model }} {{ cart.vehiculePhysique.version }}</h6>
+                            <h6>Prix HT : {{ cart.vehiculePhysique.prixHT }}$</h6>
+                            <h6>Prix TTC : {{ cart.vehiculePhysique.prixTTC }}$</h6>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+{% endblock %}
