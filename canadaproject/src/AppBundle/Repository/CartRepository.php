@@ -286,6 +286,19 @@ class CartRepository extends \Doctrine\ORM\EntityRepository
             return $query->getResult();         
         }
 
+        public function findByUserID($user)
+        {
+            $query = $this->createQueryBuilder('c')
+                ->join('c.cartContent', 'content')
+                ->where('content.user = :user')
+                ->andwhere('c.actif = 1')
+                ->setParameter('user', $user)
+                ->getQuery();
+
+            return $query->getResult();
+
+        }
+
 
 
         public function findCartContentByUser($userId)

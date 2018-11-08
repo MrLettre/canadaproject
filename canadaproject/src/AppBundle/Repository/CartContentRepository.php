@@ -26,7 +26,15 @@ class CartContentRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
-   
+    public function findForFinalTwig($venteId)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->where('c.vente = :venteId')
+            ->setParameter('venteId', $venteId)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 
 
 }

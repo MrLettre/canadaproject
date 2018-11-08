@@ -62,15 +62,15 @@
 {% if prixHtTotal is not null %}
 
 
-<div class="container price delete">
-  <div class="row">
+<h5>Prix HT: {{ cart.vehiculePhysique.prixHT }} $</h5>
+
+<h5>Prix TTC: {{ cart.vehiculePhysique.prixHT * 1.19 }} $</h5>
+
+    <button type="button" class="btn btn-success"><a href="{{ path('cart_validation') }}">Valider le panier</a></button>
+    <button type="button" class="btn btn-danger"><a href="{{ path('clearCart') }}">Supprimer le panier</a></button>
 
 
-
-
-        <h6><strong>Prix totale HT:</strong> {{ prixHtTotal }} $</h6>
-
- </div>
+{% endfor %}
 
  <hr>
 
