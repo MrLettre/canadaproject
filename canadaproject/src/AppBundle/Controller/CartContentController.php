@@ -35,10 +35,20 @@ class CartContentController extends Controller
         $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
 
         
+        
+        foreach($cart as $prixHtTo){
+            
+        $prixHtT[] = $prixHtTo->getVehiculePhysique()->getPrixHT();
+        }
+
+        $prixHtTotal = array_sum($prixHtT);
+        
             // replace this example code with whatever you need
         
             return $this->render('pagesCarifyPublic/cart/cartClient.html.twig', [
-                'cart' => $cart
+                'cart' => $cart,
+                'prixHtTotal' => $prixHtTotal,
+               
             ]);
     }
 
@@ -56,21 +66,29 @@ class CartContentController extends Controller
 
         
 
-        $clearCart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+        $clearCarts = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
 
-       $test = $clearCart[0]->getCart()->setActif(0);
+        
+
+        foreach($clearCarts as $cartClear){
+            $cartCleared = $cartClear->getCart()->setActif(0);
+            $em->persist($cartCleared);
+
+            $em->flush($cartCleared);
+        }
+
+
+       //$test = $clearCart[0]->getCart()->setActif(0);
 
        
-       $em->persist($test);
-
-       $em->flush($test);
+      
         
 
         
             // replace this example code with whatever you need
         
             return $this->render('pagesCarifyPublic/cart/cartSupprimer.html.twig', [
-                'clearCart' => $clearCart
+                'cartCleared' => $cartCleared
             ]);
     }
 

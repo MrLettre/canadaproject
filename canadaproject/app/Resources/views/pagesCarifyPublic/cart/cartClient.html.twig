@@ -61,13 +61,13 @@
 
 
 
-<div class="container">
+<div class="container price delete">
   <div class="row">
 
 
-{% for cart in cart %}
 
-        <h5>Prix HT: {{ cart.vehiculePhysique.prixHT }} $</h5>
+
+        <h6><strong>Prix totale HT:</strong> {{ prixHtTotal }} $</h6>
 
  </div>
 
@@ -75,7 +75,7 @@
 
    <div class="row">
 
-        <h5>Prix avec taxes: {{ cart.vehiculePhysique.prixHT * 1.19 }} $</h5>
+        <h6><strong>Prix totale avec taxes:</strong> {{ prixHtTotal * 1.19 }} $</h6>
 
    </div>
 
@@ -83,16 +83,14 @@
 
   <div class="row">
 
-        <button type="button" class="btn btn-danger"><a href="{{ path('clearCart') }}">Supprimer le panier</button>
+        <a class="btn btn-primary" href="{{ path('clearCart') }}" role="button">Supprimer le cart</a>
 
   </div>
 
 
-{% endfor %}
+
 
 </div> 
-
-
 
 
 
