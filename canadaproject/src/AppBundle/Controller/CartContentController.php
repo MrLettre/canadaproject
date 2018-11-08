@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\User;
 use AppBundle\Entity\CartContent;
+use AppBundle\Entity\Vente;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -28,13 +29,8 @@ class CartContentController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-
         $userId = $this->getUser()->getId();
-        
         $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
-
-        
-            // replace this example code with whatever you need
         
             return $this->render('pagesCarifyPublic/cart/cartClient.html.twig', [
                 'cart' => $cart
@@ -50,27 +46,99 @@ class CartContentController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-
         $userId = $this->getUser()->getId();
 
-        
+        $cartContents = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
 
-        $clearCart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+        foreach ($cartContents as $value){
+            $cartContent = $value->getCart()->setActif(0);
+            $em->persist($cartContent);
+            $em->flush();
+        }
 
-       $test = $clearCart[0]->getCart()->setActif(0);
+        return $this->render('pagesCarifyPublic/cart/cartSupprimer.html.twig');
+    }
 
-       
-       $em->persist($test);
+    /**
+     * @Route("/cartValidation", name="cart_validation")
+     * @Method("GET")
+     */
+    public function cartValidationAction()
+    {
+        return $this->render('pagesCarifyPublic/cart/cartValidation.html.twig');
+    }
 
-       $em->flush($test);
-        
+    /**
+     * @Route("/cartDelivery", name="cart_delivery")
+     * @Method("GET")
+     */
+    public function cartDeliveryAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $userId = $this->getUser()->getId();
+        $carts = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
 
-        
-            // replace this example code with whatever you need
-        
-            return $this->render('pagesCarifyPublic/cart/cartSupprimer.html.twig', [
-                'clearCart' => $clearCart
-            ]);
+        return $this->render('pagesCarifyPublic/cart/cartDelivery.html.twig', [
+            'carts' => $carts
+        ]);
+    }
+
+    /**
+     * @Route("/cartPayment", name="cart_payment")
+     * @Method("GET")
+     */
+    public function cartPaymentAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $userId = $this->getUser()->getId();
+        $carts = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+
+        return $this->render('pagesCarifyPublic/cart/cartPayment.html.twig', [
+            'carts' => $carts
+        ]);
+    }
+
+    /**
+     * @Route("/cartVenteValidation", name="cart_vente_validation")
+     * @Method("GET")
+     */
+    public function cartVenteValidationtAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $userId = $this->getUser()->getId();
+        $cartContents = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+
+
+        if(!empty($cartContents)){
+            $dateVente = new \DateTime('now');
+            $ref= 'VEH'.'-'.$userId.'-'.rand(0, 99999);
+            $vente = new Vente();
+            $vente->setDateVente($dateVente);
+            $vente->setReferenceVente($ref);
+            $em->persist($vente);
+
+            foreach ($cartContents as $value){
+                $cartContentVente = $value->setVente($vente);
+                $cartContentActif = $value->getCart()->setActif(0);
+                $cartVeh = $value->getVehiculePhysique()->setDateDeVente($dateVente);
+                $em->persist($cartContentActif);
+                $em->persist($cartContentVente);
+                $em->persist($cartVeh);
+            }
+            $em->flush();
+
+
+            $venteId = $vente->getId();
+            $cartForFinalTwig = $em->getRepository('AppBundle:CartContent')->findForFinalTwig($venteId);
+
+            return $this->render('pagesCarifyPublic/cart/cartVenteValidation.html.twig', [
+                'cartContents' => $cartContents,
+                'vente' => $vente,
+                'cartForFinalTwig' => $cartForFinalTwig,
+                ]);
+        }else{
+            return $this->redirectToRoute('accueil');
+        }
     }
 
 
@@ -123,7 +191,7 @@ class CartContentController extends Controller
         $em->flush();
 
 
-        return $this->redirectToRoute('vehiculephysique_recherche', array('id' => $id));
+        return $this->redirectToRoute('cartClient');
     }
 
     /**

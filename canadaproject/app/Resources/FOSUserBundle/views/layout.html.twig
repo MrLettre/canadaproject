@@ -1,4 +1,7 @@
-{% extends extend %}
+{% extends extend is defined
+    ? extend
+    : 'base.html.twig'
+%}
 
 
 {% block content %}

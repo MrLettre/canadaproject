@@ -52,12 +52,12 @@
 
 {% for cart in cart %}
 
-<h5>Prix HT: {{ cart.vehiculePhysique.prixHT }} $</h4>
+<h5>Prix HT: {{ cart.vehiculePhysique.prixHT }} $</h5>
 
-<h5>Prix avec taxes: {{ cart.vehiculePhysique.prixHT * 1.19 }} $</h5>
+<h5>Prix TTC: {{ cart.vehiculePhysique.prixHT * 1.19 }} $</h5>
 
-
-<button type="button" class="btn btn-danger"><a href="{{ path('clearCart') }}">Supprimer le panier</button>
+    <button type="button" class="btn btn-success"><a href="{{ path('cart_validation') }}">Valider le panier</a></button>
+    <button type="button" class="btn btn-danger"><a href="{{ path('clearCart') }}">Supprimer le panier</a></button>
 
 
 {% endfor %}
