@@ -28,9 +28,9 @@ class VehiclesValidationStatut
 
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="statut", type="string", nullable=true)
+     * @ORM\Column(name="statut", type="string", nullable=false)
      */
     private $statut;
 

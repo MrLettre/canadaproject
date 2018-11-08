@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\User;
 use AppBundle\Entity\CartContent;
+use AppBundle\Entity\VehiclesValidationStatut;
 use AppBundle\Entity\Vente;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -133,13 +134,17 @@ class CartContentController extends Controller
             $vente->setReferenceVente($ref);
             $em->persist($vente);
 
+            $validationStatut = $em->getRepository('AppBundle:VehiclesValidationStatut')->findStatutVendu();
+
             foreach ($cartContents as $value){
                 $cartContentVente = $value->setVente($vente);
                 $cartContentActif = $value->getCart()->setActif(0);
                 $cartVeh = $value->getVehiculePhysique()->setDateDeVente($dateVente);
+                $vehStatut = $value->getVehiculePhysique()->setValidationStatut($validationStatut[0]);
                 $em->persist($cartContentActif);
                 $em->persist($cartContentVente);
                 $em->persist($cartVeh);
+                $em->persist($vehStatut);
             }
             $em->flush();
 

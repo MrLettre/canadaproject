@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class VehiclesValidationStatutRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findStatutVendu(){
+        return $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehiclesValidationStatut v WHERE v.statut IN ('Vendu')")
+            ->getResult();
+    }
 }
+
