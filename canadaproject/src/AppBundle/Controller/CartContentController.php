@@ -31,9 +31,25 @@ class CartContentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $userId = $this->getUser()->getId();
         $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+
+       
+
+        if(!empty($cart)){
+          foreach($cart as $prixHtTo){  
+              $prixHtT[] = $prixHtTo->getVehiculePhysique()->getPrixHT();
+          }
+        
+        $prixHtTotal = array_sum($prixHtT);
+        }else{
+        $prixHtTotal = null;
+    }
+
+        
+            // replace this example code with whatever you need
         
             return $this->render('pagesCarifyPublic/cart/cartClient.html.twig', [
-                'cart' => $cart
+                'cart' => $cart,
+                'prixHtTotal' => $prixHtTotal
             ]);
     }
 
