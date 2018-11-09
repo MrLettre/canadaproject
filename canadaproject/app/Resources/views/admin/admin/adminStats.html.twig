@@ -22,10 +22,18 @@
 
   <div class="hideShowVt">
 
+  
+
     {% for venteTotales in venteTotales %}
       <h6>Date de vente: {{ venteTotales.dateVente|date('Y-m-d')}}</h6>
 
+     {% if venteTotales.cartContent.vente == true %}
+
+
       <p>Vehicule : {{ venteTotales.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTotales.cartContent.vehiculePhysique.version.model.nom }} {{ venteTotales.cartContent.vehiculePhysique.version.nom }}</p>
+       
+     {% endif %} 
+   
     {% endfor %}
     {# Fin ventes totales #}
   </div>
@@ -57,8 +65,12 @@
     {% for venteAnnuelles in venteAnnuelles %}
       <h6>Date de vente: {{ venteAnnuelles.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteAnnuelles.cartContent.vente == true %}
+
       <p>Vehicule : {{ venteAnnuelles.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAnnuelles.cartContent.vehiculePhysique.version.model.nom }} {{ venteAnnuelles.cartContent.vehiculePhysique.version.nom }}</p>
     
+     {% endif %}
+
     {% else %}
 
     <p>Pas de ventes cette année</p>
@@ -106,8 +118,11 @@
 
       <h6>Date de vente: {{ venteTrimUn.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteTrimUn.cartContent.vente == true %}
+
       <p>Vehicule : {{ venteTrimUn.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimUn.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimUn.cartContent.vehiculePhysique.version.nom }}</p>
       
+     {% endif %}
 
     {% else %}
 
@@ -126,8 +141,11 @@
 
       <h6>Date de vente: {{ venteTrimDeux.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteTrimDeux.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteTrimDeux.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimDeux.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimDeux.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}
 
     {% else %}
 
@@ -147,8 +165,11 @@
 
       <h6>Date de vente: {{ venteTrimTrois.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteTrimTrois.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteTrimTrois.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimTrois.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimTrois.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}
 
     {% else %}
 
@@ -167,8 +188,11 @@
 
       <h6>Date de vente: {{ venteTrimQuatre.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteTrimQuatre.cartContent.vente == true %}
+
       <p>Vehicule : {{ venteTrimQuatre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimQuatre.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimQuatre.cartContent.vehiculePhysique.version.nom }}</p>
         
+      {% endif %}  
 
     {% else %}
 
@@ -210,8 +234,11 @@
 
       <h6>Date de vente: {{ venteJanvier.dateVente|date('Y-m-d')}}</h6>
 
+       {% if venteJanvier.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteJanvier.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJanvier.cartContent.vehiculePhysique.version.model.nom }} {{ venteJanvier.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -226,8 +253,11 @@
 
       <h6>Date de vente: {{ venteFevrier.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteFevrier.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteFevrier.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteFevrier.cartContent.vehiculePhysique.version.model.nom }} {{ venteFevrier.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -242,8 +272,11 @@
 
       <h6>Date de vente: {{ venteMars.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteMars.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteMars.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteMars.cartContent.vehiculePhysique.version.model.nom }} {{ venteMars.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -258,8 +291,11 @@
 
       <h6>Date de vente: {{ venteAvril.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteAvril.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteAvril.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAvril.cartContent.vehiculePhysique.version.model.nom }} {{ venteAvril.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -274,8 +310,11 @@
 
       <h6>Date de vente: {{ venteMai.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteMai.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteMai.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteMai.cartContent.vehiculePhysique.version.model.nom }} {{ venteMai.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -290,8 +329,11 @@
 
       <h6>Date de vente: {{ venteJuin.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteJuin.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteJuin.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJuin.cartContent.vehiculePhysique.version.model.nom }} {{ venteJuin.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -306,8 +348,11 @@
 
       <h6>Date de vente: {{ venteJuillet.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteJuillet.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteJuillet.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJuillet.cartContent.vehiculePhysique.version.model.nom }} {{ venteJuillet.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -322,8 +367,11 @@
 
       <h6>Date de vente: {{ venteAout.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteAout.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteAout.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAout.cartContent.vehiculePhysique.version.model.nom }} {{ venteAout.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -338,8 +386,11 @@
 
       <h6>Date de vente: {{ venteSeptembre.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteSeptembre.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteSeptembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteSeptembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteSeptembre.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -355,8 +406,11 @@
 
       <h6>Date de vente: {{ venteOctobre.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteOctobre.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteOctobre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteOctobre.cartContent.vehiculePhysique.version.model.nom }} {{ venteOctobre.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -371,8 +425,11 @@
 
       <h6>Date de vente: {{ venteNovembre.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteNovembre.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteNovembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteNovembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteNovembre.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
@@ -387,8 +444,11 @@
 
       <h6>Date de vente: {{ venteDecembre.dateVente|date('Y-m-d')}}</h6>
 
+      {% if venteDecembre.cartContent.vente == true %}
+
        <p>Vehicule : {{ venteDecembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteDecembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteDecembre.cartContent.vehiculePhysique.version.nom }}</p>
        
+       {% endif %}  
 
     {% else %}
 
