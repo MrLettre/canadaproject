@@ -146,6 +146,15 @@ class CartContentController extends Controller
                 $em->persist($cartVeh);
                 $em->persist($vehStatut);
             }
+
+            $user = $em->getRepository('AppBundle:User')->findByUserId($userId);
+            if($user->getIsClient() == 0){
+                $refClient = "CUST"."-".$userId."-".rand(0, 99999);
+                $user->setIsClient(1);
+                $user->setReferenceClient($refClient);
+                $em->persist($user);
+            }
+
             $em->flush();
 
 

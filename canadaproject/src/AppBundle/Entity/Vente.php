@@ -18,6 +18,13 @@ class Vente
     protected $cartContent;
 
     /**
+     * One Vente has One Livraison.
+     * @ORM\OneToOne(targetEntity="Livraison", inversedBy="vente")
+     * @ORM\JoinColumn(name="livraison_id", referencedColumnName="id")
+     */
+    private $livraison;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -127,5 +134,29 @@ class Vente
     public function __toString()
     {
         return $this->referenceVente;
+    }
+
+    /**
+     * Set livraison.
+     *
+     * @param \AppBundle\Entity\Livraison|null $livraison
+     *
+     * @return Vente
+     */
+    public function setLivraison(\AppBundle\Entity\Livraison $livraison = null)
+    {
+        $this->livraison = $livraison;
+
+        return $this;
+    }
+
+    /**
+     * Get livraison.
+     *
+     * @return \AppBundle\Entity\Livraison|null
+     */
+    public function getLivraison()
+    {
+        return $this->livraison;
     }
 }

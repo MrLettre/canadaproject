@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByUserId($userId){
+        return $this->getEntityManager()
+            ->createQuery("SELECT u FROM AppBundle:User u WHERE u.id = $userId")
+            ->getResult();
+    }
 }
