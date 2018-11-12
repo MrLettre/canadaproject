@@ -86,7 +86,7 @@
                                                             </form>
                                                         </div>
                                                     </div>
-                                                    <button class="btn btn-success btn-lg btn-block"><a href="{{ path('cart_vente_validation') }}">Valider le paiement</a></button>
+                                                    <button class="btn btn-success btn-lg btn-block"><a href="{{ path('cart_vente_validation', {'id': livraison.id}) }}">Valider le paiement</a></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,15 +118,22 @@
                                         </tr>
                                         <tr>
                                             <td><span style="font-size: 1vw; font-weight: bold">Frais de livraisons</span></td>
-                                            <td><span style="font-size: 1vw">le nom de la livraison</span></td>
-                                            <td><span style="font-size: 1vw">le prix en $</span></td>
+                                            <td><span style="font-size: 1vw">{{ livraison.modeDeLivraison.nom }}</span></td>
+                                            <td><span style="font-size: 1vw">{{ livraison.modeDeLivraison.prix }}$</span></td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody>
+                                        <tr>
+                                            <td><span style="font-size: 1vw; font-weight: bold">Frais & Taxes</span></td>
+                                            <td></td>
+                                            <td><span style="">{{ cart.vehiculePhysique.prixTTC - cart.vehiculePhysique.prixHT }}$</span></td>
                                         </tr>
                                         </tbody>
                                         <tbody>
                                         <tr>
                                             <td><span style="font-weight: bold">TOTAL TTC A PAYER</span></td>
                                             <td></td>
-                                            <td><span style="color:red; font-weight: bold">$$$$$</span></td>
+                                            <td><span style="color:red; font-weight: bold">{{ cart.vehiculePhysique.prixTTC + livraison.modeDeLivraison.prix }}$</span></td>
                                         </tr>
                                         </tbody>
                                     </table>

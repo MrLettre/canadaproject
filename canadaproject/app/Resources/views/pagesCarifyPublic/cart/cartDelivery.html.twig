@@ -28,25 +28,17 @@
             </div>
             <div class="col-md-6">
                 <h4>Sélectionnez un mode de livraison</h4>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="">GRATUIT - Livraison en Concession <span style="color: red; font-weight: bold">livraison sous 7 jours</span>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="">200$ - Livraison dans un dépot Carify <span style="color: red; font-weight: bold">livraison sous 15 jours</span>
-                    </label>
-                </div>
-                <div class="form-check disabled">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" value="" disabled>1000$ - Livraison à domicile <span style="color: red; font-weight: bold">livraison sous 20 jours</span>
-                    </label>
-                </div>
-        </div>
-        <div class="row" >
-            <button class="btn btn-success"><a href="{{ path('cart_payment') }}"> Valider mon mode de livraison</a></button>
-        </div>
+                {{ form_start(form) }}
+                {{ form_widget(form.modeDeLivraison) }}
+                {{ form_widget(form._token) }}
+                <input class="btn btn-success" type="submit" value="Valider mon mode de livraison" />
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+
+          </div>
     </div>
-    </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+
 {% endblock %}

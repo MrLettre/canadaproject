@@ -23,9 +23,9 @@ class RegistrationType extends AbstractType
             ->add('dateNaissance')
             ->add('dateCreationProfil')
             ->add('roles', ChoiceType::class, [
-                'multiple' => true,
-                'expanded' => true, // render check-boxes
-                'choices' => [
+                    'multiple' => true,
+                    'expanded' => true, // render check-boxes
+                    'choices' => [
                     'Administrateur' => 'ROLE_ADMIN',
                     'Vendeur' => 'ROLE_VENDEUR',
                     'Client' => 'ROLE_USER',

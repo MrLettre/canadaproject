@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Livraison</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ livraison.id }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ livraison.reference }}</td>
+            </tr>
+            <tr>
+                <th>Dateha</th>
+                <td>{% if livraison.dateHA %}{{ livraison.dateHA|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datelivraisonprevisionnelle</th>
+                <td>{% if livraison.dateLivraisonPrevisionnelle %}{{ livraison.dateLivraisonPrevisionnelle|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datelivraisoneffective</th>
+                <td>{% if livraison.dateLivraisonEffective %}{{ livraison.dateLivraisonEffective|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('livraison_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('livraison_edit', { 'id': livraison.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
