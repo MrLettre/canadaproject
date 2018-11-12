@@ -204,4 +204,10 @@ class ModeDeLivraison
     {
         return $this->livraisons;
     }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->prix.'$ - '.$this->nom.' - '.'livraison sous '.$this->delaiMoyen.' jours';
+    }
 }

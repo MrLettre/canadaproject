@@ -36,14 +36,14 @@ class Livraison
     /**
      * @var string
      *
-     * @ORM\Column(name="reference", type="string", length=32, unique=true)
+     * @ORM\Column(name="reference", type="string", length=32, unique=true, nullable=true)
      */
     private $reference;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateHA", type="datetime")
+     * @ORM\Column(name="dateHA", type="datetime", nullable=true)
      */
     private $dateHA;
 
@@ -57,7 +57,7 @@ class Livraison
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateLivraisonEffective", type="datetime")
+     * @ORM\Column(name="dateLivraisonEffective", type="datetime", nullable=true)
      */
     private $dateLivraisonEffective;
 
