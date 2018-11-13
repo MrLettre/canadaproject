@@ -23,4 +23,37 @@ class LivraisonRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery("SELECT l FROM AppBundle:Livraison l WHERE l.dateLivraisonEffective IS NULL ORDER BY l.dateLivraisonPrevisionnelle DESC")
             ->getResult();
     }
+
+    public function findLivraisonsEffectueesByConcession($concession)
+    {
+        $query = $this->createQueryBuilder('l')
+            ->join('l.vente', 'v')
+            ->join('v.cartContent', 'cc')
+            ->join('cc.vehiculePhysique', 'vp');
+
+        $query->Where('vp.concession = :concession')
+            ->setParameters(array(
+                'concession' => $concession,
+            ));
+        $query->AndWhere('l.dateLivraisonEffective IS NOT NULL');
+
+        return $query->getQuery();
+
+    }
+
+    public function findLivraisonsEnAttenteByConcession($concession)
+    {
+        $query = $this->createQueryBuilder('l')
+            ->join('l.vente', 'v')
+            ->join('v.cartContent', 'cc')
+            ->join('cc.vehiculePhysique', 'vp');
+
+        $query->Where('vp.concession = :concession')
+            ->setParameters(array(
+                'concession' => $concession,
+            ));
+        $query->AndWhere('l.dateLivraisonEffective IS NULL');
+
+        return $query->getQuery();
+    }
 }

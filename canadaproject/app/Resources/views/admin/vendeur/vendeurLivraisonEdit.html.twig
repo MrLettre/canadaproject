@@ -1,0 +1,31 @@
+{% extends 'admin/vendeurBase.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+
+    <section>
+        <h3 style="text-align: center; margin-bottom: 8vh; margin-top: 8vh;">Validation de la livraison</h3>
+
+        {{ form_start(edit_form) }}
+        <div class="form-group">
+            {{ form_label(edit_form.dateLivraisonEffective, 'Date de livraison effective') }}
+            {{ form_widget(edit_form.dateLivraisonEffective) }}
+            {{ form_errors(edit_form.dateLivraisonEffective) }}
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Valider"/>
+        {{ form_row(edit_form._token) }}
+        {{ form_end(edit_form, {'render_rest': false}) }}
+
+    </section>
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+{% endblock %}
