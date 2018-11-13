@@ -23,7 +23,6 @@
                         <th scope="col">Marque</th>
                         <th scope="col">Modèle</th>
                         <th scope="col">Version</th>
-                        <th scope="col">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,9 +35,6 @@
                                 <td>{{ livraison.cartContent.vehiculePhysique.version.model.marque }}</td>
                                 <td>{{ livraison.cartContent.vehiculePhysique.version.model }}</td>
                                 <td>{{ livraison.cartContent.vehiculePhysique.version }}</td>
-                                <td>
-                                    <a class="btn btn-primary" href="{{ path('livraison_edit', { 'id': livraison.id }) }}">Modifier</a>
-                                </td>
                             </tr>
                     {% endfor %}
                     </tbody>

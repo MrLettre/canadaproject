@@ -17,7 +17,8 @@ class LivraisonType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('reference')
+        $builder
+            ->add('reference')
             ->add('dateHA')
             ->add('dateLivraisonPrevisionnelle')
             ->add('dateLivraisonEffective')
@@ -26,7 +27,7 @@ class LivraisonType extends AbstractType
                 'class' => 'AppBundle:ModeDeLivraison',
                 'expanded' =>true,
                 'multiple' =>false,
-            ]);;
+            ]);
     }
     /**
      * {@inheritdoc}

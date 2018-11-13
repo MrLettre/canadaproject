@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Livraison;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
@@ -515,4 +516,28 @@ class AdminController extends Controller
             'livraisons' => $livraisons,
         ));
     }
+
+    /**
+     * Displays a form to edit an existing livraison entity.
+     *
+     * @Route("admin/{id}/edit", name="livraisonAdmin_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAdminLivraisonAction(Request $request, Livraison $livraison)
+    {
+        $editForm = $this->createForm('AppBundle\Form\LivraisonAdminType', $livraison);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('ladminlivraisonEnAttente_index');
+        }
+
+        return $this->render('admin/admin/adminLivraisonEditedit.html.twig', array(
+            'livraison' => $livraison,
+            'edit_form' => $editForm->createView(),
+        ));
+    }
+
 }
