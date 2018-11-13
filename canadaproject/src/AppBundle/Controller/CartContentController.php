@@ -156,14 +156,15 @@ class CartContentController extends Controller
             $vente = new Vente();
             $vente->setDateVente($dateVente);
             $vente->setReferenceVente($ref);
-            $em->persist($vente);
 
             $ref = 'LIV-'.$userId.'-'.rand(0, 99999);
             $livraison->setReference($ref);
             $livraison->setDateHA($dateVente);
             $livraison->setDateLivraisonPrevisionnelle($datePrev);
+            $vente->setLivraison($livraison);
 
             $em->persist($livraison);
+            $em->persist($vente);
 
             $validationStatut = $em->getRepository('AppBundle:VehiclesValidationStatut')->findStatutVendu();
 

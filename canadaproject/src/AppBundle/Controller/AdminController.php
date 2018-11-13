@@ -51,6 +51,8 @@ class AdminController extends Controller
         return $this->render('admin/admin/adminMyClient.html.twig');
     }
 
+    // GESTION DES STATISTIQUES POUR L'ADMINISTRATEUR ---------------------------------------------------------------- */
+
     /**
      * @Route("/admin/statistiques", name="adminStats")
      */
@@ -259,7 +261,7 @@ class AdminController extends Controller
       ]);
     }
 
-    /** GESTION DES VALIDATIONS DE VEHICULES PHYSIQUES PAR L'ADMINISTRATEUR */
+    /** GESTION DES VALIDATIONS DE VEHICULES PHYSIQUES PAR L'ADMINISTRATEUR ---------------------------------------- */
 
     /**
      * Lists all vehiculePhysique entities.
@@ -278,7 +280,7 @@ class AdminController extends Controller
         ));
     }
 
-    /** GESTION DES DEMANDES DE CONTACT DES CLIENTS OU PROSPECTS */
+    /** GESTION DES DEMANDES DE CONTACT DES CLIENTS OU PROSPECTS ----------------------------------------------------- */
 
     /**
      * Lists all contact entities.
@@ -296,6 +298,9 @@ class AdminController extends Controller
             'contacts' => $contacts,
         ));
     }
+
+    /** LISTE DES VEHICULES PHYSIQUES DANS LE PARC AUTO CARIFY  ---------------------------------------------------- */
+
 
     /**
      * Lists all vehiculePhysique entities.
@@ -323,6 +328,8 @@ class AdminController extends Controller
         return $this->render('admin/admin/adminAfterSale.html.twig');
     }
 
+    /** CREATION D'UNE DEFINITION DE VEHICULE ----------------------------------------------------------------------- */
+
     /**
      * @Route("/adminAddCar", name="adminAddCar")
      */
@@ -349,6 +356,8 @@ class AdminController extends Controller
         ));
     
     }
+
+    /** GESTION DES ARTICLES CARIFY --------------------------------------------------------------------------------- */
 
     /**
      * Lists all article entities.
@@ -471,6 +480,39 @@ class AdminController extends Controller
             ;
     }
 
+    /** GESTION DES LIVRAISONS NON EFFECTUEES    -------------------------------------------------------------------- */
 
+    /**
+     * Lists all livraison entities.
+     *
+     * @Route("/admin/livraisons", name="adminlivraison_index")
+     * @Method("GET")
+     */
+    public function indexLivraisonAdminAction()
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $livraisons = $em->getRepository('AppBundle:Livraison')->findLivraisonsEffectuees();
+
+        return $this->render('admin/admin/adminLivraison.html.twig', array(
+            'livraisons' => $livraisons,
+        ));
+    }
+
+    /**
+     * Lists all livraison entities.
+     *
+     * @Route("/admin/livraisonsEnAttente", name="adminlivraisonEnAttente_index")
+     * @Method("GET")
+     */
+    public function indexLivraisonEnAttenteAdminAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $livraisons = $em->getRepository('AppBundle:Livraison')->findLivraisonsEnAttente();
+
+        return $this->render('admin/admin/adminLivraisonsEnAttentes.html.twig', array(
+            'livraisons' => $livraisons,
+        ));
+    }
 }
