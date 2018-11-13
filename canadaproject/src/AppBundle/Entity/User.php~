@@ -105,6 +105,20 @@ class User extends BaseUser
      */
     private $dateCreationProfil;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isClient", type="boolean", options={"default":false})
+     */
+    private $isClient;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceClient", type="string", length=32, nullable=true)
+     */
+    private $referenceClient;
+
     public function __construct()
     {
         parent::__construct();
@@ -466,5 +480,53 @@ class User extends BaseUser
     public function getCartContents()
     {
         return $this->cartContents;
+    }
+
+    /**
+     * Set isClient.
+     *
+     * @param bool $isClient
+     *
+     * @return User
+     */
+    public function setIsClient($isClient)
+    {
+        $this->isClient = $isClient;
+
+        return $this;
+    }
+
+    /**
+     * Get isClient.
+     *
+     * @return bool
+     */
+    public function getIsClient()
+    {
+        return $this->isClient;
+    }
+
+    /**
+     * Set referenceClient.
+     *
+     * @param string|null $referenceClient
+     *
+     * @return User
+     */
+    public function setReferenceClient($referenceClient = null)
+    {
+        $this->referenceClient = $referenceClient;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceClient.
+     *
+     * @return string|null
+     */
+    public function getReferenceClient()
+    {
+        return $this->referenceClient;
     }
 }

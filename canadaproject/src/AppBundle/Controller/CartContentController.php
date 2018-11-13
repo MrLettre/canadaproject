@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Livraison;
 use AppBundle\Entity\CartContent;
 use AppBundle\Entity\VehiclesValidationStatut;
 use AppBundle\Entity\Vente;
@@ -89,50 +90,80 @@ class CartContentController extends Controller
      * @Route("/cartDelivery", name="cart_delivery")
      * @Method("GET")
      */
-    public function cartDeliveryAction()
+    public function cartDeliveryAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $userId = $this->getUser()->getId();
         $carts = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+        $livraisons = $em->getRepository('AppBundle:ModeDeLivraison')->findAll();
+
+        $newLivraison = new Livraison();
+        $form = $this->createForm('AppBundle\Form\LivraisonType', $newLivraison);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($newLivraison);
+            $em->flush($newLivraison);
+
+            return $this->redirectToRoute('cart_payment', array('id' => $newLivraison->getId()));
+        }
+
 
         return $this->render('pagesCarifyPublic/cart/cartDelivery.html.twig', [
-            'carts' => $carts
+            'carts' => $carts,
+            'livraisons' => $livraisons,
+            'form' => $form->createView(),
+            'newLivraison' => $newLivraison,
         ]);
     }
 
     /**
-     * @Route("/cartPayment", name="cart_payment")
+     * @Route("/cartPayment/{id}", name="cart_payment")
      * @Method("GET")
      */
-    public function cartPaymentAction()
+    public function cartPaymentAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $userId = $this->getUser()->getId();
         $carts = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+        $livraison = $em->getRepository('AppBundle:Livraison')->findOneBy(array('id'=>$id));
 
         return $this->render('pagesCarifyPublic/cart/cartPayment.html.twig', [
-            'carts' => $carts
+            'carts' => $carts,
+            'livraison' => $livraison
         ]);
     }
 
     /**
-     * @Route("/cartVenteValidation", name="cart_vente_validation")
+     * @Route("/cartVenteValidation/{id}", name="cart_vente_validation")
      * @Method("GET")
      */
-    public function cartVenteValidationtAction()
+    public function cartVenteValidationtAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $userId = $this->getUser()->getId();
         $cartContents = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
+        $livraison = $em->getRepository('AppBundle:Livraison')->findOneBy(array('id'=>$id));
+
 
 
         if(!empty($cartContents)){
             $dateVente = new \DateTime('now');
+            $datePrev = new \DateTime('now');
+            $datePrev->add(new \DateInterval('P10D'));
+
             $ref= 'VEH'.'-'.$userId.'-'.rand(0, 99999);
             $vente = new Vente();
             $vente->setDateVente($dateVente);
             $vente->setReferenceVente($ref);
             $em->persist($vente);
+
+            $ref = 'LIV-'.$userId.'-'.rand(0, 99999);
+            $livraison->setReference($ref);
+            $livraison->setDateHA($dateVente);
+            $livraison->setDateLivraisonPrevisionnelle($datePrev);
+
+            $em->persist($livraison);
 
             $validationStatut = $em->getRepository('AppBundle:VehiclesValidationStatut')->findStatutVendu();
 
@@ -146,6 +177,15 @@ class CartContentController extends Controller
                 $em->persist($cartVeh);
                 $em->persist($vehStatut);
             }
+
+            $user = $em->getRepository('AppBundle:User')->findOneBy(array('id'=>$userId));
+            if($user->getIsClient() == 0){
+                $refClient = "CUST"."-".$userId."-".rand(0, 99999);
+                $user->setIsClient(1);
+                $user->setReferenceClient($refClient);
+                $em->persist($user);
+            }
+
             $em->flush();
 
 
