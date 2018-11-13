@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LivraisonType extends AbstractType
+class LivraisonAdminType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -18,16 +18,7 @@ class LivraisonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reference')
-            ->add('dateHA')
-            ->add('dateLivraisonPrevisionnelle')
-            ->add('dateLivraisonEffective')
-            ->add('vente')
-            ->add('modeDeLivraison', EntityType::class, [
-                'class' => 'AppBundle:ModeDeLivraison',
-                'expanded' =>true,
-                'multiple' =>false,
-            ]);
+            ->add('dateLivraisonEffective');
     }
     /**
      * {@inheritdoc}

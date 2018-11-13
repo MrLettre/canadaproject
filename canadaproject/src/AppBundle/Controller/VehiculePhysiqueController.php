@@ -187,7 +187,6 @@ class VehiculePhysiqueController extends Controller
     public function validationAction(Request $request, VehiculePhysique $vehiculePhysique)
     {
         $vehiclesValidationStatut = new Vehiclesvalidationstatut();
-        $vehiclePhyStatut = new VehiclePhyStatut();
         $validationForm = $this->createForm('AppBundle\Form\AdminVehiculePhysiqueType', $vehiclesValidationStatut);
         $validationForm->handleRequest($request);
 

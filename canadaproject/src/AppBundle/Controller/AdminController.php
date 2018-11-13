@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Livraison;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,6 +51,8 @@ class AdminController extends Controller
         // replace this example code with whatever you need
         return $this->render('admin/admin/adminMyClient.html.twig');
     }
+
+    // GESTION DES STATISTIQUES POUR L'ADMINISTRATEUR ---------------------------------------------------------------- */
 
     /**
      * @Route("/admin/statistiques", name="adminStats")
@@ -259,7 +262,7 @@ class AdminController extends Controller
       ]);
     }
 
-    /** GESTION DES VALIDATIONS DE VEHICULES PHYSIQUES PAR L'ADMINISTRATEUR */
+    /** GESTION DES VALIDATIONS DE VEHICULES PHYSIQUES PAR L'ADMINISTRATEUR ---------------------------------------- */
 
     /**
      * Lists all vehiculePhysique entities.
@@ -278,7 +281,7 @@ class AdminController extends Controller
         ));
     }
 
-    /** GESTION DES DEMANDES DE CONTACT DES CLIENTS OU PROSPECTS */
+    /** GESTION DES DEMANDES DE CONTACT DES CLIENTS OU PROSPECTS ----------------------------------------------------- */
 
     /**
      * Lists all contact entities.
@@ -296,6 +299,9 @@ class AdminController extends Controller
             'contacts' => $contacts,
         ));
     }
+
+    /** LISTE DES VEHICULES PHYSIQUES DANS LE PARC AUTO CARIFY  ---------------------------------------------------- */
+
 
     /**
      * Lists all vehiculePhysique entities.
@@ -323,6 +329,8 @@ class AdminController extends Controller
         return $this->render('admin/admin/adminAfterSale.html.twig');
     }
 
+    /** CREATION D'UNE DEFINITION DE VEHICULE ----------------------------------------------------------------------- */
+
     /**
      * @Route("/adminAddCar", name="adminAddCar")
      */
@@ -349,6 +357,8 @@ class AdminController extends Controller
         ));
     
     }
+
+    /** GESTION DES ARTICLES CARIFY --------------------------------------------------------------------------------- */
 
     /**
      * Lists all article entities.
@@ -471,44 +481,63 @@ class AdminController extends Controller
             ;
     }
 
-    /**
-    * @Route("/admin/userList", name="adminUserList")
-    */
-    public function adminUserList()
-    {
-
-
-       $em = $this->getDoctrine()->getManager();
-       //Récupération de toutes les ventes totales de toutes les années
-       $cartContents = $em->getRepository('AppBundle:CartContent')->findAdminClients();
-
-
-
-    // replace this example code with whatever you need
-    return $this->render('admin/admin/adminUserList.html.twig', [
-      'cartContents' => $cartContents
-      ]);
-    }
-
+    /** GESTION DES LIVRAISONS NON EFFECTUEES    -------------------------------------------------------------------- */
 
     /**
-    * @Route("/admin/userHistoric/{id}", name="adminUserHistoric")
-    */
-    public function adminUserHistoric($id)
+     * Lists all livraison entities.
+     *
+     * @Route("/admin/livraisons", name="adminlivraison_index")
+     * @Method("GET")
+     */
+    public function indexLivraisonAdminAction()
     {
+        $em = $this->getDoctrine()->getManager();
 
+        $livraisons = $em->getRepository('AppBundle:Livraison')->findLivraisonsEffectuees();
 
-       $em = $this->getDoctrine()->getManager();
-       //Récupération de toutes les ventes totales de toutes les années
-       $cartContents = $em->getRepository('AppBundle:CartContent')->findUserHistoric($id);
-
-
-
-    // replace this example code with whatever you need
-    return $this->render('admin/admin/adminUserHistoric.html.twig', [
-      'cartContents' => $cartContents
-      ]);
+        return $this->render('admin/admin/adminLivraison.html.twig', array(
+            'livraisons' => $livraisons,
+        ));
     }
 
+    /**
+     * Lists all livraison entities.
+     *
+     * @Route("/admin/livraisonsEnAttente", name="adminlivraisonEnAttente_index")
+     * @Method("GET")
+     */
+    public function indexLivraisonEnAttenteAdminAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $livraisons = $em->getRepository('AppBundle:Livraison')->findLivraisonsEnAttente();
+
+        return $this->render('admin/admin/adminLivraisonsEnAttentes.html.twig', array(
+            'livraisons' => $livraisons,
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing livraison entity.
+     *
+     * @Route("admin/{id}/edit", name="livraisonAdmin_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAdminLivraisonAction(Request $request, Livraison $livraison)
+    {
+        $editForm = $this->createForm('AppBundle\Form\LivraisonAdminType', $livraison);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('vendeurlivraisonEnAttente_index');
+        }
+
+        return $this->render('admin/vendeur/vendeurLivraisonEdit.html.twig', array(
+            'livraison' => $livraison,
+            'edit_form' => $editForm->createView(),
+        ));
+    }
 
 }
