@@ -37,7 +37,7 @@
                             <td>{{ livraison.vente.cartContent.vehiculePhysique.version.model }}</td>
                             <td>{{ livraison.vente.cartContent.vehiculePhysique.version }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ path('livraison_edit', { 'id': livraison.id }) }}">Modifier</a>
+                                <a class="btn btn-primary" href="{{ path('livraisonAdmin_edit', { 'id': livraison.id }) }}">Valider la livraison</a>
                             </td>
                         </tr>
                     {% endfor %}
