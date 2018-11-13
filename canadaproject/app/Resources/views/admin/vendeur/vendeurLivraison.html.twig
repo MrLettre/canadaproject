@@ -7,7 +7,6 @@
 {% block body %}
 
 
-{{ dump(livraisons) }}
     <div class="container">
         <div class="col-md-12">
             <h3>Liste des livraisons effectuées</h3>
@@ -28,13 +27,13 @@
                     <tbody>
                     {% for livraison in livraisons %}
                         <tr>
-                            <td>{{ livraison.cartContent.vehiculePhysique.concession.nom }}</td>
-                            <td>{{ livraison.dateLivraisonEffective }}</td>
-                            <td>{{ livraison.cartContent.user.nom }} {{ livraison.cartContent.user.prenom }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.concession.nom }}</td>
+                            <td>{{ livraison.dateLivraisonEffective|date('Y-m-d') }}</td>
+                            <td>{{ livraison.vente.cartContent.user.nom }} {{ livraison.vente.cartContent.user.prenom }}</td>
                             <td>{{ livraison.modeDeLivraison }}</td>
-                            <td>{{ livraison.cartContent.vehiculePhysique.version.model.marque }}</td>
-                            <td>{{ livraison.cartContent.vehiculePhysique.version.model }}</td>
-                            <td>{{ livraison.cartContent.vehiculePhysique.version }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version.model.marque }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version.model }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

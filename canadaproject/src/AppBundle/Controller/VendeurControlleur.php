@@ -342,6 +342,7 @@ class VendeurControlleur extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $livraisons = $em->getRepository('AppBundle:Livraison')->findLivraisonsEffectueesByConcession($concession);
+
         return $this->render('admin/vendeur/vendeurLivraison.html.twig', array(
             'livraisons' => $livraisons,
         ));

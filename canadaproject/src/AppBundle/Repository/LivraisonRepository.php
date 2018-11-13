@@ -37,7 +37,7 @@ class LivraisonRepository extends \Doctrine\ORM\EntityRepository
             ));
         $query->AndWhere('l.dateLivraisonEffective IS NOT NULL');
 
-        return $query->getQuery();
+        return $query->getQuery()->getResult();
 
     }
 
@@ -54,6 +54,6 @@ class LivraisonRepository extends \Doctrine\ORM\EntityRepository
             ));
         $query->AndWhere('l.dateLivraisonEffective IS NULL');
 
-        return $query->getQuery();
+        return $query->getQuery()->getResult();
     }
 }
