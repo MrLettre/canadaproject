@@ -390,5 +390,34 @@ class VendeurControlleur extends Controller
         ));
     }
 
+      /**
+     * @Route("/vendeur/myClients", name="adminSellerMyClients")
+     * @Method("GET")
+     */
+    public function vendeurMyClients()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $userId = $this->getUser();
+
+        $concession = $userId->getConcession()->getId();
+
+
+        $clients = $em->getRepository('AppBundle:CartContent')->findVendeurClients($concession);
+
+      
+  
+
+
+        // replace this example code with whatever you need
+        return $this->render('admin/vendeur/clients.html.twig', [
+          'clients' => $clients
+        ]);
+    }
+
+
+
+
 
 }
