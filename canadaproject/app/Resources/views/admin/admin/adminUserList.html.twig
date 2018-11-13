@@ -1,0 +1,62 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+
+<h1>Mes clients</h1>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+
+            <tr>
+            	<th>Référence</th>
+                <th>Nom</th>
+                <th>Prénom</th>              
+                <th>Ville</th>
+                <th>Téléphone</th>
+                <th>Action</th>
+                
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for cartContent in cartContents %}
+
+                    <tr>
+                    	<td>{{cartContent.user.referenceClient}}</td>
+                        <td>{{cartContent.user.nom}}</td>
+                        <td>{{cartContent.user.prenom}}</td>
+                        <td>{{cartContent.user.ville}}</td>
+                        <td>{{cartContent.user.numeroTelephone}}</td>
+                        <td><a href="{{ path('adminUserHistoric', {id: cartContent.user.id}) }}" class="btn btn-primary" value="{{cartContent.user.id}}">Historique des achats</a></td>
+                        
+                    </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+ 
+
+
+{% block javascripts %}
+   
+{% endblock %}

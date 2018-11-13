@@ -515,8 +515,52 @@ public function findVentesVendeurDecembre($debutAnnee, $finAnnee, $concession)
 }
 
 
+public function findVendeurClients($concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->select('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andwhere('v.vente is not null')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)  
+    ->groupBy('v.user')
+    ->getQuery();
+
+return $query->getResult(); 
+}
 
 
+public function findAdminClients()
+{
+    $query = $this->createQueryBuilder('c')
+    ->select('c')
+    ->join('c.vehiculePhysique', 'vp')
+    ->join('c.vente', 'vente')
+    ->andwhere('c.vente is not null')
+    ->orderBy('vente.dateVente', 'ASC') 
+    ->groupBy('c.user')
+    ->getQuery();
 
+return $query->getResult(); 
+}
+
+
+public function findUserHistoric($id)
+{
+    $query = $this->createQueryBuilder('c')
+    ->select('c')
+    ->join('c.vehiculePhysique', 'vp')
+    ->join('c.vente', 'vente')
+    ->where('c.user = :id')
+    ->andwhere('c.vente is not null')
+    ->orderBy('vente.dateVente', 'ASC') 
+    ->setParameter('id', $id)
+    ->groupBy('c.user')
+    ->getQuery();
+
+return $query->getResult(); 
+}
 
 }

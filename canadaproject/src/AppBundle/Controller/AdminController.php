@@ -471,6 +471,44 @@ class AdminController extends Controller
             ;
     }
 
+    /**
+    * @Route("/admin/userList", name="adminUserList")
+    */
+    public function adminUserList()
+    {
+
+
+       $em = $this->getDoctrine()->getManager();
+       //Récupération de toutes les ventes totales de toutes les années
+       $cartContents = $em->getRepository('AppBundle:CartContent')->findAdminClients();
+
+
+
+    // replace this example code with whatever you need
+    return $this->render('admin/admin/adminUserList.html.twig', [
+      'cartContents' => $cartContents
+      ]);
+    }
+
+
+    /**
+    * @Route("/admin/userHistoric/{id}", name="adminUserHistoric")
+    */
+    public function adminUserHistoric($id)
+    {
+
+
+       $em = $this->getDoctrine()->getManager();
+       //Récupération de toutes les ventes totales de toutes les années
+       $cartContents = $em->getRepository('AppBundle:CartContent')->findUserHistoric($id);
+
+
+
+    // replace this example code with whatever you need
+    return $this->render('admin/admin/adminUserHistoric.html.twig', [
+      'cartContents' => $cartContents
+      ]);
+    }
 
 
 }
