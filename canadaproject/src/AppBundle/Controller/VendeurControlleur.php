@@ -34,9 +34,10 @@ class VendeurControlleur extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $userId = $this->getUser()->getId();
+        $userId = $this->getUser();
 
-
+        $concession = $userId->getConcession()->getId();
+        
       //Formulaire non relié à une entité pour choisir la date
       $form = $this->createFormBuilder()
       ->add('Choix', ChoiceType::class, [
@@ -93,66 +94,68 @@ class VendeurControlleur extends Controller
 
   $em = $this->getDoctrine()->getManager();
   //Récupération de toutes les ventes totales de toutes les années
-  $venteTotales = $em->getRepository('AppBundle:Vente')->findVentesTotales();
+  $venteTotales = $em->getRepository('AppBundle:CartContent')->findVentesVendeurTotales($concession);
+  
+
 
   //Chiffre des ventes totales de toutes les années
   $venteTotalesCompte = count($venteTotales);
 
 
   //Recuperation des ventes années par années pour la chart
-  $vente2018 =  count($em->getRepository('AppBundle:Vente')->findVentes2019($annee2018));
-  $vente2019 =  count($em->getRepository('AppBundle:Vente')->findVentes2019($annee2019));
-  $vente2020 =  count($em->getRepository('AppBundle:Vente')->findVentes2020($annee2020));
-  $vente2021 =  count($em->getRepository('AppBundle:Vente')->findVentes2021($annee2021));
-  $vente2022 =  count($em->getRepository('AppBundle:Vente')->findVentes2022($annee2022));
-  $vente2023 =  count($em->getRepository('AppBundle:Vente')->findVentes2023($annee2023));
-  $vente2024 =  count($em->getRepository('AppBundle:Vente')->findVentes2024($annee2024));
-  $vente2025 =  count($em->getRepository('AppBundle:Vente')->findVentes2025($annee2025));
+  $vente2018 =  count($em->getRepository('AppBundle:CartContent')->findVentesVendeur2018($annee2018, $concession));
+  $vente2019 =  count($em->getRepository('AppBundle:CartContent')->findVentesVendeur2019($annee2019, $concession));
+  $vente2020 =  count($em->getRepository('AppBundle:CartContent')->findVentesVendeur2020($annee2020, $concession));
+  $vente2021 =  count($em->getRepository('AppBundle:CartContent')->findVentesVendeur2021($annee2021, $concession));
+  $vente2022 =  count($em->getRepository('AppBundle:CartContent')->findVentesVendeur2022($annee2022, $concession));
+  $vente2023 =  count($em->getRepository('AppBundle:CartContent')->findVentesVendeur2023($annee2023, $concession));
+  $vente2024 =  count($em->getRepository('AppBundle:CartContent')->findVentesVendeur2024($annee2024, $concession));
+  $vente2025 =  count($em->getRepository('AppBundle:CartContent')->findVentesVendeur2025($annee2025, $concession));
 
 
 
 
   //Ventes annuelles par an
-  $venteAnnuelles = $em->getRepository('AppBundle:Vente')->findVentesAnnuelles($debutAnnee, $finAnnee);
+  $venteAnnuelles = $em->getRepository('AppBundle:CartContent')->findVentesVendeurAnnuelles($debutAnnee, $finAnnee, $concession);
 
   //Ventes 1er trimestre
-  $venteTrimUn = $em->getRepository('AppBundle:Vente')->findVentesTrimUn($premierTriDeb, $premierTriFin);
+  $venteTrimUn = $em->getRepository('AppBundle:CartContent')->findVentesVendeurTrimUn($premierTriDeb, $premierTriFin, $concession);
 
   //Ventes 2eme trimestre
-  $venteTrimDeux = $em->getRepository('AppBundle:Vente')->findVentesTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin);
+  $venteTrimDeux = $em->getRepository('AppBundle:CartContent')->findVentesVendeurTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin, $concession);
 
   //Ventes 3eme trimestre
-  $venteTrimTrois = $em->getRepository('AppBundle:Vente')->findVentesTrimTrois($troisiemeTriDeb, $troisiemeTriFin);
+  $venteTrimTrois = $em->getRepository('AppBundle:CartContent')->findVentesVendeurTrimTrois($troisiemeTriDeb, $troisiemeTriFin, $concession);
 
   //Ventes 4eme trimestre
-  $venteTrimQuatre = $em->getRepository('AppBundle:Vente')->findVentesTrimQuatre($quatriemeTriDeb, $quatriemeTriFin);
+  $venteTrimQuatre = $em->getRepository('AppBundle:CartContent')->findVentesVendeurTrimQuatre($quatriemeTriDeb, $quatriemeTriFin, $concession);
 
 
     //VENTE PAR MOIS + COUNT POUR LA CHART
 
-  $venteJanvier = $em->getRepository('AppBundle:Vente')->findVentesJanvier($debutAnnee, $finAnnee);
+  $venteJanvier = $em->getRepository('AppBundle:CartContent')->findVentesVendeurJanvier($debutAnnee, $finAnnee, $concession);
   $chartJanvier = count($venteJanvier);
-  $venteFevrier = $em->getRepository('AppBundle:Vente')->findVentesFevrier($debutAnnee, $finAnnee);
+  $venteFevrier = $em->getRepository('AppBundle:CartContent')->findVentesVendeurFevrier($debutAnnee, $finAnnee, $concession);
   $chartFevrier = count($venteFevrier);
-  $venteMars = $em->getRepository('AppBundle:Vente')->findVentesMars($debutAnnee, $finAnnee);
+  $venteMars = $em->getRepository('AppBundle:CartContent')->findVentesVendeurMars($debutAnnee, $finAnnee, $concession);
   $chartMars = count($venteMars);
-  $venteAvril = $em->getRepository('AppBundle:Vente')->findVentesAvril($debutAnnee, $finAnnee);
+  $venteAvril = $em->getRepository('AppBundle:CartContent')->findVentesVendeurAvril($debutAnnee, $finAnnee, $concession);
   $chartAvril = count($venteAvril);
-  $venteMai = $em->getRepository('AppBundle:Vente')->findVentesMai($debutAnnee, $finAnnee);
+  $venteMai = $em->getRepository('AppBundle:CartContent')->findVentesVendeurMai($debutAnnee, $finAnnee, $concession);
   $chartMai = count($venteMai);
-  $venteJuin = $em->getRepository('AppBundle:Vente')->findVentesJuin($debutAnnee, $finAnnee);
+  $venteJuin = $em->getRepository('AppBundle:CartContent')->findVentesVendeurJuin($debutAnnee, $finAnnee, $concession);
   $chartJuin = count($venteJuin);
-  $venteJuillet = $em->getRepository('AppBundle:Vente')->findVentesJuillet($debutAnnee, $finAnnee);
+  $venteJuillet = $em->getRepository('AppBundle:CartContent')->findVentesVendeurJuillet($debutAnnee, $finAnnee, $concession);
   $chartJuillet = count($venteJuillet);
-  $venteAout = $em->getRepository('AppBundle:Vente')->findVentesAout($debutAnnee, $finAnnee);
+  $venteAout = $em->getRepository('AppBundle:CartContent')->findVentesVendeurAout($debutAnnee, $finAnnee, $concession);
   $chartAout = count($venteAout);
-  $venteSeptembre = $em->getRepository('AppBundle:Vente')->findVentesSeptembre($debutAnnee, $finAnnee);
+  $venteSeptembre = $em->getRepository('AppBundle:CartContent')->findVentesVendeurSeptembre($debutAnnee, $finAnnee, $concession);
   $chartSeptembre = count($venteSeptembre);
-  $venteOctobre = $em->getRepository('AppBundle:Vente')->findVentesOctobre($debutAnnee, $finAnnee);
+  $venteOctobre = $em->getRepository('AppBundle:CartContent')->findVentesVendeurOctobre($debutAnnee, $finAnnee, $concession);
   $chartOctobre = count($venteOctobre);
-  $venteNovembre = $em->getRepository('AppBundle:Vente')->findVentesNovembre($debutAnnee, $finAnnee);
+  $venteNovembre = $em->getRepository('AppBundle:CartContent')->findVentesVendeurNovembre($debutAnnee, $finAnnee, $concession);
   $chartNovembre = count($venteNovembre);
-  $venteDecembre = $em->getRepository('AppBundle:Vente')->findVentesDecembre($debutAnnee, $finAnnee);
+  $venteDecembre = $em->getRepository('AppBundle:CartContent')->findVentesVendeurDecembre($debutAnnee, $finAnnee, $concession);
   $chartDecembre = count($venteDecembre);
 
     //FIN VENTE PAR MOIS
@@ -237,6 +240,7 @@ class VendeurControlleur extends Controller
             'chartOctobre'       => $chartOctobre,
             'chartNovembre'      => $chartNovembre,
             'chartDecembre'      => $chartDecembre,
+            'userId'  => $userId
       ]);
     }
 
