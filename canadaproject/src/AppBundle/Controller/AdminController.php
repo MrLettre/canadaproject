@@ -549,29 +549,25 @@ class AdminController extends Controller
 
        $em = $this->getDoctrine()->getManager();
        //Récupération de toutes les ventes totales de toutes les années
-       $cartContents = $em->getRepository('AppBundle:CartContent')->findAdminClients();
+        $clients = $em->getRepository('AppBundle:CartContent')->findAdminClients();
 
 
 
     // replace this example code with whatever you need
     return $this->render('admin/admin/adminUserList.html.twig', [
-      'cartContents' => $cartContents
+      'clients' => $clients
       ]);
     }
 
 
     /**
-    * @Route("/admin/userHistoric/{id}", name="adminUserHistoric")
+    * @Route("/admin/userHistoric/{referenceClient}", name="adminUserHistoric")
     */
-    public function adminUserHistoric($id)
+    public function adminUserHistoric($referenceClient)
     {
-
-
        $em = $this->getDoctrine()->getManager();
        //Récupération de toutes les ventes totales de toutes les années
-       $cartContents = $em->getRepository('AppBundle:CartContent')->findUserHistoric($id);
-
-
+       $cartContents = $em->getRepository('AppBundle:CartContent')->findUserHistoric($referenceClient);
 
     // replace this example code with whatever you need
     return $this->render('admin/admin/adminUserHistoric.html.twig', [

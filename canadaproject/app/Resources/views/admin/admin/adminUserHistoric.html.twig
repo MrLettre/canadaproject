@@ -11,7 +11,7 @@
 
 
 
-<h1>Acchats de ce client</h1>
+<h1>Achats de ce client</h1>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -20,9 +20,11 @@
                 <th>Concessionaire</th>
                 <th>Marque</th>
                 <th>Model</th>             
-                <th>PrixHT</th>
-                <th>Type</th>
-                
+                <th>Livraison</th>
+                <th>Prix TTC</th>
+                <th>Montant Total</th>
+
+
             </tr>
 
             </thead>
@@ -34,9 +36,10 @@
                     <tr>
                         <td>{{cartContent.vehiculephysique.concession}}</td>
                         <td>{{cartContent.vehiculephysique.version.model.marque}}</td>
-                        <td>{{cartContent.vehiculephysique.version.model.nom}}</td>
-                        <td>{{cartContent.vehiculephysique.prixHT}}</td>
-                        <td>{{cartContent.vehiculephysique.version.model.typeVehicule}}</td>
+                        <td>{{cartContent.vehiculephysique.version.model}}</td>
+                        <td>{{cartContent.vente.livraison.modeDeLivraison.nom}} {{cartContent.vente.livraison.modeDeLivraison.prix}}$</td>
+                        <td>{{cartContent.vehiculephysique.prixTTC}}</td>
+                        <td style="color: red;font-weight: bold">{{cartContent.vehiculephysique.prixTTC + cartContent.vente.livraison.modeDeLivraison.prix}}$</td>
                         
                        
                         
