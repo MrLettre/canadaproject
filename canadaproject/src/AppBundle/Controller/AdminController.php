@@ -531,10 +531,10 @@ class AdminController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('vendeurlivraisonEnAttente_index');
+            return $this->redirectToRoute('adminlivraisonEnAttente_index');
         }
 
-        return $this->render('admin/vendeur/vendeurLivraisonEdit.html.twig', array(
+        return $this->render('admin/admin/adminLivraisonEditedit.html.twig', array(
             'livraison' => $livraison,
             'edit_form' => $editForm->createView(),
         ));
