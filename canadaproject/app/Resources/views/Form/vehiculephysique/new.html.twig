@@ -8,12 +8,6 @@
         {{ form_start(form) }}
 
             <div class="form-group">
-                {{ form_label(form.concession, 'Point de vente') }}
-                {{ form_widget(form.concession, {'attr':{class:'form-control'}}) }}
-                {{ form_errors(form.concession) }}
-            </div>
-
-            <div class="form-group">
                 {{ form_label(form.marque, 'Marque') }}
                 {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.marque) }}
@@ -81,7 +75,8 @@
         <p>
             <input class="btn btn-primary" type="submit" value="Créer" />
         </p>
-        {{ form_end(form) }}
+        {{ form_row(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
 
        <p>
             <a class="btn btn-primary" href="{{ path('vehiculephysique_index') }}">Back to the list</a>

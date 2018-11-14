@@ -1,9 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Concessions list</h1>
+    <h1>Liste des Concessions</h1>
 
-    <table>
+    <div class="table-responsive">
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -14,13 +15,12 @@
                 <th>Tel</th>
                 <th>Mail</th>
                 <th>Nomducontact</th>
-                <th>Actif</th>
-                <th>Imagename</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for concession in concessions %}
+            {% if concession.actif %}
             <tr>
                 <td><a href="{{ path('concession_show', { 'id': concession.id }) }}">{{ concession.id }}</a></td>
                 <td>{{ concession.nom }}</td>
@@ -30,8 +30,6 @@
                 <td>{{ concession.tel }}</td>
                 <td>{{ concession.mail }}</td>
                 <td>{{ concession.nomDuContact }}</td>
-                <td>{% if concession.actif %}Yes{% else %}No{% endif %}</td>
-                <td>{{ concession.imageName }}</td>
                 <td>
                     <ul>
                         <li>
@@ -43,9 +41,12 @@
                     </ul>
                 </td>
             </tr>
+        {% else %}
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>
+    </div>
 
     <ul>
         <li>

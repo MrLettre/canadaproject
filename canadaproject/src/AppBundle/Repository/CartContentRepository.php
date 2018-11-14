@@ -10,4 +10,562 @@ namespace AppBundle\Repository;
  */
 class CartContentRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findByUser($userId)
+    {
+       //select c from AppBundle:CartContent where user = userId join AppBundle:Cart where actif = 1
+
+       $query = $this->createQueryBuilder('c')
+       ->where('c.user = :userId')
+       ->join('c.cart', 'cart')
+       ->andwhere('cart.actif = 1')
+       ->setParameter('userId', $userId)
+       ->getQuery();
+
+    return $query->getResult(); 
+
+    }
+
+    public function findForFinalTwig($venteId)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->where('c.vente = :venteId')
+            ->setParameter('venteId', $venteId)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    //REQUETES POUR LES STATS VENDEUR
+
+
+
+
+            
+
+//RECUPERATION DES VENTES TOTALES SUR TOUTES LES ANNEES
+
+public function findVentesVendeurTotales($concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andwhere('v.vente is not null')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->getQuery();
+
+return $query->getResult(); 
+}
+
+
+// RECUPERATION DES VENTES POUR CHAQUE ANNEE 
+
+public function findVentesVendeur2018($annee2018, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $annee2018.'0101')  
+    ->setParameter('finAnnee', $annee2018.'1231')
+    ->getQuery();
+
+    return $query->getResult();         
+}
+
+
+public function findVentesVendeur2019($annee2019, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $annee2019.'0101')  
+    ->setParameter('finAnnee', $annee2019.'1231')
+    ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2020($annee2020, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $annee2020.'0101')  
+    ->setParameter('finAnnee', $annee2020.'1231')
+    ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2021($annee2021, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $annee2021.'0101')  
+    ->setParameter('finAnnee', $annee2021.'1231')
+    ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2022($annee2022, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $annee2022.'0101')  
+    ->setParameter('finAnnee', $annee2022.'1231')
+    ->getQuery();
+
+    return $query->getResult();          
+}
+
+public function findVentesVendeur2023($annee2023, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $annee2023.'0101')  
+    ->setParameter('finAnnee', $annee2023.'1231')
+    ->getQuery();
+
+    return $query->getResult();          
+}
+
+public function findVentesVendeur2024($annee2024, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $annee2024.'0101')  
+    ->setParameter('finAnnee', $annee2024.'1231')
+    ->getQuery();
+
+    return $query->getResult();          
+}
+
+public function findVentesVendeur2025($annee2025, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $annee2025.'0101')  
+    ->setParameter('finAnnee', $annee2025.'1231')
+    ->getQuery();
+
+    return $query->getResult();          
+}
+
+
+// RECUPERATION DES VENTES ANNUELLES
+
+public function findVentesVendeurAnnuelles($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0101')  
+    ->setParameter('finAnnee', $finAnnee.'1231')
+    ->getQuery();
+
+    return $query->getResult();         
+}
+
+
+//DEBUT RECUPERATION PAR TRIMESTRES
+
+// Recuperation des ventes 1er trimestre
+
+public function findVentesVendeurTrimUn($premierTriDeb, $premierTriFin, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $premierTriDeb.'0101')  
+    ->setParameter('finAnnee', $premierTriFin.'1231')
+    ->getQuery();
+
+    return $query->getResult();          
+}
+
+
+// Recuperation des ventes 2eme trimestre
+
+public function findVentesVendeurTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $deuxiemeTriDeb.'0401')  
+    ->setParameter('finAnnee', $deuxiemeTriFin.'0631')
+    ->getQuery();
+
+    return $query->getResult(); 
+}
+
+
+// Recuperation des ventes 3eme trimestre
+
+public function findVentesVendeurTrimTrois($troisiemeTriDeb, $troisiemeTriFin, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $troisiemeTriDeb.'0701')  
+    ->setParameter('finAnnee', $troisiemeTriFin.'0931')
+    ->getQuery();
+
+    return $query->getResult(); 
+}
+
+
+// Recuperation des ventes 4eme trimestre
+
+public function findVentesVendeurTrimQuatre($quatriemeTriDeb, $quatriemeTriFin, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $quatriemeTriDeb.'1001')  
+    ->setParameter('finAnnee', $quatriemeTriFin.'1231')
+    ->getQuery();
+
+    return $query->getResult(); 
+}
+
+    //FIN RECUPERATION DES TRIMESTRES
+
+
+
+ // RECUPERATION DES VENTES ANNUELLES 
+
+public function findVentesVendeurJanvier($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0101')  
+    ->setParameter('finAnnee', $finAnnee.'0131')
+    ->getQuery();
+
+    return $query->getResult(); 
+}
+
+
+
+public function findVentesVendeurFevrier($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0201')  
+    ->setParameter('finAnnee', $finAnnee.'0231')
+    ->getQuery();
+
+    return $query->getResult(); 
+}
+
+
+
+
+public function findVentesVendeurMars($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0301')  
+    ->setParameter('finAnnee', $finAnnee.'0331')
+    ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+
+public function findVentesVendeurAvril($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0401')  
+    ->setParameter('finAnnee', $finAnnee.'0431')
+    ->getQuery();
+
+    return $query->getResult(); 
+}
+
+
+
+public function findVentesVendeurMai($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0501')  
+    ->setParameter('finAnnee', $finAnnee.'0531')
+    ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+
+public function findVentesVendeurJuin($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0601')  
+    ->setParameter('finAnnee', $finAnnee.'0631')
+    ->getQuery();
+
+    return $query->getResult(); 
+}
+
+
+
+public function findVentesVendeurJuillet($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0701')  
+    ->setParameter('finAnnee', $finAnnee.'0731')
+    ->getQuery();
+
+    return $query->getResult(); 
+}
+
+
+
+
+public function findVentesVendeurAout($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0801')  
+    ->setParameter('finAnnee', $finAnnee.'0831')
+    ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurSeptembre($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'0901')  
+    ->setParameter('finAnnee', $finAnnee.'0931')
+    ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurOctobre($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'1001')  
+    ->setParameter('finAnnee', $finAnnee.'1031')
+    ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurNovembre($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'1101')  
+    ->setParameter('finAnnee', $finAnnee.'1131')
+    ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurDecembre($debutAnnee, $finAnnee, $concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andWhere('vente.dateVente BETWEEN :debutAnnee AND :finAnnee')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)
+    ->setParameter('debutAnnee', $debutAnnee.'1201')  
+    ->setParameter('finAnnee', $finAnnee.'1231')
+    ->getQuery();
+
+    return $query->getResult();
+}
+
+
+public function findVendeurClients($concession)
+{
+    $query = $this->createQueryBuilder('v')
+    ->select('v')
+    ->join('v.vehiculePhysique', 'vp')
+    ->where('vp.concession = :concession')
+    ->join('v.vente', 'vente')
+    ->andwhere('v.vente is not null')
+    ->orderBy('vente.dateVente', 'ASC')
+    ->setParameter('concession', $concession)  
+    ->groupBy('v.user')
+    ->getQuery();
+
+return $query->getResult(); 
+}
+
+
+public function findAdminClients()
+{
+    $query = $this->createQueryBuilder('cc')
+    ->select('u.referenceClient', 'u.nom', 'u.prenom', 'u.ville', 'u.numeroTelephone')
+    ->join('cc.vehiculePhysique', 'vp')
+    ->join('cc.vente', 'v')
+    ->join('cc.user', 'u')
+    ->andwhere('cc.vente is not null')
+    ->groupBy('u.referenceClient', 'u.id')
+    ->getQuery();
+
+return $query->getResult(); 
+}
+
+
+public function findUserHistoric($referenceClient)
+{
+    $query = $this->createQueryBuilder('cc')
+    ->select('cc')
+    ->join('cc.vehiculePhysique', 'vp')
+    ->join('vp.concession', 'c')
+    ->join('cc.vente', 'v')
+    ->join('cc.user', 'u')
+    ->join('v.livraison', 'l')
+    ->where('u.referenceClient = :referenceClient')
+    ->setParameter('referenceClient', $referenceClient)
+    ->andwhere('cc.vente is not null')
+    ->orderBy('v.dateVente', 'ASC')
+    ->getQuery();
+
+return $query->getResult(); 
+}
+
+
+
+
 }

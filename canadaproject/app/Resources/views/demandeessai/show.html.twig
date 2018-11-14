@@ -1,44 +1,106 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Demandeessai</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ demandeEssai.id }}</td>
-            </tr>
-            <tr>
-                <th>Reference</th>
-                <td>{{ demandeEssai.reference }}</td>
-            </tr>
-            <tr>
-                <th>Datedemande</th>
-                <td>{% if demandeEssai.dateDemande %}{{ demandeEssai.dateDemande|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Dateessaiplanning</th>
-                <td>{% if demandeEssai.dateEssaiPlanning %}{{ demandeEssai.dateEssaiPlanning|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Commentaireclient</th>
-                <td>{{ demandeEssai.commentaireClient }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="contact-section col-md-12">
 
-    <ul>
-        <li>
-            <a href="{{ path('demandeessai_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('demandeessai_edit', { 'id': demandeEssai.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <!-- Form with header -->
+        <div class="card">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-lg-8">
+                    <div class="card-body form">
+
+                        <!-- Header -->
+                        <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Demande d'Essai du {{ demandeEssai.dateDemande|date('d-m-Y') }}:</h3>
+
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Demande émanant de :</h6> <p>{{ demandeEssai.user.nom }} {{ demandeEssai.user.prenom }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Date d'essai désirée :</h6> <p> {{ demandeEssai.dateEssaiPlanning|date('d-m-Y  H:i:s') }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Concernant le véhicule :</h6><img style="max-height: 30vh;" src="/images/photosVehiculePhysique/{{ demandeEssai.vehiculePhysique.imageName }}">
+                                    <p>{{ demandeEssai.vehiculePhysique.version.model.marque }} {{ demandeEssai.vehiculePhysique.version.model }} {{ demandeEssai.vehiculePhysique.version }}</p><br>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h6>Référence : {{ demandeEssai.vehiculePhysique.referenceVehPhy }}</h6>
+                                    <h6>Année : {{ demandeEssai.vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}</h6><br>
+                                    <h6>Kilométrage : {{ demandeEssai.vehiculePhysique.kilometrage }} km </h6> <br>
+                                    <h6>Prix : {{ demandeEssai.vehiculePhysique.prixHT }} $</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-12">
+                                <div class="md-form mb-0">
+                                    <h6> Message :</h6> <p> {{ demandeEssai.commentaireClient }}</p>
+                                </div>
+                                <div class="col-md-12" style="display: flex">
+                                    <p>
+                                        <a class="btn btn-success"href="{{ path('demandeessai_index') }}">Revenir à la liste des demandes d'essai</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-4">
+                    <div class="card-body contact text-center h-100 white-text">
+                        <h3 class="my-4 pb-2 white-text">Coordonnées du contact</h3>
+                        <hr class="hr-light my-4">
+                        <ul class="text-lg-left list-unstyled ml-4">
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="mail"></i> Email :</p>
+                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.email }}</p>
+                            </li>
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Téléphone :</p>
+                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.numeroTelephone }}</p>
+                            </li>
+                            <li>
+                                <p class="contact-adresse text-center white-text"><i data-feather="map-pin"></i> Adresse :</p>
+                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.adresse}} <br> {{ demandeEssai.user.codePostal }} {{ demandeEssai.user.ville }}</p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+
+
+            </div>
+            <!-- Grid row -->
+        </div>
+        <!-- Form with header -->
+    </section>
+
 {% endblock %}

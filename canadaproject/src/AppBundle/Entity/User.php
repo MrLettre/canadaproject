@@ -13,10 +13,20 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Concession", cascade={"persist"}, fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartContent", mappedBy="user")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $concessions;
+    private $cartContents;
+
+
+    /**
+ * One User has One Concession.
+ * @ORM\OneToOne(targetEntity="Concession", inversedBy="user")
+ * @ORM\JoinColumn(name="concession_id", referencedColumnName="id")
+ */
+    private $concession;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeEssai", mappedBy="user")
@@ -94,6 +104,20 @@ class User extends BaseUser
      * @ORM\Column(name="dateCreationProfil", type="datetime", nullable=true)
      */
     private $dateCreationProfil;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isClient", type="boolean", options={"default":false})
+     */
+    private $isClient;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceClient", type="string", length=32, nullable=true)
+     */
+    private $referenceClient;
 
     public function __construct()
     {
@@ -396,5 +420,113 @@ class User extends BaseUser
     public function getDemandesEssais()
     {
         return $this->demandesEssais;
+    }
+
+    /**
+     * Set concession.
+     *
+     * @param \AppBundle\Entity\Concession|null $concession
+     *
+     * @return User
+     */
+    public function setConcession(\AppBundle\Entity\Concession $concession = null)
+    {
+        $this->concession = $concession;
+
+        return $this;
+    }
+
+    /**
+     * Get concession.
+     *
+     * @return \AppBundle\Entity\Concession|null
+     */
+    public function getConcession()
+    {
+        return $this->concession;
+    }
+
+    /**
+     * Add cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return User
+     */
+    public function addCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        $this->cartContents[] = $cartContent;
+
+        return $this;
+    }
+
+    /**
+     * Remove cartContent.
+     *
+     * @param \AppBundle\Entity\CartContent $cartContent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCartContent(\AppBundle\Entity\CartContent $cartContent)
+    {
+        return $this->cartContents->removeElement($cartContent);
+    }
+
+    /**
+     * Get cartContents.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCartContents()
+    {
+        return $this->cartContents;
+    }
+
+    /**
+     * Set isClient.
+     *
+     * @param bool $isClient
+     *
+     * @return User
+     */
+    public function setIsClient($isClient)
+    {
+        $this->isClient = $isClient;
+
+        return $this;
+    }
+
+    /**
+     * Get isClient.
+     *
+     * @return bool
+     */
+    public function getIsClient()
+    {
+        return $this->isClient;
+    }
+
+    /**
+     * Set referenceClient.
+     *
+     * @param string|null $referenceClient
+     *
+     * @return User
+     */
+    public function setReferenceClient($referenceClient = null)
+    {
+        $this->referenceClient = $referenceClient;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceClient.
+     *
+     * @return string|null
+     */
+    public function getReferenceClient()
+    {
+        return $this->referenceClient;
     }
 }

@@ -10,4 +10,742 @@ namespace AppBundle\Repository;
  */
 class VenteRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    //RECUPERATION DES VENTES TOTALES SUR TOUTES LES ANNEES
+
+    public function findVentesTotales()
+    {
+    $dql = 'SELECT v FROM AppBundle:Vente v order by v.dateVente ASC';
+        $query = $this->getEntityManager()->createQuery($dql);
+        return $query->execute();
+    }
+
+
+    // RECUPERATION DES VENTES POUR CHAQUE ANNEE 
+
+    public function findVentes2018($annee2018)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $annee2018.'0101')  
+                 ->setParameter('finAnnee', $annee2018.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+
+    public function findVentes2019($annee2019)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $annee2019.'0101')  
+                 ->setParameter('finAnnee', $annee2019.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+    public function findVentes2020($annee2020)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $annee2020.'0101')  
+                 ->setParameter('finAnnee', $annee2020.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+    public function findVentes2021($annee2021)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $annee2021.'0101')  
+                 ->setParameter('finAnnee', $annee2021.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+    public function findVentes2022($annee2022)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $annee2022.'0101')  
+                 ->setParameter('finAnnee', $annee2022.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+    public function findVentes2023($annee2023)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $annee2023.'0101')  
+                 ->setParameter('finAnnee', $annee2023.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+    public function findVentes2024($annee2024)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $annee2024.'0101')  
+                 ->setParameter('finAnnee', $annee2024.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+    public function findVentes2025($annee2025)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $annee2025.'0101')  
+                 ->setParameter('finAnnee', $annee2025.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+    
+
+    // RECUPERATION DES VENTES ANNUELLES
+
+    public function findVentesAnnuelles($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->setParameter('debutAnnee', $debutAnnee.'0101')  
+                 ->setParameter('finAnnee', $finAnnee.'1231')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+
+    //DEBUT RECUPERATION PAR TRIMESTRES
+
+    // Recuperation des ventes 1er trimestre
+
+    public function findVentesTrimUn($premierTriDeb, $premierTriFin)
+    {
+        $query = $this->createQueryBuilder('v')
+                 ->where('v.dateVente BETWEEN :premierTriDeb AND :premierTriFin')
+                 ->setParameter('premierTriDeb', $premierTriDeb . '0101')  
+                 ->setParameter('premierTriFin', $premierTriFin . '0331')
+                 ->orderBy('v.dateVente', 'ASC')
+                 ->getQuery();
+
+        return $query->getResult();         
+    }
+
+
+// Recuperation des ventes 2eme trimestre
+
+    public function findVentesTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :deuxiemeTriDeb AND :deuxiemeTriFin')
+            ->setParameter('deuxiemeTriDeb', $deuxiemeTriDeb . '0401')
+            ->setParameter('deuxiemeTriFin', $deuxiemeTriFin . '0631')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+// Recuperation des ventes 3eme trimestre
+
+    public function findVentesTrimTrois($troisiemeTriDeb, $troisiemeTriFin)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :troisiemeTriDeb AND :troisiemeTriFin')
+            ->setParameter('troisiemeTriDeb', $troisiemeTriDeb . '0701')
+            ->setParameter('troisiemeTriFin', $troisiemeTriFin . '0931')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+ // Recuperation des ventes 4eme trimestre
+
+    public function findVentesTrimQuatre($quatriemeTriDeb, $quatriemeTriFin)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :quatriemeTriDeb AND :quatriemeTriFin')
+            ->setParameter('quatriemeTriDeb', $quatriemeTriDeb . '1001')
+            ->setParameter('quatriemeTriFin', $quatriemeTriFin . '1231')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+        //FIN RECUPERATION DES TRIMESTRES
+
+
+
+     // RECUPERATION DES VENTES ANNUELLES 
+
+    public function findVentesJanvier($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0101')
+            ->setParameter('finAnnee', $finAnnee . '0131')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    public function findVentesFevrier($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0201')
+            ->setParameter('finAnnee', $finAnnee . '0229')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+
+    public function findVentesMars($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0301')
+            ->setParameter('finAnnee', $finAnnee . '0331')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+
+    public function findVentesAvril($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0401')
+            ->setParameter('finAnnee', $finAnnee . '0430')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    public function findVentesMai($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0501')
+            ->setParameter('finAnnee', $finAnnee . '0531')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+
+    public function findVentesJuin($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0601')
+            ->setParameter('finAnnee', $finAnnee . '0631')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    public function findVentesJuillet($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0701')
+            ->setParameter('finAnnee', $finAnnee . '0731')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+
+    public function findVentesAout($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0801')
+            ->setParameter('finAnnee', $finAnnee . '0831')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    public function findVentesSeptembre($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '0901')
+            ->setParameter('finAnnee', $finAnnee . '0931')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    public function findVentesOctobre($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '1001')
+            ->setParameter('finAnnee', $finAnnee . '1031')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    public function findVentesNovembre($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '1101')
+            ->setParameter('finAnnee', $finAnnee . '1131')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    public function findVentesDecembre($debutAnnee, $finAnnee)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+            ->setParameter('debutAnnee', $debutAnnee . '1201')
+            ->setParameter('finAnnee', $finAnnee . '1231')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+
+            //REQUETES POUR LES STATS VENDEUR
+
+
+
+
+            
+
+//RECUPERATION DES VENTES TOTALES SUR TOUTES LES ANNEES
+
+public function findVentesVendeurTotales()
+{
+$dql = 'SELECT v FROM AppBundle:Vente v order by v.dateVente ASC';
+    $query = $this->getEntityManager()->createQuery($dql);
+    return $query->execute();
+}
+
+
+// RECUPERATION DES VENTES POUR CHAQUE ANNEE 
+
+public function findVentesVendeur2018($annee2018)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $annee2018.'0101')  
+             ->setParameter('finAnnee', $annee2018.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+
+public function findVentesVendeur2019($annee2019)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $annee2019.'0101')  
+             ->setParameter('finAnnee', $annee2019.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2020($annee2020)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $annee2020.'0101')  
+             ->setParameter('finAnnee', $annee2020.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2021($annee2021)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $annee2021.'0101')  
+             ->setParameter('finAnnee', $annee2021.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2022($annee2022)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $annee2022.'0101')  
+             ->setParameter('finAnnee', $annee2022.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2023($annee2023)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $annee2023.'0101')  
+             ->setParameter('finAnnee', $annee2023.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2024($annee2024)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $annee2024.'0101')  
+             ->setParameter('finAnnee', $annee2024.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+public function findVentesVendeur2025($annee2025)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $annee2025.'0101')  
+             ->setParameter('finAnnee', $annee2025.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+
+// RECUPERATION DES VENTES ANNUELLES
+
+public function findVentesVendeurAnnuelles($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+             ->orderBy('v.dateVente', 'ASC')
+             ->setParameter('debutAnnee', $debutAnnee.'0101')  
+             ->setParameter('finAnnee', $finAnnee.'1231')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+
+//DEBUT RECUPERATION PAR TRIMESTRES
+
+// Recuperation des ventes 1er trimestre
+
+public function findVentesVendeurTrimUn($premierTriDeb, $premierTriFin)
+{
+    $query = $this->createQueryBuilder('v')
+             ->where('v.dateVente BETWEEN :premierTriDeb AND :premierTriFin')
+             ->setParameter('premierTriDeb', $premierTriDeb . '0101')  
+             ->setParameter('premierTriFin', $premierTriFin . '0331')
+             ->orderBy('v.dateVente', 'ASC')
+             ->getQuery();
+
+    return $query->getResult();         
+}
+
+
+// Recuperation des ventes 2eme trimestre
+
+public function findVentesVendeurTrimDeux($deuxiemeTriDeb, $deuxiemeTriFin)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :deuxiemeTriDeb AND :deuxiemeTriFin')
+        ->setParameter('deuxiemeTriDeb', $deuxiemeTriDeb . '0401')
+        ->setParameter('deuxiemeTriFin', $deuxiemeTriFin . '0631')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+// Recuperation des ventes 3eme trimestre
+
+public function findVentesVendeurTrimTrois($troisiemeTriDeb, $troisiemeTriFin)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :troisiemeTriDeb AND :troisiemeTriFin')
+        ->setParameter('troisiemeTriDeb', $troisiemeTriDeb . '0701')
+        ->setParameter('troisiemeTriFin', $troisiemeTriFin . '0931')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+// Recuperation des ventes 4eme trimestre
+
+public function findVentesVendeurTrimQuatre($quatriemeTriDeb, $quatriemeTriFin)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :quatriemeTriDeb AND :quatriemeTriFin')
+        ->setParameter('quatriemeTriDeb', $quatriemeTriDeb . '1001')
+        ->setParameter('quatriemeTriFin', $quatriemeTriFin . '1231')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+    //FIN RECUPERATION DES TRIMESTRES
+
+
+
+ // RECUPERATION DES VENTES ANNUELLES 
+
+public function findVentesVendeurJanvier($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0101')
+        ->setParameter('finAnnee', $finAnnee . '0131')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurFevrier($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0201')
+        ->setParameter('finAnnee', $finAnnee . '0229')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+
+public function findVentesVendeurMars($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0301')
+        ->setParameter('finAnnee', $finAnnee . '0331')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+
+public function findVenteVendeurAvril($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0401')
+        ->setParameter('finAnnee', $finAnnee . '0430')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurMai($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0501')
+        ->setParameter('finAnnee', $finAnnee . '0531')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+
+public function findVentesVendeurJuin($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0601')
+        ->setParameter('finAnnee', $finAnnee . '0631')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurJuillet($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0701')
+        ->setParameter('finAnnee', $finAnnee . '0731')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+
+public function findVentesVendeurAout($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0801')
+        ->setParameter('finAnnee', $finAnnee . '0831')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurSeptembre($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '0901')
+        ->setParameter('finAnnee', $finAnnee . '0931')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurOctobre($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '1001')
+        ->setParameter('finAnnee', $finAnnee . '1031')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurNovembre($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '1101')
+        ->setParameter('finAnnee', $finAnnee . '1131')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+public function findVentesVendeurDecembre($debutAnnee, $finAnnee)
+{
+    $query = $this->createQueryBuilder('v')
+        ->where('v.dateVente BETWEEN :debutAnnee AND :finAnnee')
+        ->setParameter('debutAnnee', $debutAnnee . '1201')
+        ->setParameter('finAnnee', $finAnnee . '1231')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
+
+
+
 }

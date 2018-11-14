@@ -1,0 +1,61 @@
+{% extends 'admin/vendeurBase.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="container">
+        <div class="col-md-12">
+            <h3>Liste des livraisons en attente</h3>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Concession</th>
+                        <th scope="col">Date Prévisionnelle</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Mode de livraison</th>
+                        <th scope="col">Marque</th>
+                        <th scope="col">Modèle</th>
+                        <th scope="col">Version</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for livraison in livraisons %}
+                        <tr>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.concession.nom }}</td>
+                            <td>{{ livraison.dateLivraisonPrevisionnelle|date('Y-m-d') }}</td>
+                            <td>{{ livraison.vente.cartContent.user.nom }} {{ livraison.vente.cartContent.user.prenom }}</td>
+                            <td>{{ livraison.modeDeLivraison.nom }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version.model.marque }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version.model }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ path('livraisonVendeur_edit', { 'id': livraison.id }) }}">Valider la livraison</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+
+{% endblock %}

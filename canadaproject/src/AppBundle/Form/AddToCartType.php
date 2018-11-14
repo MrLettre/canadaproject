@@ -24,7 +24,7 @@ class AddToCartType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\VehiculePhysique'
+            'data_class' => 'AppBundle\Entity\CartContent'
         ));
     }
 
@@ -33,7 +33,7 @@ class AddToCartType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_vehiculephysique';
+        return 'appbundle_cartcontent';
     }
 
 

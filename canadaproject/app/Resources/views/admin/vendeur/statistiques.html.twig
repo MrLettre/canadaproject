@@ -1,65 +1,99 @@
-{% extends 'admin/vendeurBase.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
+
 
 {% block stylesheets %}
-  
+
 {% endblock %}
 
 {% block body %}
 
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        
+    {{ form_widget(form) }}
+
     {{ form_end(form) }}
 
 
 
-{# Pour les ventes totales #}
-<h4>Vente Totale de Vehicules: {{venteTotalesCompte}}</h4>
+    {# Pour les ventes totales #}
+  <h4>Vente Totale de Vehicules: {{venteTotalesCompte}}</h4>
 
-{% for venteTotales in venteTotales %}
-  <h6>Date de vente: {{ venteTotales.dateMiseAuPanier|date('Y-m-d')}}</h6>
-    {% for vehiculePhysiques in venteTotales.vehiculePhysiques %}
-      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+<button id="hideVt">Cacher</button>
+<button id="showVt">Voir</button>
+
+  <div class="hideShowVt">
+
+  
+
+    {% for venteTotales in venteTotales %}
+      <h6>Date de vente: {{ venteTotales.vente.dateVente|date('Y-m-d')}}</h6>
+
+     {% if venteTotales.vente == true %}
+
+
+      <p>Vehicule : {{ venteTotales.vehiculePhysique.version.model.marque.nom }} {{ venteTotales.vehiculePhysique.version.model.nom }} {{ venteTotales.vehiculePhysique.version.nom }}</p>
+       
+     {% endif %} 
+   
     {% endfor %}
-{% endfor %}
-{# Fin ventes totales #}
+    {# Fin ventes totales #}
+  </div>
 
-<hr>
 
+    <section>
+    <div class="container">
+      <div class="row">
+        <canvas id="totales" width="200" height="100"></canvas>
+      </div>  
+    </div>
+</section>
+
+
+
+
+  <hr>
+
+    
 {# Ventes annuelles #}
 
-<h4>Ventes annuelles</h4>
+  <h4>Ventes annuelles</h4>
 
-{% for venteAnnuelles in venteAnnuelles %}
+  <button id="hideVa">Cacher</button>
+  <button id="showVa">Voir</button>
 
+  <div class="hideShowVa"
 
-  <h6>Date de vente: {{ venteAnnuelles.dateMiseAuPanier|date('Y-m-d')}}</h6>
-    {% for vehiculePhysiques in venteAnnuelles.vehiculePhysiques %}
-      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+    {% for venteAnnuelles in venteAnnuelles %}
+      <h6>Date de vente: {{ venteAnnuelles.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteAnnuelles.vente == true %}
+
+      <p>Vehicule : {{ venteAnnuelles.vehiculePhysique.version.model.marque.nom }} {{ venteAnnuelles.vehiculePhysique.version.model.nom }} {{ venteAnnuelles.vehiculePhysique.version.nom }}</p>
+    
+     {% endif %}
+
+    {% else %}
+
+    <p>Pas de ventes cette année</p>
+    
     {% endfor %}
 
-{% endfor %}
+  </div>
+
+    {# Fin ventes annuelles #}
+
+<section>
+    <div class="container">
+      <div class="row">
+        <canvas id="annuelles" width="200" height="100"></canvas>
+      </div>  
+    </div>
+</section>
 
 
-<section class="section3">
-            <div class="container ">
-                <div class="row">
-                    <div class="stat2 col-8 offset-2">
-                        <canvas id="annuel" width="200" height="100"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
-
-
-{# Fin ventes annuelles #}
-
-
-<hr>
-
+  <hr>
 
 
 
@@ -69,105 +103,372 @@
 
 {# Ventes par trimestres #}
 
-<h4>Vente par trimestres</h4>
+  <h4>Vente par trimestres</h4>
 
 
-{# Ventes 1er trimestre #}
+  <button id="hideVtr">Cacher</button>
+  <button id="showVtr">Voir</button>
 
-<h5>Vente du premier trimestre</h5>
+  <div class="hideShowVtr">
 
-{% for venteTrimUn in venteTrimUn %}
+    {# Ventes 1er trimestre #}
 
-  <h6>Date de vente: {{ venteTrimUn.dateMiseAuPanier|date('Y-m-d')}}</h6>
-    {% for vehiculePhysiques in venteTrimUn.vehiculePhysiques %}
-      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+  <h5>Vente du premier trimestre</h5>
+
+    {% for venteTrimUn in venteTrimUn %}
+
+      <h6>Date de vente: {{ venteTrimUn.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteTrimUn.vente == true %}
+
+      <p>Vehicule : {{ venteTrimUn.vehiculePhysique.version.model.marque.nom }} {{ venteTrimUn.vehiculePhysique.version.model.nom }} {{ venteTrimUn.vehiculePhysique.version.nom }}</p>
+      
+     {% endif %}
+
+    {% else %}
+
+      <p> Pas de ventes au premier trimestre </p>
+
     {% endfor %}
 
-{% else %}
 
-<p> pas de ventes ce trimestre </p>
+    {# Fin ventes 1er trimestre #}
 
-{% endfor %}
+    {# Ventes 2eme trimestre #}
 
+  <h5>Vente du deuxième trimestre</h5>
 
-{# Fin ventes 1er trimestre #}
+    {% for venteTrimDeux in venteTrimDeux %}
 
-{# Ventes 2eme trimestre #}
+      <h6>Date de vente: {{ venteTrimDeux.vente.dateVente|date('Y-m-d')}}</h6>
 
-<h5>Vente du deuxiemme trimestre</h5>
+      {% if venteTrimDeux.vente == true %}
 
-{% for venteTrimDeux in venteTrimDeux %}
+       <p>Vehicule : {{ venteTrimDeux.vehiculePhysique.version.model.marque.nom }} {{ venteTrimDeux.vehiculePhysique.version.model.nom }} {{ venteTrimDeux.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}
 
-  <h6>Date de vente: {{ venteTrimDeux.dateMiseAuPanier|date('Y-m-d')}}</h6>
-    {% for vehiculePhysiques in venteTrimDeux.vehiculePhysiques %}
-      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+    {% else %}
+
+      <p> Pas de ventes au deuxième trimestre </p>
+
     {% endfor %}
 
-{% else %}
 
-<p> pas de ventes ce trimestre </p>
-
-{% endfor %}
+    {# Fin ventes 2eme trimestre #}
 
 
-{# Fin ventes 2eme trimestre #}
+    {# Ventes 3eme trimestre #}
 
+  <h5>Vente du troisième trimestre</h5>
 
-{# Ventes 3eme trimestre #}
+    {% for venteTrimTrois in venteTrimTrois %}
 
-<h5>Vente du troisième trimestre</h5>
+      <h6>Date de vente: {{ venteTrimTrois.vente.dateVente|date('Y-m-d')}}</h6>
 
-{% for venteTrimTrois in venteTrimTrois %}
+      {% if venteTrimTrois.vente == true %}
 
-  <h6>Date de vente: {{ venteTrimTrois.dateMiseAuPanier|date('Y-m-d')}}</h6>
-    {% for vehiculePhysiques in venteTrimTrois.vehiculePhysiques %}
-      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+       <p>Vehicule : {{ venteTrimTrois.vehiculePhysique.version.model.marque.nom }} {{ venteTrimTrois.vehiculePhysique.version.model.nom }} {{ venteTrimTrois.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}
+
+    {% else %}
+
+      <p> Pas de ventes au troisième trimestre </p>
+
     {% endfor %}
 
-{% else %}
 
-<p> pas de ventes ce trimestre </p>
+    {# Fin ventes 3eme trimestre #}
 
-{% endfor %}
+    {# Ventes 4eme trimestre #}
 
+  <h5>Vente du quatrième trimestre</h5>
 
-{# Fin ventes 3eme trimestre #}
+    {% for venteTrimQuatre in venteTrimQuatre %}
 
-{# Ventes 4eme trimestre #}
+      <h6>Date de vente: {{ venteTrimQuatre.vente.dateVente|date('Y-m-d')}}</h6>
 
-<h5>Vente du quatrième trimestre</h5>
+      {% if venteTrimQuatre.vente == true %}
 
-{% for venteTrimQuatre in venteTrimQuatre %}
+      <p>Vehicule : {{ venteTrimQuatre.vehiculePhysique.version.model.marque.nom }} {{ venteTrimQuatre.vehiculePhysique.version.model.nom }} {{ venteTrimQuatre.vehiculePhysique.version.nom }}</p>
+        
+      {% endif %}  
 
-  <h6>Date de vente: {{ venteTrimQuatre.dateMiseAuPanier|date('Y-m-d')}}</h6>
-    {% for vehiculePhysiques in venteTrimQuatre.vehiculePhysiques %}
-      <p>Vehicule : {{ vehiculePhysiques.version.model.marque.nom }} {{ vehiculePhysiques.version.model.nom }} {{ vehiculePhysiques.version.nom }}</p>
+    {% else %}
+
+      <p> Pas de ventes au quatrième trimestre </p>
+
     {% endfor %}
 
-{% else %}
 
-<p> pas de ventes ce trimestre </p>
+    {# Fin ventes 4eme trimestre #}
 
-{% endfor %}
+</div>
 
-
-{# Fin ventes 4eme trimestre #}
-
-
-{# Fin ventes trimestres #}
-
-<section class="section3">
-  <div class="container ">
-       <div class="row">
-          <div class="stat2 col-8 offset-2">
-              <canvas id="trimestre" width="200" height="100"></canvas>
-          </div>
-      </div>
-  </div>
+<section>
+    <div class="container">
+      <div class="row">
+        <canvas id="trimestres" width="200" height="100"></canvas>
+      </div>  
+    </div>
 </section>
 
 
+    {# Fin ventes trimestres #}
 
+
+
+<hr>
+
+  <h4>Vente par mois</h4>
+
+  <button id="hideVmo">Cacher</button>
+  <button id="showVmo">Voir</button>
+
+  <div class="hideShowVmo">
+
+
+{# Ventes par mois #}
+
+  <h5>Vente de Janvier</h5>
+
+    {% for venteJanvier in venteJanvier %}
+
+      <h6>Date de vente: {{ venteJanvier.vente.dateVente|date('Y-m-d')}}</h6>
+
+       {% if venteJanvier.vente == true %}
+
+       <p>Vehicule : {{ venteJanvier.vehiculePhysique.version.model.marque.nom }} {{ venteJanvier.vehiculePhysique.version.model.nom }} {{ venteJanvier.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en janvier </p>
+
+    {% endfor %}
+
+
+  <h5>Vente de Fevrier</h5>
+
+    {% for venteFevrier in venteFevrier %}
+
+      <h6>Date de vente: {{ venteFevrier.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteFevrier.vente == true %}
+
+       <p>Vehicule : {{ venteFevrier.vehiculePhysique.version.model.marque.nom }} {{ venteFevrier.vehiculePhysique.version.model.nom }} {{ venteFevrier.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en février </p>
+
+    {% endfor %}
+
+
+    <h5>Vente de Mars</h5>
+
+    {% for venteMars in venteMars %}
+
+      <h6>Date de vente: {{ venteMars.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteMars.vente == true %}
+
+       <p>Vehicule : {{ venteMars.vehiculePhysique.version.model.marque.nom }} {{ venteMars.vehiculePhysique.version.model.nom }} {{ venteMars.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en mars </p>
+
+    {% endfor %}
+
+
+        <h5>Vente de Avril</h5>
+
+    {% for venteAvril in venteAvril %}
+
+      <h6>Date de vente: {{ venteAvril.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteAvril.vente == true %}
+
+       <p>Vehicule : {{ venteAvril.vehiculePhysique.version.model.marque.nom }} {{ venteAvril.vehiculePhysique.version.model.nom }} {{ venteAvril.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en avril </p>
+
+    {% endfor %}
+
+
+          <h5>Vente de Mai</h5>
+
+    {% for venteMai in venteMai %}
+
+      <h6>Date de vente: {{ venteMai.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteMai.vente == true %}
+
+       <p>Vehicule : {{ venteMai.vehiculePhysique.version.model.marque.nom }} {{ venteMai.vehiculePhysique.version.model.nom }} {{ venteMai.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en mai </p>
+
+    {% endfor %}
+
+
+             <h5>Vente de Juin</h5>
+
+    {% for venteJuin in venteJuin %}
+
+      <h6>Date de vente: {{ venteJuin.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteJuin.vente == true %}
+
+       <p>Vehicule : {{ venteJuin.vehiculePhysique.version.model.marque.nom }} {{ venteJuin.vehiculePhysique.version.model.nom }} {{ venteJuin.cartContent.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en juin </p>
+
+    {% endfor %}
+
+
+    <h5>Vente de Juillet</h5>
+
+    {% for venteJuillet in venteJuillet %}
+
+      <h6>Date de vente: {{ venteJuillet.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteJuillet.vente == true %}
+
+       <p>Vehicule : {{ venteJuillet.vehiculePhysique.version.model.marque.nom }} {{ venteJuillet.vehiculePhysique.version.model.nom }} {{ venteJuillet.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en juillet </p>
+
+    {% endfor %}
+
+
+      <h5>Vente de Aout</h5>
+
+    {% for venteAout in venteAout %}
+
+      <h6>Date de vente: {{ venteAout.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteAout.vente == true %}
+
+       <p>Vehicule : {{ venteAout.vehiculePhysique.version.model.marque.nom }} {{ venteAout.vehiculePhysique.version.model.nom }} {{ venteAout.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en aout </p>
+
+    {% endfor %}
+
+
+       <h5>Vente de Septembre</h5>
+
+    {% for venteSeptembre in venteSeptembre %}
+
+      <h6>Date de vente: {{ venteSeptembre.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteSeptembre.vente == true %}
+
+       <p>Vehicule : {{ venteSeptembre.vehiculePhysique.version.model.marque.nom }} {{ venteSeptembre.vehiculePhysique.version.model.nom }} {{ venteSeptembre.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en septembre </p>
+
+    {% endfor %}
+
+
+
+         <h5>Vente de Octobre</h5>
+
+    {% for venteOctobre in venteOctobre %}
+
+      <h6>Date de vente: {{ venteOctobre.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteOctobre.vente == true %}
+
+       <p>Vehicule : {{ venteOctobre.vehiculePhysique.version.model.marque.nom }} {{ venteOctobre.vehiculePhysique.version.model.nom }} {{ venteOctobre.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en octobre </p>
+
+    {% endfor %}
+
+
+          <h5>Vente de Novembre</h5>
+
+    {% for venteNovembre in venteNovembre %}
+
+      <h6>Date de vente: {{ venteNovembre.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteNovembre.vente == true %}
+
+       <p>Vehicule : {{ venteNovembre.vehiculePhysique.version.model.marque.nom }} {{ venteNovembre.vehiculePhysique.version.model.nom }} {{ venteNovembre.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en novembre </p>
+
+    {% endfor %}
+
+
+    <h5>Vente de Décembre</h5>
+
+    {% for venteDecembre in venteDecembre %}
+
+      <h6>Date de vente: {{ venteDecembre.vente.dateVente|date('Y-m-d')}}</h6>
+
+      {% if venteDecembre.vente == true %}
+
+       <p>Vehicule : {{ venteDecembre.vehiculePhysique.version.model.marque.nom }} {{ venteDecembre.vehiculePhysique.version.model.nom }} {{ venteDecembre.vehiculePhysique.version.nom }}</p>
+       
+       {% endif %}  
+
+    {% else %}
+
+      <p> Pas de ventes en décembre </p>
+
+    {% endfor %}
+
+</div>
+
+
+<section>
+    <div class="container">
+      <div class="row">
+        <canvas id="mois" width="200" height="100"></canvas>
+      </div>  
+    </div>
+</section>
 
 
 
@@ -176,81 +477,79 @@
 
 
 
- 
+
 
 
 {% block javascripts %}
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 
 
 
 <script>
-var ctx = document.getElementById('trimestre').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'bar',
+$(document).ready(function(){
 
-    // The data for our dataset
-    data: {
-        labels: ["1er trimestre", "2eme trimestre", "3eme trimestre", "4eme trimestre"],
-        datasets: [{
-            label: "Ventes par trimestres",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [{{chartTrimUn}}, {{chartTrimDeux}}, {{chartTrimTrois}}, {{chartTrimQuatre}}],
-             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
+$(".hideShowVt").hide();
 
-    // Configuration options go here
-    options: {
-            scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-    
+    $("#hideVt").click(function(){
+        $(".hideShowVt").hide("slow");
+    });
+    $("#showVt").click(function(){
+        $(".hideShowVt").show("slow");
+    });
+
+
+    $(".hideShowVa").hide();
+
+    $("#hideVa").click(function(){
+        $(".hideShowVa").hide("slow");
+    });
+    $("#showVa").click(function(){
+        $(".hideShowVa").show("slow");
+    });
+
+      $(".hideShowVtr").hide();
+
+    $("#hideVtr").click(function(){
+        $(".hideShowVtr").hide("slow");
+    });
+    $("#showVtr").click(function(){
+        $(".hideShowVtr").show("slow");
+    });
+
+
+
+    $(".hideShowVmo").hide();
+
+    $("#hideVmo").click(function(){
+        $(".hideShowVmo").hide("slow");
+    });
+    $("#showVmo").click(function(){
+        $(".hideShowVmo").show("slow");
+    });
+
 });
+
+
 </script>
 
-<script>
-var ctx = document.getElementById('annuel').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
 
-    // The data for our dataset
+
+
+   <script>
+
+var ctx = document.getElementById("totales").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
     data: {
-        labels: ["1er trimestre", "2eme trimestre", "3eme trimestre", "4eme trimestre"],
+        labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
         datasets: [{
-            label: "Ventes annuelles par trimestres",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [{{chartTrimUn}}, {{chartTrimDeux}}, {{chartTrimTrois}}, {{chartTrimQuatre}}],
-             backgroundColor: [
+            label: 'Ventes',
+            fill: false,
+            data: [ {{vente2018}}, {{vente2019}}, {{vente2020}}, {{vente2021}}, {{vente2022}}, {{vente2023}}, {{vente2024}}, {{vente2025}}],
+            backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
@@ -269,10 +568,8 @@ var chart = new Chart(ctx, {
             borderWidth: 1
         }]
     },
-
-    // Configuration options go here
     options: {
-       scales: {
+        scales: {
             yAxes: [{
                 ticks: {
                     beginAtZero:true
@@ -280,8 +577,145 @@ var chart = new Chart(ctx, {
             }]
         }
     }
-    
 });
+
+</script>
+
+
+<script>
+
+var ctx = document.getElementById("annuelles").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+        datasets: [{
+            label: 'Ventes',
+            fill: false,
+            data: [ {{chartAnJanvier}}, {{chartAnFevrier}}, {{chartAnMars}}, {{chartAnAvril}}, {{chartAnMai}}, {{chartAnJuin}}, {{chartAnJuillet}}, {{chartAnAout}}, {{chartAnSeptembre}}, {{chartAnOctobre}}, {{chartAnNovembre}}, {{chartAnDecembre}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+</script>
+
+
+
+<script>
+
+var ctx = document.getElementById("trimestres").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["1er trimestre", "2eme trimestre", "3eme trimestre", "4eme trimestre"],
+        datasets: [{
+            label: 'Ventes',
+            data: [{{chartTrimUn}}, {{chartTrimDeux}}, {{chartTrimTrois}}, {{chartTrimQuatre}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }],
+        }
+    }
+});
+
+</script>
+
+
+<script>
+
+var ctx = document.getElementById("mois").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+        datasets: [{
+            label: 'Ventes',
+            data: [ {{chartJanvier}}, {{chartFevrier}}, {{chartMars}}, {{chartAvril}}, {{chartMai}}, {{chartJuin}}, {{chartJuillet}}, {{chartAout}}, {{chartSeptembre}}, {{chartOctobre}}, {{chartNovembre}}, {{chartDecembre}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(235, 99, 132, 0.2)',
+                'rgba(254, 162, 235, 0.2)',
+                'rgba(180, 206, 86, 0.2)',
+                'rgba(215, 192, 192, 0.2)',
+                'rgba(160, 102, 255, 0.2)',
+                'rgba(270, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }],
+        }
+    }
+});
+
 </script>
 
 

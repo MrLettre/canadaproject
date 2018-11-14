@@ -14,7 +14,7 @@ class DemandeEssaiType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateDemande')
+            ->add('dateEssaiPlanning')
             ->add('commentaireClient');
     }/**
      * {@inheritdoc}

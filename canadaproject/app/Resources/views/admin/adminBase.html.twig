@@ -53,9 +53,11 @@
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="img/avatar-7.jpg" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5">User</h2><span>Admin</span>
-          </div>
+            <div class="sidenav-header-inner text-center" style="background-color: white;border-radius: 100vw;padding: 0.3vw;margin-right: 1vw"><img src="/images/header/Carify_LogoAccueil.png">
+            </div>
+            <div>
+                <p style="color: white;font-weight: bold">Admin</p>
+            </div>
           <!-- Small Brand information, appears on minimized sidebar-->
           <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
         </div>
@@ -64,28 +66,31 @@
           <h5 class="sidenav-heading">ADMINISTRATION</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled"> 
             <li><i class="icon-home"></i>Utilisateurs</li>
-                <li><a href="/register"> <i class="icon-grid"></i>Créer un Utilisateur</a></li>
-                <li><a href="/user"> <i class="icon-grid"></i>Liste des Utilisateurs</a></li>
+              <li><a href="/concession/new"> <i class="icon-grid"></i>Créer une Concession</a></li>
+              <li><a href="/register"> <i class="icon-grid"></i>Créer un Utilisateur</a></li>
+              <li><a href="/concession"> <i class="icon-grid"></i>Liste des Concessions</a></li>
+              <li><a href="/user"> <i class="icon-grid"></i>Liste des Utilisateurs</a></li>
+              <li><a href="{{ path('adminUserList') }}"> <i class="icon-grid"></i>Liste clients Carify</a></li>
             <li><i class="icon-form"></i>Mes Vendeurs</li>
-                <li><a href="{{ path('vehiculephysique_validation_index') }}"> <i class="icon-grid"></i>Validation véhicules</a></li>
-                <li><a href="{{ path('vehiculephysique_index') }}"> <i class="icon-grid"></i>Parc Automobile</a></li>
+                    <li><a href="{{ path('vehiculephysique_validation_index') }}"> <i class="icon-grid"></i>Validation véhicules</a></li>
+                    <li><a href="{{ path('vehiculephysique_index') }}"> <i class="icon-grid"></i>Parc Automobile</a></li>
+            <li><i class="icon-form"></i>Livraisons</li>
+                    <li><a href="{{ path('adminlivraisonEnAttente_index') }}"> <i class="icon-grid"></i>Livraisons en attente</a></li>
+                    <li><a href="{{ path('adminlivraison_index') }}"> <i class="icon-grid"></i>Livraisons effectuées</a></li>
             <li><i class="icon-grid"></i>Contact</li>
-            <li><a href="{{ path('contact_index') }}"> <i class="icon-grid"></i>Demandes de Contact</a></li>
+                    <li><a href="{{ path('contact_index') }}"> <i class="icon-grid"></i>Demandes de Contact</a></li>
+                    <li><a href="{{ path('demandeessai_index') }}"> <i class="icon-grid"></i>Demandes d' Essai</a></li>
             <li><i class="icon-grid"></i>Comparateur Carify</li>
-            <li><a href="{{ path('vehicledefinition_new') }}"> <i class="icon-grid"></i>Ajouter un Véhicule</a></li>
-            <li><a href="{{ path('vehicledefinition_index') }}"> <i class="icon-grid"></i>Liste des Véhicules</a></li>
-
-
-
+                    <li><a href="{{ path('vehicledefinition_new') }}"> <i class="icon-grid"></i>Ajouter un Véhicule</a></li>
+                    <li><a href="{{ path('vehicledefinition_index') }}"> <i class="icon-grid"></i>Liste des Véhicules</a></li>
           </ul>
         </div>
         <div class="admin-menu">
           <h5 class="sidenav-heading">STATISTIQUES</h5>
           <ul id="side-admin-menu" class="side-menu list-unstyled">
-              <li><a href="{{ path('adminStats') }}"> <i class="fa fa-bar-chart"></i>Statistiques</a></li>
-
-                <div class="badge badge-info">Special</div></a></li>
-
+              <li>
+                  <a href="{{ path('adminStats') }}"> <i class="fa fa-bar-chart"></i>Statistiques</a>
+              </li>
           </ul>
         </div>
           <div class="admin-menu">
@@ -175,6 +180,7 @@
       {% endblock header %}
 
         {% block body %}{% endblock %}
+        {% block fos_user_content %}{% endblock %}
 
         <!-- Counts Section -->
         {% block footer %}

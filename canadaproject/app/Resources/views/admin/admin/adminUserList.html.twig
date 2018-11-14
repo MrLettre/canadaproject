@@ -1,0 +1,62 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+{% block body %}
+
+
+<h1>Mes clients</h1>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+
+            <tr>
+            	<th>Référence</th>
+                <th>Nom</th>
+                <th>Prénom</th>              
+                <th>Ville</th>
+                <th>Téléphone</th>
+                <th>Action</th>
+                
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for client in clients %}
+
+                    <tr>
+                    	<td>{{client.referenceClient}}</td>
+                        <td>{{client.nom}}</td>
+                        <td>{{client.prenom}}</td>
+                        <td>{{client.ville}}</td>
+                        <td>{{client.numeroTelephone}}</td>
+                        <td><a href="{{ path('adminUserHistoric', {referenceClient: client.referenceClient }) }}" class="btn btn-primary" value="{{ client.referenceClient }}">Historique des achats</a></td>
+                        
+                    </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+ 
+
+
+{% block javascripts %}
+   
+{% endblock %}

@@ -17,6 +17,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Concession
 {
     /**
+     * One Cart has One Customer.
+     * @ORM\OneToOne(targetEntity="User", mappedBy="concession")
+     */
+    private $user;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehiculePhysique", mappedBy="concession")
      */
     private $vehiculePhysiques;
@@ -453,5 +459,53 @@ class Concession
     public function getDemandesEssais()
     {
         return $this->demandesEssais;
+    }
+
+    /**
+     * Set user.
+     *
+     * @param \AppBundle\Entity\User|null $user
+     *
+     * @return Concession
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \AppBundle\Entity\User|null
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set concession.
+     *
+     * @param \AppBundle\Entity\User|null $concession
+     *
+     * @return Concession
+     */
+    public function setConcession(\AppBundle\Entity\User $concession = null)
+    {
+        $this->concession = $concession;
+
+        return $this;
+    }
+
+    /**
+     * Get concession.
+     *
+     * @return \AppBundle\Entity\User|null
+     */
+    public function getConcession()
+    {
+        return $this->concession;
     }
 }

@@ -17,6 +17,7 @@ class VehiclePhyStatut
      */
     private $vehiculePhysiques;
 
+
     /**
      * @var int
      *
@@ -109,5 +110,11 @@ class VehiclePhyStatut
     public function getVehiculePhysiques()
     {
         return $this->vehiculePhysiques;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->statut;
     }
 }

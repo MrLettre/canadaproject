@@ -1,0 +1,56 @@
+{% extends 'admin/vendeurBase.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container">
+        <div class="col-md-12">
+            <h3>Liste des livraisons effectuées</h3>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Concession</th>
+                        <th scope="col">Date de livraison</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Mode de livraison</th>
+                        <th scope="col">Marque</th>
+                        <th scope="col">Modèle</th>
+                        <th scope="col">Version</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for livraison in livraisons %}
+                        <tr>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.concession.nom }}</td>
+                            <td>{{ livraison.dateLivraisonEffective|date('Y-m-d') }}</td>
+                            <td>{{ livraison.vente.cartContent.user.nom }} {{ livraison.vente.cartContent.user.prenom }}</td>
+                            <td>{{ livraison.modeDeLivraison }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version.model.marque }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version.model }}</td>
+                            <td>{{ livraison.vente.cartContent.vehiculePhysique.version }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+
+{% endblock %}

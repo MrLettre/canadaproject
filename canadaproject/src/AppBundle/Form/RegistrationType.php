@@ -11,15 +11,21 @@ class RegistrationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')
+        $builder
+            ->add('username')
+            ->add('nom')
             ->add('prenom')
+            ->add('adresse')
+            ->add('codePostal')
+            ->add('ville')
+            ->add('concession')
             ->add('numeroTelephone')
             ->add('dateNaissance')
             ->add('dateCreationProfil')
             ->add('roles', ChoiceType::class, [
-                'multiple' => true,
-                'expanded' => true, // render check-boxes
-                'choices' => [
+                    'multiple' => true,
+                    'expanded' => true, // render check-boxes
+                    'choices' => [
                     'Administrateur' => 'ROLE_ADMIN',
                     'Vendeur' => 'ROLE_VENDEUR',
                     'Client' => 'ROLE_USER',

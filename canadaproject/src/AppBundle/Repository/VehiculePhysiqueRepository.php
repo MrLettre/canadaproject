@@ -171,4 +171,22 @@ class VehiculePhysiqueRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getQuery()->getArrayResult();
     }
+
+    public function findByConcession($concession){
+        return $this->getEntityManager()
+            ->createQuery("SELECT v FROM AppBundle:VehiculePhysique v WHERE v.concession = $concession ORDER BY v.dateMiseEnLigne ASC")
+            ->getResult();
+    }
+
+    public function findForFinalTwig($venteId)
+    {
+        $query = $this->createQueryBuilder('v')
+            ->where('c.vente = :venteId')
+            ->setParameter('venteId', $venteId)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
 }

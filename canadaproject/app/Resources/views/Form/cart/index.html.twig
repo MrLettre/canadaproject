@@ -15,7 +15,7 @@
         {% for cart in carts %}
             <tr>
                 <td><a href="{{ path('cart_show', { 'id': cart.id }) }}">{{ cart.id }}</a></td>
-                <td>{% if cart.dateMiseAuPanier %}{{ cart.dateMiseAuPanier|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cart.DateCreationPanier %}{{ cart.DateCreationPanier|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>

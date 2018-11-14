@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\VehiclePhyStatut;
 use AppBundle\Entity\VehiclesValidationStatut;
 use AppBundle\Entity\VehiculePhysique;
 use AppBundle\Entity\VehicleDefinition;
@@ -36,7 +37,9 @@ class VehiculePhysiqueController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $concession= $vehiculePhysique->getConcession();
+            $user = $this->getUser();
+            $concession = $user->getConcession();
+            $vehiculePhysique->setConcession($concession);
             $ref= 'VEHPHY'.'-'.$concession.rand(0, 99999);
             $vehiculePhysique->setReferenceVehPhy($ref);
             $em->persist($vehiculePhysique);
@@ -138,7 +141,7 @@ class VehiculePhysiqueController extends Controller
     public function ficheProduit(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        
+        $user = $this->getUser();
         $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findById($id);
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
@@ -151,20 +154,16 @@ class VehiculePhysiqueController extends Controller
 
         if ($formCart->isSubmitted() && $formCart->isValid()) {
 
-            $vehPhy = $this->forward('AppBundle:CartContent:new', array(
-               'voiturephy' => $voiturephy,
+            return $this->redirectToRoute('cartcontent_new', array(
+                'id' => $id,
             ));
-
-            return $vehPhy;
         }
 
         if ($formEssai->isSubmitted() && $formEssai->isValid()) {
 
-            $vehPhy = $this->forward('AppBundle:DemandeEssai:new', array(
-                'voiturephy' => $voiturephy,
+            return $this->redirectToRoute('demandeessai_new', array(
+                'id' => $id,
             ));
-
-            return $vehPhy;
         }
 
         return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [
@@ -173,6 +172,7 @@ class VehiculePhysiqueController extends Controller
             'optionsphy' => $optionsphy,
             'formCart' => $formCart->createView(),
             'formEssai' => $formEssai->createView(),
+            'user' => $user,
 
         ]);
     }

@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+    <div class="container">
+        <div class="row justify-content-md-center" style="margin-top: 3vh">
+            <div class="col-md-10">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+                        <span class="sr-only">75% effectué (success)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 3vh; ">
+        <div class="row" style="text-align: center">
+            <div class="col-md-12">
+                <h1>Paiement & options</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 3vh; margin-bottom: 3vh">
+        <div class="row" >
+            <div class="col-md-7" style="text-align: center">
+                <div class="card">
+                    <div class="container">
+                        <div class="row" style="text-align: center; background-color: #1e6da6; margin-bottom: 2vh">
+                            <div class="col-md-12">
+                                <h4>SELECTIONNEZ VOTRE MODE DE PAIEMENT</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10" style="margin: auto">
+                                <p><img src="/images/cartPaiement/CB-CARIFY.jpg" height="100" alt=""></p>
+                            </div>
+                        </div>
+                        <h3> Veuillez saisir vos informations de Paiement:</h3>
+                        <div class="card" style="margin-bottom: 2vh">
+                            <div class="row">
+                                <div class="col-md-12" style="display: flex; margin: 2vh 0 2vh 0">
+                                    <div class="col-md-6" style="text-align: center">
+                                        <div class="container">
+                                            <div class="row" style="text-align: center;">
+                                                <div class="col-md-12">
+                                                    <h3>Paiement 100% Sécurisé</h3>
+                                                    <p><img src="/images/cartPaiement/cadnasCarify.png" height="100" alt=""></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="text-align: center">
+                                        <div class="card">
+                                            <div class="container">
+                                            <div class="row" style="margin-bottom: 3vh">
+                                                <div class="col-md-12">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body">
+                                                            <form role="form">
+                                                                <div class="form-group">
+                                                                    <label for="cardNumber">
+                                                                        Veuillez insérer vos informations</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                                                               required autofocus />
+                                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="flex-direction: column">
+                                                                    <div class="col-md-7">
+                                                                        <div class="form-group" style="display: flex">
+                                                                            <div class="col-md-6 pl-ziro" style="padding: 0;">
+                                                                                <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                                                            </div>
+                                                                            <div class="col-md-6 pl-ziro" style="padding: 0;">
+                                                                                <input type="text" class="form-control" id="expityYear" placeholder="YY" required />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5 ">
+                                                                        <div class="form-group" >
+                                                                            <input type="password" class="form-control" id="cvCode" placeholder="CLE" required />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-success btn-lg btn-block"><a href="{{ path('cart_vente_validation', {'id': livraison.id}) }}">Valider le paiement</a></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="container">
+                            <div class="row" style="text-align: center; background-color: #1e6da6">
+                                <div class="col-md-12">
+                                    <h4>RECAPITULATIF COMMANDE</h4>
+                                </div>
+                            </div>
+                            {% for cart in carts %}
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td><img src="/images/photosVehiculePhysique/{{ cart.vehiculePhysique.imageName }}" style="max-height:7vh"></td>
+                                            <td>{{ cart.vehiculePhysique.version.model.marque }} {{ cart.vehiculePhysique.version.model }} {{ cart.vehiculePhysique.version }}</td>
+                                            <td>{{ cart.vehiculePhysique.prixHT }}$</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span style="font-size: 1vw; font-weight: bold">Frais de livraisons</span></td>
+                                            <td><span style="font-size: 1vw">{{ livraison.modeDeLivraison.nom }}</span></td>
+                                            <td><span style="font-size: 1vw">{{ livraison.modeDeLivraison.prix }}$</span></td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody>
+                                        <tr>
+                                            <td><span style="font-size: 1vw; font-weight: bold">Frais & Taxes</span></td>
+                                            <td></td>
+                                            <td><span style="">{{ cart.vehiculePhysique.prixTTC - cart.vehiculePhysique.prixHT }}$</span></td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody>
+                                        <tr>
+                                            <td><span style="font-weight: bold">TOTAL TTC A PAYER</span></td>
+                                            <td></td>
+                                            <td><span style="color:red; font-weight: bold">{{ cart.vehiculePhysique.prixTTC + livraison.modeDeLivraison.prix }}$</span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="container">
+                            <div class="row" style="text-align: center; background-color: #1e6da6">
+                                <div class="col-md-12">
+                                    <h4>ADRESSE DE LIVRAISON</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <ul style="list-style-type: none">
+                                        <li> {{ app.user.nom }} {{ app.user.prenom }}</li>
+                                        <li>{{  app.user.adresse }}</li>
+                                        <li>{{ app.user.codePostal }} {{ app.user.ville }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="container">
+                            <div class="row" style="text-align: center; background-color: #1e6da6">
+                                <div class="col-md-12">
+                                    <h4>MES COORDONNEES</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <ul style="list-style-type: none">
+                                        <li><span style="font-weight: bold">Tel : </span>{{  app.user.numeroTelephone }}</li>
+                                        <li><span style="font-weight: bold">Mail : </span>{{ app.user.email }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

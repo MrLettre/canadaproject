@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modedelivraisons list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reference</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Delaimoyen</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modeDeLivraison in modeDeLivraisons %}
+            <tr>
+                <td><a href="{{ path('modedelivraison_show', { 'id': modeDeLivraison.id }) }}">{{ modeDeLivraison.id }}</a></td>
+                <td>{{ modeDeLivraison.reference }}</td>
+                <td>{{ modeDeLivraison.nom }}</td>
+                <td>{{ modeDeLivraison.prix }}</td>
+                <td>{{ modeDeLivraison.delaiMoyen }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('modedelivraison_show', { 'id': modeDeLivraison.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('modedelivraison_edit', { 'id': modeDeLivraison.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('modedelivraison_new') }}">Create a new modeDeLivraison</a>
+        </li>
+    </ul>
+{% endblock %}
