@@ -55,7 +55,7 @@ public function findVentesVendeurTotales($concession)
     ->join('v.vente', 'vente')
     ->andwhere('v.vente is not null')
     ->orderBy('vente.dateVente', 'ASC')
-    ->setParameter('concession', $concession)  
+    ->setParameter('concession', $concession)
     ->getQuery();
 
 return $query->getResult(); 
@@ -534,30 +534,32 @@ return $query->getResult();
 
 public function findAdminClients()
 {
-    $query = $this->createQueryBuilder('c')
-    ->select('c')
-    ->join('c.vehiculePhysique', 'vp')
-    ->join('c.vente', 'vente')
-    ->andwhere('c.vente is not null')
-    ->orderBy('vente.dateVente', 'ASC') 
-    ->groupBy('c.user')
+    $query = $this->createQueryBuilder('cc')
+    ->select('u.referenceClient', 'u.nom', 'u.prenom', 'u.ville', 'u.numeroTelephone')
+    ->join('cc.vehiculePhysique', 'vp')
+    ->join('cc.vente', 'v')
+    ->join('cc.user', 'u')
+    ->andwhere('cc.vente is not null')
+    ->groupBy('u.referenceClient', 'u.id')
     ->getQuery();
 
 return $query->getResult(); 
 }
 
 
-public function findUserHistoric($id)
+public function findUserHistoric($referenceClient)
 {
-    $query = $this->createQueryBuilder('c')
-    ->select('c')
-    ->join('c.vehiculePhysique', 'vp')
-    ->join('c.vente', 'vente')
-    ->where('c.user = :id')
-    ->andwhere('c.vente is not null')
-    ->orderBy('vente.dateVente', 'ASC') 
-    ->setParameter('id', $id)
-    ->groupBy('c.user')
+    $query = $this->createQueryBuilder('cc')
+    ->select('cc')
+    ->join('cc.vehiculePhysique', 'vp')
+    ->join('vp.concession', 'c')
+    ->join('cc.vente', 'v')
+    ->join('cc.user', 'u')
+    ->join('v.livraison', 'l')
+    ->where('u.referenceClient = :referenceClient')
+    ->setParameter('referenceClient', $referenceClient)
+    ->andwhere('cc.vente is not null')
+    ->orderBy('v.dateVente', 'ASC')
     ->getQuery();
 
 return $query->getResult(); 

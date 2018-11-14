@@ -27,15 +27,15 @@
 
             <tbody>
 
-            {% for cartContent in cartContents %}
+            {% for client in clients %}
 
                     <tr>
-                    	<td>{{cartContent.user.referenceClient}}</td>
-                        <td>{{cartContent.user.nom}}</td>
-                        <td>{{cartContent.user.prenom}}</td>
-                        <td>{{cartContent.user.ville}}</td>
-                        <td>{{cartContent.user.numeroTelephone}}</td>
-                        <td><a href="{{ path('adminUserHistoric', {id: cartContent.user.id}) }}" class="btn btn-primary" value="{{cartContent.user.id}}">Historique des achats</a></td>
+                    	<td>{{client.referenceClient}}</td>
+                        <td>{{client.nom}}</td>
+                        <td>{{client.prenom}}</td>
+                        <td>{{client.ville}}</td>
+                        <td>{{client.numeroTelephone}}</td>
+                        <td><a href="{{ path('adminUserHistoric', {referenceClient: client.referenceClient }) }}" class="btn btn-primary" value="{{ client.referenceClient }}">Historique des achats</a></td>
                         
                     </tr>
 
