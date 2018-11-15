@@ -31,9 +31,13 @@ class CartContentController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $userId = $this->getUser()->getId();
+        $user = $this->getUser();
+        if($user != null){
+        $userId = $user->getId();
         $cart = $em->getRepository('AppBundle:CartContent')->findByUser($userId);
-
+        }else{
+            return $this->redirectToRoute('fos_user_security_login');
+        }
        
 
         if(!empty($cart)){
