@@ -12,13 +12,13 @@
             <thead>
 
             <tr>
+                <th>Référence</th>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Adresse</th>
                 <th>Ville</th>
                 <th>Téléphone</th>
-                <th>Référence</th>
-            </tr>g
+                <th>Action</th>
+            </tr>
 
             </thead>
 
@@ -27,12 +27,12 @@
             {% for client in clients %}
 
                     <tr>
-                        <td>{{client.user.nom}}</td>
-                        <td>{{client.user.prenom}}</td>
-                        <td>{{client.user.adresse}}</td>
-                        <td>{{client.user.ville}}</td>
-                        <td>{{client.user.numeroTelephone}}</td>
-                        <td>{{client.user.referenceClient}}</td>
+                        <td>{{client.referenceClient}}</td>
+                        <td>{{client.nom}}</td>
+                        <td>{{client.prenom}}</td>
+                        <td>{{client.ville}}</td>
+                        <td>{{client.numeroTelephone}}</td>
+                        <td><a href="{{ path('vendeurUserHistoric', {referenceClient: client.referenceClient }) }}" class="btn btn-primary" value="{{ client.referenceClient }}">Historique des achats</a></td>
                     </tr>
 
             {% endfor %}

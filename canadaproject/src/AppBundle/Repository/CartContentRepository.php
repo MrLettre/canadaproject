@@ -517,15 +517,15 @@ public function findVentesVendeurDecembre($debutAnnee, $finAnnee, $concession)
 
 public function findVendeurClients($concession)
 {
-    $query = $this->createQueryBuilder('v')
-    ->select('v')
-    ->join('v.vehiculePhysique', 'vp')
+    $query = $this->createQueryBuilder('cc')
+        ->select('u.referenceClient', 'u.nom', 'u.prenom', 'u.ville', 'u.numeroTelephone')
+    ->join('cc.vehiculePhysique', 'vp')
+    ->join('cc.vente', 'v')
+    ->join('cc.user', 'u')
     ->where('vp.concession = :concession')
-    ->join('v.vente', 'vente')
-    ->andwhere('v.vente is not null')
-    ->orderBy('vente.dateVente', 'ASC')
-    ->setParameter('concession', $concession)  
-    ->groupBy('v.user')
+    ->setParameter('concession', $concession)
+    ->andwhere('cc.vente is not null')
+        ->groupBy('u.referenceClient', 'u.id')
     ->getQuery();
 
 return $query->getResult(); 
