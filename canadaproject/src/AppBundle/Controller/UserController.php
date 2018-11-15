@@ -20,7 +20,7 @@ class UserController extends Controller
     /**
      * Lists all user entities.
      *
-     * @Route("/", name="user_index")
+     * @Route("/admin/user", name="user_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -70,13 +70,10 @@ class UserController extends Controller
      */
     public function consultationAction()
     {
-
         $user= $this->getUser();
-
 
         return $this->render('user/consultation.html.twig', array(
             'user' => $user,
-
         ));
     }
 

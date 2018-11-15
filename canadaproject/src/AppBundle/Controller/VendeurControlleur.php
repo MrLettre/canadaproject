@@ -390,25 +390,19 @@ class VendeurControlleur extends Controller
         ));
     }
 
-      /**
+    // GESTION DES LISTINGS CLIENTS POUR LES VENDEURS -------------------------------------------------------------------- */
+
+
+    /**
      * @Route("/vendeur/myClients", name="adminSellerMyClients")
      * @Method("GET")
      */
     public function vendeurMyClients()
     {
-
         $em = $this->getDoctrine()->getManager();
-
         $userId = $this->getUser();
-
         $concession = $userId->getConcession()->getId();
-
-
         $clients = $em->getRepository('AppBundle:CartContent')->findVendeurClients($concession);
-
-      
-  
-
 
         // replace this example code with whatever you need
         return $this->render('admin/vendeur/clients.html.twig', [
@@ -416,8 +410,19 @@ class VendeurControlleur extends Controller
         ]);
     }
 
+    /**
+     * @Route("/vendeur/userHistoric/{referenceClient}", name="vendeurUserHistoric")
+     */
+    public function vendeurUserHistoric($referenceClient)
+    {
+        $em = $this->getDoctrine()->getManager();
+        //Récupération de toutes les ventes totales de toutes les années
+        $cartContents = $em->getRepository('AppBundle:CartContent')->findUserHistoric($referenceClient);
 
-
-
+        // replace this example code with whatever you need
+        return $this->render('admin/vendeur/vendeurUserHistoric.html.twig', [
+            'cartContents' => $cartContents
+        ]);
+    }
 
 }

@@ -4,15 +4,17 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
 use AppBundle\Entity\Livraison;
+use AppBundle\Entity\Marque;
+use AppBundle\Entity\Concession;
+use AppBundle\Entity\VehiculePhysique;
+use AppBundle\Entity\VehicleDefinition;
+use AppBundle\Entity\Vente;
+use AppBundle\Entity\Cart;
+use AppBundle\Entity\DemandeEssai;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use AppBundle\Entity\Marque;
-use AppBundle\Entity\VehiculePhysique;
-use AppBundle\Entity\Concession;
-use AppBundle\Entity\Vente;
-use AppBundle\Entity\Cart;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -540,18 +542,16 @@ class AdminController extends Controller
         ));
     }
 
-      /**
+    // GESTION ET LISTING DES UTILISATEURS ET CLIENTS ---------------------------------------------------------------- */
+
+    /**
     * @Route("/admin/userList", name="adminUserList")
     */
     public function adminUserList()
     {
-
-
        $em = $this->getDoctrine()->getManager();
        //Récupération de toutes les ventes totales de toutes les années
         $clients = $em->getRepository('AppBundle:CartContent')->findAdminClients();
-
-
 
     // replace this example code with whatever you need
     return $this->render('admin/admin/adminUserList.html.twig', [
@@ -575,4 +575,334 @@ class AdminController extends Controller
       ]);
     }
 
+    // GESTION DES CONCESSIONS -------------------------------------------------------------------------------------- */
+
+    /**
+     * Lists all concession entities.
+     *
+     * @Route("/admin/concession", name="concession_index")
+     * @Method("GET")
+     */
+    public function indexConcessionAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $concessions = $em->getRepository('AppBundle:Concession')->findAll();
+
+        return $this->render('Form/concession/index.html.twig', array(
+            'concessions' => $concessions,
+        ));
+    }
+
+    /**
+     * Creates a new concession entity.
+     *
+     * @Route("/admin/concession/new", name="concession_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newConcessionAction(Request $request)
+    {
+        $concession = new Concession();
+        $form = $this->createForm('AppBundle\Form\ConcessionType', $concession);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($concession);
+            $em->flush();
+
+            return $this->redirectToRoute('concession_show', array('id' => $concession->getId()));
+        }
+
+        return $this->render('Form/concession/new.html.twig', array(
+            'concession' => $concession,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a concession entity.
+     *
+     * @Route("/admin/concession/{id}", name="concession_show")
+     * @Method("GET")
+     */
+    public function showConcessionAction(Concession $concession)
+    {
+        $deleteForm = $this->createConcessionDeleteForm($concession);
+
+        return $this->render('Form/concession/show.html.twig', array(
+            'concession' => $concession,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing concession entity.
+     *
+     * @Route("/admin/concession/{id}/edit", name="concession_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editConcessionAction(Request $request, Concession $concession)
+    {
+        $deleteForm = $this->createConcessionDeleteForm($concession);
+        $editForm = $this->createForm('AppBundle\Form\ConcessionType', $concession);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('concession_edit', array('id' => $concession->getId()));
+        }
+
+        return $this->render('Form/concession/edit.html.twig', array(
+            'concession' => $concession,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a concession entity.
+     *
+     * @Route("/admin/concession/{id}", name="concession_delete")
+     * @Method("DELETE")
+     */
+    public function deleteConcessionAction(Request $request, Concession $concession)
+    {
+        $form = $this->createConcessionDeleteForm($concession);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($concession);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('concession_index');
+    }
+
+    /**
+     * Creates a form to delete a concession entity.
+     *
+     * @param Concession $concession The concession entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createConcessionDeleteForm(Concession $concession)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('concession_delete', array('id' => $concession->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
+
+    // GESTION DES DEMANDE ESSAI -------------------------------------------------------------------------------------- */
+
+    /**
+     * Lists all demandeEssai entities.
+     *
+     * @Route("/admin/demandeessai", name="demandeessai_index")
+     * @Method("GET")
+     */
+    public function indexEssaiAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $demandeEssais = $em->getRepository('AppBundle:DemandeEssai')->findAll();
+
+        return $this->render('demandeessai/index.html.twig', array(
+            'demandeEssais' => $demandeEssais,
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing demandeEssai entity.
+     *
+     * @Route("/admin/demandeessai/{id}/edit", name="demandeessai_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editEssaiAction(Request $request, DemandeEssai $demandeEssai)
+    {
+        $deleteForm = $this->createEssaiDeleteForm($demandeEssai);
+        $editForm = $this->createForm('AppBundle\Form\EditDemandeEssaiType', $demandeEssai);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('demandeessai_edit', array('id' => $demandeEssai->getId()));
+        }
+
+        return $this->render('demandeessai/edit.html.twig', array(
+            'demandeEssai' => $demandeEssai,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a demandeEssai entity.
+     *
+     * @Route("/admin/demandeessai/{id}", name="demandeessai_delete")
+     * @Method("DELETE")
+     */
+    public function deleteEssaiAction(Request $request, DemandeEssai $demandeEssai)
+    {
+        $form = $this->createEssaiDeleteForm($demandeEssai);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($demandeEssai);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('demandeessai_index');
+    }
+
+    /**
+     * Creates a form to delete a demandeEssai entity.
+     *
+     * @param DemandeEssai $demandeEssai The demandeEssai entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEssaiDeleteForm(DemandeEssai $demandeEssai)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('demandeessai_delete', array('id' => $demandeEssai->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
+
+    // GESTION DES VEHICULES COMPARATEUR -------------------------------------------------------------------------------------- */
+
+
+    /**
+     * Lists all vehicleDefinition entities.
+     *
+     * @Route("/admin/vehicledefinition", name="vehicledefinition_index")
+     * @Method("GET")
+     */
+    public function indexVehDefAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $vehicleDefinitions = $em->getRepository('AppBundle:VehicleDefinition')->findAll();
+
+        return $this->render('Form/vehicledefinition/index.html.twig', array(
+            'vehicleDefinitions' => $vehicleDefinitions,
+        ));
+    }
+
+    /**
+     * Creates a new vehicleDefinition entity.
+     *
+     * @Route("/admin/vehicledefinition/new", name="vehicledefinition_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newVehDefAction(Request $request)
+    {
+        $vehicleDefinition = new Vehicledefinition();
+        $form = $this->createForm('AppBundle\Form\VehicleDefinitionType', $vehicleDefinition);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $model = $vehicleDefinition->getVersion()->getModel();
+            $marque = $vehicleDefinition->getVersion()->getModel()->getMarque();
+            $type = $vehicleDefinition->getVersion()->getModel()->getTypeVehicule();
+            $vehicleDefinition->setMarque($marque);
+            $vehicleDefinition->setModel($model);
+            $vehicleDefinition->setTypeVehicule($type);
+            $em->persist($vehicleDefinition);
+            $em->flush();
+
+            return $this->redirectToRoute('vehicledefinition_index');
+        }
+
+        return $this->render('Form/vehicledefinition/new.html.twig', array(
+            'vehicleDefinition' => $vehicleDefinition,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a vehicleDefinition entity.
+     *
+     * @Route("/admin/vehiculedefinition/{id}", name="vehicledefinition_show")
+     * @Method("GET")
+     */
+    public function showVehDefAction(VehicleDefinition $vehicleDefinition)
+    {
+        $deleteForm = $this->createVehDefDeleteForm($vehicleDefinition);
+
+        return $this->render('Form/vehicledefinition/show.html.twig', array(
+            'vehicleDefinition' => $vehicleDefinition,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing vehicleDefinition entity.
+     *
+     * @Route("/admin/vehiculedefinition/{id}/edit", name="vehicledefinition_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editVehDefAction(Request $request, VehicleDefinition $vehicleDefinition)
+    {
+        $deleteForm = $this->createVehDefDeleteForm($vehicleDefinition);
+        $editForm = $this->createForm('AppBundle\Form\VehicleDefinitionType', $vehicleDefinition);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('vehicledefinition_edit', array('id' => $vehicleDefinition->getId()));
+        }
+
+        return $this->render('Form/vehicledefinition/edit.html.twig', array(
+            'vehicleDefinition' => $vehicleDefinition,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a vehicleDefinition entity.
+     *
+     * @Route("/admin/vehiculedefinition/{id}", name="vehicledefinition_delete")
+     * @Method("DELETE")
+     */
+    public function deleteVehDefAction(Request $request, VehicleDefinition $vehicleDefinition)
+    {
+        $form = $this->createVehDefDeleteForm($vehicleDefinition);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($vehicleDefinition);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('vehicledefinition_index');
+    }
+
+    /**
+     * Creates a form to delete a vehicleDefinition entity.
+     *
+     * @param VehicleDefinition $vehicleDefinition The vehicleDefinition entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createVehDefDeleteForm(VehicleDefinition $vehicleDefinition)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('vehicledefinition_delete', array('id' => $vehicleDefinition->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
 }
