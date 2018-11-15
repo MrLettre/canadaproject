@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-
+<section style="margin-bottom: 4vh">
     <div class="container">
         <p class="connect"> Dernière connexion le {{ app.user.lastLogin|date("d/m/Y") }}</p>
         <div class="row" style="display: flex;" id="cardForUser">
@@ -31,4 +31,5 @@
             </div>
         </div>
     </div>
+</section>
 {% endblock %}
