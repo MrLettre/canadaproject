@@ -23,7 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin", name="adminHomepage")
+     * @Route("/admin/accueil", name="adminHomepage")
      */
     public function adminPageAction()
     {
