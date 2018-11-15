@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class VendeurControlleur extends Controller
 {
     /**
-     * @Route("/vendeur", name="adminHomepageSeller")
+     * @Route("/vendeur/accueil", name="adminHomepageSeller")
      * @Method("GET")
      */
     public function vendeurPageAction()
