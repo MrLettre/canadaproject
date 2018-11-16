@@ -1,62 +1,95 @@
 {% extends 'admin/adminBase.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/login.css') }}">
+{% endblock %}
+
+
 {% block body %}
-    <div class="container">
 
-        <h1>Création d'un véhicule</h1>
 
-        {{ form_start(form) }}
+<section class="section">
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                   {{ form_start(form) }}
+                        <div class="login-brand">
+                            Création d'un véhicule
+                        </div>
+                   
 
-        <div class="form-group">
-            {{ form_label(form.marque, 'Marque') }}
-            {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
-            {{ form_errors(form.marque) }}
-        </div>
-        <!-- si la marque n'existe pas on va la créer via le formulaire marque_new -->
-        <p>
-            <a class="btn btn-success" href="{{ path('marque_new') }}">créer une marque</a>
-        </p>
+                    <div class="card card-primary ">
+                        {{ form_errors(form) }}
+                        <div class="card-body register">
 
-        <div class="form-group">
-            {{ form_label(form.model, 'Modèle') }}
-            {{ form_widget(form.model, {'attr':{class:'form-control'}}) }}
-            {{ form_errors(form.model) }}
-        </div>
-        <!-- si le modèle n'existe pas on va le créer via le formulaire model_new -->
-        <p>
-            <a class="btn btn-success" href="{{ path('model_new') }}">créer un modèle</a>
-        </p>
+                                    {#-----------------------------------------GLOBAL-----------------------------------------#}
 
-        <div class="form-group">
-            {{ form_label(form.version, 'Version') }}
-            {{ form_widget(form.version, {'attr':{class:'form-control'}}) }}
-            {{ form_errors(form.version) }}
-        </div>
-        <!-- si la version n'existe pas on va la créer via le formulaire version_new -->
-        <p>
-            <a class="btn btn-success" href="{{ path('version_new') }}">créer une version</a>
-        </p>
+                                    <div>
+                                        <label for="nom">Marque</label>
+                                        {{ form_label(form.marque) }}
+                                        {{ form_widget(form.marque) }}
+                                    </div>
 
-        <div class="form-group">
-            {{ form_label(form.nom, 'Donnez un nom à ce véhicule :') }}
-            {{ form_widget(form.nom) }}
-            {{ form_errors(form.nom) }}
-        </div>
+                                    <!-- si la marque n'existe pas on va la créer via le formulaire marque_new -->
+                                    <p>
+                                        <a class="btn btn-success" href="{{ path('marque_new') }}">créer une marque</a>
+                                    </p>
 
-        <div class="form-group">
-            {{ form_label(form.options, 'Sélectionnez les options disponibles pour ce véhicule :') }}
-            {{ form_widget(form.options) }}
-            {{ form_errors(form.options) }}
-        </div>
+                                    <div>
+                                        <label for="prenom">Modèle</label>
+                                        {{ form_widget(form.model) }}
+                                        {{ form_errors(form.model) }}
+                                    </div>
 
-        <p>
-            <input class="btn btn-primary" type="submit" value="créer cette définition de véhicule" />
-        </p>
-        {{ form_end(form) }}
+                                    <!-- si le modèle n'existe pas on va le créer via le formulaire model_new -->
+                                    <p>
+                                        <a class="btn btn-success" href="{{ path('model_new') }}">créer un modèle</a>
+                                    </p>
 
-        <p>
-            <a href="{{ path('vehicledefinition_index') }}">Retour au menu admin</a>
-        </p>
+                                    <div>
+                                        <label for="username">Version</label>
+                                        {{ form_widget(form.version) }}
+                                        {{ form_errors(form.version) }}
+                                    </div>
 
-    </div>
+                                    <!-- si la version n'existe pas on va la créer via le formulaire version_new -->
+                                    <p>
+                                        <a class="btn btn-success" href="{{ path('version_new') }}">créer une version</a>
+                                    </p>
+
+                                    <div>
+                                        <label for="dateNaissance">Donnez un nom à ce véhicule</label>
+                                        {{ form_widget(form.nom) }}
+                                        {{ form_errors(form.nom) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="tel">Sélectionnez les options disponibles pour ce véhicule:</label>
+                                        {{ form_widget(form.options) }}
+                                        {{ form_errors(form.options) }}
+                                    </div>
+
+                                    
+                                    {{ form_widget(form._token) }}
+                                    <div class="form-group col-12">
+                                         <input class="btn btn-success btn-block" type="submit" value="créer cette définition de véhicule" style="margin-top: 2vh"/>
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <a href="{{ path('article_index') }}" class="btn btn-primary btn-block">Retour à la liste des véhicules</a>
+                                    </div>
+
+                                </div>
+                          {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+    
 {% endblock %}
