@@ -1,64 +1,76 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Concession</h1>
+    <div style="text-align: center">
+        <h1>Concession</h1>
+    </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ concession.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ concession.nom }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ concession.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Codepostal</th>
-                <td>{{ concession.codePostal }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ concession.ville }}</td>
-            </tr>
-            <tr>
-                <th>Tel</th>
-                <td>{{ concession.tel }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ concession.mail }}</td>
-            </tr>
-            <tr>
-                <th>Nomducontact</th>
-                <td>{{ concession.nomDuContact }}</td>
-            </tr>
-            <tr>
-                <th>Actif</th>
-                <td>{% if concession.actif %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Imagename</th>
-                <td>{{ concession.imageName }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="contact-section col-md-12">
 
-    <ul>
-        <li>
-            <a href="{{ path('concession_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('concession_edit', { 'id': concession.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <!-- Form with header -->
+        <div class="card">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-lg-8">
+                    <div class="card-body form">
+
+                        <!-- Header -->
+                        <div class="row">
+                            <div class="md-form mb-0">
+                                <h1>{{ concession.nom }}</h1>
+                            </div>
+                        </div>
+                        <!-- Grid row -->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h5>Mail : {{ concession.mail }}</h5>
+                                </div>
+                            </div>
+
+                            <!-- Grid column -->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <h5>Téléphone : {{ concession.tel }}</h5>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12" >
+                                <div class="md-form mb-0">
+                                    <h5>{{ concession.adresse }} <br> {{ concession.codePostal }} {{ concession.ville }}</h5>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-4">
+                    <div class="card-body contact text-center h-100 white-text">
+                        <h3 class="my-4 pb-2 white-text">Contact</h3>
+                        <hr class="hr-light my-4">
+                        <ul class="text-lg-left list-unstyled ml-4">
+                            <li>
+                                <p class="contact-adresse text-center white-text">{{ concession.nomDuContact }}</p>
+                            </li>
+                        </ul>
+                        <hr class="hr-light my-4">
+                    </div>
+                </div>
+            </div>
+            <!-- Grid row -->
+        </div>
+        <!-- Form with header -->
+    </section>
+
+    <a href="{{ path('concession_edit', { 'id': concession.id }) }}" class="btn btn-success">Editer cette concession</a>
+    <a href="{{ path('concession_index') }}" class="btn btn-primary">retour à la liste des concessions</a>
+
+
 {% endblock %}

@@ -1,13 +1,13 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Liste des Concessions</h1>
-
+    <div style="text-align: center">
+        <h1>Concessions</h1>
+    </div>
     <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Adresse</th>
                 <th>Codepostal</th>
@@ -22,7 +22,6 @@
         {% for concession in concessions %}
             {% if concession.actif %}
             <tr>
-                <td><a href="{{ path('concession_show', { 'id': concession.id }) }}">{{ concession.id }}</a></td>
                 <td>{{ concession.nom }}</td>
                 <td>{{ concession.adresse }}</td>
                 <td>{{ concession.codePostal }}</td>
@@ -31,14 +30,8 @@
                 <td>{{ concession.mail }}</td>
                 <td>{{ concession.nomDuContact }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('concession_show', { 'id': concession.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('concession_edit', { 'id': concession.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('concession_show', { 'id': concession.id }) }}" class="btn btn-primary" style="width: 100%">Consulter</a>
+                    <a href="{{ path('concession_edit', { 'id': concession.id }) }}" class="btn btn-success" style="width: 100%">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -47,10 +40,4 @@
         </tbody>
     </table>
     </div>
-
-    <ul>
-        <li>
-            <a href="{{ path('concession_new') }}">Create a new concession</a>
-        </li>
-    </ul>
 {% endblock %}

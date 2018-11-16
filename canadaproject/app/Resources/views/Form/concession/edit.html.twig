@@ -1,21 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Concession edit</h1>
-
+    <div style="text-align: center">
+        <h1>Concession</h1>
+    </div>
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Editer la concession" class="btn btn-success" style="width: 35%;"/>
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('concession_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <a href="{{ path('concession_index') }}" class="btn btn-primary" style="width: 35%">Retour à la liste des Concessions</a>
 {% endblock %}
