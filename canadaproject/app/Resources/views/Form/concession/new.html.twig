@@ -1,16 +1,104 @@
 {% extends 'admin/adminBase.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/login.css') }}">
+{% endblock %}
+
+
 {% block body %}
-    <h1>Concession creation</h1>
+    
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('concession_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+
+<section class="section">
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                   {{ form_start(form) }}
+                        <div class="login-brand">
+                            Créer une nouvelle concession
+                        </div>
+                   
+
+                    <div class="card card-primary ">
+                        {{ form_errors(form) }}
+                        <div class="card-body register">
+
+                                    {#-----------------------------------------GLOBAL-----------------------------------------#}
+
+                                    <div>
+                                        <label for="nom">Nom</label>
+                                        {{ form_widget(form.nom) }}
+                                        {{ form_errors(form.nom) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="prenom">adresse</label>
+                                        {{ form_widget(form.adresse) }}
+                                        {{ form_errors(form.adresse) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="username">codePostal</label>
+                                        {{ form_widget(form.codePostal) }}
+                                        {{ form_errors(form.codePostal) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="dateNaissance">ville</label>
+                                        {{ form_widget(form.ville) }}
+                                        {{ form_errors(form.ville) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="tel">Téléphone</label>
+                                        {{ form_widget(form.tel) }}
+                                        {{ form_errors(form.tel) }}
+                                    </div>
+
+                                    <div>
+                                        <label for="email">mail</label>
+                                        {{ form_widget(form.mail) }}
+                                        {{ form_errors(form.mail) }}
+                                    </div>
+
+                                    <div >
+                                        <label for="plainPassword.first">nomDuContact</label>
+                                        {{  form_widget(form.nomDuContact) }}
+                                        {{ form_errors(form.nomDuContact) }}
+                                    </div>
+                                    <div>
+                                        <label for="plainPassword.second">actif</label>
+                                        {{  form_widget(form.actif) }}
+                                        {{ form_errors(form.actif) }}
+                                    </div>
+                                      <div>
+                                        <label for="plainPassword.second">imageFile</label>
+                                        {{  form_widget(form.imageFile) }}
+                                        {{ form_errors(form.imageFile) }}
+                                    </div>
+
+                                    {{ form_widget(form._token) }}
+                                    <div class="form-group col-12">
+                                         <input type="submit" value="Créer une concession" class="btn btn-success btn-block" style="margin-top: 2vh"/>
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <a href="{{ path('concession_index') }}" class="btn btn-primary btn-block">Retour à la liste des concessions</a>
+                                    </div>
+
+                                    
+
+                                </div>
+                          {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+ 
 {% endblock %}
