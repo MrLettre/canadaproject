@@ -1,56 +1,48 @@
 {% extends "admin/adminBase.html.twig"%}
 
 {% block body %}
-
+<section>
+    <div class="container">
     <h1 class="text-center blue-text">Liste des utilisateurs</h1>
     <div class="table-responsive">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Statut</th>
-            <th scope="col">Société</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Adresse</th>
-            <th scope="col">Code postal</th>
-            <th scope="col">Ville</th>
-            <th scope="col">Email</th>
-            <th scope="col">Téléphone</th>
-            <th scope="col">Date Affiliation</th>
-            <th scope="col">Actions</th>
-
-        </tr>
-        </thead>
-        <tbody>
-
-        {% for user in users %}
+        <table class="table">
+            <thead>
             <tr>
-                <td>{{ user.roles[0] }}</td>
-                <td>{{ user.societe }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.adresse }}</td>
-                <td>{{ user.codePostal }}</td>
-                <td>{{ user.ville }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.numeroTelephone }}</td>
-                <td>{% if user.dateCreationProfil %}{{ user.dateCreationProfil|date('d-m-Y') }}{% endif %}</td>
-                <td>
-                    <p class="btn btn-primary">
-                        <a href="{{ path('fos_user_profile_show', { 'id': user.id }) }}">voir</a>
-                    </p>
-                    <p class="btn btn-primary">
-                        <a href="{{ path('fos_user_profile_edit', { 'id': user.id }) }}">modifier</a>
-                    </p>
-                </td>
+                <th scope="col">Statut</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Code postal</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Email</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Actions</th>
+
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
 
-
-
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.roles[0] }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.adresse }}</td>
+                    <td>{{ user.codePostal }}</td>
+                    <td>{{ user.ville }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.numeroTelephone }}</td>
+                    <td>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-primary" style="width:100%">consulter</a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-success" style="width:100%">modifier</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
             <a href="/register" class="btn btn-success">Créer un nouvel utilisateur</a>
-
+    </div>
+</section>
 
 {% endblock %}

@@ -3,54 +3,49 @@
 {% block body %}
 
 
-    <div class="container">
+    <div class="container" >
 
         <h1 style="text-align: center">Informations  </h1>
         <div class="row" style="display: flex;">
 
 
             <div class="col card">
-                <ul>
+                <ul style="list-style-type: none">
 
                     <li><h2>Informations personnelles</h2></li>
-                    <li><span>Société:</span> {{ user.societe }}</li>
-                    <li><span>Prénom:</span> {{ user.prenom }}</li>
-                    <li><span>Nom: </span> {{ user.nom }}</li>
-                    <li><span>Adresse: </span> {{ user.adresse }}</li>
-                    <li><span>Code postal: </span> {{ user.codePostal }}</li>
-                    <li><span>Ville: </span> {{ user.ville }}</li>
-                    <li><span>Email: </span> {{ user.email }}</li>
-                    <li><span>Téléphone: </span> {{ user.numeroTelephone }}</li>
+                    <li><h6>Société:</h6> {{ user.societe }}</li>
+                    <li><h6>Prénom:</h6> {{ user.prenom }}</li>
+                    <li><h6>Nom: </h6> {{ user.nom }}</li>
+                    <li><h6>Adresse: </h6> {{ user.adresse }}</li>
+                    <li><h6>Code postal: </h6> {{ user.codePostal }}</li>
+                    <li><h6>Ville: </h6> {{ user.ville }}</li>
+                    <li><h6>Email: </h6> {{ user.email }}</li>
+                    <li><h6>Téléphone: </h6> {{ user.numeroTelephone }}</li>
 
                 </ul>
 
             </div>
 
+            {% if user.concession != null %}
             <div class="col card">
-                <ul>
+                <ul style="list-style-type: none">
                     <li><h2>Informations</h2></li>
-                    <li><span>Concessions:  </span>
-                        {% for concession in user.concessions %}
-                            {{ concession.name }}<br>
-                            {{ concession.adresse }}
-                            {{ concession.codePostal }}
-                            {{ concession.Ville }}
-                        {% endfor %}
+                    <li><h6>Concession:  </h6><br>
+                            {{ user.concession.nom }}<br>
+                            {{ user.concession.adresse }}<br>
+                            {{ user.concession.codePostal }}
+                            {{ user.concession.Ville }}
                     </li>
-                    <li><span>Membre depuis:</span> {% if user.dateCreationProfil %}{{ user.dateCreationProfil|date('d-m-Y') }}{% endif %}</li>
+                    <li><h6>Membre depuis:</h6> {% if user.dateCreationProfil %}{{ user.dateCreationProfil|date('d-m-Y') }}{% endif %}</li>
                 </ul>
             </div>
-
+            {% endif %}
         </div>
 
-        <ul>
-            <li>
-                <a href="{{ path('user_index') }}">Liste des utilisateurs</a>
-            </li>
-            <li>
-                <a href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
-            </li>
-        </ul>
+            <div style="display: flex">
+                <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-primary" style="width: 50%">Modifier</a>
+                <a href="{{ path('user_index') }}" class="btn btn-success" style="width: 50%">Retour à la liste des utilisateurs</a>
+            </div>
 
     </div>
 
