@@ -37,10 +37,10 @@
                 <td>{% if user.dateCreationProfil %}{{ user.dateCreationProfil|date('d-m-Y') }}{% endif %}</td>
                 <td>
                     <p class="btn btn-primary">
-                        <a href="{{ path('user_show', { 'id': user.id }) }}">voir</a>
+                        <a href="{{ path('fos_user_profile_show', { 'id': user.id }) }}">voir</a>
                     </p>
                     <p class="btn btn-primary">
-                        <a href="{{ path('user_edit', { 'id': user.id }) }}">modifier</a>
+                        <a href="{{ path('fos_user_profile_edit', { 'id': user.id }) }}">modifier</a>
                     </p>
                 </td>
             </tr>
@@ -49,10 +49,8 @@
     </table>
 
 
-    <ul>
-        <li>
-            <a href="/register">Créer un nouvel utilisateur</a>
-        </li>
-    </ul>
+
+            <a href="/register" class="btn btn-success">Créer un nouvel utilisateur</a>
+
 
 {% endblock %}
