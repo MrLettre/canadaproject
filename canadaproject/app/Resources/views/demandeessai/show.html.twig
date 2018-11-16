@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
 
@@ -21,7 +21,7 @@
                         <div class="row">
                             <!-- Grid column -->
                             <div class="col-md-6">
-                                <div class="md-form mb-0">
+                                <div class="md-form mb-0 ">
                                     <h6>Demande émanant de :</h6> <p>{{ demandeEssai.user.nom }} {{ demandeEssai.user.prenom }}</p>
                                 </div>
                             </div>
@@ -78,15 +78,18 @@
                         <ul class="text-lg-left list-unstyled ml-4">
                             <li>
                                 <p class="contact-adresse text-center white-text"><i data-feather="mail"></i> Email :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.email }}</p>
+                                <p class="contact-adresse text-center white-text">{{ demandeEssai.user.email }}</p>
+                                <hr class="hr-light my-4">
                             </li>
                             <li>
                                 <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Téléphone :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.numeroTelephone }}</p>
+                                <p class="contact-adresse text-center white-text">{{ demandeEssai.user.numeroTelephone }}</p>
+                                <hr class="hr-light my-4">
                             </li>
                             <li>
                                 <p class="contact-adresse text-center white-text"><i data-feather="map-pin"></i> Adresse :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.adresse}} <br> {{ demandeEssai.user.codePostal }} {{ demandeEssai.user.ville }}</p>
+                                <p class="contact-adresse text-center white-text">{{ demandeEssai.user.adresse}} <br> {{ demandeEssai.user.codePostal }} {{ demandeEssai.user.ville }}</p>
+                                <hr class="hr-light my-4">
                             </li>
                         </ul>
 
