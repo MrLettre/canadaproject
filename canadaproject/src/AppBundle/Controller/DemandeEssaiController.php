@@ -77,11 +77,9 @@ class DemandeEssaiController extends Controller
      */
     public function showAction(DemandeEssai $demandeEssai)
     {
-        $deleteForm = $this->createDeleteForm($demandeEssai);
 
         return $this->render('demandeessai/show.html.twig', array(
             'demandeEssai' => $demandeEssai,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
