@@ -1,0 +1,14 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block body %}
+    <div style="text-align: center">
+        <h1>Editer un utilisateur</h1><br>
+    </div>
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Editer cet utilisateur" class="btn btn-success" style="width: 100%"/>
+    {{ form_end(edit_form) }}
+
+        <a href="{{ path('user_index') }}" class="btn btn-primary" style="width: 100%">Revenir à la liste des utilisateurs</a>
+
+{% endblock %}

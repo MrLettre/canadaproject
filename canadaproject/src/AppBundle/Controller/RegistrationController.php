@@ -56,6 +56,8 @@ class RegistrationController extends BaseController
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
                 $user->setIsClient(0);
+                $date = new \DateTime('now');
+                $user->setDateCreationProfile($date);
                 $userManager->updateUser($user);
 
 
