@@ -9,7 +9,7 @@
 
 <div class="text-center">
    <h1>Votre Panier</h1>
-<div>   
+<div>
 
 
 {% for cart in cart %}
@@ -30,7 +30,7 @@
                 <th scope="col">Photo</th>
             </tr>
             </thead>
-            
+
                     <tbody>
                     <tr>
                         <td>{{ cart.vehiculePhysique.version.model.marque }}</td>
@@ -41,13 +41,13 @@
                         <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ cart.vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                     </tr>
                     </tbody>
-           
+
         </table>
     </div>
 
 
   </div>
-</div>    
+</div>
 
 
 
@@ -66,8 +66,8 @@
   <div class="row">
 
 
-    <button type="button" class="btn btn-success"><a href="{{ path('cart_validation') }}">Valider le panier</a></button>
-    <button type="button" class="btn btn-danger"><a href="{{ path('clearCart') }}">Supprimer le panier</a></button>
+    <a href="{{ path('cart_validation') }}" class="btn btn-success">Valider le panier</a>
+    <a href="{{ path('clearCart') }}" class="btn btn-danger">Supprimer le panier</a>
 
   </div>
 
@@ -90,12 +90,12 @@
 
 <hr>
 
- 
 
 
 
 
-</div> 
+
+</div>
 
 {% else %}
 
@@ -104,7 +104,7 @@
 {% endif %}
 
 
-   
+
 {% endblock %}
 
 

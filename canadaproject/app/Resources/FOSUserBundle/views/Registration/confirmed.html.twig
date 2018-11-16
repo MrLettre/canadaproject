@@ -3,10 +3,28 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-
-    <p>{{ user.username }} est bien enregistré !</p>
-    {% if targetUrl %}
-        <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+<section>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-4">
+                <img src="/images/header/Carify_LogoAccueil.png" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h2>Bienvenue {{ user.username }}!</h2>
+        </div>
+        <br>
+        <div class="row">
+            <h6>Votre inscription a été validée avec succès, toute l'équipe Carify vous remercie.</h6>
+        </div>
+        <br>
+        {% if targetUrl %}
+                <a href="{{ targetUrl }}" class="btn btn-primary">Acceder à votre profile</a>
+        {% endif %}
+        <a href="/" class="btn btn-success">retour à l'accueil</a>
+    </div>
+</section>
 {% endblock fos_user_content %}
 

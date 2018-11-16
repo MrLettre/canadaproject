@@ -80,7 +80,8 @@
     
     
         <input class="btn btn-primary" type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    {{ form_widget(edit_form._token) }}
+    {{ form_end(edit_form, {'render_rest': false}) }}
 
         <p>
             <a class="btn btn-success" href="{{ path('vehiculephysique_index') }}">Retour à la liste des Véhicules</a>

@@ -31,8 +31,8 @@
                     <li><span><strong>Téléphone :</strong></span> {{ app.user.numeroTelephone }}</li>
                     <li><span><strong>Email:</strong></span> {{ app.user.email }}</li>
                 </ul>
-                <button class="btn btn-primary"><a href="/profile/edit"> Modifier mon adresse de livraison</a></button>
-                <button class="btn btn-success"><a href="{{ path('cart_delivery') }}"> Choisir mon mode de livraison</a></button>
+                <a href="/profile/edit" class="btn btn-primary"> Modifier mon adresse de livraison</a>
+                <a href="{{ path('cart_delivery') }}" class="btn btn-success"> Choisir mon mode de livraison</a>
             </div>
         </div>
     </div>
