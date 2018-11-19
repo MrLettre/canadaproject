@@ -814,6 +814,10 @@ class AdminController extends Controller
             $model = $vehicleDefinition->getVersion()->getModel();
             $marque = $vehicleDefinition->getVersion()->getModel()->getMarque();
             $type = $vehicleDefinition->getVersion()->getModel()->getTypeVehicule();
+            $options = $vehicleDefinition->getVersion()->getOptions();
+            foreach ($options as $option){
+                $vehicleDefinition->addOption($option);
+            }
             $vehicleDefinition->setMarque($marque);
             $vehicleDefinition->setModel($model);
             $vehicleDefinition->setTypeVehicule($type);

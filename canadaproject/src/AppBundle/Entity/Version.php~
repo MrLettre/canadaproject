@@ -47,13 +47,13 @@ class Version
     private $vehiculePhysiques;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehicleOption", mappedBy="version")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\VehicleOption", cascade={"persist", "remove"})
      */
     private $options;
 
     /**
      * Many Versions have Many Colors.
-     * @ORM\ManyToMany(targetEntity="CouleurDisponible", inversedBy="versions")
+     * @ORM\ManyToMany(targetEntity="CouleurDisponible", cascade={"persist", "remove"}, inversedBy="versions")
      * @ORM\JoinTable(name="Couleurs_Version")
      */
     private $couleursDisponibles;
