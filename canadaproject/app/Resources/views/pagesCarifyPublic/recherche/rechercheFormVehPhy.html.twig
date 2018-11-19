@@ -1,5 +1,5 @@
 {% block body %}
-    <div class="container py-3">
+    <div class="container-fluid py-3">
         <div class="card" id="blocRecherche">
             {{ form_start(form) }}
                 <div class="row ">
@@ -23,6 +23,38 @@
                         </div>
                     </div>
                 </div>
+
+<div class="row">
+    <div class="col-md-12 px-3">
+    <div class="card-block px-3" style=" display: flex; justify-content: space-around;">
+    
+    <button class="advanced-search-button">Recherches avancées</button>
+
+    </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 px-3">
+    <div class="card-block px-3" style=" display: flex; justify-content: space-around;">
+
+        <div class="advanced-search-display is-hidden" style="display: none;">
+            <p>Recherches avancées ici</p>
+        </div>
+    
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
                 <div class="row">
                     <div class="col-md-12 px-3" style="display: flex;">
                         <div class="col-md-6">
@@ -92,11 +124,30 @@
         </div>
     </div>
 
-
-
-
-
-
-
 {% endblock %}
 
+
+{% block javascripts %}
+
+<script>
+
+$(document).ready(function (){
+  
+  $('.advanced-search-button').click( function(){
+    var panel = $(".advanced-search-display");
+
+    //slide down search panel if not visible
+    if ( panel.hasClass("is-hidden") ) {
+      panel.slideDown();
+      panel.removeClass("is-hidden");
+    } else {
+      panel.slideUp();
+      panel.addClass("is-hidden");
+    }
+  });
+});
+
+
+</script>
+
+{% endblock %}

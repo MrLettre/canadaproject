@@ -47,13 +47,16 @@
         <br><br>
     </div>
 
-    <div class="vignettes">
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="vignettes">
     {% for vehPhy in vehPhys %}
         <!-- Card Light -->
         <div class="lightCard">
             <!-- Card image -->
             <div class="view overlay vehover">
-                <img class="card-img-top vehphoto" src="/images/photosVehiculePhysique/{{ vehPhy.imageName }}" alt="Card image cap">
+                <img class="card-img-top vehphoto" src="/images/photosVehiculePhysique/{{ vehPhy.imageName }}" alt="Card image cap" style="width:100%; height:auto;">
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
@@ -72,7 +75,9 @@
         </div>
         <!-- Card Light -->
     {% endfor %}
-    </div>
+      </div>
+  </div>
+</div>    
 
 
 
@@ -86,13 +91,15 @@
         <br><br>
     </div>
 
+<div class="container-fluid">
+  <div class="row">
     <div class="vignettes">
     {% for vehDef in vehDefs %}
         <!-- Card Light -->
         <div class="lightCard">
             <!-- Card image -->
             <div class="view overlay vehover">
-                <img class="card-img-top vehphoto" src="/images/logoModeles/{{ vehDef.version.model.imageName }}" alt="Card image cap">
+                <img class="card-img-top vehphoto" src="/images/logoModeles/{{ vehDef.version.model.imageName }}" alt="Card image cap" style="width:100%; height:auto;">
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
@@ -111,7 +118,8 @@
         <!-- Card Light -->
     {% endfor %}
     </div>
-
+  </div>
+</div>
 
 
     <!-- DOSSIERS CARIFY -->
