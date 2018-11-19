@@ -70,6 +70,12 @@
         {{ form_errors(form.actif) }}
     </div>
 
+    <div class="form-group">
+        {{ form_label(form.options, 'options') }}
+        {{ form_widget(form.options) }}
+        {{ form_errors(form.options) }}
+    </div>
+
     <input class="btn btn-primary" type="submit" value="créer une version" />
 
     {{ form_end(form) }}

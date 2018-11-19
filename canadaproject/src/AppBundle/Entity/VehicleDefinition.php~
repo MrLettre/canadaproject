@@ -19,7 +19,7 @@ class VehicleDefinition
     protected $version;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\VehicleOption", mappedBy="vehiculeDef")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\VehicleOption", cascade={"persist", "remove"})
      */
     private $options;
 

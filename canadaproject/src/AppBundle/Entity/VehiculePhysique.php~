@@ -20,6 +20,11 @@ use Doctrine\Common\Collections\Collection;
 class VehiculePhysique
 {
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\VehicleOption", cascade={"persist", "remove"})
+     */
+    private $options;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeEssai", mappedBy="vehiculePhysique")
      */
     private $demandesEssais;
@@ -28,12 +33,6 @@ class VehiculePhysique
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartContent", mappedBy="vehiculePhysique")
      */
     private $cartContents;
-
-    /**
-     * Many VehiculePhysiques have Many Options.
-     * @ORM\ManyToMany(targetEntity="VehicleOption", mappedBy="vehiculePhysiques")
-     */
-    protected $options;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="vehiculePhysiques")

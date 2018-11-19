@@ -13,23 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class VehicleOption
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="options")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CategorieOptions", inversedBy="options")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $vehiculeDef;
-
-    /**
-     * Many Users have Many Groups.
-     * @ORM\ManyToMany(targetEntity="VehiculePhysique", inversedBy="options")
-     * @ORM\JoinTable(name="VehPhy_Options")
-     */
-    private $vehiculePhysiques;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="options")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $version;
+    private $categorieOption;
 
     /**
      * @var int
@@ -232,5 +219,29 @@ class VehicleOption
     public function getVehiculePhysiques()
     {
         return $this->vehiculePhysiques;
+    }
+
+    /**
+     * Set categorieOption.
+     *
+     * @param \AppBundle\Entity\CategorieOptions|null $categorieOption
+     *
+     * @return VehicleOption
+     */
+    public function setCategorieOption(\AppBundle\Entity\CategorieOptions $categorieOption = null)
+    {
+        $this->categorieOption = $categorieOption;
+
+        return $this;
+    }
+
+    /**
+     * Get categorieOption.
+     *
+     * @return \AppBundle\Entity\CategorieOptions|null
+     */
+    public function getCategorieOption()
+    {
+        return $this->categorieOption;
     }
 }
