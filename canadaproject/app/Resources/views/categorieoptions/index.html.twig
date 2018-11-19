@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Categorieoptions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Exterieuretchassis</th>
+                <th>Interieur</th>
+                <th>Securite</th>
+                <th>Autre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorieOption in categorieOptions %}
+            <tr>
+                <td><a href="{{ path('categorieoptions_show', { 'id': categorieOption.id }) }}">{{ categorieOption.id }}</a></td>
+                <td>{{ categorieOption.exterieurEtChassis }}</td>
+                <td>{{ categorieOption.interieur }}</td>
+                <td>{{ categorieOption.securite }}</td>
+                <td>{{ categorieOption.autre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorieoptions_show', { 'id': categorieOption.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorieoptions_edit', { 'id': categorieOption.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorieoptions_new') }}">Create a new categorieOption</a>
+        </li>
+    </ul>
+{% endblock %}

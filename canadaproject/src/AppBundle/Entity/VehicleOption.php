@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class VehicleOption
 {
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CategorieOptions", inversedBy="options")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $categorieOption;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -213,5 +219,29 @@ class VehicleOption
     public function getVehiculePhysiques()
     {
         return $this->vehiculePhysiques;
+    }
+
+    /**
+     * Set categorieOption.
+     *
+     * @param \AppBundle\Entity\CategorieOptions|null $categorieOption
+     *
+     * @return VehicleOption
+     */
+    public function setCategorieOption(\AppBundle\Entity\CategorieOptions $categorieOption = null)
+    {
+        $this->categorieOption = $categorieOption;
+
+        return $this;
+    }
+
+    /**
+     * Get categorieOption.
+     *
+     * @return \AppBundle\Entity\CategorieOptions|null
+     */
+    public function getCategorieOption()
+    {
+        return $this->categorieOption;
     }
 }
