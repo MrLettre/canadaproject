@@ -3,9 +3,9 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ConcessionType extends AbstractType
 {
@@ -22,7 +22,7 @@ class ConcessionType extends AbstractType
             ->add('mail')
             ->add('nomDuContact')
             ->add('actif')
-            ->add('imageFile', FileType::class);
+            ->add('imageFile', VichFileType::class);
     }/**
      * {@inheritdoc}
      */

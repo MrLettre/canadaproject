@@ -13,25 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class VehicleOption
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\VehicleDefinition", inversedBy="options")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $vehiculeDef;
-
-    /**
-     * Many Users have Many Groups.
-     * @ORM\ManyToMany(targetEntity="VehiculePhysique", inversedBy="options")
-     * @ORM\JoinTable(name="VehPhy_Options")
-     */
-    private $vehiculePhysiques;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Version", inversedBy="options")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $version;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

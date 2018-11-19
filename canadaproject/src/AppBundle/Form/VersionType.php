@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +25,14 @@ class VersionType extends AbstractType
             ->add('autonimieTh')
             ->add('autonomieHy')
             ->add('autonomieEl')
-            ->add('actif')
+            ->add('options', EntityType::class, array(
+                'class' => 'AppBundle:VehicleOption',
+                'choice_label'=> 'nom',
+                'multiple' => true,
+                'expanded' => true,
+                'required' => false,
+
+            ))            ->add('actif')
         ;
     }/**
      * {@inheritdoc}

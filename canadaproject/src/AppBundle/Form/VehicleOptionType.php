@@ -13,7 +13,9 @@ class VehicleOptionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('actif')->add('vehiculeDef')->add('vehiculePhysique');
+        $builder->add('nom')
+            ->add('actif')
+            ;
     }/**
      * {@inheritdoc}
      */
