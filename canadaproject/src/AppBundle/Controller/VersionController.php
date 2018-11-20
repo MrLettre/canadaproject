@@ -43,8 +43,22 @@ class VersionController extends Controller
         $form = $this->createForm('AppBundle\Form\VersionType', $version);
         $form->handleRequest($request);
 
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('AppBundle:CategorieOptions')->findAll();
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $optionsString = $_POST["appbundle_version"]["tableauOption"];
+            $options = explode(",", $optionsString);
+
+            foreach ($options as $value){
+                $em = $this->getDoctrine()->getManager();
+                $objetOption = $em->getRepository('AppBundle:VehicleOption')->findOneBy(array('id' => $value));
+                $version->addOption($objetOption);
+                $version->setActif('1');
+                $em->persist($version);
+            }
             $em->persist($version);
             $em->flush();
 
@@ -53,6 +67,7 @@ class VersionController extends Controller
 
         return $this->render('Form/version/new.html.twig', array(
             'version' => $version,
+            'categories' => $categories,
             'form' => $form->createView(),
         ));
     }
