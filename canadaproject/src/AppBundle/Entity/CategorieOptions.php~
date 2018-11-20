@@ -29,30 +29,9 @@ class CategorieOptions
     /**
      * @var string|null
      *
-     * @ORM\Column(name="exterieurEtChassis", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
-    private $exterieurEtChassis;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="interieur", type="string", length=255, nullable=true)
-     */
-    private $interieur;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="securite", type="string", length=255, nullable=true)
-     */
-    private $securite;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="autre", type="string", length=255, nullable=true)
-     */
-    private $autre;
+    private $nom;
 
 
     /**
@@ -65,125 +44,6 @@ class CategorieOptions
         return $this->id;
     }
 
-    /**
-     * Set exterieurEtChassis.
-     *
-     * @param string|null $exterieurEtChassis
-     *
-     * @return CategorieOptions
-     */
-    public function setExterieurEtChassis($exterieurEtChassis = null)
-    {
-        $this->exterieurEtChassis = $exterieurEtChassis;
-
-        return $this;
-    }
-
-    /**
-     * Get exterieurEtChassis.
-     *
-     * @return string|null
-     */
-    public function getExterieurEtChassis()
-    {
-        return $this->exterieurEtChassis;
-    }
-
-    /**
-     * Set interieur.
-     *
-     * @param string|null $interieur
-     *
-     * @return CategorieOptions
-     */
-    public function setInterieur($interieur = null)
-    {
-        $this->interieur = $interieur;
-
-        return $this;
-    }
-
-    /**
-     * Get interieur.
-     *
-     * @return string|null
-     */
-    public function getInterieur()
-    {
-        return $this->interieur;
-    }
-
-    /**
-     * Set s�ecurite.
-     *
-     * @param string|null $s�ecurite
-     *
-     * @return CategorieOptions
-     */
-    public function setS�ecurite($s�ecurite = null)
-    {
-        $this->s�ecurite = $s�ecurite;
-
-        return $this;
-    }
-
-    /**
-     * Get s�ecurite.
-     *
-     * @return string|null
-     */
-    public function getS�ecurite()
-    {
-        return $this->s�ecurite;
-    }
-
-    /**
-     * Set autre.
-     *
-     * @param string|null $autre
-     *
-     * @return CategorieOptions
-     */
-    public function setAutre($autre = null)
-    {
-        $this->autre = $autre;
-
-        return $this;
-    }
-
-    /**
-     * Get autre.
-     *
-     * @return string|null
-     */
-    public function getAutre()
-    {
-        return $this->autre;
-    }
-
-    /**
-     * Set securite.
-     *
-     * @param string|null $securite
-     *
-     * @return CategorieOptions
-     */
-    public function setSecurite($securite = null)
-    {
-        $this->securite = $securite;
-
-        return $this;
-    }
-
-    /**
-     * Get securite.
-     *
-     * @return string|null
-     */
-    public function getSecurite()
-    {
-        return $this->securite;
-    }
     /**
      * Constructor
      */
@@ -226,5 +86,29 @@ class CategorieOptions
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * Set categorieOption.
+     *
+     * @param string|null $categorieOption
+     *
+     * @return CategorieOptions
+     */
+    public function setCategorieOption($categorieOption = null)
+    {
+        $this->categorieOption = $categorieOption;
+
+        return $this;
+    }
+
+    /**
+     * Get categorieOption.
+     *
+     * @return string|null
+     */
+    public function getCategorieOption()
+    {
+        return $this->categorieOption;
     }
 }

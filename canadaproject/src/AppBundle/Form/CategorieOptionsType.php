@@ -13,7 +13,7 @@ class CategorieOptionsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('exterieurEtChassis')->add('interieur')->add('securite')->add('autre');
+        $builder->add('nom');
     }/**
      * {@inheritdoc}
      */

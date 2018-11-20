@@ -7,10 +7,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Exterieuretchassis</th>
-                <th>Interieur</th>
-                <th>Securite</th>
-                <th>Autre</th>
+                <th>Nom</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,10 +15,7 @@
         {% for categorieOption in categorieOptions %}
             <tr>
                 <td><a href="{{ path('categorieoptions_show', { 'id': categorieOption.id }) }}">{{ categorieOption.id }}</a></td>
-                <td>{{ categorieOption.exterieurEtChassis }}</td>
-                <td>{{ categorieOption.interieur }}</td>
-                <td>{{ categorieOption.securite }}</td>
-                <td>{{ categorieOption.autre }}</td>
+                <td>{{ categorieOption.nom }}</td>
                 <td>
                     <ul>
                         <li>
