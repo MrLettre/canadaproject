@@ -79,10 +79,6 @@ class VehiculePhysiqueController extends Controller
             $optionsVer[] = $value->getId();
         }
 
-       // $optionsVersion = implode(",", $optionsVer);
-
-
-
        $options= $em->getRepository('AppBundle:VehicleOption')->findOptionsWithoutOptionsVersion($optionsVer);
 
 
