@@ -38,12 +38,6 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.options, 'Choisissez les options du véhicule') }}
-                {{ form_widget(form.options) }}
-                {{ form_errors(form.options) }}
-            </div>
-
-            <div class="form-group">
                 {{ form_label(form.descriptif, 'Descriptif du véhicule') }}
                 {{ form_widget(form.descriptif, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.descriptif) }}
@@ -68,18 +62,18 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.imageFile, 'Photos du véhicule') }}
+                {{ form_label(form.imageFile, 'Photo principale du véhicule') }}
                 {{ form_widget(form.imageFile) }}
                 {{ form_errors(form.imageFile) }}
             </div>
         <p>
-            <input class="btn btn-primary" type="submit" value="Créer" />
+            <input class="btn btn-success" type="submit" value="Valider et Choisir mes options" style="width: 30%;"/>
         </p>
         {{ form_row(form._token) }}
         {{ form_end(form, {'render_rest': false}) }}
 
        <p>
-            <a class="btn btn-primary" href="{{ path('vehiculevendeur_validation_index') }}">Retour aux validations</a>
+            <a class="btn btn-primary" href="{{ path('vehiculevendeur_validation_index') }}" style="width: 30%;">Retour aux validations</a>
        </p>
 
     </div>
