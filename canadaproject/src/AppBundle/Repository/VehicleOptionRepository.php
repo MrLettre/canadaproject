@@ -19,9 +19,5 @@ class VehicleOptionRepository extends \Doctrine\ORM\EntityRepository
                            ->getQuery()->getResult();
 
             return $query;
-        //return $this->getEntityManager()
-          //  ->createQuery("SELECT vo FROM AppBundle:VehicleOption vo WHERE vo.id NOT IN $optionsVersion")
-            //->getResult();
-
     }
 }

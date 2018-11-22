@@ -2,12 +2,99 @@
 
 {% block body %}
     <section>
-        <div class="container">
-                           {{ dump(options) }}
-                   {{ dump(optionsV) }}
+            <div class="container-fluid" style="margin: 10vh 0 5vh 0">
+                <div style="text-align: center">
+                    <h1>Options & Equipements</h1>
+                    <br>
+                    <div style="">
+                        <h2>{{ vehiculePhysique.version.model.marque }} {{ vehiculePhysique.version.model }} {{ vehiculePhysique.version }} </h2>
+                    </div>
+                </div>
 
+                <div class="row" style="border: solid cornflowerblue; padding: 2vh 2vw 2vh 2vw; margin: 2vh 2vw 2vh 2vw">
+                    <div style="margin: auto">
+                        <h3>Equipements de série</h3>
+                    </div>
+                    {% for categorie in categories %}
+                        <div class="col-md-12" style="text-align: center">
+                            <h5>{{ categorie.nom }}</h5>
+                            <hr>
+                            <div class="container-fluid">
+                                <div class="row">
 
+                                    {% for option in optionsV %}
+                                        {% if option.categorieOption.nom == categorie.nom %}
+                                        <div class="col-md-3" style="display: flex">
+                                                <p>{{ option.nom }}</p>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        <form>
+            <div class="container-fluid" style="margin: 10vh 0 5vh 0">
+                <div class="row">
+                    <div style="margin: auto">
+                        <h3>Choisissez vos Options complémentaires</h3>
+                    </div>
+                    <br>
+                    <br>
 
-        </div>
+                    {% for categorie in categories %}
+                        <div class="col-md-12" style="text-align: center">
+                            <h3>{{ categorie.nom }}</h3>
+                            <hr>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    {% for option in options %}
+                                        {% if option.categorieOption.nom == categorie.nom %}
+                                        <div class="col-md-3" style="display: flex">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" value="{{ option.id }}">
+                                                <label class="form-check-label" for="exampleCheck1">{{ option.nom }}</label>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {{ form_start(form) }}
+                {{ form_widget(form.tableauOption) }}
+                {{ form_errors(form.tableauOption) }}
+            <input id="submitOption" class="btn btn-success" type="submit" value="Valider vos Options et soumettre le véhicule" formmethod="post"/>
+            {{ form_end(form) }}
+
+        </form>
     </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+
+            $(function () {
+                $("#submitOption").on('click',function () {
+                    var tab = new Array();
+
+                    $(".form-check-input").each(function(){
+                        if ($(this).is(':checked')){
+                            tab.push($(this).val());
+                            $('#appbundle_vehiculephysique_tableauOption').val(tab.toString());
+                        }
+                    });
+                    console.log(tab.toString())
+                });
+            });
+        });
+
+    </script>
 {% endblock %}

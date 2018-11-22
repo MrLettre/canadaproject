@@ -34,7 +34,7 @@
                         <td>{{ vehiculePhysique.prixHT }}$</td>
                         <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                         <td>
-                            <a class="btn btn-success" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modifier</a>
+                            <a class="btn btn-danger" href="{{ path('vehiculephysique_delete', { 'id': vehiculePhysique.id }) }}">Supprimer</a>
                         </td>
                     </tr>
                     </tbody>
