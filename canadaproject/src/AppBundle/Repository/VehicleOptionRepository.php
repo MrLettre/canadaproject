@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class VehicleOptionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findOptionsWithoutOptionsVersion($optionsVersion){
+            $query = $this->createQueryBuilder('vo')
+               ->select('vo');
+
+            $query = $query->add('where', $query->expr()->notIn('vo.id', ':id'))
+                           ->setParameter('id', $optionsVersion)
+                           ->getQuery()->getResult();
+
+            return $query;
+    }
 }

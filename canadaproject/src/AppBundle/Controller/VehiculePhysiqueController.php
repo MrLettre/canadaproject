@@ -22,7 +22,6 @@ use Symfony\Component\HttpFoundation\Request;
 class VehiculePhysiqueController extends Controller
 {
 
-
     /**
      * Creates a new vehiculePhysique entity.
      *
@@ -42,10 +41,17 @@ class VehiculePhysiqueController extends Controller
             $vehiculePhysique->setConcession($concession);
             $ref= 'VEHPHY'.'-'.$concession.rand(0, 99999);
             $vehiculePhysique->setReferenceVehPhy($ref);
+            $optionsVersion = $vehiculePhysique->getVersion()->getOptions();
+
+            foreach ($optionsVersion as $value){
+                $vehiculePhysique->addOption($value);
+                $em->persist($vehiculePhysique);
+            }
+
             $em->persist($vehiculePhysique);
             $em->flush();
 
-            return $this->redirectToRoute('vehiculephysique_show', array('id' => $vehiculePhysique->getId()));
+            return $this->redirectToRoute('vehiculephysique_new_Options', array('id' => $vehiculePhysique->getId()));
         }
 
         return $this->render('Form/vehiculephysique/new.html.twig', array(
@@ -53,6 +59,54 @@ class VehiculePhysiqueController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    /**
+     * Creates a new vehiculePhysique entity.
+     *
+     * @Route("/{id}/options", name="vehiculephysique_new_Options")
+     * @Method({"GET", "POST"})
+     */
+    public function newOptionsAction(Request $request, VehiculePhysique $vehiculePhysique)
+    {
+        $form = $this->createForm('AppBundle\Form\DeclarationOptionVPhyType', $vehiculePhysique);
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+
+        $optionsV = $vehiculePhysique->getOptions();
+        $oVer = $optionsV->toArray();
+        $optionsVer = [];
+
+        foreach ($oVer as $value){
+            $optionsVer[] = $value->getId();
+        }
+
+        $options= $em->getRepository('AppBundle:VehicleOption')->findOptionsWithoutOptionsVersion($optionsVer);
+        $categories= $em->getRepository('AppBundle:CategorieOptions')->findAll();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $optionsString = $_POST["appbundle_vehiculephysique"]["tableauOption"];
+            $options = explode(",", $optionsString);
+
+            foreach ($options as $value){
+                $em = $this->getDoctrine()->getManager();
+                $objetOption = $em->getRepository('AppBundle:VehicleOption')->findOneBy(array('id' => $value));
+                $vehiculePhysique->addOption($objetOption);
+                $em->persist($vehiculePhysique);
+            }
+            $em->flush();
+
+            return $this->redirectToRoute('vehiculevendeur_validation_index', array('id' => $vehiculePhysique->getId()));
+        }
+
+        return $this->render('Form/vehiculephysique/ajoutOptions.html.twig', array(
+            'vehiculePhysique' => $vehiculePhysique,
+            'options' => $options,
+            'optionsV' => $optionsV,
+            'categories' => $categories,
+            'form' => $form->createView(),
+        ));
+    }
+
 
     /**
      * Finds and displays a vehiculePhysique entity.
@@ -98,7 +152,7 @@ class VehiculePhysiqueController extends Controller
     /**
      * Deletes a vehiculePhysique entity.
      *
-     * @Route("/{id}/lol", name="vehiculephysique_delete")
+     * @Route("/{id}/delete", name="vehiculephysique_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, VehiculePhysique $vehiculePhysique)
@@ -142,7 +196,6 @@ class VehiculePhysiqueController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $voituredef = $em->getRepository('AppBundle:VehicleDefinition')->findById($id);
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
 

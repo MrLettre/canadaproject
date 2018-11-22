@@ -23,14 +23,7 @@ class VehicleDefinitionType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('options', EntityType::class,[
-                'class'         => 'AppBundle\Entity\VehicleOption',
-                'choice_label' => 'nom',
-                'multiple' => true,
-                'expanded' => true,
-                'mapped'        => false,
-                'required'      => false
-            ])
+
             ->add('marque', EntityType::class, [
                 'class'         => 'AppBundle\Entity\Marque',
                 'placeholder'   => 'Choisissez la Marque',
