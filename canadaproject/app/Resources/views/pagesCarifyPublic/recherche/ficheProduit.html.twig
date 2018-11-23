@@ -127,6 +127,14 @@
 
                 <h4 class="my-4 h4">Options</h4>
 
+{% for options in versionOptions %}
+     {{dump(options.nom)}}     
+{% endfor %}
+    
+         
+                        
+
+
                 {% for optionsphy in optionsphy %}
                     <p>-
                         {{optionsphy}}</p>

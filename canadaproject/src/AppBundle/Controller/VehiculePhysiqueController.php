@@ -198,6 +198,7 @@ class VehiculePhysiqueController extends Controller
         $user = $this->getUser();
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
+        $versionOptions = $voiturephy[0]->getVersion()->getOptions();
 
         $formCart = $this->createForm('AppBundle\Form\AddToCartType');
         $formCart->handleRequest($request);
@@ -220,9 +221,10 @@ class VehiculePhysiqueController extends Controller
         }
 
         return $this->render('pagesCarifyPublic/recherche/ficheProduit.html.twig', [
-            'voituredef' => $voituredef,
+           
             'voiturephy' => $voiturephy,
             'optionsphy' => $optionsphy,
+            'versionOptions' => $versionOptions,
             'formCart' => $formCart->createView(),
             'formEssai' => $formEssai->createView(),
             'user' => $user,
