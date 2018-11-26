@@ -199,6 +199,7 @@ class VehiculePhysiqueController extends Controller
         $voiturephy = $em->getRepository('AppBundle:VehiculePhysique')->findById($id);
         $optionsphy = $em->getRepository('AppBundle:VehiculePhysique')->find($id)->getOptions($id);
         $versionOptions = $voiturephy[0]->getVersion()->getOptions();
+        $categoriesOptions = $em->getRepository('AppBundle:CategorieOptions')->findAll();
 
         $formCart = $this->createForm('AppBundle\Form\AddToCartType');
         $formCart->handleRequest($request);
@@ -225,6 +226,7 @@ class VehiculePhysiqueController extends Controller
             'voiturephy' => $voiturephy,
             'optionsphy' => $optionsphy,
             'versionOptions' => $versionOptions,
+            'categoriesOptions' => $categoriesOptions,
             'formCart' => $formCart->createView(),
             'formEssai' => $formEssai->createView(),
             'user' => $user,

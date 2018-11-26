@@ -127,18 +127,185 @@
 
                 <h4 class="my-4 h4">Options</h4>
 
-{% for options in versionOptions %}
-     {{dump(options.nom)}}     
-{% endfor %}
+
+
+                <!--OPTIONS POUR LA VERSION DU VEHICULE-->
+
+<h6>Options de base de la version:</h6>
+
+
+ {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Interieur' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for options in versionOptions %}
+
+            {% if options.categorieOption.nom == categorie.nom %}
+            
+           <p>{{options.nom}}</p>    
+
+            {% endif %}
+
+        {% endfor %}
     
-         
+    {% endif %}
+
+{% endfor %}   
+
+
+ {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Exterieur' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for options in versionOptions %}
+
+            {% if options.categorieOption.nom == categorie.nom %}
+            
+           <p>{{options.nom}}</p>    
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %} 
+
+  {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Securite' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for options in versionOptions %}
+
+            {% if options.categorieOption.nom == categorie.nom %}
+            
+           <p>{{options.nom}}</p>    
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+    {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Autre' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for options in versionOptions %}
+
+            {% if options.categorieOption.nom == categorie.nom %}
+            
+           <p>{{options.nom}}</p>    
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+
+                <!--OPTIONS POUR LE VEHICULE PHYSIQUE-->
+
                         
+<h6>Options en plus de ce véhicule:</h6>
 
 
-                {% for optionsphy in optionsphy %}
-                    <p>-
-                        {{optionsphy}}</p>
-                {% endfor %}
+  {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Interieur' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for optionsphy in optionsphy %}
+
+            {% if optionsphy.categorieOption.nom == categorie.nom %}
+            
+                    <p>{{optionsphy}}</p> 
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+  
+    {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Exterieur' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for optionsphy in optionsphy %}
+
+            {% if optionsphy.categorieOption.nom == categorie.nom %}
+            
+                    <p>{{optionsphy}}</p> 
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+
+    {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Securite' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for optionsphy in optionsphy %}
+
+            {% if optionsphy.categorieOption.nom == categorie.nom %}
+            
+                    <p>{{optionsphy}}</p> 
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+  {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Autre' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for optionsphy in optionsphy %}
+
+            {% if optionsphy.categorieOption.nom == categorie.nom %}
+            
+                    <p>{{optionsphy}}</p> 
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+
+                
 
             </div>
             <!--Grid column-->
