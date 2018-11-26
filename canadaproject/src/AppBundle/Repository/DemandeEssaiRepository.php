@@ -27,4 +27,16 @@ class DemandeEssaiRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery("SELECT d FROM AppBundle:DemandeEssai d WHERE d.concession = $concession AND d.statutMailEssai = 'Demande traitée' ORDER BY d.dateDemande ASC")
             ->getResult();
     }
+
+    public function findEssaiEnAttente(){
+        return $this->getEntityManager()
+            ->createQuery("SELECT d FROM AppBundle:DemandeEssai d WHERE d.statutMailEssai != 'Demande traitée' OR d.statutMailEssai IS NULL ORDER BY d.dateDemande ASC")
+            ->getResult();
+    }
+
+    public function findEssaiTraite(){
+        return $this->getEntityManager()
+            ->createQuery("SELECT d FROM AppBundle:DemandeEssai d WHERE d.statutMailEssai = 'Demande traitée' ORDER BY d.dateDemande ASC")
+            ->getResult();
+    }
 }
