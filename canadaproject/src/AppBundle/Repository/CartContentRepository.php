@@ -13,7 +13,6 @@ class CartContentRepository extends \Doctrine\ORM\EntityRepository
 
     public function findByUser($userId)
     {
-       //select c from AppBundle:CartContent where user = userId join AppBundle:Cart where actif = 1
 
        $query = $this->createQueryBuilder('c')
        ->where('c.user = :userId')
@@ -565,6 +564,32 @@ public function findUserHistoric($referenceClient)
 return $query->getResult(); 
 }
 
+public function findCartContentByConcession($concession){
+    $query = $this->createQueryBuilder('cc')
+        ->join('cc.vehiculePhysique', 'vp')
+        ->join('cc.vente', 'v')
+        ->where('vp.concession = :concession')
+        ->setParameter('concession', $concession)
+        ->andwhere('cc.vente is not null')
+        ->orderBy('v.dateVente', 'ASC')
+        ->getQuery();
+
+    return $query->getArrayResult();
+}
+
+public function findCAConcession($concession){
+       $query = $this->createQueryBuilder('cc')
+           ->join('cc.vehiculePhysique', 'vp')
+           ->join('cc.vente', 'v')
+           ->where('vp.concession = :concession')
+           ->setParameter('concession', $concession)
+           ->andwhere('cc.vente is not null')
+           ->orderBy('v.dateVente', 'ASC')
+           ->select('SUM(vp.prixHT) as chiffreAffaire')
+           ->getQuery();
+    return $query->getSingleScalarResult();
+
+}
 
 
 

@@ -23,15 +23,15 @@ class ConnexionController extends Controller{
     public function showUserAction()
     {
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            return $this->render('admin/admin/index.html.twig');
+            return $this->redirectToRoute('adminHomepage');
         }
 
         if ($this->get('security.authorization_checker')->isGranted('ROLE_VENDEUR')) {
-            return $this->render('admin/vendeur/index.html.twig');
+            return $this->redirectToRoute('adminHomepageSeller');
         }
 
         if ($this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
-            return $this->render('admin/user/index.html.twig');
+            return $this->redirectToRoute('profile_user');
         }
     }
 
