@@ -590,6 +590,28 @@ public function findCAConcession($concession){
     return $query->getSingleScalarResult();
 
 }
+    public function findCartContentGlobal(){
+        $query = $this->createQueryBuilder('cc')
+            ->join('cc.vehiculePhysique', 'vp')
+            ->join('cc.vente', 'v')
+            ->andwhere('cc.vente is not null')
+            ->orderBy('v.dateVente', 'ASC')
+            ->getQuery();
+
+        return $query->getArrayResult();
+    }
+
+    public function findCAGlobal(){
+        $query = $this->createQueryBuilder('cc')
+            ->join('cc.vehiculePhysique', 'vp')
+            ->join('cc.vente', 'v')
+            ->andwhere('cc.vente is not null')
+            ->orderBy('v.dateVente', 'ASC')
+            ->select('SUM(vp.prixHT) as chiffreAffaire')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+
+    }
 
 
 
