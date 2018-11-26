@@ -117,10 +117,13 @@ class ComparateurController extends Controller
      */
     public function showAction(Request $request, VehicleDefinition $vehicleDefinition)
     {
+        $em = $this->getDoctrine()->getManager();
         $vehicle2 = new Vehicledefinition();
         $form = $this->createForm('AppBundle\Form\ComparateurType', $vehicle2);
         $form->handleRequest($request);
         $version = $vehicleDefinition->getVersion();
+        $categoriesOptions = $em->getRepository('AppBundle:CategorieOptions')->findAll();
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $id2 = $vehicle2->getVersion()->getVehicleDef();
@@ -132,6 +135,7 @@ class ComparateurController extends Controller
                 'vehicleDefinition' => $vehicleDefinition,
                 'version' => $version,
                 'version2'=>$version2,
+                'categoriesOptions' => $categoriesOptions,
                 'form' => $form->createView(),
             ));
         }
@@ -140,6 +144,7 @@ class ComparateurController extends Controller
             'vehicleDefinition' => $vehicleDefinition,
             'version' => $version,
             'vehicle2' => $vehicle2,
+            'categoriesOptions' => $categoriesOptions,
             'form' => $form->createView(),
         ));
     }
