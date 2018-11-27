@@ -27,7 +27,7 @@
                         <div class="col-md-8 px-3">
                             <div class="card-block px-3">
                                 <br>
-                                <h4 class="card-title" style="text-align: center">{{ vehiculePhysique.version.model.marque }} {{ vehiculePhysique.version.model }} {{ vehiculePhysique.version }} <span style="font-weight: bold; color: #5E7AE5"> {{ vehiculePhysique.prixHT }} $</span></h4>
+                                <h4 class="card-title" style="text-align: center">{{ vehiculePhysique.version.model.marque }} {{ vehiculePhysique.version.model }} {{ vehiculePhysique.version }} <span style="font-weight: bold; color: #5E7AE5"> {{ vehiculePhysique.prixHT|number_format(2, '.', ',') }} $</span></h4>
 
                                 <div class="container" style="margin-bottom: 2vh">
                                              <h6>Caractéristiques</h6>
