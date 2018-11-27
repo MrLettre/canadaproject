@@ -10,6 +10,8 @@
 <section>
     <h3 style="text-align: center; margin-bottom: 8vh; margin-top: 8vh;">Validation de la livraison</h3>
 
+    {#{{dump(livraison.vente.cartContent.vehiculePhysique.version.nom)}}#}
+
     {{ form_start(edit_form) }}
     <div class="form-group">
         {{ form_label(edit_form.dateLivraisonEffective, 'Date de livraison effective') }}
@@ -21,6 +23,42 @@
     {{ form_row(edit_form._token) }}
     {{ form_end(edit_form, {'render_rest': false}) }}
 
+
+ <div class="container">
+        <div class="col-md-12">
+            <h3>Récapitulatif de la livraison en attente</h3>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Marque</th>
+                        <th scope="col">Modèle</th>
+                        <th scope="col">Version</th>
+                        <th scope="col">Concession</th>
+                        <th scope="col">Référence de livraison</th>
+                        <th scope="col">Date d'achat</th>
+                        <th scope="col">Mode de livraison choisie</th>
+                        <th scope="col">Date prévisionelle de livraison</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ vehicule.version.model.marque.nom }}</td>
+                            <td>{{ vehicule.version.model.nom }}</td>
+                            <td>{{ vehicule.version.nom }}</td>
+                            <td>{{ vehicule.concession }}</td>
+                            <td>{{ livraison.reference }}</td>
+                            <td>{{ livraison.dateHA|date('d.m.Y') }}</td>
+                            <td>{{ livraison.modeDeLivraison }}</td>
+                            <td>{{ livraison.dateLivraisonPrevisionnelle|date('d.m.Y') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
 </section>
 
 {% endblock %}
