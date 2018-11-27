@@ -540,6 +540,8 @@ class AdminController extends Controller
     {
         $editForm = $this->createForm('AppBundle\Form\LivraisonAdminType', $livraison);
         $editForm->handleRequest($request);
+        $vehicule = $livraison->getVente()->getCartContent()->getVehiculePhysique();
+        
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -549,6 +551,7 @@ class AdminController extends Controller
 
         return $this->render('admin/admin/adminLivraisonEditedit.html.twig', array(
             'livraison' => $livraison,
+            'vehicule'  => $vehicule,
             'edit_form' => $editForm->createView(),
         ));
     }
