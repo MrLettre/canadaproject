@@ -138,6 +138,21 @@ class VehiculePhysique
     private $descriptif;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="hasCarfax", type="boolean", options={"default":false})
+     */
+    private $hasCarfax;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codeVIN", type="string", nullable=true)
+     */
+    private $codeVIN;
+
+
+    /**
      * @Vich\UploadableField(mapping="photosVehiculePhysique_images", fileNameProperty="imageName")
      *
      * @var File
@@ -665,5 +680,53 @@ class VehiculePhysique
     public function getReferenceVehPhy()
     {
         return $this->referenceVehPhy;
+    }
+
+    /**
+     * Set hasCarfax.
+     *
+     * @param bool $hasCarfax
+     *
+     * @return VehiculePhysique
+     */
+    public function setHasCarfax($hasCarfax)
+    {
+        $this->hasCarfax = $hasCarfax;
+
+        return $this;
+    }
+
+    /**
+     * Get hasCarfax.
+     *
+     * @return bool
+     */
+    public function getHasCarfax()
+    {
+        return $this->hasCarfax;
+    }
+
+    /**
+     * Set codeVIN.
+     *
+     * @param string|null $codeVIN
+     *
+     * @return VehiculePhysique
+     */
+    public function setCodeVIN($codeVIN = null)
+    {
+        $this->codeVIN = $codeVIN;
+
+        return $this;
+    }
+
+    /**
+     * Get codeVIN.
+     *
+     * @return string|null
+     */
+    public function getCodeVIN()
+    {
+        return $this->codeVIN;
     }
 }

@@ -26,6 +26,18 @@
             </div>
 
             <div class="form-group">
+                {{ form_label(form.codeVIN, 'Code VIN') }}
+                {{ form_widget(form.codeVIN) }}
+                {{ form_errors(form.codeVIN) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.hasCarfax, 'CARFAX disponible ?') }}
+                {{ form_widget(form.hasCarfax) }}
+                {{ form_errors(form.hasCarfax) }}
+            </div>
+
+            <div class="form-group">
                 {{ form_label(form.dateDeMiseEnCirculation, 'Date de mise en circulation') }}
                 {{ form_widget(form.dateDeMiseEnCirculation) }}
                 {{ form_errors(form.dateDeMiseEnCirculation) }}
