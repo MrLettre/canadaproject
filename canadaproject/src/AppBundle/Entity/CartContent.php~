@@ -193,7 +193,7 @@ class CartContent
 
     public function __toString()
     {
-        return $this->dateMiseAuPanier;
+        return $this->getCart()->getReferenceCart();
     }
 
 
