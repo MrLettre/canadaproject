@@ -63,10 +63,10 @@
                     </div>
                 </div>
                 <div class="col-md-6 ">
-                    <div class="container fontbalise fontblue" style="height: 90%">
+                    <div class="container fontbalise fontblue" style="height: 100%">
                         <h6>CA réalisé</h6>
                         <p class="donneeAffichageLong">
-                            {{ totalVentes }} $
+                            {{ totalVentes|number_format(2, '.', ',') }} $
                         </p>
                         <p class="asteriquesLong">* sur le mois en cours</p>
                     </div>
