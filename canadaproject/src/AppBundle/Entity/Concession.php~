@@ -57,6 +57,13 @@ class Concession
     /**
      * @var string
      *
+     * @ORM\Column(name="codeEntreprise", type="string", length=255)
+     */
+    private $codeEntreprise;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adresse", type="text")
      */
     private $adresse;

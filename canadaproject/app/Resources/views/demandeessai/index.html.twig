@@ -6,6 +6,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Statut</th>
                 <th>Référence</th>
                 <th>Date demande</th>
                 <th>Date essai planning</th>
@@ -16,8 +17,9 @@
         </thead>
         <tbody>
         {% for demandeEssai in demandeEssais %}
-        {% if demandeEssai.statutMailEssai == '' %}
+        {% if demandeEssai.statutMailEssai != 'Demande traitée' %}
         <tr>
+                <td>{{ demandeEssai.statutMailEssai }}</td>
                 <td>{{ demandeEssai.reference }}</td>
                 <td>{% if demandeEssai.dateDemande %}{{ demandeEssai.dateDemande|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if demandeEssai.dateEssaiPlanning %}{{ demandeEssai.dateEssaiPlanning|date('Y-m-d H:i:s') }}{% endif %}</td>

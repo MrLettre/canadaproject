@@ -26,6 +26,11 @@
                         <div class="card-body register">
 
                                     {#-----------------------------------------GLOBAL-----------------------------------------#}
+                                    <div>
+                                        <label for="codeEntreprise">N° Entreprise</label>
+                                        {{ form_widget(form.codeEntreprise) }}
+                                        {{ form_errors(form.codeEntreprise) }}
+                                    </div>
 
                                     <div>
                                         <label for="nom">Nom</label>

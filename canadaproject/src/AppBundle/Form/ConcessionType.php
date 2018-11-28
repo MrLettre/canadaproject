@@ -16,6 +16,7 @@ class ConcessionType extends AbstractType
     {
         $builder->add('nom')
             ->add('adresse')
+            ->add('codeEntreprise')
             ->add('codePostal')
             ->add('ville')
             ->add('tel')
