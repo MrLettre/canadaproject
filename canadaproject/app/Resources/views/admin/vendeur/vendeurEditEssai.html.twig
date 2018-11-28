@@ -1,8 +1,6 @@
 {% extends 'admin/vendeurBase.html.twig' %}
 
 {% block body %}
-    <h1>Demandeessai edit</h1>
-
     <h1 style="text-align: center; margin-bottom: 8vh; margin-top: 8vh;">Prise en charge</h1>
 
     {{ form_start(edit_form) }}
@@ -21,7 +19,7 @@
             <div class="row">
 
                 <!-- Grid column -->
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="card-body form">
 
                         <!-- Header -->
@@ -76,26 +74,7 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-lg-4">
-                    <div class="card-body contact text-center h-100 white-text">
-                        <h3 class="my-4 pb-2 white-text">Coordonnées du contact</h3>
-                        <hr class="hr-light my-4">
-                        <ul class="text-lg-left list-unstyled ml-4">
-                            <li>
-                                <p class="contact-adresse text-center white-text"><i data-feather="mail"></i> Email :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.email }}</p>
-                            </li>
-                            <li>
-                                <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Téléphone :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.numeroTelephone }}</p>
-                            </li>
-                            <li>
-                                <p class="contact-adresse text-center white-text"><i data-feather="map-pin"></i> Adresse :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.adresse}} <br> {{ demandeEssai.user.codePostal }} {{ demandeEssai.user.ville }}</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
             <!-- Grid row -->
         </div>

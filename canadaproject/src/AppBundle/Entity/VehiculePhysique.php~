@@ -681,4 +681,52 @@ class VehiculePhysique
     {
         return $this->referenceVehPhy;
     }
+
+    /**
+     * Set hasCarfax.
+     *
+     * @param bool $hasCarfax
+     *
+     * @return VehiculePhysique
+     */
+    public function setHasCarfax($hasCarfax)
+    {
+        $this->hasCarfax = $hasCarfax;
+
+        return $this;
+    }
+
+    /**
+     * Get hasCarfax.
+     *
+     * @return bool
+     */
+    public function getHasCarfax()
+    {
+        return $this->hasCarfax;
+    }
+
+    /**
+     * Set codeVIN.
+     *
+     * @param string|null $codeVIN
+     *
+     * @return VehiculePhysique
+     */
+    public function setCodeVIN($codeVIN = null)
+    {
+        $this->codeVIN = $codeVIN;
+
+        return $this;
+    }
+
+    /**
+     * Get codeVIN.
+     *
+     * @return string|null
+     */
+    public function getCodeVIN()
+    {
+        return $this->codeVIN;
+    }
 }

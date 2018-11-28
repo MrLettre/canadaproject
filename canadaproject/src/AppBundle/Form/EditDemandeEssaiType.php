@@ -19,6 +19,7 @@ class EditDemandeEssaiType extends AbstractType
             ->add('statutMailEssai', ChoiceType::class, [
                 'choices' => [
                     'Non-lu' => 'Non-lu',
+                    'Changement de date demandé - vous serez contacté par Carify pour planifier cet essai' => 'Changement de date demandé',
                     'Demande traitée' => 'Demande traitée',
                 ],
             ]);
