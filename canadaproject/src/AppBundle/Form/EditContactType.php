@@ -19,16 +19,16 @@ class EditContactType extends AbstractType
             ->add('destinataireMailContact', ChoiceType::class, [
                 'choices' => [
                     'Admin' => 'Admin',
-                    'Vendeur' => 'Vendeur',
-                    'Société de livraison' => 'Société de livraison',
+                    'Seller' => 'Vendeur',
+                    'Delivery Company' => 'Société de livraison',
                 ],
             ])
             ->add('statutMailContact', ChoiceType::class, [
                 'choices' => [
-                    'Non-lu' => 'Non-lu',
-                    'En cours de traitement' => 'En cours de traitement',
-                    'Demande traitée' => 'Demande traitée',
-                    'Archivé' => 'Archivé'
+                    'unread' => 'Non-lu',
+                    'being processed' => 'En cours de traitement',
+                    'request processed' => 'Demande traitée',
+                    'Archived' => 'Archivé'
                 ],
             ])
             ->add('messageAdminContact', TextareaType::class);

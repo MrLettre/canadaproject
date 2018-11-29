@@ -23,7 +23,7 @@ class RegistrationType extends AbstractType
             ->add('numeroTelephone')
             ->add('dateNaissance', BirthdayType::class,[
                 'placeholder' => array(
-                    'year' => 'Année', 'month' => 'Mois', 'day' =>'Jour',
+                    'year' => 'Year', 'month' => 'Month', 'day' =>'Day',
                 )
             ])
             ->add('dateCreationProfil')
@@ -31,9 +31,9 @@ class RegistrationType extends AbstractType
                     'multiple' => true,
                     'expanded' => true, // render check-boxes
                     'choices' => [
-                    'Administrateur' => 'ROLE_ADMIN',
-                    'Vendeur' => 'ROLE_VENDEUR',
-                    'Client' => 'ROLE_USER',
+                    'Admin' => 'ROLE_ADMIN',
+                    'Seller' => 'ROLE_VENDEUR',
+                    'Customer' => 'ROLE_USER',
                 ],
             ]);;
 

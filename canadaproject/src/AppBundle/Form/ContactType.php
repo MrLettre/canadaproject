@@ -21,28 +21,28 @@ class ContactType extends AbstractType
         $builder
             ->add('statutContact', ChoiceType::class, [
                 'choices' => [
-                  'Veuillez sélectionner votre statut' => 'null',
-                  'Je suis vendeur Carify' => 'Vendeur',
-                  'Je ne suis pas encore vendeur Carify mais je souhaiterais le devenir' => 'Prospect',
+                  'Please select your status' => 'null',
+                  "I am a Carify's seller" => 'Vendeur',
+                  'I am not a Carify seller yet, but I wish to become one ' => 'Prospect',
                   'Je suis client Carify' => 'Client',
                   'Autre' => 'Autre'
                 ],
             ])
             ->add('motifContact', ChoiceType::class, [
                 'choices' => [
-                    'Veuillez sélectionner un motif' => 'null',
-                    'Je souhaite devenir vendeur' => 'Je souhaite devenir vendeur',
-                    'Je suis un potentiel client et souhaite des informations complémentaires sur un produit/démarche de souscription/autre...' =>'Je suis un potentiel client',
-                    'Demande de SAV' => 'SAV',
-                    'Autre' => 'Autre'
+                    'please select a reason' => 'null',
+                    'I wish to become a seller' => 'Je souhaite devenir vendeur',
+                    'I am a potential customer' =>'Je suis un potentiel client',
+                    'After sales service' => 'SAV',
+                    'Other' => 'Autre'
                 ]
             ])
             ->add('nomSteContact')
             ->add('civiliteContact', ChoiceType::class, array(
                 'choices'  => [
-                    'Civilité' => 'null',
-                    'Madame' => 'Madame',
-                    'Monsieur' => 'Monsieur'
+                    'Civility' => 'null',
+                    'Mrs' => 'Madame',
+                    'Mr.' => 'Monsieur'
                 ]))
             ->add('nomContact', TextType::class, [])
             ->add('prenomContact', TextType::class, [])
