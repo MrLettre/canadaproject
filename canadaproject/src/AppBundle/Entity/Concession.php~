@@ -515,4 +515,28 @@ class Concession
     {
         return $this->concession;
     }
+
+    /**
+     * Set codeEntreprise.
+     *
+     * @param string $codeEntreprise
+     *
+     * @return Concession
+     */
+    public function setCodeEntreprise($codeEntreprise)
+    {
+        $this->codeEntreprise = $codeEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get codeEntreprise.
+     *
+     * @return string
+     */
+    public function getCodeEntreprise()
+    {
+        return $this->codeEntreprise;
+    }
 }

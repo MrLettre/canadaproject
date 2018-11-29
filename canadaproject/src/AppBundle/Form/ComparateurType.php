@@ -24,7 +24,7 @@ class ComparateurType extends AbstractType
         $builder
             ->add('marque', EntityType::class, [
                 'class'         => 'AppBundle\Entity\Marque',
-                'placeholder'   => 'Choisissez la Marque',
+                'placeholder'   => 'Choose Brand',
                 'mapped'        => false,
                 'required'      => false
             ]);
@@ -72,7 +72,7 @@ class ComparateurType extends AbstractType
             null,
             [
                 'class'         => 'AppBundle\Entity\Model',
-                'placeholder'   => $marque ? 'Choisissez la catégorie' : 'Sélectionnez votre Marque',
+                'placeholder'   => $marque ? 'Choose model' : 'Choose brand first',
                 'mapped'        => false,
                 'required'      => false,
                 'auto_initialize' =>false,
@@ -99,7 +99,7 @@ class ComparateurType extends AbstractType
         $form->add('version', EntityType::class,
             [
                 'class'         => 'AppBundle\Entity\Version',
-                'placeholder'   => $model ? 'Choisissez la version' : 'Sélectionnez un modèle',
+                'placeholder'   => $model ? 'Choose version' : 'Choose model first',
                 'choices'       => $model ? $model->getVersions() : []
             ]);
     }
