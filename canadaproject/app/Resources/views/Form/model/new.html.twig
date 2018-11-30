@@ -5,25 +5,25 @@
 
     {{ form_start(form) }}
     <div class="form-group">
-        {{ form_label(form.marque, 'Marque') }}
+        {{ form_label(form.marque, 'Brand') }}
         {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
         {{ form_errors(form.marque) }}
     </div>
 
     <div class="form-group">
-        {{ form_label(form.nom, 'Nom du modèle') }}
+        {{ form_label(form.nom, 'Model name') }}
         {{ form_widget(form.nom, {'attr':{class:'form-control'}}) }}
         {{ form_errors(form.nom) }}
     </div>
 
     <div class="form-group">
-        {{ form_label(form.typeVehicule, 'Type de véhicule') }}
+        {{ form_label(form.typeVehicule, 'Vehicle type') }}
         {{ form_widget(form.typeVehicule, {'attr':{class:'form-control'}}) }}
         {{ form_errors(form.typeVehicule) }}
     </div>
 
     <div class="form-group">
-        {{ form_label(form.imageFile, 'Image du modèle') }}
+        {{ form_label(form.imageFile, 'Model image') }}
         {{ form_widget(form.imageFile, {'attr':{class:'form-control'}}) }}
         {{ form_errors(form.imageFile) }}
     </div>
@@ -38,6 +38,6 @@
     {{ form_end(form) }}
 
     <p>
-        <a href="{{ path('vehicledefinition_new') }}">Retour à la création d'une définition de véhicule</a>
+        <a href="{{ path('vehicledefinition_new') }}">Back to create a new vehicle definition</a>
     </p>
 {% endblock %}

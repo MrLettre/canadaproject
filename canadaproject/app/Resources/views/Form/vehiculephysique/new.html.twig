@@ -8,13 +8,13 @@
         {{ form_start(form) }}
 
             <div class="form-group">
-                {{ form_label(form.marque, 'Marque') }}
+                {{ form_label(form.marque, 'Brand') }}
                 {{ form_widget(form.marque, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.marque) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.model, 'Modèle') }}
+                {{ form_label(form.model, 'Model') }}
                 {{ form_widget(form.model, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.model) }}
             </div>
@@ -26,55 +26,55 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.codeVIN, 'Code VIN') }}
+                {{ form_label(form.codeVIN, 'VIN code') }}
                 {{ form_widget(form.codeVIN) }}
                 {{ form_errors(form.codeVIN) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.hasCarfax, 'CARFAX disponible ?') }}
+                {{ form_label(form.hasCarfax, 'CARFAX Available ?') }}
                 {{ form_widget(form.hasCarfax) }}
                 {{ form_errors(form.hasCarfax) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.dateDeMiseEnCirculation, 'Date de mise en circulation') }}
+                {{ form_label(form.dateDeMiseEnCirculation, 'Date of first circulation') }}
                 {{ form_widget(form.dateDeMiseEnCirculation) }}
                 {{ form_errors(form.dateDeMiseEnCirculation) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.kilometrage, 'Kilométrage réel') }}
+                {{ form_label(form.kilometrage, 'True mileage') }}
                 {{ form_widget(form.kilometrage) }}
                 {{ form_errors(form.kilometrage) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.descriptif, 'Descriptif du véhicule') }}
+                {{ form_label(form.descriptif, 'Vehicle description') }}
                 {{ form_widget(form.descriptif, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.descriptif) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.prixha, 'Prix d\'achat') }}
+                {{ form_label(form.prixha, 'Price when bought') }}
                 {{ form_widget(form.prixha, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.prixha) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.prixht, 'Prix HT') }}
+                {{ form_label(form.prixht, 'Prix (no taxes)') }}
                 {{ form_widget(form.prixht, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.prixht) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.prixttc, 'Prix TTC') }}
+                {{ form_label(form.prixttc, 'Prix with taxes') }}
                 {{ form_widget(form.prixttc, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.prixttc) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.imageFile, 'Photo principale du véhicule') }}
+                {{ form_label(form.imageFile, 'Main photo of vehicle ') }}
                 {{ form_widget(form.imageFile) }}
                 {{ form_errors(form.imageFile) }}
             </div>
@@ -85,7 +85,7 @@
         {{ form_end(form, {'render_rest': false}) }}
 
        <p>
-            <a class="btn btn-primary" href="{{ path('vehiculevendeur_validation_index') }}" style="width: 30%;">Retour aux validations</a>
+            <a class="btn btn-primary" href="{{ path('vehiculevendeur_validation_index') }}" style="width: 30%;">Back to  validations</a>
        </p>
 
     </div>

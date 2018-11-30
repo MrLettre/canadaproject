@@ -25,7 +25,7 @@
                                     {#-----------------------------------------GLOBAL-----------------------------------------#}
 
                                     <div>
-                                        <label for="marque">Marque</label>
+                                        <label for="marque">Brand</label>
                                         {{ form_widget(form.marque) }}
                                         {{ form_errors(form.marque) }}
 
@@ -33,18 +33,18 @@
 
                                     <!-- si la marque n'existe pas on va la créer via le formulaire marque_new -->
                                     <p>
-                                        <a class="btn btn-success" href="{{ path('marque_new') }}">créer une marque</a>
+                                        <a class="btn btn-success" href="{{ path('marque_new') }}">Create a brand</a>
                                     </p>
 
                                     <div>
-                                        <label for="modele">Modèle</label>
+                                        <label for="modele">Model</label>
                                         {{ form_widget(form.model) }}
                                         {{ form_errors(form.model) }}
                                     </div>
 
                                     <!-- si le modèle n'existe pas on va le créer via le formulaire model_new -->
                                     <p>
-                                        <a class="btn btn-success" href="{{ path('model_new') }}">créer un modèle</a>
+                                        <a class="btn btn-success" href="{{ path('model_new') }}">Create a model</a>
                                     </p>
 
                                     <div>
@@ -55,12 +55,12 @@
 
                                     <!-- si la version n'existe pas on va la créer via le formulaire version_new -->
                                     <p>
-                                        <a class="btn btn-success" href="{{ path('version_new') }}">créer une version</a>
+                                        <a class="btn btn-success" href="{{ path('version_new') }}">Create a version</a>
                                     </p>
 
 
                                     <div>
-                                        <label for="dateNaissance">Donnez un nom à ce véhicule</label>
+                                        <label for="dateNaissance">Give a name to this vehicle</label>
                                         {{ form_widget(form.nom) }}
                                         {{ form_errors(form.nom) }}
                                     </div>
@@ -71,7 +71,7 @@
                                     </div>
 
                                     <div class="form-group col-12">
-                                        <a href="{{ path('article_index') }}" class="btn btn-primary btn-block">Retour à la liste des véhicules</a>
+                                        <a href="{{ path('article_index') }}" class="btn btn-primary btn-block">Back to vehicle list</a>
                                     </div>
 
                                 </div>

@@ -6,11 +6,11 @@
 
 {% block body %}
 
-    <h1>Validation pour mise en ligne</h1>
+    <h1>Upload validation</h1>
 
     {{ form_start(validation_form) }}
     <div class="form-group">
-        {{ form_label(validation_form.statut, 'Mise en ligne :') }}
+        {{ form_label(validation_form.statut, 'Online :') }}
         {{ form_widget(validation_form.statut, {'attr':{class:'form-control'}}) }}
         {{ form_errors(validation_form.statut) }}
     </div>
@@ -29,14 +29,14 @@
                     <div class="card-body form">
 
                         <!-- Header -->
-                        <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Demande de validation:</h3>
+                        <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Validation request:</h3>
 
                         <!-- Grid row -->
                         <div class="row">
                             <!-- Grid column -->
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h6>Concession :</h6> <p>{{ vehiculePhysique.concession }}</p>
+                                    <h6>Dealer :</h6> <p>{{ vehiculePhysique.concession }}</p>
 
                                 </div>
                             </div>
@@ -44,21 +44,21 @@
                             <!-- Grid column -->
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h6>Kilométrage :</h6> <p> {{ vehiculePhysique.kilometrage }}</p>
+                                    <h6>Mileage :</h6> <p> {{ vehiculePhysique.kilometrage }}</p>
                                 </div>
                             </div>
 
                             <!-- Grid column -->
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h6>Date de Mise en Circulation :</h6> <p> {{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}</p>
+                                    <h6>Date when first circulated :</h6> <p> {{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}</p>
                                 </div>
                             </div>
 
                             <!-- Grid column -->
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h6> Prix HT / TTC :</h6> <p> {{ vehiculePhysique.prixht }} / {{ vehiculePhysique.prixttc }}</p>
+                                    <h6> Prix NoTax / W.taxes :</h6> <p> {{ vehiculePhysique.prixht }} / {{ vehiculePhysique.prixttc }}</p>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             <!-- Grid column -->
                             <div class="col-md-12">
                                 <div class="md-form mb-0">
-                                    <h6> Descriptif :</h6> <p> {{ vehiculePhysique.descriptif }}</p>
+                                    <h6> Description :</h6> <p> {{ vehiculePhysique.descriptif }}</p>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                 <!-- Grid column -->
                 <div class="col-lg-4">
                     <div class="card-body contact text-center h-100 white-text">
-                        <h3 class="my-4 pb-2 white-text">Photo du véhicule</h3>
+                        <h3 class="my-4 pb-2 white-text">Vehicle photo</h3>
                         <hr class="hr-light my-4">
                         <ul class="text-lg-left list-unstyled ml-4">
                             <li>
@@ -108,6 +108,6 @@
     {{ form_end(validation_form) }}
 
     <p>
-        <a class="btn btn-success" href="{{ path('vehiculephysique_index') }}">Retour à la liste des Véhicules</a>
+        <a class="btn btn-success" href="{{ path('vehiculephysique_index') }}">Back to vehicle list</a>
     </p>
 {% endblock %}

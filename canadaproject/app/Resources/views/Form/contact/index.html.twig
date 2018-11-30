@@ -5,18 +5,18 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Gestion des demandes de contact</h1>
+    <h1>Contact request managing</h1>
 <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Statut Demande</th>
-                <th scope="col">Demande</th>
-                <th scope="col">Motif</th>
-                <th scope="col">Société</th>
-                <th scope="col">Civilité</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Prénom</th>
+                <th scope="col">Request status</th>
+                <th scope="col">Request</th>
+                <th scope="col">Motive</th>
+                <th scope="col">Company</th>
+                <th scope="col">Civility</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Firstname</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -33,7 +33,7 @@
                 <td>{{ contact.prenomContact }}</td>
                 <td>
                     <p>
-                        <a class="btn btn-primary" href="{{ path('contact_show', { 'id': contact.id }) }}">Consulter</a>
+                        <a class="btn btn-primary" href="{{ path('contact_show', { 'id': contact.id }) }}">Consult</a>
                     </p>
                 </td>
             </tr>

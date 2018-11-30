@@ -10,35 +10,35 @@
                 <td>{{ vehiculePhysique.id }}</td>
             </tr>
             <tr>
-                <th>Datemiseenligne</th>
+                <th>Online since</th>
                 <td>{% if vehiculePhysique.dateMiseEnLigne %}{{ vehiculePhysique.dateMiseEnLigne|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datedevente</th>
+                <th>Date of sale</th>
                 <td>{% if vehiculePhysique.dateDeVente %}{{ vehiculePhysique.dateDeVente|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Kilometrage</th>
+                <th>Mileage</th>
                 <td>{{ vehiculePhysique.kilometrage }}</td>
             </tr>
             <tr>
-                <th>Datedemiseencirculation</th>
+                <th>Date when first circulated</th>
                 <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Prixht</th>
+                <th>Prix no texes</th>
                 <td>{{ vehiculePhysique.prixHT }}</td>
             </tr>
             <tr>
-                <th>Prixttc</th>
+                <th>Prix with taxes</th>
                 <td>{{ vehiculePhysique.prixTTC }}</td>
             </tr>
             <tr>
-                <th>Prixha</th>
+                <th>Selling price</th>
                 <td>{{ vehiculePhysique.prixHA }}</td>
             </tr>
             <tr>
-                <th>Descriptif</th>
+                <th>Description</th>
                 <td>{{ vehiculePhysique.descriptif }}</td>
             </tr>
             <tr>

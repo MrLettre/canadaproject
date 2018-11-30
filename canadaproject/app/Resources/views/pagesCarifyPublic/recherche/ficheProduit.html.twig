@@ -49,7 +49,7 @@
 
             <p class="lead">
                 {% for voiturephy in voiturephy %}
-                    <h4>Mise en circulation:
+                    <h4>Date of first circulation:
                         {{voiturephy.dateDeMiseEnCirculation|date('d-m-Y')}}</h4>
                 {% endfor %}
                 {% for voiturephy in voiturephy %}
@@ -57,7 +57,7 @@
                     <h5>{{voiturephy.kilometrage}}KM</h5>
                 {% endfor %}
                 {% for voiturephy in voiturephy %}
-                   <span class="badge grey mr-1">mise en ligne: {{voiturephy.dateMiseEnLigne|date('d-m-Y')}}</span>
+                   <span class="badge grey mr-1">Online since: {{voiturephy.dateMiseEnLigne|date('d-m-Y')}}</span>
                 {% endfor %}
 
             </p>
@@ -68,7 +68,7 @@
                 {% if voiturephy.hasCarfax == true %}
             <img src="/images/header/Carfaxlogo3.svg.png" class="img-fluid" alt="PhotoVehicule" style="max-height: 5vh; width: auto">
                 {% else %}
-                    <h6> CARFAX non disponible pour ce véhicule</h6>
+                    <h6> CARFAX not available for this vehicle</h6>
                 {% endif %}
             {% endfor %}
 
@@ -84,7 +84,7 @@
 
             {{ form_end(formCart) }}
             {% else %}
-                <a href="{{ path('fos_user_security_login') }}"><button class="btn btn-primary" type="submit">AJOUTER AU PANIER</button></a>
+                <a href="{{ path('fos_user_security_login') }}"><button class="btn btn-primary" type="submit">ADD TO CART</button></a>
             {% endif %}
 
             {{ form_start(formEssai) }}
@@ -107,7 +107,7 @@
             <!--Grid column-->
             <div class="col-md-6 text-center">
 
-                <h4 class="my-4 h4">Descriptif</h4>
+                <h4 class="my-4 h4">Description</h4>
 
                 {% for voiturephy in voiturephy %}
                      <h5>{{ voiturephy.version.model.marque }} {{ voiturephy.version.model }} {{ voiturephy.version }}</h5>
@@ -330,11 +330,11 @@
                         {{voiturephy.version.model}}:
                         {{voiturephy.version.model.typeVehicule}}</h3>
 
-                    <h6>Boite de Vitesse:
+                    <h6>Gearbox:
                         {{ voiturephy.version.bdv}}</h6>
                     <h6>Transmission:
                         {{ voiturephy.version.transmission}}</h6>
-                    <h6>Energie:
+                    <h6>Energy:
                         {{ voiturephy.version.energie}}</h6>
 
                     <hr>
@@ -344,8 +344,8 @@
                         {% if voiturephy.version.energie == 'Electrique' %}
                             <thead>
                                 <tr>
-                                    <th>Puissance Electrique</th>
-                                    <th>Autonomie electrique</th>
+                                    <th>Electrical power</th>
+                                    <th>Electrical Autonomy</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -359,8 +359,8 @@
                         {% if voiturephy.version.energie == 'Thermique' %}
                             <thead>
                                 <tr>
-                                    <th>Puissance Thermique</th>
-                                    <th>Autonomie Thermique</th>
+                                    <th>Thermal power</th>
+                                    <th>Thermal autonomy</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -374,10 +374,10 @@
                         {% if voiturephy.version.energie == 'Hybride' %}
                             <thead>
                                 <tr>
-                                    <th>Puissance Thermique</th>
-                                    <th>Autonomie Thermique</th>
-                                    <th>Puissance Electrique</th>
-                                    <th>Autonomie electrique</th>
+                                    <th>Thermal power</th>
+                                    <th>Thermal autonomy</th>
+                                    <th>Electrical power</th>
+                                    <th>Electrical autonomy</th>
                                 </tr>
                             </thead>
                             <tbody>

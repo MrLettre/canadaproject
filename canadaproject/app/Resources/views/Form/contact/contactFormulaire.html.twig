@@ -6,7 +6,7 @@
         <div class=" animated fadeInRight ">
             <br><br>
             <hr class="trait">
-            <h1 class="titreAccueil text-center text-monospace text-uppercase">Contactez-nous</h1>
+            <h1 class="titreAccueil text-center text-monospace text-uppercase">Contact us</h1>
             <hr class="trait">
             <br><br>
         </div>
@@ -14,7 +14,7 @@
             Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d'un droit d'accès et de rectification aux informations qui vous concernent. Si vous souhaitez exercer ce droit et obtenir la communication des informations vous concernant, toute demande en ce sens transmise doit être transmise au responsable de traitement
             via l'adresse postale  ou via l'email.
         </p>
-        <i data-feather="alert-triangle" style="color:red;"></i> * Champs obligatoires.
+        <i data-feather="alert-triangle" style="color:red;"></i> * Required fields.
         <br>
         <br>
         <section class="contact-section col-md-12">
@@ -31,7 +31,7 @@
                         <div class="card-body form">
 
                             <!-- Header -->
-                            <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Contactez-nous:</h3>
+                            <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Contact us:</h3>
 
                             <!-- Grid row -->
                             <div class="row">
@@ -56,8 +56,8 @@
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.nomSteContact, { 'attr': {'class': 'form-control'} }) }}
                                         <label for="form-contact-name" class="nom">Saisissez le nom de votre société</label>
-                                        <p id="nom_id" class="text-left red-text animated bounce">Saisissez le nom de votre société</p>
-                                        <p id="nom_valid" class="text-left red-text animated bounce">Veuillez saisir un nom de société valide.</p>
+                                        <p id="nom_id" class="text-left red-text animated bounce">Company's name</p>
+                                        <p id="nom_valid" class="text-left red-text animated bounce">Please enter a valid company name</p>
                                     </div>
                                 </div>
 
@@ -73,9 +73,9 @@
                                 <div class="col-md-5">
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.nomContact, { 'attr': {'class': 'form-control text-uppercase'} }) }}
-                                        <label for="form-contact-name" class="nom">Nom</label>
-                                        <p id="nom_id" class="text-left red-text animated bounce">Veuillez saisir votre nom</p>
-                                        <p id="nom_valid" class="text-left red-text animated bounce">Veuillez saisir un nom valide.</p>
+                                        <label for="form-contact-name" class="nom">Name</label>
+                                        <p id="nom_id" class="text-left red-text animated bounce">Enter your name</p>
+                                        <p id="nom_valid" class="text-left red-text animated bounce">Please enter a valid name</p>
                                     </div>
                                 </div>
 
@@ -84,8 +84,8 @@
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.prenomContact, { 'attr': {'class': 'form-control text-capitalize'} }) }}
                                         <label for="form-contact-name" class="">Prénom</label>
-                                        <p id="prenom_id" class="text-left red-text animated bounce">Veuillez saisir votre prénom.</p>
-                                        <p id="prenom_valid" class="text-left red-text animated bounce">Veuillez saisir un prénom valide</p>
+                                        <p id="prenom_id" class="text-left red-text animated bounce">Enter firstname</p>
+                                        <p id="prenom_valid" class="text-left red-text animated bounce">Please enter a valid name</p>
 
                                     </div>
                                 </div>
@@ -95,8 +95,8 @@
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.emailContact, { 'attr': {'class': 'form-control'} }) }}
                                         <label for="form-contact-email" class="">Email</label>
-                                        <p id="email_id" class="text-left red-text animated bounce">Veuillez saisir une adresse mail.</p>
-                                        <p id="email_valid" class="text-left red-text animated bounce">Veuillez saisir une adresse email valide</p>
+                                        <p id="email_id" class="text-left red-text animated bounce">Enter mail adress</p>
+                                        <p id="email_valid" class="text-left red-text animated bounce">Please enter a valid mail adress</p>
                                     </div>
                                 </div>
 
@@ -104,9 +104,9 @@
                                 <div class="col-md-6">
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.phoneContact, { 'attr': {'class': 'form-control'} }) }}
-                                        <label for="form-contact-phone" class="">Votre téléphone</label>
-                                        <p id="telephone_id" class="text-left red-text animated bounce">Veuillez saisir votre téléphone.</p>
-                                        <p id="telephone_valid" class="text-left red-text animated bounce">Veuillez saisir un numéro de téléphone valide.</p>
+                                        <label for="form-contact-phone" class="">Phone number</label>
+                                        <p id="telephone_id" class="text-left red-text animated bounce">Enter your phone number.</p>
+                                        <p id="telephone_valid" class="text-left red-text animated bounce">Please enter a valid phone number</p>
 
                                     </div>
                                 </div>
@@ -118,8 +118,8 @@
                                 <div class="col-md-12">
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.adresseContact, { 'attr': {'class': 'form-control', 'placeholder': ""} }) }}
-                                        <label for="form-contact-company" class="">Votre adresse</label>
-                                        <p id="adresse_id" class="text-left red-text animated bounce">Veuillez saisir votre adresse.</p>
+                                        <label for="form-contact-company" class="">Your adress</label>
+                                        <p id="adresse_id" class="text-left red-text animated bounce">Please enter your adress</p>
 
                                     </div>
                                 </div>
@@ -131,8 +131,8 @@
                                 <div class="col-md-12">
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.codePostalContact, { 'attr': {'class': 'form-control', 'placeholder': ""} }) }}
-                                        <label for="form-contact-company" class="">Votre code postale</label>
-                                        <p id="adresse_id" class="text-left red-text animated bounce">Veuillez saisir votre code postale.</p>
+                                        <label for="form-contact-company" class="">Your postal code</label>
+                                        <p id="adresse_id" class="text-left red-text animated bounce">Please enter your postal code.</p>
 
                                     </div>
                                 </div>
@@ -144,8 +144,8 @@
                                 <div class="col-md-12">
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.villeContact, { 'attr': {'class': 'form-control', 'placeholder': ""} }) }}
-                                        <label for="form-contact-company" class="">Votre ville</label>
-                                        <p id="adresse_id" class="text-left red-text animated bounce">Veuillez saisir votre ville.</p>
+                                        <label for="form-contact-company" class="">Your city</label>
+                                        <p id="adresse_id" class="text-left red-text animated bounce">Enter your city name.</p>
 
                                     </div>
                                 </div>
@@ -157,9 +157,9 @@
                                 <div class="col-md-12">
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.messageContact, { 'attr': {'class': 'form-control md-textarea'} }) }}
-                                        <label for="form-contact-message">Votre message</label>
+                                        <label for="form-contact-message">Your message</label>
                                         {{ form_row(form._token) }}
-                                        <button type="submit" class="btn btn-outline-primary waves-effect" id="Envoyer">Envoyer <i class="fab fa-telegram-plane"></i></button>
+                                        <button type="submit" class="btn btn-outline-primary waves-effect" id="Envoyer">Send <i class="fab fa-telegram-plane"></i></button>
                                     </div>
                                 </div>
                                 <!-- Grid column -->
@@ -172,7 +172,7 @@
                     <!-- Grid column -->
                     <div class="col-lg-4">
                         <div class="card-body contact text-center h-100 white-text">
-                            <h3 class="my-4 pb-2 white-text">Nos Coordonnées</h3>
+                            <h3 class="my-4 pb-2 white-text">Our coordinates</h3>
                             <hr class="hr-light my-4">
                             <ul class="text-lg-left list-unstyled ml-4">
                                 <li>
@@ -180,11 +180,11 @@
                                     <p class="contact-adresse text-center white-color">contact@carify.ca</p>
                                 </li>
                                 <li>
-                                    <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Téléphone :</p>
+                                    <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Phone :</p>
                                     <p class="contact-adresse text-center white-color">03 88 81 99 99</p>
                                 </li>
                                 <li>
-                                    <p class="contact-adresse text-center white-text"><i data-feather="map-pin"></i> Adresse :</p>
+                                    <p class="contact-adresse text-center white-text"><i data-feather="map-pin"></i> Adress :</p>
                                     <p class="contact-adresse text-center white-color">Strasbourg, 67000, FRANCE</p>
                                 </li>
                             </ul>

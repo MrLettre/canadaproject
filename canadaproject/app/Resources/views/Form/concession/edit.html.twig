@@ -2,11 +2,11 @@
 
 {% block body %}
     <div style="text-align: center">
-        <h1>Concession</h1>
+        <h1>Dealer</h1>
     </div>
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Editer la concession" class="btn btn-success" style="width: 35%;"/>
     {{ form_end(edit_form) }}
-            <a href="{{ path('concession_index') }}" class="btn btn-primary" style="width: 35%">Retour à la liste des Concessions</a>
+            <a href="{{ path('concession_index') }}" class="btn btn-primary" style="width: 35%">Back to the dealers list</a>
 {% endblock %}
