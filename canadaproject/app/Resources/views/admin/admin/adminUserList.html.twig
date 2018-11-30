@@ -8,17 +8,17 @@
 {% block body %}
 
 
-<h1>Mes clients</h1>
+<h1>My clients</h1>
     <div class="table-responsive">
         <table class="table">
             <thead>
 
             <tr>
-            	<th>Référence</th>
-                <th>Nom</th>
-                <th>Prénom</th>              
-                <th>Ville</th>
-                <th>Téléphone</th>
+            	<th>Reference</th>
+                <th>Lastname</th>
+                <th>Firstname</th>              
+                <th>City</th>
+                <th>Phone</th>
                 <th>Action</th>
                 
             </tr>
@@ -35,7 +35,7 @@
                         <td>{{client.prenom}}</td>
                         <td>{{client.ville}}</td>
                         <td>{{client.numeroTelephone}}</td>
-                        <td><a href="{{ path('adminUserHistoric', {referenceClient: client.referenceClient }) }}" class="btn btn-primary" value="{{ client.referenceClient }}">Historique des achats</a></td>
+                        <td><a href="{{ path('adminUserHistoric', {referenceClient: client.referenceClient }) }}" class="btn btn-primary" value="{{ client.referenceClient }}">Purchase history</a></td>
                         
                     </tr>
 

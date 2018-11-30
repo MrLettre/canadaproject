@@ -15,22 +15,22 @@
 
 
     {# Pour les ventes totales #}
-  <h4>Vente Totale de Vehicules: {{venteTotalesCompte}}</h4>
+  <h4>Total Vehicle Sale: {{venteTotalesCompte}}</h4>
 
-<button id="hideVt">Cacher</button>
-<button id="showVt">Voir</button>
+<button id="hideVt">Hide</button>
+<button id="showVt">See</button>
 
   <div class="hideShowVt">
 
   
 
     {% for venteTotales in venteTotales %}
-      <h6>Date de vente: {{ venteTotales.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteTotales.dateVente|date('Y-m-d')}}</h6>
 
      {% if venteTotales.cartContent.vente == true %}
 
 
-      <p>Vehicule : {{ venteTotales.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTotales.cartContent.vehiculePhysique.version.model.nom }} {{ venteTotales.cartContent.vehiculePhysique.version.nom }}</p>
+      <p>Vehicle : {{ venteTotales.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTotales.cartContent.vehiculePhysique.version.model.nom }} {{ venteTotales.cartContent.vehiculePhysique.version.nom }}</p>
        
      {% endif %} 
    
@@ -55,25 +55,25 @@
     
 {# Ventes annuelles #}
 
-  <h4>Ventes annuelles</h4>
+  <h4>Annual sales</h4>
 
-  <button id="hideVa">Cacher</button>
-  <button id="showVa">Voir</button>
+  <button id="hideVa">Hide</button>
+  <button id="showVa">See</button>
 
   <div class="hideShowVa"
 
     {% for venteAnnuelles in venteAnnuelles %}
-      <h6>Date de vente: {{ venteAnnuelles.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteAnnuelles.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteAnnuelles.cartContent.vente == true %}
 
-      <p>Vehicule : {{ venteAnnuelles.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAnnuelles.cartContent.vehiculePhysique.version.model.nom }} {{ venteAnnuelles.cartContent.vehiculePhysique.version.nom }}</p>
+      <p>Vehicle : {{ venteAnnuelles.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAnnuelles.cartContent.vehiculePhysique.version.model.nom }} {{ venteAnnuelles.cartContent.vehiculePhysique.version.nom }}</p>
     
      {% endif %}
 
     {% else %}
 
-    <p>Pas de ventes cette année</p>
+    <p>No sales this year</p>
     
     {% endfor %}
 
@@ -102,31 +102,31 @@
 
 {# Ventes par trimestres #}
 
-  <h4>Vente par trimestres</h4>
+  <h4>Sales by trimesters</h4>
 
 
-  <button id="hideVtr">Cacher</button>
-  <button id="showVtr">Voir</button>
+  <button id="hideVtr">Hide</button>
+  <button id="showVtr">Show</button>
 
   <div class="hideShowVtr">
 
     {# Ventes 1er trimestre #}
 
-  <h5>Vente du premier trimestre</h5>
+  <h5>First trimester sales</h5>
 
     {% for venteTrimUn in venteTrimUn %}
 
-      <h6>Date de vente: {{ venteTrimUn.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteTrimUn.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteTrimUn.cartContent.vente == true %}
 
-      <p>Vehicule : {{ venteTrimUn.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimUn.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimUn.cartContent.vehiculePhysique.version.nom }}</p>
+      <p>Vehicle : {{ venteTrimUn.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimUn.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimUn.cartContent.vehiculePhysique.version.nom }}</p>
       
      {% endif %}
 
     {% else %}
 
-      <p> Pas de ventes au premier trimestre </p>
+      <p> No sales during the first trimestre </p>
 
     {% endfor %}
 
@@ -135,21 +135,21 @@
 
     {# Ventes 2eme trimestre #}
 
-  <h5>Vente du deuxième trimestre</h5>
+  <h5>Second trimester sales</h5>
 
     {% for venteTrimDeux in venteTrimDeux %}
 
-      <h6>Date de vente: {{ venteTrimDeux.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteTrimDeux.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteTrimDeux.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteTrimDeux.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimDeux.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimDeux.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteTrimDeux.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimDeux.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimDeux.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}
 
     {% else %}
 
-      <p> Pas de ventes au deuxième trimestre </p>
+      <p> No sales during the second trimester </p>
 
     {% endfor %}
 
@@ -159,21 +159,21 @@
 
     {# Ventes 3eme trimestre #}
 
-  <h5>Vente du troisième trimestre</h5>
+  <h5>Third trimester sales</h5>
 
     {% for venteTrimTrois in venteTrimTrois %}
 
-      <h6>Date de vente: {{ venteTrimTrois.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteTrimTrois.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteTrimTrois.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteTrimTrois.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimTrois.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimTrois.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteTrimTrois.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimTrois.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimTrois.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}
 
     {% else %}
 
-      <p> Pas de ventes au troisième trimestre </p>
+      <p> No sales during the third trimester </p>
 
     {% endfor %}
 
@@ -182,21 +182,21 @@
 
     {# Ventes 4eme trimestre #}
 
-  <h5>Vente du quatrième trimestre</h5>
+  <h5>Fourth trimester sales</h5>
 
     {% for venteTrimQuatre in venteTrimQuatre %}
 
-      <h6>Date de vente: {{ venteTrimQuatre.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteTrimQuatre.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteTrimQuatre.cartContent.vente == true %}
 
-      <p>Vehicule : {{ venteTrimQuatre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimQuatre.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimQuatre.cartContent.vehiculePhysique.version.nom }}</p>
+      <p>Vehicle : {{ venteTrimQuatre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteTrimQuatre.cartContent.vehiculePhysique.version.model.nom }} {{ venteTrimQuatre.cartContent.vehiculePhysique.version.nom }}</p>
         
       {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes au quatrième trimestre </p>
+      <p> No sales during the fourth trimester </p>
 
     {% endfor %}
 
@@ -218,241 +218,241 @@
 
 <hr>
 
-  <h4>Vente par mois</h4>
+  <h4>Sales by month</h4>
 
-  <button id="hideVmo">Cacher</button>
-  <button id="showVmo">Voir</button>
+  <button id="hideVmo">Hide</button>
+  <button id="showVmo">See</button>
 
   <div class="hideShowVmo">
 
 
 {# Ventes par mois #}
 
-  <h5>Vente de Janvier</h5>
+  <h5>January sales</h5>
 
     {% for venteJanvier in venteJanvier %}
 
-      <h6>Date de vente: {{ venteJanvier.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteJanvier.dateVente|date('Y-m-d')}}</h6>
 
        {% if venteJanvier.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteJanvier.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJanvier.cartContent.vehiculePhysique.version.model.nom }} {{ venteJanvier.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle: {{ venteJanvier.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJanvier.cartContent.vehiculePhysique.version.model.nom }} {{ venteJanvier.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en janvier </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-  <h5>Vente de Fevrier</h5>
+  <h5>February sales</h5>
 
     {% for venteFevrier in venteFevrier %}
 
-      <h6>Date de vente: {{ venteFevrier.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteFevrier.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteFevrier.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteFevrier.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteFevrier.cartContent.vehiculePhysique.version.model.nom }} {{ venteFevrier.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteFevrier.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteFevrier.cartContent.vehiculePhysique.version.model.nom }} {{ venteFevrier.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en février </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-    <h5>Vente de Mars</h5>
+    <h5>Mach sales</h5>
 
     {% for venteMars in venteMars %}
 
-      <h6>Date de vente: {{ venteMars.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteMars.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteMars.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteMars.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteMars.cartContent.vehiculePhysique.version.model.nom }} {{ venteMars.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteMars.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteMars.cartContent.vehiculePhysique.version.model.nom }} {{ venteMars.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en mars </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-        <h5>Vente de Avril</h5>
+        <h5>April sales</h5>
 
     {% for venteAvril in venteAvril %}
 
-      <h6>Date de vente: {{ venteAvril.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteAvril.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteAvril.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteAvril.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAvril.cartContent.vehiculePhysique.version.model.nom }} {{ venteAvril.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteAvril.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAvril.cartContent.vehiculePhysique.version.model.nom }} {{ venteAvril.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en avril </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-          <h5>Vente de Mai</h5>
+          <h5>May sales</h5>
 
     {% for venteMai in venteMai %}
 
-      <h6>Date de vente: {{ venteMai.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteMai.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteMai.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteMai.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteMai.cartContent.vehiculePhysique.version.model.nom }} {{ venteMai.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteMai.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteMai.cartContent.vehiculePhysique.version.model.nom }} {{ venteMai.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en mai </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-             <h5>Vente de Juin</h5>
+             <h5>June sales</h5>
 
     {% for venteJuin in venteJuin %}
 
-      <h6>Date de vente: {{ venteJuin.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteJuin.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteJuin.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteJuin.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJuin.cartContent.vehiculePhysique.version.model.nom }} {{ venteJuin.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteJuin.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJuin.cartContent.vehiculePhysique.version.model.nom }} {{ venteJuin.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en juin </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-    <h5>Vente de Juillet</h5>
+    <h5>July sales</h5>
 
     {% for venteJuillet in venteJuillet %}
 
-      <h6>Date de vente: {{ venteJuillet.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteJuillet.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteJuillet.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteJuillet.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJuillet.cartContent.vehiculePhysique.version.model.nom }} {{ venteJuillet.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteJuillet.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteJuillet.cartContent.vehiculePhysique.version.model.nom }} {{ venteJuillet.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en juillet </p>
+      <p> No Sales </p>
 
     {% endfor %}
 
 
-      <h5>Vente de Aout</h5>
+      <h5>August sales</h5>
 
     {% for venteAout in venteAout %}
 
-      <h6>Date de vente: {{ venteAout.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteAout.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteAout.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteAout.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAout.cartContent.vehiculePhysique.version.model.nom }} {{ venteAout.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteAout.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteAout.cartContent.vehiculePhysique.version.model.nom }} {{ venteAout.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en aout </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-       <h5>Vente de Septembre</h5>
+       <h5>September sales</h5>
 
     {% for venteSeptembre in venteSeptembre %}
 
-      <h6>Date de vente: {{ venteSeptembre.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteSeptembre.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteSeptembre.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteSeptembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteSeptembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteSeptembre.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteSeptembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteSeptembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteSeptembre.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en septembre </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
 
-         <h5>Vente de Octobre</h5>
+         <h5>October sales</h5>
 
     {% for venteOctobre in venteOctobre %}
 
-      <h6>Date de vente: {{ venteOctobre.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteOctobre.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteOctobre.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteOctobre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteOctobre.cartContent.vehiculePhysique.version.model.nom }} {{ venteOctobre.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteOctobre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteOctobre.cartContent.vehiculePhysique.version.model.nom }} {{ venteOctobre.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en octobre </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-          <h5>Vente de Novembre</h5>
+          <h5>November sales</h5>
 
     {% for venteNovembre in venteNovembre %}
 
-      <h6>Date de vente: {{ venteNovembre.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteNovembre.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteNovembre.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteNovembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteNovembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteNovembre.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteNovembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteNovembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteNovembre.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en novembre </p>
+      <p> No sale </p>
 
     {% endfor %}
 
 
-    <h5>Vente de Décembre</h5>
+    <h5>December sales</h5>
 
     {% for venteDecembre in venteDecembre %}
 
-      <h6>Date de vente: {{ venteDecembre.dateVente|date('Y-m-d')}}</h6>
+      <h6>Purchase date: {{ venteDecembre.dateVente|date('Y-m-d')}}</h6>
 
       {% if venteDecembre.cartContent.vente == true %}
 
-       <p>Vehicule : {{ venteDecembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteDecembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteDecembre.cartContent.vehiculePhysique.version.nom }}</p>
+       <p>Vehicle : {{ venteDecembre.cartContent.vehiculePhysique.version.model.marque.nom }} {{ venteDecembre.cartContent.vehiculePhysique.version.model.nom }} {{ venteDecembre.cartContent.vehiculePhysique.version.nom }}</p>
        
        {% endif %}  
 
     {% else %}
 
-      <p> Pas de ventes en décembre </p>
+      <p> No sale </p>
 
     {% endfor %}
 

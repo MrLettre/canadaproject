@@ -7,11 +7,11 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Référence</th>
-                <th>Date demande</th>
-                <th>Date essai planning</th>
-                <th>Commentaire client</th>
-                <th>Véhicule</th>
+                <th>Reference</th>
+                <th>Trial date</th>
+                <th>Planning date</th>
+                <th>Client comment</th>
+                <th>Vehicle</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -24,7 +24,7 @@
                         <td>{{ demandeEssai.commentaireClient }}</td>
                         <td><img style="max-width: 10vw" src="/images/photosVehiculePhysique/{{ demandeEssai.vehiculePhysique.imageName }}" ></td>
                         <td>
-                            <a class="btn btn-success" href="/vendeur/demandeEssai/{{ demandeEssai.id }}/edit">Prendre en charge</a>
+                            <a class="btn btn-success" href="/vendeur/demandeEssai/{{ demandeEssai.id }}/edit">Take in charge</a>
                         </td>
                     </tr>
             {% endfor %}

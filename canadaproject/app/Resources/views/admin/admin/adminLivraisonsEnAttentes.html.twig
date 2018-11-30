@@ -10,18 +10,18 @@
 
     <div class="container">
         <div class="col-md-12">
-            <h3>Liste des livraisons en attente</h3>
+            <h3>Awaiting deliveries</h3>
 
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Concession</th>
-                        <th scope="col">Date Prévisionnelle</th>
+                        <th scope="col">Dealer</th>
+                        <th scope="col">Predicted date of delivery</th>
                         <th scope="col">Client</th>
-                        <th scope="col">Mode de livraison</th>
-                        <th scope="col">Marque</th>
-                        <th scope="col">Modèle</th>
+                        <th scope="col">Chosen delivery method</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Model</th>
                         <th scope="col">Version</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -37,7 +37,7 @@
                             <td>{{ livraison.vente.cartContent.vehiculePhysique.version.model }}</td>
                             <td>{{ livraison.vente.cartContent.vehiculePhysique.version }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ path('livraisonAdmin_edit', { 'id': livraison.id }) }}">Valider la livraison</a>
+                                <a class="btn btn-primary" href="{{ path('livraisonAdmin_edit', { 'id': livraison.id }) }}">Validate delivery</a>
                             </td>
                         </tr>
                     {% endfor %}

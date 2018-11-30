@@ -9,25 +9,25 @@
 {% block body %}
 <section style="margin-bottom: 4vh">
     <div class="container">
-        <p class="connect"> Dernière connexion le {{ app.user.lastLogin|date("d/m/Y") }}</p>
+        <p class="connect"> Last connexion : {{ app.user.lastLogin|date("d/m/Y") }}</p>
         <div class="row" style="display: flex;" id="cardForUser">
             <div id="profil" class="col-12 card">
                 <div class="card-header">
-                    <h3>Mon Profil</h3>
+                    <h3>My Profil</h3>
                 </div>
                 <ul>
-                    <li><span>Nom d'utilisateur :</span> {{ app.user.username }}</li>
+                    <li><span>Username :</span> {{ app.user.username }}</li>
                     <li><span>Email:</span> {{ app.user.email }}</li>
-                    <li><span>Prénom :</span> {{ app.user.prenom }}</li>
-                    <li><span>Nom :</span> {{ app.user.nom }}</li>
-                    <li><span>Date de naissance:</span> {{ app.user.dateNaissance|date('Y-m-d') }}</li>
-                    <li><span>Adresse :</span> {{ app.user.adresse }} {{ app.user.codePostal }} {{ app.user.ville }}</li>
-                    <li><span>Téléphone :</span> {{ app.user.numeroTelephone }}</li>
+                    <li><span>Firstname :</span> {{ app.user.prenom }}</li>
+                    <li><span>Lastname :</span> {{ app.user.nom }}</li>
+                    <li><span>Date of birth:</span> {{ app.user.dateNaissance|date('Y-m-d') }}</li>
+                    <li><span>Adress :</span> {{ app.user.adresse }} {{ app.user.codePostal }} {{ app.user.ville }}</li>
+                    <li><span>Phone :</span> {{ app.user.numeroTelephone }}</li>
 
                 </ul>
 
-                <a href="/profile/edit"><button type="submit" class="btn btn-primary"> Modifier mon profil</button></a>
-                <a href="{{ path('fos_user_security_logout') }}"><button type="submit" class="btn btn-danger">Se déconnecter</button></a>
+                <a href="/profile/edit"><button type="submit" class="btn btn-primary"> Modify my  profil</button></a>
+                <a href="{{ path('fos_user_security_logout') }}"><button type="submit" class="btn btn-danger">Logout</button></a>
             </div>
         </div>
     </div>
