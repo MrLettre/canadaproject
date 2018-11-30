@@ -14,7 +14,7 @@
                 <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
                    {{ form_start(form) }}
                         <div class="login-brand">
-                            Créer un article
+                            Create an article
                         </div>
                    
 
@@ -25,19 +25,19 @@
                                     {#-----------------------------------------GLOBAL-----------------------------------------#}
 
                                     <div>
-                                        <label for="nom">Sujet</label>
+                                        <label for="nom">Subjet</label>
                                         {{ form_label(form.sujet) }}
                                         {{ form_widget(form.sujet) }}
                                     </div>
 
                                     <div>
-                                        <label for="prenom">Titre</label>
+                                        <label for="prenom">Title</label>
                                         {{ form_widget(form.titre) }}
                                         {{ form_errors(form.titre) }}
                                     </div>
 
                                     <div>
-                                        <label for="username">Résumé</label>
+                                        <label for="username">Sumary</label>
                                         {{ form_widget(form.resume) }}
                                         {{ form_errors(form.resume) }}
                                     </div>
@@ -49,13 +49,13 @@
                                     </div>
 
                                     <div>
-                                        <label for="tel">Résumé important</label>
+                                        <label for="tel">Important sumary</label>
                                         {{ form_widget(form.resumeImportant) }}
                                         {{ form_errors(form.resumeImportant) }}
                                     </div>
 
                                      <div>
-                                        <label for="tel">Choisir une image</label>
+                                        <label for="tel">Choose an image</label>
                                         {{ form_widget(form.imageFile) }}
                                         {{ form_errors(form.imageFile) }}
                                     </div>
@@ -67,7 +67,7 @@
                                     </div>
 
                                      <div class="form-group col-12">
-                                        <a href="{{ path('article_admin_index') }}" class="btn btn-primary btn-block">Retour à la liste des articles</a>
+                                        <a href="{{ path('article_admin_index') }}" class="btn btn-primary btn-block">Back to the article list</a>
                                     </div>
 
                                 </div>

@@ -2,7 +2,7 @@
 
 {% block body %}
     <div style="text-align: center">
-        <h1>Concession</h1>
+        <h1>Dealer</h1>
     </div>
 
     <section class="contact-section col-md-12">
@@ -35,7 +35,7 @@
                             <!-- Grid column -->
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h5>Téléphone : {{ concession.tel }}</h5>
+                                    <h5>Phone : {{ concession.tel }}</h5>
                                 </div>
                             </div>
 
@@ -69,8 +69,8 @@
         <!-- Form with header -->
     </section>
 
-    <a href="{{ path('concession_edit', { 'id': concession.id }) }}" class="btn btn-success">Editer cette concession</a>
-    <a href="{{ path('concession_index') }}" class="btn btn-primary">retour à la liste des concessions</a>
+    <a href="{{ path('concession_edit', { 'id': concession.id }) }}" class="btn btn-success">Edit this dealer</a>
+    <a href="{{ path('concession_index') }}" class="btn btn-primary">Back to the dealers list</a>
 
 
 {% endblock %}

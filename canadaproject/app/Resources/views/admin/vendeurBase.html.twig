@@ -56,7 +56,7 @@
           <div class="sidenav-header-inner text-center" style="background-color: white;border-radius: 100vw;padding: 0.3vw;margin-right: 1vw"><img src="/images/header/Carify_LogoAccueil.png">
           </div>
             <div>
-            <p style="color: white;font-weight: bold">{{ app.user.concession }}</p><span>Partenaire Certifié</span>
+            <p style="color: white;font-weight: bold">{{ app.user.concession }}</p><span>Certified partner</span>
           </div>
           <!-- Small Brand information, appears on minimized sidebar-->
           <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
@@ -65,18 +65,18 @@
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
-             <li> <i class="icon-home"></i>Parc Automobile</li>
-                  <li><a href="{{ path('vendeur_parc')}}"><i class="icon-home"></i>Mon Parc Auto</a></li>
-                  <li><a href="{{ path('vehiculephysique_new')}}"><i class="icon-home"></i>Ajouter un Véhicule</a></li>
-                  <li><a href="{{ path('vehiculevendeur_validation_index')}}"><i class="icon-home"></i>Véhicules à valider</a></li>
-                  <li><a href="{{ path('demandeEssai_validation_index')}}"> <i class="icon-grid"></i>Demandes d'essai</a></li>
+             <li> <i class="icon-home"></i>Auto Parc</li>
+                  <li><a href="{{ path('vendeur_parc')}}"><i class="icon-home"></i>My vehicles</a></li>
+                  <li><a href="{{ path('vehiculephysique_new')}}"><i class="icon-home"></i>Add a vehicle</a></li>
+                  <li><a href="{{ path('vehiculevendeur_validation_index')}}"><i class="icon-home"></i>Vehicle to validate</a></li>
+                  <li><a href="{{ path('demandeEssai_validation_index')}}"> <i class="icon-grid"></i>Trial requests</a></li>
 
 
-              <li><a href="{{ path('adminSellerMyClients')}}"> <i class="fa fa-bar-chart"></i>Mes Clients</a></li>
-              <li><i class="icon-form"></i>Livraisons</li>
-                  <li><a href="{{ path('vendeurlivraisonEnAttente_index') }}"> <i class="icon-grid"></i>Livraisons en attente</a></li>
-                  <li><a href="{{ path('vendeurlivraison_index') }}"> <i class="icon-grid"></i>Livraisons effectuées</a></li>
-              <li><a href="{{ path('vendeurStats') }}"> <i class="fa fa-bar-chart"></i>Statistiques</a></li>
+              <li><a href="{{ path('adminSellerMyClients')}}"> <i class="fa fa-bar-chart"></i>My Clients</a></li>
+              <li><i class="icon-form"></i>Deliveries</li>
+                  <li><a href="{{ path('vendeurlivraisonEnAttente_index') }}"> <i class="icon-grid"></i>Awaiting deliveries</a></li>
+                  <li><a href="{{ path('vendeurlivraison_index') }}"> <i class="icon-grid"></i>Done deliveries</a></li>
+              <li><a href="{{ path('vendeurStats') }}"> <i class="fa fa-bar-chart"></i>Statistics</a></li>
           </ul>
         </div>
       </div>
