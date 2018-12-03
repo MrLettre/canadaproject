@@ -1,31 +1,33 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Gestion des demandes d'essai</h1>
+    <h1>Manage trial requests</h1>
 <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
-                <th>Référence</th>
-                <th>Date demande</th>
-                <th>Date essai planning</th>
-                <th>Commentaire client</th>
-                <th>Véhicule</th>
+                <th>Status</th>
+                <th>Reference</th>
+                <th>Request date</th>
+                <th>Trial dates planning</th>
+                <th>Client's comment</th>
+                <th>Vehicle</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for demandeEssai in demandeEssais %}
-        {% if demandeEssai.statutMailEssai == '' %}
+        {% if demandeEssai.statutMailEssai != 'Demande traitée' %}
         <tr>
+                <td>{{ demandeEssai.statutMailEssai }}</td>
                 <td>{{ demandeEssai.reference }}</td>
                 <td>{% if demandeEssai.dateDemande %}{{ demandeEssai.dateDemande|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if demandeEssai.dateEssaiPlanning %}{{ demandeEssai.dateEssaiPlanning|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ demandeEssai.commentaireClient }}</td>
                 <td><img style="max-width: 10vw" src="/images/photosVehiculePhysique/{{ demandeEssai.vehiculePhysique.imageName }}" ></td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('demandeessai_show', { 'id': demandeEssai.id }) }}">Afficher</a>
-                    <a class="btn btn-success" href="{{ path('demandeessai_edit', { 'id': demandeEssai.id }) }}">Editer</a>
+                    <a class="btn btn-primary" href="{{ path('demandeessai_show', { 'id': demandeEssai.id }) }}">Show</a>
+                    <a class="btn btn-success" href="{{ path('demandeessai_edit', { 'id': demandeEssai.id }) }}">Edit</a>
                 </td>
             </tr>
         {% endif %}

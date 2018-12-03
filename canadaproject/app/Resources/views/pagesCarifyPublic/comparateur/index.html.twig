@@ -21,8 +21,8 @@
         <div class="row" style="flex-direction: column">
             <div class="contourTitreComp">
                 <div class="titreComp">
-                    <h1 >Quelles marques de véhicule recherchez-vous ?</h1>
-                    <h3> Choisissez parmis les marques de notre catalogue</h3>
+                    <h1 >What brand are you looking for ?</h1>
+                    <h3> Choose brand from our catalogue</h3>
                 </div>
             </div>
 
@@ -45,8 +45,8 @@
         <div class="row" style="flex-direction: column">
             <div class="contourTitreComp">
                 <div class="titreComp">
-                    <h1>Quel type de véhicule recherchez-vous ?</h1>
-                    <h3> Sélectionnez votre véhicule selon son format</h3>
+                    <h1>What type of vehicle are you looking for ?</h1>
+                    <h3> Choose your vehicle within a format</h3>
                 </div>
             </div>
 
@@ -80,8 +80,8 @@
         <div class="row" style="flex-direction: column">
             <div class="contourTitreComp">
                 <div class="titreComp">
-                    <h1>Quel carburant recherchez-vous ?</h1>
-                    <h3> A chacun son énergie</h3>
+                    <h1>What fuel type are you looking for ?</h1>
+                    <h3> Energies</h3>
                 </div>
             </div>
 
@@ -94,16 +94,16 @@
                         {% for entry in group %}
                             <div class="col-2 ladivNrjdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
-                                {% if entry == "essence" %}
+                                {% if entry == "gazoline" %}
                                     <img src="/images/Icons/oil.png" width="80" height="80"><br>
                                 {% endif %}
                                 {% if entry == "diesel" %}
                                     <img src="/images/Icons/oil.png" width="80" height="80"><br>
                                 {% endif %}
-                                {% if entry == "hybride" %}
+                                {% if entry == "hybrid" %}
                                     <img src="/images/Icons/hybrid.png" width="80" height="80"><br>
                                 {% endif %}
-                                {% if entry == "electrique" %}
+                                {% if entry == "electric" %}
                                     <img src="/images/Icons/electric.png" width="80" height="80"><br>
                                 {% endif %}
                                 <h4>{{ entry.nom }}</h4>

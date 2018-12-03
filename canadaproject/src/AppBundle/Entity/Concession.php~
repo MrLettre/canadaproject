@@ -57,6 +57,13 @@ class Concession
     /**
      * @var string
      *
+     * @ORM\Column(name="codeEntreprise", type="string", length=255)
+     */
+    private $codeEntreprise;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adresse", type="text")
      */
     private $adresse;
@@ -507,5 +514,29 @@ class Concession
     public function getConcession()
     {
         return $this->concession;
+    }
+
+    /**
+     * Set codeEntreprise.
+     *
+     * @param string $codeEntreprise
+     *
+     * @return Concession
+     */
+    public function setCodeEntreprise($codeEntreprise)
+    {
+        $this->codeEntreprise = $codeEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get codeEntreprise.
+     *
+     * @return string
+     */
+    public function getCodeEntreprise()
+    {
+        return $this->codeEntreprise;
     }
 }

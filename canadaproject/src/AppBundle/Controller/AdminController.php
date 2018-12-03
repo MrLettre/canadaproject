@@ -29,8 +29,19 @@ class AdminController extends Controller
      */
     public function adminPageAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $demandeEssaisEnAttentes = $em->getRepository('AppBundle:DemandeEssai')->findEssaiEnAttente();
+        $demandeEssaisTraitees = $em->getRepository('AppBundle:DemandeEssai')->findEssaiTraite();
+        $cartContents = $em->getRepository('AppBundle:CartContent')->findCartContentGlobal();
+        $totalVentes = $em->getRepository('AppBundle:CartContent')->findCAGlobal();
+
         // replace this example code with whatever you need
-        return $this->render('admin/admin/index.html.twig');
+        return $this->render('admin/admin/index.html.twig', [
+            'demandeEssaisEnAttentes' => $demandeEssaisEnAttentes,
+            'cartContents' => $cartContents,
+            'totalVentes' => $totalVentes,
+            'demandeEssaisTraitees' => $demandeEssaisTraitees
+        ]);
     }
 
     //Routes pour les actions de la page Admin du site 
@@ -529,6 +540,8 @@ class AdminController extends Controller
     {
         $editForm = $this->createForm('AppBundle\Form\LivraisonAdminType', $livraison);
         $editForm->handleRequest($request);
+        $vehicule = $livraison->getVente()->getCartContent()->getVehiculePhysique();
+        
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -538,6 +551,7 @@ class AdminController extends Controller
 
         return $this->render('admin/admin/adminLivraisonEditedit.html.twig', array(
             'livraison' => $livraison,
+            'vehicule'  => $vehicule,
             'edit_form' => $editForm->createView(),
         ));
     }

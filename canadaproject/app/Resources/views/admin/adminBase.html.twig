@@ -65,40 +65,40 @@
         <div class="main-menu">
           <h5 class="sidenav-heading">ADMINISTRATION</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled"> 
-            <li><i class="icon-home"></i>Utilisateurs</li>
-              <li><a href="{{ path('concession_new') }}"> <i class="icon-grid"></i>Créer une Concession</a></li>
-              <li><a href="/register"> <i class="icon-grid"></i>Créer un Utilisateur</a></li>
-              <li><a href="{{ path('concession_index') }}"> <i class="icon-grid"></i>Liste des Concessions</a></li>
-              <li><a href="{{ path('user_index') }}"> <i class="icon-grid"></i>Liste des Utilisateurs</a></li>
-              <li><a href="{{ path('adminUserList') }}"> <i class="icon-grid"></i>Liste clients Carify</a></li>
-            <li><i class="icon-form"></i>Mes Vendeurs</li>
-                    <li><a href="{{ path('vehiculephysique_validation_index') }}"> <i class="icon-grid"></i>Validation véhicules</a></li>
-                    <li><a href="{{ path('vehiculephysique_index') }}"> <i class="icon-grid"></i>Parc Automobile</a></li>
+            <li><i class="icon-home"></i>User</li>
+              <li><a href="{{ path('concession_new') }}"> <i class="icon-grid"></i>Create a dealer</a></li>
+              <li><a href="/register"> <i class="icon-grid"></i>Create a user</a></li>
+              <li><a href="{{ path('concession_index') }}"> <i class="icon-grid"></i>Dealer's list</a></li>
+              <li><a href="{{ path('user_index') }}"> <i class="icon-grid"></i>User's list</a></li>
+              <li><a href="{{ path('adminUserList') }}"> <i class="icon-grid"></i>Client's list</a></li>
+            <li><i class="icon-form"></i>My sellers</li>
+                    <li><a href="{{ path('vehiculephysique_validation_index') }}"> <i class="icon-grid"></i>vehicle validation</a></li>
+                    <li><a href="{{ path('vehiculephysique_index') }}"> <i class="icon-grid"></i>Auto Parc</a></li>
             <li><i class="icon-form"></i>Livraisons</li>
-                    <li><a href="{{ path('adminlivraisonEnAttente_index') }}"> <i class="icon-grid"></i>Livraisons en attente</a></li>
-                    <li><a href="{{ path('adminlivraison_index') }}"> <i class="icon-grid"></i>Livraisons effectuées</a></li>
+                    <li><a href="{{ path('adminlivraisonEnAttente_index') }}"> <i class="icon-grid"></i>Awaiting deliveries</a></li>
+                    <li><a href="{{ path('adminlivraison_index') }}"> <i class="icon-grid"></i>Done deliveries</a></li>
             <li><i class="icon-grid"></i>Contact</li>
-                    <li><a href="{{ path('contact_index') }}"> <i class="icon-grid"></i>Demandes de Contact</a></li>
-                    <li><a href="{{ path('demandeessai_index') }}"> <i class="icon-grid"></i>Demandes d' Essai</a></li>
-            <li><i class="icon-grid"></i>Comparateur Carify</li>
-                    <li><a href="{{ path('vehicledefinition_new') }}"> <i class="icon-grid"></i>Ajouter un Véhicule</a></li>
-                    <li><a href="{{ path('vehicledefinition_index') }}"> <i class="icon-grid"></i>Liste des Véhicules</a></li>
+                    <li><a href="{{ path('contact_index') }}"> <i class="icon-grid"></i>Contact requests</a></li>
+                    <li><a href="{{ path('demandeessai_index') }}"> <i class="icon-grid"></i>Trial requests</a></li>
+            <li><i class="icon-grid"></i>Carify Comparator</li>
+                    <li><a href="{{ path('vehicledefinition_new') }}"> <i class="icon-grid"></i>Add a vehicle</a></li>
+                    <li><a href="{{ path('vehicledefinition_index') }}"> <i class="icon-grid"></i>List of vehicle</a></li>
           </ul>
         </div>
         <div class="admin-menu">
-          <h5 class="sidenav-heading">STATISTIQUES</h5>
+          <h5 class="sidenav-heading">STATISTICS</h5>
           <ul id="side-admin-menu" class="side-menu list-unstyled">
               <li>
-                  <a href="{{ path('adminStats') }}"> <i class="fa fa-bar-chart"></i>Statistiques</a>
+                  <a href="{{ path('adminStats') }}"> <i class="fa fa-bar-chart"></i>Statistics</a>
               </li>
           </ul>
         </div>
           <div class="admin-menu">
-              <h5 class="sidenav-heading">ARTICLES&DOSSIERS</h5>
+              <h5 class="sidenav-heading">ARTICLES</h5>
               <ul id="side-admin-menu" class="side-menu list-unstyled">
-                  <li><i class="icon-grid"></i>Gestion des articles</li>
-                  <li><a href="{{ path('article_admin_new') }}"> <i class="icon-grid"></i>Créer un article</a></li>
-                  <li><a href="{{ path('article_admin_index') }}"> <i class="icon-grid"></i>Liste des articles</a></li>
+                  <li><i class="icon-grid"></i>Managing articles</li>
+                  <li><a href="{{ path('article_admin_new') }}"> <i class="icon-grid"></i>Create an article</a></li>
+                  <li><a href="{{ path('article_admin_index') }}"> <i class="icon-grid"></i>List of articles</a></li>
 
               </ul>
           </div>
@@ -119,10 +119,7 @@
                 <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item">
-                        <div class="notification d-flex justify-content-between">
-                          <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
-                          <div class="notification-time"><small>4 minutes ago</small></div>
-                        </div></a></li>
+
                     <li><a rel="nofollow" href="#" class="dropdown-item">
                         <div class="notification d-flex justify-content-between">
                           <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
@@ -141,29 +138,8 @@
                     <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
                   </ul>
                 </li>
-                <!-- Messages dropdown-->
-                <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
-                  <ul aria-labelledby="notifications" class="dropdown-menu">
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                        <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="msg-body">
-                          <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                        <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="msg-body">
-                          <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                        <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="msg-body">
-                          <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                        </div></a></li>
-                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
-                  </ul>
-                </li>
                 <!-- Languages dropdown    -->
-                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
+                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><span class="d-none d-sm-inline-block">English</span></a>
                   <ul aria-labelledby="languages" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/DE.png" alt="English" class="mr-2"><span>German</span></a></li>
                     <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/FR.png" alt="English" class="mr-2"><span>French                                                         </span></a></li>

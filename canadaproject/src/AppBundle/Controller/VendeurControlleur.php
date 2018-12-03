@@ -23,8 +23,22 @@ class VendeurControlleur extends Controller
      */
     public function vendeurPageAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $concession = $user->getConcession()->getId();
+        $demandeEssaisEnAttentes = $em->getRepository('AppBundle:DemandeEssai')->findEssaiEnAttenteByConcession($concession);
+        $demandeEssaisTraitees = $em->getRepository('AppBundle:DemandeEssai')->findEssaiTraiteByConcession($concession);
+        $cartContents = $em->getRepository('AppBundle:CartContent')->findCartContentByConcession($concession);
+        $totalVentes = $em->getRepository('AppBundle:CartContent')->findCAConcession($concession);
+
         // replace this example code with whatever you need
-        return $this->render('admin/vendeur/index.html.twig');
+        return $this->render('admin/vendeur/index.html.twig', [
+            'concession' => $concession,
+            'demandeEssaisEnAttentes' => $demandeEssaisEnAttentes,
+            'cartContents' => $cartContents,
+            'totalVentes' => $totalVentes,
+            'demandeEssaisTraitees' => $demandeEssaisTraitees
+        ]);
     }
 
     // GESTION DES STATISTIQUES VENDEUR ---------------------------------------------------------------------------- */

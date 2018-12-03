@@ -111,4 +111,28 @@ class CategorieOptions
     {
         return $this->categorieOption;
     }
+
+    /**
+     * Set nom.
+     *
+     * @param string|null $nom
+     *
+     * @return CategorieOptions
+     */
+    public function setNom($nom = null)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom.
+     *
+     * @return string|null
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
 }

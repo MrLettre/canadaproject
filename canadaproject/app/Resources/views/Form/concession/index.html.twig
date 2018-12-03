@@ -2,19 +2,19 @@
 
 {% block body %}
     <div style="text-align: center">
-        <h1>Concessions</h1>
+        <h1>Dealers</h1>
     </div>
     <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
-                <th>Nom</th>
-                <th>Adresse</th>
-                <th>Codepostal</th>
-                <th>Ville</th>
-                <th>Tel</th>
+                <th>Name</th>
+                <th>Adress</th>
+                <th>Postal code</th>
+                <th>City</th>
+                <th>Phone</th>
                 <th>Mail</th>
-                <th>Nomducontact</th>
+                <th>Contact name</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -30,8 +30,8 @@
                 <td>{{ concession.mail }}</td>
                 <td>{{ concession.nomDuContact }}</td>
                 <td>
-                    <a href="{{ path('concession_show', { 'id': concession.id }) }}" class="btn btn-primary" style="width: 100%">Consulter</a>
-                    <a href="{{ path('concession_edit', { 'id': concession.id }) }}" class="btn btn-success" style="width: 100%">Editer</a>
+                    <a href="{{ path('concession_show', { 'id': concession.id }) }}" class="btn btn-primary" style="width: 100%">Consult</a>
+                    <a href="{{ path('concession_edit', { 'id': concession.id }) }}" class="btn btn-success" style="width: 100%">Edit</a>
                 </td>
             </tr>
         {% else %}

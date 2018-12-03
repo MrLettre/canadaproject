@@ -5,13 +5,13 @@
 
     {{ form_start(form) }}
     <div class="form-group">
-        {{ form_label(form.nom, 'Nom de la nouvelle marque : ') }}
+        {{ form_label(form.nom, 'New brand name : ') }}
         {{ form_widget(form.nom, {'attr':{class:'form-control'}}) }}
         {{ form_errors(form.nom) }}
     </div>
 
     <div class="form-group">
-        {{ form_label(form.imageFile, 'Uploader le logo de la marque : ') }}
+        {{ form_label(form.imageFile, 'Upload brand logo : ') }}
         {{ form_widget(form.imageFile) }}
         {{ form_errors(form.imageFile) }}
     </div>
@@ -26,6 +26,6 @@
     {{ form_end(form) }}
 
     <p>
-        <a href="{{ path('vehicledefinition_new') }}">Retour à la création d'une définition de véhicule</a>
+        <a href="{{ path('vehicledefinition_new') }}">Back to create a vehicle definition</a>
     </p>
 {% endblock %}

@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class VehiculePhysiqueType extends AbstractType
 {
@@ -23,9 +24,15 @@ class VehiculePhysiqueType extends AbstractType
     {
         $builder
             ->add('validationStatut')
+            ->add('hasCarfax')
+            ->add('codeVIN')
             ->add('concession')
             ->add('kilometrage')
-            ->add('dateDeMiseEnCirculation')
+            ->add('dateDeMiseEnCirculation', BirthdayType::class,[
+                'placeholder' => array(
+                    'year' => 'Year', 'month' => 'month', 'day' =>'Day',
+                )
+            ])
             ->add('prixht')
             ->add('prixha')
             ->add('prixttc')
@@ -33,7 +40,7 @@ class VehiculePhysiqueType extends AbstractType
             ->add('imageFile', VichFileType::class)
             ->add('options', EntityType::class, array(
                 'class' => 'AppBundle:VehicleOption',
-                'choice_label'=> 'nom',
+                'choice_label'=> 'name',
                 'multiple' => true,
                 'expanded' => true,
                 'required' => false,
@@ -41,7 +48,7 @@ class VehiculePhysiqueType extends AbstractType
             ))
             ->add('marque', EntityType::class, [
                 'class'         => 'AppBundle\Entity\Marque',
-                'placeholder'   => 'Choisissez la Marque',
+                'placeholder'   => 'Choose brand',
                 'mapped'        => false,
                 'required'      => false
             ]);
@@ -89,7 +96,7 @@ class VehiculePhysiqueType extends AbstractType
             null,
             [
                 'class'         => 'AppBundle\Entity\Model',
-                'placeholder'   => $marque ? 'Choisissez la catégorie' : 'Sélectionnez votre Marque',
+                'placeholder'   => $marque ? 'Choose model' : 'Choose brand first',
                 'mapped'        => false,
                 'required'      => false,
                 'auto_initialize' =>false,
@@ -116,7 +123,7 @@ class VehiculePhysiqueType extends AbstractType
        $form->add('version', EntityType::class,
             [
                 'class'         => 'AppBundle\Entity\Version',
-                'placeholder'   => $model ? 'Choisissez la version' : 'Sélectionnez un modèle',
+                'placeholder'   => $model ? 'Choose version' : 'Choose model first',
                 'choices'       => $model ? $model->getVersions() : []
             ]);
     }

@@ -17,7 +17,7 @@
                 <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
                    {{ form_start(form) }}
                         <div class="login-brand">
-                            Créer une nouvelle concession
+                            Create a new dealer
                         </div>
                    
 
@@ -26,45 +26,50 @@
                         <div class="card-body register">
 
                                     {#-----------------------------------------GLOBAL-----------------------------------------#}
+                                    <div>
+                                        <label for="codeEntreprise">Company number</label>
+                                        {{ form_widget(form.codeEntreprise) }}
+                                        {{ form_errors(form.codeEntreprise) }}
+                                    </div>
 
                                     <div>
-                                        <label for="nom">Nom</label>
+                                        <label for="nom">Name</label>
                                         {{ form_widget(form.nom) }}
                                         {{ form_errors(form.nom) }}
                                     </div>
 
                                     <div>
-                                        <label for="prenom">adresse</label>
+                                        <label for="prenom">Adress</label>
                                         {{ form_widget(form.adresse) }}
                                         {{ form_errors(form.adresse) }}
                                     </div>
 
                                     <div>
-                                        <label for="username">codePostal</label>
+                                        <label for="username">Postal Code</label>
                                         {{ form_widget(form.codePostal) }}
                                         {{ form_errors(form.codePostal) }}
                                     </div>
 
                                     <div>
-                                        <label for="dateNaissance">ville</label>
+                                        <label for="dateNaissance">City</label>
                                         {{ form_widget(form.ville) }}
                                         {{ form_errors(form.ville) }}
                                     </div>
 
                                     <div>
-                                        <label for="tel">Téléphone</label>
+                                        <label for="tel">Phone</label>
                                         {{ form_widget(form.tel) }}
                                         {{ form_errors(form.tel) }}
                                     </div>
 
                                     <div>
-                                        <label for="email">mail</label>
+                                        <label for="email">Mail</label>
                                         {{ form_widget(form.mail) }}
                                         {{ form_errors(form.mail) }}
                                     </div>
 
                                     <div >
-                                        <label for="plainPassword.first">nomDuContact</label>
+                                        <label for="plainPassword.first">Contact name</label>
                                         {{  form_widget(form.nomDuContact) }}
                                         {{ form_errors(form.nomDuContact) }}
                                     </div>
@@ -85,7 +90,7 @@
                                     </div>
 
                                     <div class="form-group col-12">
-                                        <a href="{{ path('concession_index') }}" class="btn btn-primary btn-block">Retour à la liste des concessions</a>
+                                        <a href="{{ path('concession_index') }}" class="btn btn-primary btn-block">Back to the dealers list</a>
                                     </div>
 
                                     

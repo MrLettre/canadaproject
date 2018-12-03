@@ -8,7 +8,7 @@
 
 
 <div class="text-center">
-   <h1>Votre Panier</h1>
+   <h1>Your cart</h1>
 <div>
 
 
@@ -22,11 +22,11 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Marque</th>
-                <th scope="col">Modèle</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
                 <th scope="col">Version</th>
-                <th scope="col">Kilometrage</th>
-                <th scope="col">Prix HT</th>
+                <th scope="col">Mileage</th>
+                <th scope="col">Prix NoTaxes</th>
                 <th scope="col">Photo</th>
             </tr>
             </thead>
@@ -54,7 +54,7 @@
 
 {% else %}
 
-<h4>Votre panier est vide</h4>
+<h4>Your cart is empty</h4>
 
 {% endfor %}
 
@@ -66,8 +66,8 @@
   <div class="row">
 
 
-    <a href="{{ path('cart_validation') }}" class="btn btn-success">Valider le panier</a>
-    <a href="{{ path('clearCart') }}" class="btn btn-danger">Supprimer le panier</a>
+    <a href="{{ path('cart_validation') }}" class="btn btn-success">Validate cart</a>
+    <a href="{{ path('clearCart') }}" class="btn btn-danger">Delete cart</a>
 
   </div>
 
@@ -76,7 +76,7 @@
     <div class="row">
 
 
-        <h6><strong>Prix totale HT:</strong> {{ prixHtTotal }} $</h6>
+        <h6><strong>Total price no taxes:</strong> {{ prixHtTotal }} $</h6>
 
     </div>
 
@@ -84,7 +84,7 @@
 
    <div class="row">
 
-        <h6><strong>Prix totale avec taxes:</strong> {{ prixHtTotal * 1.19 }} $</h6>
+        <h6><strong>Total price with taxes:</strong> {{ prixHtTotal * 1.19 }} $</h6>
 
    </div>
 

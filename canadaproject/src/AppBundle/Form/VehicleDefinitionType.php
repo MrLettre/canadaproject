@@ -26,7 +26,7 @@ class VehicleDefinitionType extends AbstractType
 
             ->add('marque', EntityType::class, [
                 'class'         => 'AppBundle\Entity\Marque',
-                'placeholder'   => 'Choisissez la Marque',
+                'placeholder'   => 'Choose brand',
                 'mapped'        => false,
                 'required'      => false
             ]);
@@ -74,7 +74,7 @@ class VehicleDefinitionType extends AbstractType
             null,
             [
                 'class'         => 'AppBundle\Entity\Model',
-                'placeholder'   => $marque ? 'Choisissez la catégorie' : 'Sélectionnez votre Marque',
+                'placeholder'   => $marque ? 'Choose model' : 'Choose brand first',
                 'mapped'        => false,
                 'required'      => false,
                 'auto_initialize' =>false,
@@ -101,7 +101,7 @@ class VehicleDefinitionType extends AbstractType
         $form->add('version', EntityType::class,
             [
                 'class'         => 'AppBundle\Entity\Version',
-                'placeholder'   => $model ? 'Choisissez la version' : 'Sélectionnez un modèle',
+                'placeholder'   => $model ? 'Choose version' : 'Choose model first',
                 'choices'       => $model ? $model->getVersions() : []
             ]);
     }

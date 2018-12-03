@@ -3,19 +3,19 @@
 {% block body %}
 <section>
     <div class="container">
-    <h1 class="text-center blue-text">Liste des utilisateurs</h1>
+    <h1 class="text-center blue-text">Users list</h1>
     <div class="table-responsive">
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Statut</th>
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Adresse</th>
-                <th scope="col">Code postal</th>
-                <th scope="col">Ville</th>
+                <th scope="col">Status</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Adress</th>
+                <th scope="col">Postal code</th>
+                <th scope="col">City</th>
                 <th scope="col">Email</th>
-                <th scope="col">Téléphone</th>
+                <th scope="col">Phone</th>
                 <th scope="col">Actions</th>
 
             </tr>
@@ -33,15 +33,15 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.numeroTelephone }}</td>
                     <td>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-primary" style="width:100%">consulter</a>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-success" style="width:100%">modifier</a>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-primary" style="width:100%">See</a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-success" style="width:100%">modify</a>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-            <a href="/register" class="btn btn-success">Créer un nouvel utilisateur</a>
+            <a href="/register" class="btn btn-success">Create a new user</a>
     </div>
 </section>
 

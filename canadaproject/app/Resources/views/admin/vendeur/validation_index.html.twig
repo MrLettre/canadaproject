@@ -10,13 +10,13 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Etat</th>
-                <th scope="col">Marque</th>
-                <th scope="col">Modèle</th>
+                <th scope="col">Sate</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
                 <th scope="col">Version</th>
-                <th scope="col">Kilometrage</th>
-                <th scope="col">Date de mise en circulation</th>
-                <th scope="col">Prix HT</th>
+                <th scope="col">Mileage</th>
+                <th scope="col">First circulated</th>
+                <th scope="col">Price(No taxes)</th>
                 <th scope="col">Photo</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -34,7 +34,7 @@
                         <td>{{ vehiculePhysique.prixHT }}$</td>
                         <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                         <td>
-                            <a class="btn btn-danger" href="{{ path('vehiculephysique_delete', { 'id': vehiculePhysique.id }) }}">Supprimer</a>
+                            <a class="btn btn-danger" href="{{ path('vehiculephysique_delete', { 'id': vehiculePhysique.id }) }}">Delete</a>
                         </td>
                     </tr>
                     </tbody>

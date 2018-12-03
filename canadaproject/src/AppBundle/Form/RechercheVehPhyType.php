@@ -27,7 +27,7 @@ class RechercheVehPhyType extends AbstractType
             ->add('version')
             ->add('kilometeMax', ChoiceType::class,[
                 'choices' => [
-                    'Kilomètrage max' => 'null',
+                    'Km Max' => 'null',
                     '1' => 1,
                     '10000' => 10000,
                     '20000' => 20000,
@@ -47,7 +47,7 @@ class RechercheVehPhyType extends AbstractType
             ])
             ->add('kilometreMin', ChoiceType::class,[
                 'choices' => [
-                    'Kilomètrage min' => 'null',
+                    'Km min' => 'null',
                     '1' => 1,
                     '10000' => 10000,
                     '20000' => 20000,
@@ -67,7 +67,7 @@ class RechercheVehPhyType extends AbstractType
             ])
             ->add('dateDeMiseEnCirculationMax', ChoiceType::class,[
                 'choices' => [
-                    'Année max' => 'null',
+                    'Year max' => 'null',
                     '2018' => 20181231,
                     '2017' => 20171231,
                     '2016' => 20161231,
@@ -91,7 +91,7 @@ class RechercheVehPhyType extends AbstractType
             ])
             ->add('dateDeMiseEnCirculationMin', ChoiceType::class,[
                 'choices' => [
-                    'Année min' => 'null',
+                    'Year min' => 'null',
                     '2000' => 20000101,
                     '2001' => 20010101,
                     '2002' => 20020101,
@@ -115,7 +115,7 @@ class RechercheVehPhyType extends AbstractType
             ])
             ->add('prixMax', ChoiceType::class,[
                 'choices' => [
-                    'Prix max' => 'null',
+                    'Price max' => 'null',
                     '2000' => 2000,
                     '3000' => 3000,
                     '4000' => 4000,
@@ -146,7 +146,7 @@ class RechercheVehPhyType extends AbstractType
             ])
             ->add('prixMin', ChoiceType::class,[
                 'choices' => [
-                    'Prix min' => 'null',
+                    'Price min' => 'null',
                     '1' => 1,
                     '2000' => 2000,
                     '3000' => 3000,
@@ -179,19 +179,19 @@ class RechercheVehPhyType extends AbstractType
             ->add('energie', ChoiceType::class,[
                 'choices' => [
                     'Energie' => 'null',
-                    'Essence' => 'Essence',
+                    'gasoline' => 'Essence',
                     'Diesel' => 'Diesel',
-                    'Electrique' => 'Electrique',
-                    'Hybride' => 'Hybride',
+                    'Electric' => 'Electrique',
+                    'Hybrid' => 'Hybride',
                 ]
             ])
             ->add('Bdv', ChoiceType::class,[
                 'choices' => [
-                    'Boîte de vitesse' => 'null',
-                    'Automatique' => 'Automatique',
-                    'Manuelle' => 'Manuelle',
-                    'Séquentielle' => 'Séquentielle',
-                    'Autre' => 'Autre',
+                    'Gearbox' => 'null',
+                    'Automatic' => 'Automatique',
+                    'Manual' => 'Manuelle',
+                    'Sequential' => 'Séquentielle',
+                    'Other' => 'Autre',
                 ]
             ]);
 

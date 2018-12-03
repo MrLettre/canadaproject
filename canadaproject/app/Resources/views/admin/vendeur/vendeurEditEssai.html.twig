@@ -1,13 +1,11 @@
 {% extends 'admin/vendeurBase.html.twig' %}
 
 {% block body %}
-    <h1>Demandeessai edit</h1>
-
     <h1 style="text-align: center; margin-bottom: 8vh; margin-top: 8vh;">Prise en charge</h1>
 
     {{ form_start(edit_form) }}
     <div class="form-group">
-        {{ form_label(edit_form.statutMailEssai, 'Etat de la demande') }}
+        {{ form_label(edit_form.statutMailEssai, 'State of request') }}
         {{ form_widget(edit_form.statutMailEssai, {'attr':{class:'form-control'}}) }}
         {{ form_errors(edit_form.statutMailEssai) }}
     </div>
@@ -21,25 +19,25 @@
             <div class="row">
 
                 <!-- Grid column -->
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="card-body form">
 
                         <!-- Header -->
-                        <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Demande d'Essai du {{ demandeEssai.dateDemande|date('d-m-Y') }}:</h3>
+                        <h3 id="test" class="mt-4"><i class="fa fa-envelope pr-2"></i>Trial request from {{ demandeEssai.dateDemande|date('d-m-Y') }}:</h3>
 
                         <!-- Grid row -->
                         <div class="row">
                             <!-- Grid column -->
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h6>Demande émanant de :</h6> <p>{{ demandeEssai.user.nom }} {{ demandeEssai.user.prenom }}</p>
+                                    <h6>Request coming from :</h6> <p>{{ demandeEssai.user.nom }} {{ demandeEssai.user.prenom }}</p>
                                 </div>
                             </div>
 
                             <!-- Grid column -->
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h6>Date d'essai désirée :</h6> <p> {{ demandeEssai.dateEssaiPlanning|date('d-m-Y  H:i:s') }}</p>
+                                    <h6>Wanted trial date :</h6> <p> {{ demandeEssai.dateEssaiPlanning|date('d-m-Y  H:i:s') }}</p>
                                 </div>
                             </div>
 
@@ -48,16 +46,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h6>Concernant le véhicule :</h6><img style="max-height: 30vh;" src="/images/photosVehiculePhysique/{{ demandeEssai.vehiculePhysique.imageName }}">
+                                    <h6>Concerning the vehicle :</h6><img style="max-height: 30vh;" src="/images/photosVehiculePhysique/{{ demandeEssai.vehiculePhysique.imageName }}">
                                     <p>{{ demandeEssai.vehiculePhysique.version.model.marque }} {{ demandeEssai.vehiculePhysique.version.model }} {{ demandeEssai.vehiculePhysique.version }}</p><br>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
-                                    <h6>Référence : {{ demandeEssai.vehiculePhysique.referenceVehPhy }}</h6>
-                                    <h6>Année : {{ demandeEssai.vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}</h6><br>
-                                    <h6>Kilométrage : {{ demandeEssai.vehiculePhysique.kilometrage }} km </h6> <br>
-                                    <h6>Prix : {{ demandeEssai.vehiculePhysique.prixHT }} $</h6>
+                                    <h6>Reference : {{ demandeEssai.vehiculePhysique.referenceVehPhy }}</h6>
+                                    <h6>Year : {{ demandeEssai.vehiculePhysique.dateDeMiseEnCirculation|date('d-m-Y') }}</h6><br>
+                                    <h6>Mileage : {{ demandeEssai.vehiculePhysique.kilometrage }} km </h6> <br>
+                                    <h6>Price : {{ demandeEssai.vehiculePhysique.prixHT }} $</h6>
                                 </div>
                             </div>
                         </div>
@@ -76,26 +74,7 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-lg-4">
-                    <div class="card-body contact text-center h-100 white-text">
-                        <h3 class="my-4 pb-2 white-text">Coordonnées du contact</h3>
-                        <hr class="hr-light my-4">
-                        <ul class="text-lg-left list-unstyled ml-4">
-                            <li>
-                                <p class="contact-adresse text-center white-text"><i data-feather="mail"></i> Email :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.email }}</p>
-                            </li>
-                            <li>
-                                <p class="contact-adresse text-center white-text"><i data-feather="phone"></i> Téléphone :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.numeroTelephone }}</p>
-                            </li>
-                            <li>
-                                <p class="contact-adresse text-center white-text"><i data-feather="map-pin"></i> Adresse :</p>
-                                <p class="contact-adresse text-center white-color">{{ demandeEssai.user.adresse}} <br> {{ demandeEssai.user.codePostal }} {{ demandeEssai.user.ville }}</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
             <!-- Grid row -->
         </div>
@@ -108,7 +87,7 @@
         {{ form_row(edit_form._token) }}
         {{ form_end(edit_form, {'render_rest': false}) }}
         <p>
-            <a class="btn btn-success" href="{{ path('demandeessai_index') }}">Revenir à la liste des demandes d'essai</a>
+            <a class="btn btn-success" href="{{ path('demandeessai_index') }}">Back to the trial request list</a>
         </p>
     </div>
 

@@ -1,17 +1,91 @@
 {% extends 'admin/vendeurBase.html.twig' %}
 
 {% block stylesheets %}
-  
+    <link rel="stylesheet" href="{{ asset('build/tableauDeBord.css') }}">
+
 {% endblock %}
 
 {% block body %}
 
 
+    <section>
+        <div class="container">
+            <div class="row firstRow">
+                <div class="col-md-4">
+                    <div class="container fontbalise fontdeepblue">
+                        <h6>Awaiting trial requests</h6>
+                        <p class="donneeAffichage">
+                            {% if demandeEssaisEnAttentes is not empty %}
+                                    {{ demandeEssaisEnAttentes|length }}
+                            {% else %}0
+                            {% endif %}
+                        </p>
+                        <p class="asteriques">* sur le mois en cours</p>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="container fontbalise fontblue">
+                        <h6>Done trial requests</h6>
+                        <p class="donneeAffichage">
+                            {% if demandeEssaisTraitees is not empty %}
+                                    {{ demandeEssaisTraitees|length }}
+                            {% else %}0
+                            {% endif %}
+                        </p>
+                        <p class="asteriques">* On the current month</p>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="container fontbalise fontsoftblue">
+                        <h6>Sales</h6>
+                        <p class="donneeAffichage">
+                            {% if cartContents is not empty %}
+                                {{ cartContents|length }}
+                            {% else %}0
+                            {% endif %}
+
+                        </p>
+                        <p class="asteriques">* On the current month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <h6 style="font-weight: bold">Trials resulting in sales</h6>
+                        <div class="donut-chart chart2">
+                            <div class="slice one"></div>
+                            <div class="slice two"></div>
+                            <div class="chart-center">
+                                <span>{% if demandeEssaisTraitees|length != 0 %}{{  (cartContents|length / demandeEssaisTraitees|length)*100 }} % {% else %} {{ cartContents|length *100 }} % {% endif %}</span>
+                            </div>
+                        </div>
+                        <p class="asteriques">* On the current month</p>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="container fontbalise fontblue" style="height: 100%">
+                        <h6>Gross sales</h6>
+                        <p class="donneeAffichageLong">
+                                {{ totalVentes|number_format(2, '.', ',') }} $
+                        </p>
+                        <p class="asteriquesLong">* On the current month</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </section>
 
 
 
 {% endblock %}
-
 
 
  

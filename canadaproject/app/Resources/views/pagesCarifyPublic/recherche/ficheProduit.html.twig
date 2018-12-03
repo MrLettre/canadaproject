@@ -44,20 +44,20 @@
         <div class="col-md-6">
 
             {% for voiturephy in voiturephy %}
-                <h1>{{ voiturephy.version.model.marque }}</h1>
+                <h1>{{ voiturephy.version.model.marque }} {{ voiturephy.version.model }}</h1>
             {% endfor %}
 
             <p class="lead">
                 {% for voiturephy in voiturephy %}
-                    <h4>Mise en circulation:
-                        {{voiturephy.dateDeMiseEnCirculation|date('Y-m-d')}}</h4>
+                    <h4>Date of first circulation:
+                        {{voiturephy.dateDeMiseEnCirculation|date('d-m-Y')}}</h4>
                 {% endfor %}
                 {% for voiturephy in voiturephy %}
                     <h4>{{voiturephy.prixHT}}$ HT</h4>
                     <h5>{{voiturephy.kilometrage}}KM</h5>
                 {% endfor %}
                 {% for voiturephy in voiturephy %}
-                   <span class="badge grey mr-1">mise en ligne: {{voiturephy.dateMiseEnLigne|date('Y-m-d')}}</span>
+                   <span class="badge grey mr-1">Online since: {{voiturephy.dateMiseEnLigne|date('d-m-Y')}}</span>
                 {% endfor %}
 
             </p>
@@ -65,9 +65,11 @@
             <hr>
 
             {% for voiturephy in voiturephy %}
-                <h6>
-                    Vendeur:
-                    {{ voiturephy.concession}}</h6>
+                {% if voiturephy.hasCarfax == true %}
+            <img src="/images/header/Carfaxlogo3.svg.png" class="img-fluid" alt="PhotoVehicule" style="max-height: 5vh; width: auto">
+                {% else %}
+                    <h6> CARFAX not available for this vehicle</h6>
+                {% endif %}
             {% endfor %}
 
             <hr>
@@ -82,7 +84,7 @@
 
             {{ form_end(formCart) }}
             {% else %}
-                <a href="{{ path('fos_user_security_login') }}"><button class="btn btn-primary" type="submit">AJOUTER AU PANIER</button></a>
+                <a href="{{ path('fos_user_security_login') }}"><button class="btn btn-primary" type="submit">ADD TO CART</button></a>
             {% endif %}
 
             {{ form_start(formEssai) }}
@@ -105,9 +107,10 @@
             <!--Grid column-->
             <div class="col-md-6 text-center">
 
-                <h4 class="my-4 h4">Descriptif</h4>
+                <h4 class="my-4 h4">Description</h4>
 
                 {% for voiturephy in voiturephy %}
+                     <h5>{{ voiturephy.version.model.marque }} {{ voiturephy.version.model }} {{ voiturephy.version }}</h5>
                     <p>{{voiturephy.descriptif}}</p>
                 {% endfor %}
 
@@ -127,10 +130,185 @@
 
                 <h4 class="my-4 h4">Options</h4>
 
-                {% for optionsphy in optionsphy %}
-                    <p>-
-                        {{optionsphy}}</p>
-                {% endfor %}
+
+
+                <!--OPTIONS POUR LA VERSION DU VEHICULE-->
+
+<h3>Options de base de la version:</h3>
+
+
+ {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Interieur' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for options in versionOptions %}
+
+            {% if options.categorieOption.nom == categorie.nom %}
+            
+           <p>{{options.nom}}</p>    
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}   
+
+
+ {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Exterieur' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for options in versionOptions %}
+
+            {% if options.categorieOption.nom == categorie.nom  %}
+            
+           <p>{{options.nom}}</p>   
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %} 
+
+  {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Securite' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for options in versionOptions %}
+
+            {% if options.categorieOption.nom == categorie.nom %}
+            
+           <p>{{options.nom}}</p>    
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+    {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Autre' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for options in versionOptions %}
+
+            {% if options.categorieOption.nom == categorie.nom %}
+            
+           <p>{{options.nom}}</p>    
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+
+                <!--OPTIONS POUR LE VEHICULE PHYSIQUE-->
+
+                        
+<h3>Options en plus de ce véhicule:</h3>
+
+
+  {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Interieur' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for optionsphy in optionsphy %}
+
+            {% if optionsphy.categorieOption.nom == categorie.nom %}
+            
+                    <p>{{optionsphy}}</p> 
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+  
+    {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Exterieur' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for optionsphy in optionsphy %}
+
+            {% if optionsphy.categorieOption.nom == categorie.nom %}
+            
+                    <p>{{optionsphy}}</p> 
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+
+    {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Securite' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for optionsphy in optionsphy %}
+
+            {% if optionsphy.categorieOption.nom == categorie.nom %}
+            
+                    <p>{{optionsphy}}</p> 
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+  {% for categorie in categoriesOptions %}
+     
+   {% if categorie.nom == 'Autre' %}
+
+     <h5>{{categorie.nom}}</h5>
+   
+        {% for optionsphy in optionsphy %}
+
+            {% if optionsphy.categorieOption.nom == categorie.nom %}
+            
+                    <p>{{optionsphy}}</p> 
+
+            {% endif %}
+
+        {% endfor %}
+    
+    {% endif %}
+
+{% endfor %}
+
+
+                
 
             </div>
             <!--Grid column-->
@@ -152,11 +330,11 @@
                         {{voiturephy.version.model}}:
                         {{voiturephy.version.model.typeVehicule}}</h3>
 
-                    <h6>Boite de Vitesse:
+                    <h6>Gearbox:
                         {{ voiturephy.version.bdv}}</h6>
                     <h6>Transmission:
                         {{ voiturephy.version.transmission}}</h6>
-                    <h6>Energie:
+                    <h6>Energy:
                         {{ voiturephy.version.energie}}</h6>
 
                     <hr>
@@ -166,8 +344,8 @@
                         {% if voiturephy.version.energie == 'Electrique' %}
                             <thead>
                                 <tr>
-                                    <th>Puissance Electrique</th>
-                                    <th>Autonomie electrique</th>
+                                    <th>Electrical power</th>
+                                    <th>Electrical Autonomy</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -181,8 +359,8 @@
                         {% if voiturephy.version.energie == 'Thermique' %}
                             <thead>
                                 <tr>
-                                    <th>Puissance Thermique</th>
-                                    <th>Autonomie Thermique</th>
+                                    <th>Thermal power</th>
+                                    <th>Thermal autonomy</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -196,10 +374,10 @@
                         {% if voiturephy.version.energie == 'Hybride' %}
                             <thead>
                                 <tr>
-                                    <th>Puissance Thermique</th>
-                                    <th>Autonomie Thermique</th>
-                                    <th>Puissance Electrique</th>
-                                    <th>Autonomie electrique</th>
+                                    <th>Thermal power</th>
+                                    <th>Thermal autonomy</th>
+                                    <th>Electrical power</th>
+                                    <th>Electrical autonomy</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -20,7 +20,7 @@ class AdminVehiculePhysiqueType extends AbstractType
         $builder
             ->add('statut', EntityType::class, [
                 'class' => 'AppBundle\Entity\VehiclesValidationStatut',
-                'choice_label' => 'statut',
+                'choice_label' => 'status',
                 'multiple' => false,
                 'expanded' => false,
                 'required' => true

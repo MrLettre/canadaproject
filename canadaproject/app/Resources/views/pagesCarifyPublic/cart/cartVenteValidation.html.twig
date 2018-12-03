@@ -9,7 +9,7 @@
                 <div class="col-md-10">
                     <div class="progress">
                         <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                            <span class="sr-only">100% effectué (success)</span>
+                            <span class="sr-only">100% done (success)</span>
                         </div>
                     </div>
                 </div>
@@ -19,13 +19,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div style="display: flex">
-                        <h1>Votre commande a été enregistrée avec succès.</h1>
+                        <h1>Your order has been successfully saved.</h1>
                         <img src="/images/cartPaiement/validationCarify.png" height="60" alt="">
                     </div>
                     <br>
-                    <p>Un mail de confirmation vous parviendra dans quelques minutes. Vous y trouverez tous les détails de votre commande.</p>
-                    <p>Merci pour votre confiance, de la part de toute votre équipe CARIFY</p>
-                    <a href="{{ path('accueil') }}" class="btn btn-success">Retour à l'accueil</a>
+                    <p>A confirmation mail wiil be sent in a few minutes. You will find your order details.</p>
+                    <p>Thank you for trusting us, from the carify team.</p>
+                    <a href="{{ path('accueil') }}" class="btn btn-success">Back to homepage</a>
                 </div>
             </div>
         </div>
@@ -38,15 +38,15 @@
 
                     <div class="col-md-8" style="margin: 3vh 0 3vh 0">
 
-                        <h3>Votre commande</h3>
-                        <h6>Référence : {{ vente.referenceVente }}</h6>
+                        <h3>Your order</h3>
+                        <h6>Reference : {{ vente.referenceVente }}</h6>
                         {% for cart in cartForFinalTwig %}
-                            <h6>Nom : {{ cart.user.nom }} {{ cart.user.prenom }}</h6>
+                            <h6>Name : {{ cart.user.nom }} {{ cart.user.prenom }}</h6>
                             <h6>Mail : {{ cart.user.email }}</h6>
                             <h6>Tel : {{ cart.user.numeroTelephone }}</h6>
-                            <h6>Véhicule : {{ cart.vehiculePhysique.version.model.marque }} {{ cart.vehiculePhysique.version.model }} {{ cart.vehiculePhysique.version }}</h6>
-                            <h6>Prix HT : {{ cart.vehiculePhysique.prixHT }}$</h6>
-                            <h6>Prix TTC : {{ cart.vehiculePhysique.prixTTC }}$</h6>
+                            <h6>Vehicle : {{ cart.vehiculePhysique.version.model.marque }} {{ cart.vehiculePhysique.version.model }} {{ cart.vehiculePhysique.version }}</h6>
+                            <h6>Prix Notaxes : {{ cart.vehiculePhysique.prixHT }}$</h6>
+                            <h6>Prix With taxes : {{ cart.vehiculePhysique.prixTTC }}$</h6>
                         {% endfor %}
                     </div>
                 </div>
