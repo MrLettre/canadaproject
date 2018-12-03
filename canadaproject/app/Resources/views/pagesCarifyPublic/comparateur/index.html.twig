@@ -45,7 +45,7 @@
         <div class="row" style="flex-direction: column">
             <div class="contourTitreComp">
                 <div class="titreComp">
-                    <h1>What type of vehicle are you loking for ?</h1>
+                    <h1>What type of vehicle are you looking for ?</h1>
                     <h3> Choose your vehicle within a format</h3>
                 </div>
             </div>
@@ -94,16 +94,16 @@
                         {% for entry in group %}
                             <div class="col-2 ladivNrjdeClement" style="text-align: center; cursor : pointer;" id="{{ entry.id }}">
                                 <br>
-                                {% if entry == "essence" %}
+                                {% if entry == "gazoline" %}
                                     <img src="/images/Icons/oil.png" width="80" height="80"><br>
                                 {% endif %}
                                 {% if entry == "diesel" %}
                                     <img src="/images/Icons/oil.png" width="80" height="80"><br>
                                 {% endif %}
-                                {% if entry == "hybride" %}
+                                {% if entry == "hybrid" %}
                                     <img src="/images/Icons/hybrid.png" width="80" height="80"><br>
                                 {% endif %}
-                                {% if entry == "electrique" %}
+                                {% if entry == "electric" %}
                                     <img src="/images/Icons/electric.png" width="80" height="80"><br>
                                 {% endif %}
                                 <h4>{{ entry.nom }}</h4>
