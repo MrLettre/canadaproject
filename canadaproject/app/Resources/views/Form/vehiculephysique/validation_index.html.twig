@@ -5,19 +5,19 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Véhicules en attente de validation</h1>
+    <h1>Vehicle awaiting validation</h1>
     <div class="table-responsive">
     <table class="table">
     <thead>
     <tr>
-        <th scope="col">Etat</th>
-        <th scope="col">Vendeur</th>
-        <th scope="col">Marque</th>
-        <th scope="col">Modèle</th>
+        <th scope="col">State</th>
+        <th scope="col">Seller</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Model</th>
         <th scope="col">Version</th>
-        <th scope="col">Kilometrage</th>
-        <th scope="col">Datedemiseencirculation</th>
-        <th scope="col">Prixht</th>
+        <th scope="col">Mileage</th>
+        <th scope="col">Date of first circulation</th>
+        <th scope="col">Prix NoTax</th>
         <th scope="col">Photo</th>
         <th scope="col">Actions</th>
     </tr>
@@ -55,8 +55,8 @@
                 <td>{{ vehiculePhysique.prixHT }}</td>
                 <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                 <td>
-                    <a class="btn btn-success" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modifier</a>
-                    <a class="btn btn-primary" href="{{ path('vehiculephysique_validation_edit', { 'id': vehiculePhysique.id }) }}">Valider Etat</a>
+                    <a class="btn btn-success" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modify</a>
+                    <a class="btn btn-primary" href="{{ path('vehiculephysique_validation_edit', { 'id': vehiculePhysique.id }) }}">Validate state</a>
                 </td>
             </tr>
             </tbody>

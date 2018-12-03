@@ -1,7 +1,7 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Editer un article</h1>
+    <h1>Edit an article</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -10,10 +10,10 @@
     <br>
     <br>
     <p>
-        <a href="/admin/article/{{ article.id }}/delete">Supprimer cet article</a>
+        <a href="/admin/article/{{ article.id }}/delete">Delete this article</a>
     </p>
     <p>
-            <a href="{{ path('article_admin_index') }}">Revenir à la liste</a>
+            <a href="{{ path('article_admin_index') }}">Back to the list</a>
     </p>
 
 
