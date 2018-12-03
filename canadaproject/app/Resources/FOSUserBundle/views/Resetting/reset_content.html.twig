@@ -4,19 +4,19 @@
         <!-- Material form login -->
         {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'form-control' } }) }}
 
-        <p class="h4 text-center mb-4 blue-text">Changer votre mot de passe</p>
+        <p class="h4 text-center mb-4 blue-text">Change your password</p>
         <!-- Material input email -->
         <div class="md-form">
             <i class="fa fa-lock prefix blue-text"></i>
             {{ form_widget(form.plainPassword.first,{ 'attr': {'class': 'form-control'} }) }}
-            <label for="materialFormLoginEmailEx">Nouveau Mot de passe</label>
+            <label for="materialFormLoginEmailEx">New password</label>
         </div>
 
         <!-- Material input password -->
         <div class="md-form">
             <i class="fa fa-exclamation-triangle prefix blue-text"></i>
             {{ form_widget(form.plainPassword.second,{ 'attr': {'class': 'form-control'} }) }}
-            <label for="materialFormLoginPasswordEx">Confirmer le nouveau mot de passe</label>
+            <label for="materialFormLoginPasswordEx">Confirm the new password</label>
         </div>
 
         <div class="text-center mt-4">
