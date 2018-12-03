@@ -11,12 +11,12 @@
                 <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="login-brand">
-                            Créer un nouveau membre
+                            Register a new member
                         </div>
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') == false %}
                         <div class="login-brand">
-                            Formulaire d'Inscription
+                            Registration form
                         </div>
                     {% endif %}
 
@@ -28,7 +28,7 @@
                                     {#-----------------------STATUT/ROLES---------------------#}
                                     {% if is_granted('ROLE_ADMIN') %}
                                     <div class="row">
-                                        <label for="syndic">Statut</label>
+                                        <label for="syndic">Status</label>
                                         <div class="row" style="display: flex;">
                                             <div style="margin: 2vw;" >
                                                {{ form_errors(form.roles) }}
@@ -54,31 +54,31 @@
                                     {#-----------------------------------------GLOBAL-----------------------------------------#}
 
                                     <div>
-                                        <label for="nom">Nom</label>
+                                        <label for="nom">Last name</label>
                                         {{ form_widget(form.nom) }}
                                         {{ form_errors(form.nom) }}
                                     </div>
 
                                     <div>
-                                        <label for="prenom">Prénom</label>
+                                        <label for="prenom">First name</label>
                                         {{ form_widget(form.prenom) }}
                                         {{ form_errors(form.prenom) }}
                                     </div>
 
                                     <div>
-                                        <label for="username">Nom d'utilisateur</label>
+                                        <label for="username">Username</label>
                                         {{ form_widget(form.username) }}
                                         {{ form_errors(form.username) }}
                                     </div>
 
                                     <div>
-                                        <label for="dateNaissance">Date de naissance</label>
+                                        <label for="dateNaissance">Birth Date</label>
                                         {{ form_widget(form.dateNaissance) }}
                                         {{ form_errors(form.dateNaissance) }}
                                     </div>
 
                                     <div>
-                                        <label for="tel">Téléphone</label>
+                                        <label for="tel">Phone</label>
                                         {{ form_widget(form.numeroTelephone) }}
                                         {{ form_errors(form.numeroTelephone) }}
                                     </div>
@@ -90,19 +90,19 @@
                                     </div>
 
                                     <div >
-                                        <label for="plainPassword.first">Mot de passe</label>
+                                        <label for="plainPassword.first">Password</label>
                                         {{  form_widget(form.plainPassword.first) }}
                                         {{ form_errors(form.plainPassword.first) }}
                                     </div>
                                     <div>
-                                        <label for="plainPassword.second">Confirmer le mot de passe</label>
+                                        <label for="plainPassword.second">Confirm your password</label>
                                         {{  form_widget(form.plainPassword.second) }}
                                         {{ form_errors(form.plainPassword.second) }}
                                     </div>
 
                                     {{ form_widget(form._token) }}
                                     <div class="form-group col-12">
-                                        <button type="submit" value="enregistrer" class="btn btn-primary btn-block" style="margin-top: 2vh">Enregistrer</button>
+                                        <button type="submit" value="enregistrer" class="btn btn-primary btn-block" style="margin-top: 2vh">Save</button>
                                     </div>
 
                                 </div>
