@@ -13,17 +13,17 @@
     </div>
     <div class="container">
         <div class="row">
-            <h2>Bienvenue {{ user.username }}!</h2>
+            <h2>Welcome {{ user.username }}!</h2>
         </div>
         <br>
         <div class="row">
-            <h6>Votre inscription a été validée avec succès, toute l'équipe Carify vous remercie.</h6>
+            <h6>Registration successful ! </h6>
         </div>
         <br>
         {% if targetUrl %}
-                <a href="{{ targetUrl }}" class="btn btn-primary">Acceder à votre profile</a>
+                <a href="{{ targetUrl }}" class="btn btn-primary">My profile</a>
         {% endif %}
-        <a href="/" class="btn btn-success">retour à l'accueil</a>
+        <a href="/" class="btn btn-success">Back to homepage</a>
     </div>
 </section>
 {% endblock fos_user_content %}

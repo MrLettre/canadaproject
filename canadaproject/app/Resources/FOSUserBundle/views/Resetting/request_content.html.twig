@@ -1,14 +1,14 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div id="resetMdp" class="col-md-8 offset-md-2">
     </br>
-    <h1>Mot de passe oublié</h1>
+    <h1>Forgotten password</h1>
     </br>
     <div class="jumbotron jumbotron-fluid">
         <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
             <div class="md-form">
                 <i class="fa fa-user prefix"></i>
                 <input type="text" id="username" name="username" class="form-control  " required="required" />
-                <label for="username" class="blue-text">Entrez votre nom d'utilisateur ou votre email</label>
+                <label for="username" class="blue-text">Username</label>
             </div>
             <div>
                 <input type="submit" class="btn btn-outline-primary waves-effect" value="Réinitialiser" />
