@@ -40,7 +40,7 @@ class VehiculePhysiqueType extends AbstractType
             ->add('imageFile', VichFileType::class)
             ->add('options', EntityType::class, array(
                 'class' => 'AppBundle:VehicleOption',
-                'choice_label'=> 'name',
+                'choice_label'=> 'nom',
                 'multiple' => true,
                 'expanded' => true,
                 'required' => false,
