@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Vehicleoption</h1>
+    <h1>Options</h1>
 
     <table>
         <tbody>
@@ -14,7 +14,7 @@
                 <td>{{ vehicleOption.nom }}</td>
             </tr>
             <tr>
-                <th>Actif</th>
+                <th>Active</th>
                 <td>{% if vehicleOption.actif %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>

@@ -1,11 +1,11 @@
 {% extends 'admin/vendeurBase.html.twig' %}
 
 {% block body %}
-    <h1>Vehiculephysique edit</h1>
+    <h1>Car edit</h1>
 
     {{ form_start(edit_form) }}
     <div class="form-group">
-        {{ form_label(edit_form.concession, 'Selling point') }}
+        {{ form_label(edit_form.concession, 'Dealership') }}
         {{ form_widget(edit_form.concession, {'attr':{class:'form-control'}}) }}
         {{ form_errors(edit_form.concession) }}
     </div>

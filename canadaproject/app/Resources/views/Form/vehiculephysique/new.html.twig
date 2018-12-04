@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
 
-        <h1>Création d'un véhicule</h1>
+        <h1>Car creation</h1>
 
         {{ form_start(form) }}
 
@@ -62,13 +62,13 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.prixht, 'Prix (no taxes)') }}
+                {{ form_label(form.prixht, 'Price (no taxes)') }}
                 {{ form_widget(form.prixht, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.prixht) }}
             </div>
 
             <div class="form-group">
-                {{ form_label(form.prixttc, 'Prix with taxes') }}
+                {{ form_label(form.prixttc, 'Price with taxes') }}
                 {{ form_widget(form.prixttc, {'attr':{class:'form-control'}}) }}
                 {{ form_errors(form.prixttc) }}
             </div>
@@ -79,7 +79,7 @@
                 {{ form_errors(form.imageFile) }}
             </div>
         <p>
-            <input class="btn btn-success" type="submit" value="Valider et Choisir mes options" style="width: 30%;"/>
+            <input class="btn btn-success" type="submit" value="Validate and set options" style="width: 30%;"/>
         </p>
         {{ form_row(form._token) }}
         {{ form_end(form, {'render_rest': false}) }}

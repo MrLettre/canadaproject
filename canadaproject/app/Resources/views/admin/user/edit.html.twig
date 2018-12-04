@@ -2,7 +2,7 @@
 
 {% block body %}
     <div style="text-align: center">
-        <h1>Editer un utilisateur</h1><br>
+        <h1>Edit an User</h1><br>
     </div>
     {{ form_start(edit_form) }}
 
@@ -32,7 +32,7 @@
         {{ form_errors(edit_form.adresse) }}
     </div>
     <div class="form-group">
-        {{ form_label(edit_form.codePostal, 'Adress') }}
+        {{ form_label(edit_form.codePostal, 'Postal Code') }}
         {{ form_widget(edit_form.codePostal, {'attr':{class:'form-control'}}) }}
         {{ form_errors(edit_form.codePostal) }}
     </div>
@@ -47,13 +47,13 @@
         {{ form_errors(edit_form.numeroTelephone) }}
     </div>
     <div class="form-group">
-        {{ form_label(edit_form.email, 'Mail') }}
+        {{ form_label(edit_form.email, 'Email') }}
         {{ form_widget(edit_form.email, {'attr':{class:'form-control'}}) }}
         {{ form_errors(edit_form.email) }}
     </div>
 
 
-    <input type="submit" value="Editer cet utilisateur" class="btn btn-success" style="width: 100%"/>
+    <input type="submit" value="Edit this User" class="btn btn-success" style="width: 100%"/>
     {{ form_row(edit_form._token) }}
     {{ form_end(edit_form, {'render_rest': false}) }}
 

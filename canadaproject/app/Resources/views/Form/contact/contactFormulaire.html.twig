@@ -11,8 +11,8 @@
             <br><br>
         </div>
         <p class="lead text-muted">
-            Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d'un droit d'accès et de rectification aux informations qui vous concernent. Si vous souhaitez exercer ce droit et obtenir la communication des informations vous concernant, toute demande en ce sens transmise doit être transmise au responsable de traitement
-            via l'adresse postale  ou via l'email.
+            <!-- Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d'un droit d'accès et de rectification aux informations qui vous concernent. Si vous souhaitez exercer ce droit et obtenir la communication des informations vous concernant, toute demande en ce sens transmise doit être transmise au responsable de traitement
+            via l'adresse postale  ou via l'email. -->
         </p>
         <i data-feather="alert-triangle" style="color:red;"></i> * Required fields.
         <br>
@@ -55,7 +55,7 @@
                                 <div class="col-md-12">
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.nomSteContact, { 'attr': {'class': 'form-control'} }) }}
-                                        <label for="form-contact-name" class="nom">Saisissez le nom de votre société</label>
+                                        <label for="form-contact-name" class="nom">Company's name</label>
                                         <p id="nom_id" class="text-left red-text animated bounce">Company's name</p>
                                         <p id="nom_valid" class="text-left red-text animated bounce">Please enter a valid company name</p>
                                     </div>
@@ -83,8 +83,8 @@
                                 <div class="col-md-5">
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.prenomContact, { 'attr': {'class': 'form-control text-capitalize'} }) }}
-                                        <label for="form-contact-name" class="">Prénom</label>
-                                        <p id="prenom_id" class="text-left red-text animated bounce">Enter firstname</p>
+                                        <label for="form-contact-name" class="">FirstName</label>
+                                        <p id="prenom_id" class="text-left red-text animated bounce">Enter FirstName</p>
                                         <p id="prenom_valid" class="text-left red-text animated bounce">Please enter a valid name</p>
 
                                     </div>
@@ -95,8 +95,8 @@
                                     <div class="md-form mb-0">
                                         {{ form_widget(form.emailContact, { 'attr': {'class': 'form-control'} }) }}
                                         <label for="form-contact-email" class="">Email</label>
-                                        <p id="email_id" class="text-left red-text animated bounce">Enter mail adress</p>
-                                        <p id="email_valid" class="text-left red-text animated bounce">Please enter a valid mail adress</p>
+                                        <p id="email_id" class="text-left red-text animated bounce">Enter email</p>
+                                        <p id="email_valid" class="text-left red-text animated bounce">Please enter a valid email</p>
                                     </div>
                                 </div>
 
@@ -172,7 +172,7 @@
                     <!-- Grid column -->
                     <div class="col-lg-4">
                         <div class="card-body contact text-center h-100 white-text">
-                            <h3 class="my-4 pb-2 white-text">Our coordinates</h3>
+                            <h3 class="my-4 pb-2 white-text">Contact Us</h3>
                             <hr class="hr-light my-4">
                             <ul class="text-lg-left list-unstyled ml-4">
                                 <li>

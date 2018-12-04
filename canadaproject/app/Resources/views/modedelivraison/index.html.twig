@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modedelivraisons list</h1>
+    <h1>Delivery mode list</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Reference</th>
-                <th>Nom</th>
-                <th>Prix</th>
-                <th>Delaimoyen</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Average time</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -39,7 +39,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('modedelivraison_new') }}">Create a new modeDeLivraison</a>
+            <a href="{{ path('modedelivraison_new') }}">Create a new Delivery mode</a>
         </li>
     </ul>
 {% endblock %}

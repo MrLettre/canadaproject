@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Marque</h1>
+    <h1>Brand</h1>
 
     <table>
         <tbody>
@@ -14,11 +14,11 @@
                 <td>{{ marque.nom }}</td>
             </tr>
             <tr>
-                <th>Actif</th>
+                <th>Active</th>
                 <td>{% if marque.actif %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Imagename</th>
+                <th>ImageName</th>
                 <td>{{ marque.imageName }}</td>
             </tr>
         </tbody>

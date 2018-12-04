@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Marques list</h1>
+    <h1>Brands list</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Actif</th>
-                <th>Imagename</th>
+                <th>Active</th>
+                <th>ImageName</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('marque_new') }}">Create a new marque</a>
+            <a href="{{ path('marque_new') }}">Create a new brand</a>
         </li>
     </ul>
 {% endblock %}

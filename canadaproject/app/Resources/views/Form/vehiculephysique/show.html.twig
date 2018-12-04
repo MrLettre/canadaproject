@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Vehiculephysique</h1>
+    <h1>Car</h1>
 
     <table>
         <tbody>
@@ -26,11 +26,11 @@
                 <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Prix no texes</th>
+                <th>Price no taxes</th>
                 <td>{{ vehiculePhysique.prixHT }}</td>
             </tr>
             <tr>
-                <th>Prix with taxes</th>
+                <th>Price with taxes</th>
                 <td>{{ vehiculePhysique.prixTTC }}</td>
             </tr>
             <tr>
