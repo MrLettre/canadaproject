@@ -26,7 +26,7 @@
     {% if vehiculePhysique.validationStatut == '' %}
             <tbody>
                 <tr>
-                    <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
+                    <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}Waiting for validation{% endif %}</td>
                     <td>{{ vehiculePhysique.concession.nom }}</td>
                     <td>{{ vehiculePhysique.version.model.marque }}</td>
                     <td>{{ vehiculePhysique.version.model }}</td>
@@ -36,8 +36,8 @@
                     <td>{{ vehiculePhysique.prixHT }}</td>
                     <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                     <td>
-                        <a class="btn btn-success" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}" style="width: 100%">Modifier</a>
-                        <a class="btn btn-primary" href="{{ path('vehiculephysique_validation_edit', { 'id': vehiculePhysique.id }) }}">Valider Etat</a>
+                        <a class="btn btn-success" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}" style="width: 100%">Edit</a>
+                        <a class="btn btn-primary" href="{{ path('vehiculephysique_validation_edit', { 'id': vehiculePhysique.id }) }}">Validate state</a>
                     </td>
                 </tr>
             </tbody>
@@ -45,7 +45,7 @@
         {% if vehiculePhysique.validationStatut == 'En attente de validation' %}
             <tbody>
             <tr>
-                <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
+                <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}Waiting for validation{% endif %}</td>
                 <td>{{ vehiculePhysique.concession.nom }}</td>
                 <td>{{ vehiculePhysique.version.model.marque }}</td>
                 <td>{{ vehiculePhysique.version.model }}</td>
@@ -55,7 +55,7 @@
                 <td>{{ vehiculePhysique.prixHT }}</td>
                 <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
                 <td>
-                    <a class="btn btn-success" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Modify</a>
+                    <a class="btn btn-success" href="{{ path('vehiculephysique_edit', { 'id': vehiculePhysique.id }) }}">Edit</a>
                     <a class="btn btn-primary" href="{{ path('vehiculephysique_validation_edit', { 'id': vehiculePhysique.id }) }}">Validate state</a>
                 </td>
             </tr>
