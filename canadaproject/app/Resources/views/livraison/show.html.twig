@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Livraison</h1>
+    <h1>Delivery</h1>
 
     <table>
         <tbody>
@@ -14,15 +14,15 @@
                 <td>{{ livraison.reference }}</td>
             </tr>
             <tr>
-                <th>Dateha</th>
+                <th>Sales date</th>
                 <td>{% if livraison.dateHA %}{{ livraison.dateHA|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datelivraisonprevisionnelle</th>
+                <th>estimated delivery date</th>
                 <td>{% if livraison.dateLivraisonPrevisionnelle %}{{ livraison.dateLivraisonPrevisionnelle|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datelivraisoneffective</th>
+                <th>Delivery date</th>
                 <td>{% if livraison.dateLivraisonEffective %}{{ livraison.dateLivraisonEffective|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>

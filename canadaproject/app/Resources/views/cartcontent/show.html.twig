@@ -10,11 +10,11 @@
                 <td>{{ cartContent.id }}</td>
             </tr>
             <tr>
-                <th>Datemiseajourpanier</th>
+                <th>Basket's update</th>
                 <td>{% if cartContent.dateMiseAJourPanier %}{{ cartContent.dateMiseAJourPanier|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datemiseaupanier</th>
+                <th>Basket's creation date</th>
                 <td>{% if cartContent.dateMiseAuPanier %}{{ cartContent.dateMiseAuPanier|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>

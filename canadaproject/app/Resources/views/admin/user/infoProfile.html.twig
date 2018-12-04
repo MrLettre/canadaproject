@@ -16,7 +16,7 @@
         <div class="row" style="display: flex;" id="cardForUser">
             <div id="profil" class="col-6 card">
                 <div class="card-header">
-                    <h3>My Profil</h3>
+                    <h3>My Profile</h3>
                 </div>
                 <p class="connect"> Last connexion : {{ app.user.lastLogin|date("d/m/Y") }}</p>
                 <ul>
@@ -32,8 +32,8 @@
                 <div class="card-header">
                     <h3>My Actions</h3>
                 </div>
-                <a href="/profile/edit"><button type="submit" class="btn btn-primary">Modify my profil</button></a>
-                <a href="/userBase"><button type="submit" class="btn btn-primary">My profil</button></a>
+                <a href="/profile/edit"><button type="submit" class="btn btn-primary">Modify my profile</button></a>
+                <a href="/userBase"><button type="submit" class="btn btn-primary">My profile</button></a>
                 <a href="{{ path('fos_user_security_logout') }}"><button type="submit" class="btn btn-primary">Logout</button></a>
             </div>
         </div>
