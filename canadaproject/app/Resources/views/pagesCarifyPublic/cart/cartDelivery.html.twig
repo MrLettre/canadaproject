@@ -27,11 +27,11 @@
                 {% endfor %}
             </div>
             <div class="col-md-6">
-                <h4>Sélectionnez un mode de livraison</h4>
+                <h4>Select delivery mode</h4>
                 {{ form_start(form) }}
                 {{ form_widget(form.modeDeLivraison) }}
                 {{ form_widget(form._token) }}
-                <input class="btn btn-success" type="submit" value="Valider mon mode de livraison" />
+                <input class="btn btn-success" type="submit" value="Choose my delivery" />
                 {{ form_end(form, {'render_rest': false}) }}
             </div>
 

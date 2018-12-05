@@ -80,7 +80,8 @@ class VehiculePhysiqueController extends Controller
             $optionsVer[] = $value->getId();
         }
 
-        $options= $em->getRepository('AppBundle:VehicleOption')->findOptionsWithoutOptionsVersion($optionsVer);
+        // $options= $em->getRepository('AppBundle:VehicleOption')->findOptionsWithoutOptionsVersion($optionsVer);
+        $options= $em->getRepository('AppBundle:VehicleOption')->findAll();
         $categories= $em->getRepository('AppBundle:CategorieOptions')->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {

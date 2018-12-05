@@ -18,7 +18,6 @@
                 <th scope="col">First circulated</th>
                 <th scope="col">Price(No taxes)</th>
                 <th scope="col">Photo</th>
-                <th scope="col">Actions</th>
             </tr>
             </thead>
             {% for vehiculePhysique in vehiculePhysiques %}
@@ -33,9 +32,6 @@
                         <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('m-Y') }}{% endif %}</td>
                         <td>{{ vehiculePhysique.prixHT }}$</td>
                         <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
-                        <td>
-                            <a class="btn btn-danger" href="{{ path('vehiculephysique_delete', { 'id': vehiculePhysique.id }) }}">Delete</a>
-                        </td>
                     </tr>
                     </tbody>
                 {% endif %}

@@ -165,7 +165,7 @@
         <div class="row gris">
             <div class="col-xs-6 col-sm-6 col-md-6 text-center">
                 <table>
-                {% if vehicleDefinition.version.energie == 'electrique' %}
+                {% if vehicleDefinition.version.energie == 'electric' %}
                     <thead>
                         <tr>
                             <th>Electrical power</th>
@@ -180,7 +180,7 @@
                     </tbody>
                 {% endif %}
 
-                {% if vehicleDefinition.version.energie == 'essence' or vehicleDefinition.version.energie == 'diesel' %}
+                {% if vehicleDefinition.version.energie == 'gazoline' or vehicleDefinition.version.energie == 'diesel' %}
                     <thead>
                         <tr>
                             <th>Thermal power</th>
@@ -195,7 +195,7 @@
                     </tbody>
                 {% endif %}
 
-                {% if vehicleDefinition.version.energie == 'hybride' %}
+                {% if vehicleDefinition.version.energie == 'hybrid' %}
                     <thead>
                         <tr>
                             <th>Thermal power</th>
@@ -222,7 +222,7 @@
                 {% if id2 is defined %}
 
                 <table >
-                {% if id2.version.energie == 'electrique' %}
+                {% if id2.version.energie == 'electric' %}
                     <thead>
                         <tr>
                             <th>Electrical power</th>
@@ -237,7 +237,7 @@
                     </tbody>
                 {% endif %}
 
-                {% if id2.version.energie == 'essence' %}
+                {% if id2.version.energie == 'gazoline' %}
                     <thead>
                         <tr>
                             <th>Thermal power</th>
@@ -252,7 +252,7 @@
                     </tbody>
                 {% endif %}
 
-                {% if id2.version.energie == 'hybride' %}
+                {% if id2.version.energie == 'hybrid' %}
                     <thead>
                         <tr>
                             <th>Thermal power</th>
@@ -296,7 +296,7 @@
 
             {% for categorie in categoriesOptions %}
 
-                {% if categorie.nom == 'Exterieur' %}
+                {% if categorie.nom == 'Exterior' %}
 
                     <h1>{{categorie.nom}}</h1>
                                           
@@ -305,7 +305,7 @@
                             
                           
                             
-                            {% if optionsV1.categorieOption.nom == 'Exterieur' %}
+                            {% if optionsV1.categorieOption.nom == 'Exterior' %}
                                
                               {% if categorie.nom == optionsV1.categorieOption.nom %}
                                
@@ -325,7 +325,7 @@
             
                 {% for categorie in categoriesOptions %}
 
-                    {% if categorie.nom == 'Exterieur' %}
+                    {% if categorie.nom == 'Exterior' %}
                             
                             <h1>{{categorie.nom}}</h1>
                                           
@@ -334,7 +334,7 @@
                             
                          
                             
-                            {% if optionsV2.categorieOption.nom == 'Exterieur' %}
+                            {% if optionsV2.categorieOption.nom == 'Exterior' %}
                                
                               {% if categorie.nom == optionsV2.categorieOption.nom %}
                                
@@ -360,7 +360,7 @@
 
             {% for categorie in categoriesOptions %}
 
-                {% if categorie.nom == 'Interieur' %}
+                {% if categorie.nom == 'Interior' %}
 
                     <h1>{{categorie.nom}}</h1>
                                           
@@ -369,7 +369,7 @@
                             
                           
                             
-                            {% if optionsV1.categorieOption.nom == 'Interieur' %}
+                            {% if optionsV1.categorieOption.nom == 'Interior' %}
                                
                               {% if categorie.nom == optionsV1.categorieOption.nom %}
                                
@@ -389,7 +389,7 @@
             
                 {% for categorie in categoriesOptions %}
 
-                    {% if categorie.nom == 'Interieur' %}
+                    {% if categorie.nom == 'Interior' %}
                             
                             <h1>{{categorie.nom}}</h1>
                                           
@@ -398,7 +398,7 @@
                             
                          
                             
-                            {% if optionsV2.categorieOption.nom == 'Interieur' %}
+                            {% if optionsV2.categorieOption.nom == 'Interior' %}
                                
                               {% if categorie.nom == optionsV2.categorieOption.nom %}
                                
@@ -426,7 +426,7 @@
 
             {% for categorie in categoriesOptions %}
 
-                {% if categorie.nom == 'Securite' %}
+                {% if categorie.nom == 'Safety' %}
 
                     <h1>{{categorie.nom}}</h1>
                                           
@@ -435,7 +435,7 @@
                             
                           
                             
-                            {% if optionsV1.categorieOption.nom == 'Securite' %}
+                            {% if optionsV1.categorieOption.nom == 'Safety' %}
                                
                               {% if categorie.nom == optionsV1.categorieOption.nom %}
                                
@@ -455,7 +455,7 @@
             
                 {% for categorie in categoriesOptions %}
 
-                    {% if categorie.nom == 'Securite' %}
+                    {% if categorie.nom == 'Safety' %}
                             
                             <h1>{{categorie.nom}}</h1>
                                           
@@ -464,7 +464,7 @@
                             
                          
                             
-                            {% if optionsV2.categorieOption.nom == 'Securite' %}
+                            {% if optionsV2.categorieOption.nom == 'Safety' %}
                                
                               {% if categorie.nom == optionsV2.categorieOption.nom %}
                                
@@ -490,7 +490,7 @@
 
             {% for categorie in categoriesOptions %}
 
-                {% if categorie.nom == 'Autre' %}
+                {% if categorie.nom == 'Other' %}
 
                     <h1>{{categorie.nom}}</h1>
                                           
@@ -499,7 +499,7 @@
                             
                           
                             
-                            {% if optionsV1.categorieOption.nom == 'Autre' %}
+                            {% if optionsV1.categorieOption.nom == 'Other' %}
                                
                               {% if categorie.nom == optionsV1.categorieOption.nom %}
                                
@@ -519,7 +519,7 @@
             
                 {% for categorie in categoriesOptions %}
 
-                    {% if categorie.nom == 'Autre' %}
+                    {% if categorie.nom == 'Other' %}
                             
                             <h1>{{categorie.nom}}</h1>
                                           
@@ -528,7 +528,7 @@
                             
                          
                             
-                            {% if optionsV2.categorieOption.nom == 'Autre' %}
+                            {% if optionsV2.categorieOption.nom == 'Other' %}
                                
                               {% if categorie.nom == optionsV2.categorieOption.nom %}
                                
