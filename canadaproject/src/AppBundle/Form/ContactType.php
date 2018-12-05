@@ -24,8 +24,8 @@ class ContactType extends AbstractType
                   'Please select your status' => 'null',
                   "I am a Carify's seller" => 'Vendeur',
                   'I am not a Carify seller yet, but I wish to become one ' => 'Prospect',
-                  'Je suis client Carify' => 'Client',
-                  'Autre' => 'Autre'
+                  'I am a Carify customer' => 'Client',
+                  'Other' => 'Autre'
                 ],
             ])
             ->add('motifContact', ChoiceType::class, [
