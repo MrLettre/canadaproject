@@ -4,7 +4,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 class RegistrationType extends AbstractType
 {
     /**
@@ -21,10 +21,11 @@ class RegistrationType extends AbstractType
             ->add('ville')
             ->add('concession')
             ->add('numeroTelephone')
-            ->add('dateNaissance', BirthdayType::class,[
-                'placeholder' => array(
-                    'year' => 'Year', 'month' => 'Month', 'day' =>'Day',
-                )
+            ->add('dateNaissance', DateType::class,[
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y')-100),
+                'months' => range(1, 12),
+                'days' => range(1, 31),
             ])
             ->add('dateCreationProfil')
             ->add('roles', ChoiceType::class, [

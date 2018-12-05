@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class VehiculePhysiqueType extends AbstractType
 {
@@ -28,10 +28,11 @@ class VehiculePhysiqueType extends AbstractType
             ->add('codeVIN')
             ->add('concession')
             ->add('kilometrage')
-            ->add('dateDeMiseEnCirculation', BirthdayType::class,[
-                'placeholder' => array(
-                    'year' => 'Year', 'month' => 'month', 'day' =>'Day',
-                )
+            ->add('dateDeMiseEnCirculation', DateType::class,[
+                    'widget' => 'choice',
+                    'years' => range(date('Y'), date('Y')-100),
+                    'months' => range(1, 12),
+                    'days' => range(1, 31),
             ])
             ->add('prixht')
             ->add('prixha')
