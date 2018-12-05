@@ -30,7 +30,7 @@ class VehiculePhysiqueRepository extends \Doctrine\ORM\EntityRepository
 
     public function findLastNine(){
         $query = $this->getEntityManager()
-            ->createQuery("SELECT a FROM AppBundle:VehiculePhysique a ORDER BY a.id DESC");
+            ->createQuery("SELECT a FROM AppBundle:VehiculePhysique a WHERE a.validationStatut = 2 ORDER BY a.id DESC");
         $query->setMaxResults(3);
         return $query->getResult();
     }
