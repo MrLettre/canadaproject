@@ -43,3 +43,8 @@ services:
         arguments: []
         tags:
             - { name: kernel.event_subscriber }
+
+    #Service de gestion des mails
+
+    AppBundle\Service\Mailer:
+        arguments:

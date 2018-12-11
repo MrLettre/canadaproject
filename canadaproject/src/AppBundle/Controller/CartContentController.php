@@ -8,6 +8,7 @@ use AppBundle\Entity\Livraison;
 use AppBundle\Entity\CartContent;
 use AppBundle\Entity\VehiclesValidationStatut;
 use AppBundle\Entity\Vente;
+use AppBundle\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -142,7 +143,7 @@ class CartContentController extends Controller
      * @Route("/cartVenteValidation/{id}", name="cart_vente_validation")
      * @Method("GET")
      */
-    public function cartVenteValidationtAction($id)
+    public function cartVenteValidationtAction($id, Mailer $mailer)
     {
         $em = $this->getDoctrine()->getManager();
         $userId = $this->getUser()->getId();
@@ -192,6 +193,15 @@ class CartContentController extends Controller
             }
 
             $em->flush();
+
+            //Ici -> envoie du mail de validation de commande
+                $mailer->sendEmail(
+                    $subject = 'Order confirmation',
+                    $sendTo = $this->getUser()->getEmail(),
+                    $render = 'mails/mailConfirmationCommande.html.twig',
+                    $username = $this->getUser()->getUsername(),
+                    $content = $livraison->getReference()
+                );
 
 
             $venteId = $vente->getId();
