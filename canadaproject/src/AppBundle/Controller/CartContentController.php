@@ -192,15 +192,19 @@ class CartContentController extends Controller
                 $em->persist($user);
             }
 
-            $em->flush();
+            //$em->flush();
+
+            $usermail = $user->getUsername();
+           // var_dump($refClient);
+
 
             //Ici -> envoie du mail de validation de commande
                 $mailer->sendEmail(
                     $subject = 'Order confirmation',
                     $sendTo = $this->getUser()->getEmail(),
                     $render = 'mails/mailConfirmationCommande.html.twig',
-                    $username = $this->getUser()->getUsername(),
-                    $content = $livraison->getReference()
+                    $username = $usermail,
+                    $content = $vente->getReferenceVente()
                 );
 
 

@@ -13,10 +13,10 @@ class Mailer
         $this->templating = $templating;
     }
 
-    public function sendEmail($subject, $sendTo, $render, $user, $content)
+    public function sendEmail($subject, $sendTo, $render, $username, $content)
     {
         $body = $this->templating->render($render, [
-            'user' => $user,
+            'username' => $username,
             'content' => $content
         ]);
         $message = (new \Swift_Message($subject))
