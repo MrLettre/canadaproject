@@ -12,7 +12,7 @@ class VehiclesValidationStatutRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findStatutVendu(){
         return $this->getEntityManager()
-            ->createQuery("SELECT v FROM AppBundle:VehiclesValidationStatut v WHERE v.statut IN ('Vendu')")
+            ->createQuery("SELECT v FROM AppBundle:VehiclesValidationStatut v WHERE v.statut = 'Vendu sur Carify'")
             ->getResult();
     }
 }
