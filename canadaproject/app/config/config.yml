@@ -81,8 +81,8 @@ fos_user:
     service:                                              # since Symfony 3.4
         mailer: fos_user.mailer.twig_swift    # since Symfony 3.4
     from_email:
-        address: "bozo@gmail.com"
-        sender_name: "bozo"
+        address: "hello@carify.ca"
+        sender_name: "Carify"
     registration:
         form:
             type: AppBundle\Form\RegistrationType
