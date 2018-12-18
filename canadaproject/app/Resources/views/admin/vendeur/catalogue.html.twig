@@ -37,9 +37,9 @@
                                 <td>{{ vehPhy.version.model }}</td>
                                 <td>{{ vehPhy.version }}</td>
                                 <td>{{ vehPhy.dateMiseEnLigne|date('d-m-Y') }}</td>
-                                <td>{{ vehPhy.kilometrage }}km</td>
+                                <td>{{ vehPhy.kilometrage|number_format(2, '.', ',') }}km</td>
                                 <td>{% if vehPhy.dateDeMiseEnCirculation %}{{ vehPhy.dateDeMiseEnCirculation|date('m-Y') }}{% endif %}</td>
-                                <td>{{ vehPhy.prixHT }}$</td>
+                                <td>${{ vehPhy.prixHT|number_format(2, '.', ',') }}</td>
                                 <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehPhy.imageName }}" width="80" height="auto"></a></td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ path('vehiculephysique_edit', { 'id': vehPhy.id }) }}">Modify</a>

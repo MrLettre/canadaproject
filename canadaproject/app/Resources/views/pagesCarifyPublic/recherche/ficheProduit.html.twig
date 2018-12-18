@@ -53,7 +53,7 @@
                         {{voiturephy.dateDeMiseEnCirculation|date('d-m-Y')}}</h4>
                 {% endfor %}
                 {% for voiturephy in voiturephy %}
-                    <h4>{{voiturephy.prixHT}}$ HT</h4>
+                    <h4>${{voiturephy.prixHT|number_format(2, '.', ',')}} HT</h4>
                     <h5>{{voiturephy.kilometrage}}KM</h5>
                 {% endfor %}
                 {% for voiturephy in voiturephy %}

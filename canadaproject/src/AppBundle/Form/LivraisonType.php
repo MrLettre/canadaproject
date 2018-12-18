@@ -21,7 +21,12 @@ class LivraisonType extends AbstractType
             ->add('reference')
             ->add('dateHA')
             ->add('dateLivraisonPrevisionnelle')
-            ->add('dateLivraisonEffective')
+            ->add('dateLivraisonEffective', DateType::class,[
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y')-1),
+                'months' => range(1, 12),
+                'days' => range(1, 31),
+            ])
             ->add('vente')
             ->add('modeDeLivraison', EntityType::class, [
                 'class' => 'AppBundle:ModeDeLivraison',

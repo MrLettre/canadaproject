@@ -30,7 +30,7 @@ class ContactType extends AbstractType
             ])
             ->add('motifContact', ChoiceType::class, [
                 'choices' => [
-                    'please select a reason' => 'null',
+                    'Please select a reason' => 'null',
                     'I wish to become a seller' => 'Je souhaite devenir vendeur',
                     'I am a potential customer' =>'Je suis un potentiel client',
                     'After sales service' => 'SAV',
