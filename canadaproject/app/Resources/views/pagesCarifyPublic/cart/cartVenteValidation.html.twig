@@ -23,7 +23,7 @@
                         <img src="/images/cartPaiement/validationCarify.png" height="60" alt="">
                     </div>
                     <br>
-                    <p>A confirmation mail wiil be sent in a few minutes. You will find your order details.</p>
+                    <p>A confirmation email will be sent in a few minutes. You will find your order details.</p>
                     <p>Thank you for trusting us, from the carify team.</p>
                     <a href="{{ path('accueil') }}" class="btn btn-success">Back to homepage</a>
                 </div>
@@ -45,8 +45,8 @@
                             <h6>Mail : {{ cart.user.email }}</h6>
                             <h6>Tel : {{ cart.user.numeroTelephone }}</h6>
                             <h6>Vehicle : {{ cart.vehiculePhysique.version.model.marque }} {{ cart.vehiculePhysique.version.model }} {{ cart.vehiculePhysique.version }}</h6>
-                            <h6>Prix Notaxes : {{ cart.vehiculePhysique.prixHT }}$</h6>
-                            <h6>Prix With taxes : {{ cart.vehiculePhysique.prixTTC }}$</h6>
+                            <h6>Price Notaxes : {{ cart.vehiculePhysique.prixHT }}$</h6>
+                            <h6>Price With taxes : {{ cart.vehiculePhysique.prixTTC }}$</h6>
                         {% endfor %}
                     </div>
                 </div>

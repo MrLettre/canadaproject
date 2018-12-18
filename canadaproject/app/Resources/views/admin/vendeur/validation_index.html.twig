@@ -10,22 +10,21 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Sate</th>
+                <th scope="col">State</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Model</th>
                 <th scope="col">Version</th>
-                <th scope="col">Mileage</th>
+                <th scope="col">Km</th>
                 <th scope="col">First circulated</th>
                 <th scope="col">Price(No taxes)</th>
                 <th scope="col">Photo</th>
-                <th scope="col">Actions</th>
             </tr>
             </thead>
             {% for vehiculePhysique in vehiculePhysiques %}
                 {% if vehiculePhysique.validationStatut == '' %}
                     <tbody>
                     <tr>
-                        <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}En attente de validation{% endif %}</td>
+                        <td>{% if vehiculePhysique.validationStatut %}{{ vehiculePhysique.validationStatut }}{% else %}Waiting for validation cars{% endif %}</td>
                         <td>{{ vehiculePhysique.version.model.marque }}</td>
                         <td>{{ vehiculePhysique.version.model }}</td>
                         <td>{{ vehiculePhysique.version }}</td>
@@ -33,9 +32,6 @@
                         <td>{% if vehiculePhysique.dateDeMiseEnCirculation %}{{ vehiculePhysique.dateDeMiseEnCirculation|date('m-Y') }}{% endif %}</td>
                         <td>{{ vehiculePhysique.prixHT }}$</td>
                         <td><a href="#myModal" role="button" ><img src="/images/photosVehiculePhysique/{{ vehiculePhysique.imageName }}" width="80" height="auto"></a></td>
-                        <td>
-                            <a class="btn btn-danger" href="{{ path('vehiculephysique_delete', { 'id': vehiculePhysique.id }) }}">Delete</a>
-                        </td>
                     </tr>
                     </tbody>
                 {% endif %}

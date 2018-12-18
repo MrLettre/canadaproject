@@ -53,7 +53,7 @@
                         {{voiturephy.dateDeMiseEnCirculation|date('d-m-Y')}}</h4>
                 {% endfor %}
                 {% for voiturephy in voiturephy %}
-                    <h4>{{voiturephy.prixHT}}$ HT</h4>
+                    <h4>${{voiturephy.prixHT|number_format(2, '.', ',')}} HT</h4>
                     <h5>{{voiturephy.kilometrage}}KM</h5>
                 {% endfor %}
                 {% for voiturephy in voiturephy %}
@@ -76,9 +76,7 @@
 
             {% if user != null %}
             {{ form_start(formCart) }}
-
             {{ form_widget(formCart.AjouterAuPanier, {
-
                 'attr': {'class': 'btn btn-primary'}
             }) }}
 
@@ -89,6 +87,7 @@
 
             {{ form_start(formEssai) }}
             {{ form_widget(formEssai.DemandeEssai,{
+                'label': 'REQUEST A TRIAL',
                 'attr': {'class': 'btn btn-success'}
             }) }}
             {{ form_end(formEssai) }}
@@ -133,7 +132,7 @@
 
 
                 <!--OPTIONS POUR LA VERSION DU VEHICULE-->
-
+{#
 <h3>Options de base de la version:</h3>
 
 
@@ -223,11 +222,13 @@
 
                         
 <h3>Options en plus de ce véhicule:</h3>
+#}
+
 
 
   {% for categorie in categoriesOptions %}
-     
-   {% if categorie.nom == 'Interieur' %}
+
+   {% if categorie.nom == 'Interior' %}
 
      <h5>{{categorie.nom}}</h5>
    
@@ -248,7 +249,7 @@
   
     {% for categorie in categoriesOptions %}
      
-   {% if categorie.nom == 'Exterieur' %}
+   {% if categorie.nom == 'Exterior' %}
 
      <h5>{{categorie.nom}}</h5>
    
@@ -269,7 +270,7 @@
 
     {% for categorie in categoriesOptions %}
      
-   {% if categorie.nom == 'Securite' %}
+   {% if categorie.nom == 'Safety' %}
 
      <h5>{{categorie.nom}}</h5>
    
@@ -289,7 +290,7 @@
 
   {% for categorie in categoriesOptions %}
      
-   {% if categorie.nom == 'Autre' %}
+   {% if categorie.nom == 'Other' %}
 
      <h5>{{categorie.nom}}</h5>
    
